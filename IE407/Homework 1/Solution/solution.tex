@@ -1,6 +1,7 @@
 \documentclass{article}
 \usepackage{graphicx}
 \usepackage{pgfplots}
+\usepackage{float}
 \usepgfplotslibrary{fillbetween}
 
 \author{Emre Geçit}
@@ -15,100 +16,94 @@
 As can be seen in Figure 1, optimal solution to this problem is on the point (200, 50), where the line for wood constraint and the cotton constraint intersect.
 At this point, profit is 3200\$.
 \newcommand\xmax{400}
-\begin{figure}
-    \resizebox{\textwidth}{!}{
-        \begin{tikzpicture}
-            \pgfplotsset{
-                every axis legend/.append style={at={(1.2,0.5)}, anchor=north west,legend columns = 1}}
-            \begin{axis}[
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+                legend style={nodes={scale=0.8}},
                 grid,
-                    grid style={densely dashed},
-                    axis line style={->},
-                    xlabel=$x$,
-                    ylabel=$y$,
-                    xmin=0, xmax=\xmax,
-                    ymin=0, ymax=400,
-                    axis lines=center,
-                    axis on top=true,
-                    domain=0:\xmax,
-                    ]
-                    \addplot [draw=red,thick,name path=wool_constraint] {150-x/2}; \addlegendentry{Wool constraint: $3x + 6y \leq 900$}
-                    \addplot [draw=blue,thick,name path=cotton_constraint] {300-5*x/4}; \addlegendentry{Cotton constraint: $5x + 4y \leq 1200$}
-                    \addplot [draw=green, thick, name path=profit] {(3200-12*x)/16}; \addlegendentry{Profit: $12x + 16y = 3200$}
-                    \path[name path=xaxis] (0,0) -- (\xmax,0);
-                    \addplot[cyan!20] fill between[of=xaxis and wool_constraint,soft clip={domain=0:200}];
-                    \addplot[cyan!20] fill between[of=xaxis and cotton_constraint,soft clip={domain=200:\xmax}];
-                \end{axis}
-            \end{tikzpicture}
-            }
+                grid style={densely dashed},
+                axis line style={->},
+                xlabel=$x$,
+                ylabel=$y$,
+                xmin=0, xmax=\xmax,
+                ymin=0, ymax=400,
+                axis lines=center,
+                axis on top=true,
+                domain=0:\xmax,
+            ]
+            \addplot [draw=red,thick,name path=wool_constraint] {150-x/2}; \addlegendentry{Wool constraint: $3x + 6y \leq 900$}
+            \addplot [draw=blue,thick,name path=cotton_constraint] {300-5*x/4}; \addlegendentry{Cotton constraint: $5x + 4y \leq 1200$}
+            \addplot [draw=green, thick, name path=profit] {(3200-12*x)/16}; \addlegendentry{Profit: $12x + 16y = 3200$}
+            \path[name path=xaxis] (0,0) -- (\xmax,0);
+            \addplot[cyan!20] fill between[of=xaxis and wool_constraint,soft clip={domain=0:200}];
+            \addplot[cyan!20] fill between[of=xaxis and cotton_constraint,soft clip={domain=200:\xmax}];
+        \end{axis}
+    \end{tikzpicture}
     \caption{Graphical Solution for Question 1a}
 \end{figure}
 
 \paragraph*{b)}
 If the profit for a sweatshirt is increased by 1 and changed to 17\$, the profit function becomes $12x + 17y$.
 As can be seen in Figure 2, the optimal solution for this problem does not change.
-\begin{figure}
-    \resizebox{\textwidth}{!}{
-        \begin{tikzpicture}
-            \pgfplotsset{
-                every axis legend/.append style={at={(1.2,0.5)}, anchor=north west,legend columns = 1}}
-            \begin{axis}[
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+                legend style={nodes={scale=0.8}},
                 grid,
-                    grid style={densely dashed},
-                    axis line style={->},
-                    xlabel=$x$,
-                    ylabel=$y$,
-                    xmin=0, xmax=\xmax,
-                    ymin=0, ymax=400,
-                    axis lines=center,
-                    axis on top=true,
-                    domain=0:\xmax,
-                    ]
-                    \addplot [draw=red,thick,name path=wool_constraint] {150-x/2}; \addlegendentry{Wool constraint: $3x + 6y \leq 900$}
-                    \addplot [draw=blue,thick,name path=cotton_constraint] {300-5*x/4}; \addlegendentry{Cotton constraint: $5x + 4y \leq 1200$}
-                    \addplot [draw=green, thick, name path=profit] {(3200-12*x)/17}; \addlegendentry{Profit: $12x + 17y = 3200$}
-                    \path[name path=xaxis] (0,0) -- (\xmax,0);
-                    \addplot[cyan!20] fill between[of=xaxis and wool_constraint,soft clip={domain=0:200}];
-                    \addplot[cyan!20] fill between[of=xaxis and cotton_constraint,soft clip={domain=200:\xmax}];
-                \end{axis}
-            \end{tikzpicture}
-            }
+                grid style={densely dashed},
+                axis line style={->},
+                xlabel=$x$,
+                ylabel=$y$,
+                xmin=0, xmax=\xmax,
+                ymin=0, ymax=400,
+                axis lines=center,
+                axis on top=true,
+                domain=0:\xmax,
+            ]
+            \addplot [draw=red,thick,name path=wool_constraint] {150-x/2}; \addlegendentry{Wool constraint: $3x + 6y \leq 900$}
+            \addplot [draw=blue,thick,name path=cotton_constraint] {300-5*x/4}; \addlegendentry{Cotton constraint: $5x + 4y \leq 1200$}
+            \addplot [draw=green, thick, name path=profit] {(3200-12*x)/17}; \addlegendentry{Profit: $12x + 17y = 3200$}
+            \path[name path=xaxis] (0,0) -- (\xmax,0);
+            \addplot[cyan!20] fill between[of=xaxis and wool_constraint,soft clip={domain=0:200}];
+            \addplot[cyan!20] fill between[of=xaxis and cotton_constraint,soft clip={domain=200:\xmax}];
+        \end{axis}
+    \end{tikzpicture}
     \caption{Graphical Solution for Question 1b}
 \end{figure}
 
 \paragraph*{c)}
-When the profit for a t-shirt is changed to 20\$, the profit function becomes $20x + 16y$. This function has the same slop with the cotton constraint.
-The optimal solution is all the points on the profit line, which satisfies the wool constraint.
+When the profit for a t-shirt is changed to 20\$, the profit function becomes $20x + 16y$. In this case, the profit line's slope is same with the cotton constraint line.
+The optimal solution is all the points on the cotton constraint line, which satisfy the wool constraint.
 
 If the profit is increased even more, the wool constraint stops being a binding constraint, and the optimal solution changes to (240, 0).
 
 In either case, the optimal solution is on the line $20x + 16y = 4800$.
-\begin{figure}
-    \resizebox{\textwidth}{!}{
-        \begin{tikzpicture}
-            \pgfplotsset{
-                every axis legend/.append style={at={(1.2,0.5)}, anchor=north west,legend columns = 1}}
-            \begin{axis}[
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+                legend style={nodes={scale=0.8}},
                 grid,
-                    grid style={densely dashed},
-                    axis line style={->},
-                    xlabel=$x$,
-                    ylabel=$y$,
-                    xmin=0, xmax=\xmax,
-                    ymin=0, ymax=400,
-                    axis lines=center,
-                    axis on top=true,
-                    domain=0:\xmax,
-                    ]
-                    \addplot [draw=red,thick,name path=wool_constraint] {150-x/2}; \addlegendentry{Wool constraint: $3x + 6y \leq 900$}
-                    \addplot [draw=blue,thick,name path=cotton_constraint] {300-5*x/4}; \addlegendentry{Cotton constraint: $5x + 4y \leq 1200$}
-                    \addplot [draw=green, thick, name path=profit] {(4800-20*x)/16}; \addlegendentry{Profit: $20x + 16y = 4800$}
-                    \path[name path=xaxis] (0,0) -- (\xmax,0);
-                    \addplot[cyan!20] fill between[of=xaxis and wool_constraint,soft clip={domain=0:200}];
-                    \addplot[cyan!20] fill between[of=xaxis and cotton_constraint,soft clip={domain=200:\xmax}];
-                \end{axis}
-            \end{tikzpicture}
-            }
+                grid style={densely dashed},
+                axis line style={->},
+                xlabel=$x$,
+                ylabel=$y$,
+                xmin=0, xmax=\xmax,
+                ymin=0, ymax=400,
+                axis lines=center,
+                axis on top=true,
+                domain=0:\xmax,
+            ]
+            \addplot [draw=red,thick,name path=wool_constraint] {150-x/2}; \addlegendentry{Wool constraint: $3x + 6y \leq 900$}
+            \addplot [draw=blue,thick,name path=cotton_constraint] {300-5*x/4}; \addlegendentry{Cotton constraint: $5x + 4y \leq 1200$}
+            \addplot [draw=green, thick, name path=profit] {(4800-20*x)/16}; \addlegendentry{Profit: $20x + 16y = 4800$}
+            \path[name path=xaxis] (0,0) -- (\xmax,0);
+            \addplot[cyan!20] fill between[of=xaxis and wool_constraint,soft clip={domain=0:200}];
+            \addplot[cyan!20] fill between[of=xaxis and cotton_constraint,soft clip={domain=200:\xmax}];
+        \end{axis}
+    \end{tikzpicture}
     \caption{Graphical Solution for Question 1c}
 \end{figure}
 
@@ -116,32 +111,30 @@ In either case, the optimal solution is on the line $20x + 16y = 4800$.
 If 300 additional pounds of wool can be obtained, the wool constraint becomes $3x + 6y \leq 1200$. As can be seen in Figure 4, the optimal solution is on the point (133.33, 133.33).
 On this point, the profit is $12(133.33) + 16(133.33) = 3733.3$.
 
-\begin{figure}
-    \resizebox{\textwidth}{!}{
-        \begin{tikzpicture}
-            \pgfplotsset{
-                every axis legend/.append style={at={(1.2,0.5)}, anchor=north west,legend columns = 1}}
-            \begin{axis}[
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+                legend style={nodes={scale=0.8}},
                 grid,
-                    grid style={densely dashed},
-                    axis line style={->},
-                    xlabel=$x$,
-                    ylabel=$y$,
-                    xmin=0, xmax=\xmax,
-                    ymin=0, ymax=400,
-                    axis lines=center,
-                    axis on top=true,
-                    domain=0:\xmax,
-                    ]
-                    \addplot [draw=red,thick,name path=wool_constraint] {200-x/2}; \addlegendentry{Wool constraint: $3x + 6y \leq 1200$}
-                    \addplot [draw=blue,thick,name path=cotton_constraint] {300-5*x/4}; \addlegendentry{Cotton constraint: $5x + 4y \leq 1200$}
-                    \addplot [draw=green, thick, name path=profit] {(3733.3-12*x)/16}; \addlegendentry{Profit: $12x + 16y = 3733.3$}
-                    \path[name path=xaxis] (0,0) -- (\xmax,0);
-                    \addplot[cyan!20] fill between[of=xaxis and wool_constraint,soft clip={domain=0:133.33333333}];
-                    \addplot[cyan!20] fill between[of=xaxis and cotton_constraint,soft clip={domain=133.33333333:\xmax}];
-                \end{axis}
-            \end{tikzpicture}
-            }
+                grid style={densely dashed},
+                axis line style={->},
+                xlabel=$x$,
+                ylabel=$y$,
+                xmin=0, xmax=\xmax,
+                ymin=0, ymax=400,
+                axis lines=center,
+                axis on top=true,
+                domain=0:\xmax,
+            ]
+            \addplot [draw=red,thick,name path=wool_constraint] {200-x/2}; \addlegendentry{Wool constraint: $3x + 6y \leq 1200$}
+            \addplot [draw=blue,thick,name path=cotton_constraint] {300-5*x/4}; \addlegendentry{Cotton constraint: $5x + 4y \leq 1200$}
+            \addplot [draw=green, thick, name path=profit] {(3733.3-12*x)/16}; \addlegendentry{Profit: $12x + 16y = 3733.3$}
+            \path[name path=xaxis] (0,0) -- (\xmax,0);
+            \addplot[cyan!20] fill between[of=xaxis and wool_constraint,soft clip={domain=0:133.33333333}];
+            \addplot[cyan!20] fill between[of=xaxis and cotton_constraint,soft clip={domain=133.33333333:\xmax}];
+        \end{axis}
+    \end{tikzpicture}
     \caption{Graphical Solution for Question 1d}
 \end{figure}
 
