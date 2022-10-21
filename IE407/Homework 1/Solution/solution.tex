@@ -1,5 +1,6 @@
 \documentclass{article}
 \usepackage{graphicx}
+\usepackage{pgfplots}
 
 \author{Emre Geçit}
 
@@ -10,5 +11,25 @@
 
 \section*{Question 1}
 \subsection*{a)}
+\newcommand\xmax{300}
+\usepgfplotslibrary{fillbetween}
+\begin{tikzpicture}
+    \begin{axis}[
+            grid,
+            grid style={densely dashed},
+            axis line style={->},
+            xlabel=$x$,
+            ylabel=$y$,
+            xmin=0, xmax=\xmax,
+            ymin=0,
+            axis lines=center,
+            axis on top=true,
+            domain=0:\xmax,
+        ]
+        \addplot [draw=red,thick,name path=wool_constraint] {150-x/2}; \addlegendentry{Wool constraint, $3x + 6y \leq 900$}
+        \addplot [draw=blue,thick,name path=cotton_constraint] {300-5*x/4}; \addlegendentry{Cotton constraint, $5x + 4y \leq 1200$}
+        \addplot[olive!20] fill between[of=cotton_constraint and wool_constraint,soft clip={domain=0:0.51}];
+    \end{axis}
+\end{tikzpicture}
 
 \end{document}
