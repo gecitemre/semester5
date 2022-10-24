@@ -139,4 +139,55 @@ On this point, the profit is $12(133.33) + 16(133.33) = 3733.3$.
 \end{figure}
 
 \section*{Question 2}
+\paragraph*{a)}
+The products should be produced as follows in order to minimize the total cost:
+\begin{figure}[H]
+    \includegraphics{Picture1.png}
+\end{figure}
+The minimized total cost is 32000\$.
+
+\paragraph*{b)}
+While the cost of producing cheesecake in machine 2 is in the range\\$[0, 4]$, the current basis remains optimal.
+
+If the cost of producing cheesecake in machine 2 is increased by 1 unit, current solution does not change. Minimized cost becomes 35000\$.
+
+\paragraph*{c)}
+While the cost of producing cake in machine 2 is in the range $[4, \infty)$, the current basis remains optimal.
+
+If the cost of producing cake in machine 2 is increased by 1 unit, current basis still remains optimal. In this case, minimized total cost is 32000\$.
+
+If the cost of producing cake in machine 2 is decreased by two, current basis no longer remains optimal. In this case, we need to solve the problem again.
+While solved again, the products should be produced as follows in order to minimize the total cost:
+\begin{figure}[H]
+    \includegraphics{Picture6.png}
+\end{figure}
+The minimized total cost is 30500\$.
+
+\paragraph*{d)}
+While the production requirement for muffins is in the range $[0, 7500]$, the current basis remains optimal.
+
+The shadow price for this constrain is 3\$.
+If the production requirement for muffins is increased by 1 unit, total cost increases by 3\$.
+
+\paragraph*{e)}
+While the time availability for machine 3 is in the range $[1000, \infty)$, the current basis remains optimal.
+
+The shadow price for this constraing is 0\$.
+If the time availability for machine 3 is changed, total cost does not change.
+
+\paragraph*{f}
+If the model is forced to produce at least one handmade cheesecake, the problem should be solved again.
+While solved again, the products should be produced as follows in order to minimize the total cost:
+\begin{figure}[H]
+    \includegraphics{Picture7.png}
+\end{figure}
+However since this is a real life problem, counts must be integers. Therefore, if we round the non-integer values to the nearest integer, making sure that none of the constraints are violated, the products should be produced as follows in order to minimize the total cost:
+\begin{figure}[H]
+    \includegraphics{Picture9.png}
+\end{figure}
+In this case, the minimized total cost is 32002\$.
+
+While the cost of producting a handmade cheesecake is in the range $[3, \infty)$, the current basis remains optimal.
+
+For all values of the cost of producing a handmade cheesecake, handmade cheesecake takes a positive value because in this problem it is always greater than 1.
 \end{document}
