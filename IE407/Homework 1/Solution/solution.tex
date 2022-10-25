@@ -192,13 +192,15 @@ While the cost of producting a handmade cheesecake is in the range $[3, \infty)$
 For all values of the cost of producing a handmade cheesecake, handmade cheesecake takes a positive value because in this problem it is always greater than 1.
 
 A latex table example:
+\centering
 \begin{table}[H]
-    \begin{tabular}{l|l|l|l|l}
-               & Total cost &          &          &          \\ \hline
-               & Handmade   & Machine1 & Machine2 & Machine3 \\ \hline
-    Cheesecake & 5          & 0        & 8997     & 0        \\ \hline
-    Muffin     & 8994       & 0        & 0        & 6006     \\ \hline
-    Cake       & 0          & 0        & 0        & 8000    
+    \caption[
+    \begin{tabular}{lllll}
+    \hline
+    \multicolumn{1}{|l|}{}           & \multicolumn{1}{l|}{Handmade} & \multicolumn{1}{l|}{Machine1} & \multicolumn{1}{l|}{Machine2} & \multicolumn{1}{l|}{Machine3} \\ \hline
+    \multicolumn{1}{|l|}{Cheesecake} & \multicolumn{1}{l|}{5}        & \multicolumn{1}{l|}{0}        & \multicolumn{1}{l|}{8997}     & \multicolumn{1}{l|}{0}        \\ \hline
+    \multicolumn{1}{|l|}{Muffin}     & \multicolumn{1}{l|}{8994}     & \multicolumn{1}{l|}{0}        & \multicolumn{1}{l|}{0}        & \multicolumn{1}{l|}{6006}     \\ \hline
+    \multicolumn{1}{|l|}{Cake}       & \multicolumn{1}{l|}{0}        & \multicolumn{1}{l|}{0}        & \multicolumn{1}{l|}{0}        & \multicolumn{1}{l|}{8000}     \\ \hline
     \end{tabular}
-\end{table}
+    \end{table}
 \end{document}
