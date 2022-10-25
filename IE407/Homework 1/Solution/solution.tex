@@ -142,7 +142,7 @@ On this point, the profit is $12(133.33) + 16(133.33) = 3733.3$.
 \paragraph*{a)}
 The products should be produced as follows in order to minimize the total cost:
 \begin{figure}[H]
-    \includegraphics{Picture1.png}
+%    \includegraphics{Picture1.png}
 \end{figure}
 The minimized total cost is 32000\$.
 
@@ -159,7 +159,7 @@ If the cost of producing cake in machine 2 is increased by 1 unit, current basis
 If the cost of producing cake in machine 2 is decreased by two, current basis no longer remains optimal. In this case, we need to solve the problem again.
 While solved again, the products should be produced as follows in order to minimize the total cost:
 \begin{figure}[H]
-    \includegraphics{Picture6.png}
+%    \includegraphics{Picture6.png}
 \end{figure}
 The minimized total cost is 30500\$.
 
@@ -179,15 +179,26 @@ If the time availability for machine 3 is changed, total cost does not change.
 If the model is forced to produce at least one handmade cheesecake, the problem should be solved again.
 While solved again, the products should be produced as follows in order to minimize the total cost:
 \begin{figure}[H]
-    \includegraphics{Picture7.png}
+%    \includegraphics{Picture7.png}
 \end{figure}
 However since this is a real life problem, counts must be integers. Therefore, if we round the non-integer values to the nearest integer, making sure that none of the constraints are violated, the products should be produced as follows in order to minimize the total cost:
 \begin{figure}[H]
-    \includegraphics{Picture9.png}
+%    \includegraphics{Picture9.png}
 \end{figure}
 In this case, the minimized total cost is 32002\$.
 
 While the cost of producting a handmade cheesecake is in the range $[3, \infty)$, the current basis remains optimal.
 
 For all values of the cost of producing a handmade cheesecake, handmade cheesecake takes a positive value because in this problem it is always greater than 1.
+
+A latex table example:
+\begin{table}[H]
+    \begin{tabular}{l|l|l|l|l}
+               & Total cost &          &          &          \\ \hline
+               & Handmade   & Machine1 & Machine2 & Machine3 \\ \hline
+    Cheesecake & 5          & 0        & 8997     & 0        \\ \hline
+    Muffin     & 8994       & 0        & 0        & 6006     \\ \hline
+    Cake       & 0          & 0        & 0        & 8000    
+    \end{tabular}
+\end{table}
 \end{document}
