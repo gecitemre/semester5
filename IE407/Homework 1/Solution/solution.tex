@@ -18,8 +18,8 @@
 \newpage
 \section*{Question 1}
 \paragraph*{a)}
-As can be seen in Figure 1, optimal solution to this problem is on the point (200, 50), where the line for wood constraint and the cotton constraint intersect.
-At this point, profit is 3200\$.
+As can be seen in Figure 1, the optimal solution to this problem is on the point (200, 50), where the line for the wood constraint and the cotton constraint intersect.
+At this point, the profit is 3200\$.
 \newcommand\xmax{400}
 \begin{figure}[H]
     \centering
@@ -79,10 +79,10 @@ As can be seen in Figure 2, the optimal solution for this problem does not chang
 \end{figure}
 
 \paragraph*{c)}
-When the profit for a t-shirt is changed to 20\$, the profit function becomes $20x + 16y$. In this case, the profit line's slope is same with the cotton constraint line.
+When the profit for a t-shirt is changed to 20\$, the profit function becomes $20x + 16y$. In this case, the profit line's slope is the same as the cotton constraint line.
 The optimal solution is all the points on the cotton constraint line, which satisfy the wool constraint.
 
-If the profit is increased even more, the wool constraint stops being a binding constraint, and the optimal solution changes to (240, 0).
+If the profit is increased more, the wool constraint stops being a binding constraint, and the optimal solution changes to (240, 0).
 
 \begin{figure}[H]
     \centering
@@ -112,7 +112,7 @@ If the profit is increased even more, the wool constraint stops being a binding 
 \end{figure}
 
 \paragraph*{d)}
-If 300 additional pounds of wool can be obtained, the wool constraint becomes $3x + 6y \leq 1200$. As can be seen in Figure 4, the optimal solution is on the point (133.33, 133.33).
+If 300 additional pounds of wool can be obtained, the wool constraint becomes $3x + 6y \leq 1200$. As can be seen in Figure 4, the optimal solution is on point (133.33, 133.33).
 On this point, the profit is $12(133.33) + 16(133.33) = 3733.3$.
 
 \begin{figure}[H]
@@ -161,15 +161,15 @@ The minimized total cost is 32000\$.
 \paragraph*{b)}
 While the cost of producing cheesecake in machine 2 is in the range\\$[0, 4]$, the current basis remains optimal.
 
-If the cost of producing cheesecake in machine 2 is increased by 1 unit, current solution does not change. Minimized cost becomes 35000\$.
+If the cost of producing cheesecake in machine 2 is increased by 1 unit, the current solution does not change. Minimized cost becomes 35000\$.
 
 \paragraph*{c)}
 While the cost of producing cake in machine 2 is in the range $[4, \infty)$, the current basis remains optimal.
 
-If the cost of producing cake in machine 2 is increased by 1 unit, current basis still remains optimal. In this case, minimized total cost is 32000\$.
+If the cost of producing cake in machine 2 is increased by 1 unit, the current basis remains optimal. In this case, the minimized total cost is 32000\$.
 
-If the cost of producing cake in machine 2 is decreased by two, current basis no longer remains optimal. In this case, we need to solve the problem again.
-While solved again, the products should be produced as follows in order to minimize the total cost:
+If the cost of producing cake in machine 2 is decreased by two, the current basis no longer remains optimal. In this case, we need to solve the problem again.
+While solved again, the products should be produced as follows to minimize the total cost:
 \begin{table}[H]
     \centering
     \caption{Production amounts}
@@ -184,20 +184,20 @@ While solved again, the products should be produced as follows in order to minim
 The minimized total cost is 30500\$.
 
 \paragraph*{d)}
-While the production requirement for muffins is in the range $[0, 7500]$, the current basis remains optimal.
+While the production requirement for muffins is in the range of $[0, 7500]$, the current basis remains optimal.
 
-The shadow price for this constrain is 3\$.
-If the production requirement for muffins is increased by 1 unit, total cost increases by 3\$.
+The shadow price for this constraint is 3\$.
+If the production requirement for muffins is increased by 1 unit, the total cost increases by 3\$.
 
 \paragraph*{e)}
 While the time availability for machine 3 is in the range $[1000, \infty)$, the current basis remains optimal.
 
-The shadow price for this constraing is 0\$.
-If the time availability for machine 3 is changed, total cost does not change.
+The shadow price for this constraint is 0\$.
+If the time available for machine 3 is changed, the total cost does not change.
 
 \paragraph*{f)}
 If the model is forced to produce at least one handmade cheesecake, the problem should be solved again.
-While solved again, the products should be produced as follows in order to minimize the total cost:
+While solved again, the products should be produced as follows to minimize the total cost:
 \begin{table}[H]
     \centering
     \caption{Production amounts}
@@ -226,12 +226,12 @@ If we force the model to produce integer amounts of products, the solution becom
 \end{tabular}
 \end{table}
 
-In this case, minimized total cost is again 32002\$.
+In this case, the minimized total cost is again 32002\$.
 
-While the cost of producting a handmade cheesecake is in the range $[3, \infty)$, the current basis remains optimal.
+While the cost of producing a handmade cheesecake is in the range of $[3, \infty)$, the current basis remains optimal.
 
 If the cost of producing a handmade cheesecake becomes cheaper than the cost of producing a cheesecake in machine 2, producing handmade cheesecakes will be more beneficial.
-Thus, if the cost of handmade cheesecakes fall below 3\$ per unit, handmade cheesecakes will be produced instead of cheesecakes in machine 2 and handmade cheesecakes will take a positive value.
+Thus, if the cost of handmade cheesecakes falls below 3\$ per unit, handmade cheesecakes will be produced instead of cheesecakes in machine 2 and handmade cheesecakes will take a positive value.
 This hypothesis can be verified by solving the problem again.
 
 If we make the cost of producing a handmade cheesecake 2.99\$ per unit, the optimal solution becomes as follows:
@@ -261,8 +261,8 @@ If we check the Sensitivity Report, we can see that the produced solution is val
     \end{tabu}
     }
 \end{table}%
-When the cost of producing handmade cheesecakes fall below 2.1\$ per unit, the optimal solution changes.
-Whatever the optimal solution becomes, the amount of handmade cheesecakes definitely cannot be less than 1111.111, which is the amount of handmade cheesecakes in the current solution; lowering the cost cannot result in a less amount of products.
+When the cost of producing handmade cheesecakes falls below 2.1\$ per unit, the optimal solution changes.
+Whatever the optimal solution becomes, the number of handmade cheesecakes definitely cannot be less than 1111.111, which is the number of handmade cheesecakes in the current solution; lowering the cost cannot result in a less amount of products.
 
-It can be concluded that handmade cheesecakes is positive when the cost of producing a handmade cheesecake is less than 3\$ per unit.
+It can be concluded that handmade cheesecakes are positive when the cost of producing a handmade cheesecake is less than 3\$ per unit.
 \end{document}
