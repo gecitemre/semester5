@@ -141,9 +141,17 @@ On this point, the profit is $12(133.33) + 16(133.33) = 3733.3$.
 \section*{Question 2}
 \paragraph*{a)}
 The products should be produced as follows in order to minimize the total cost:
-\begin{figure}[H]
-%    \includegraphics{Picture1.png}
-\end{figure}
+\begin{table}[H]
+    \centering
+    \caption{Production amounts}
+    \begin{tabular}{|l|l|l|l|l|}
+    \hline
+               & Handmade & Machine1 & Machine2 & Machine3 \\ \hline
+    Cheesecake & 0        & 0        & 3000     & 0        \\ \hline
+    Muffin     & 3000     & 0        & 0        & 2000     \\ \hline
+    Cake       & 0        & 0        & 0        & 2000     \\ \hline
+    \end{tabular}
+    \end{table}
 The minimized total cost is 32000\$.
 
 \paragraph*{b)}
@@ -158,9 +166,17 @@ If the cost of producing cake in machine 2 is increased by 1 unit, current basis
 
 If the cost of producing cake in machine 2 is decreased by two, current basis no longer remains optimal. In this case, we need to solve the problem again.
 While solved again, the products should be produced as follows in order to minimize the total cost:
-\begin{figure}[H]
-%    \includegraphics{Picture6.png}
-\end{figure}
+\begin{table}[H]
+    \centering
+    \caption{Production amounts}
+    \begin{tabular}{|l|l|l|l|l|}
+    \hline
+               & Handmade & Machine1 & Machine2 & Machine3 \\ \hline
+    Cheesecake & 0        & 0        & 3000     & 0        \\ \hline
+    Muffin     & 3000     & 0        & 0        & 2000     \\ \hline
+    Cake       & 0        & 0        & 1500     & 500      \\ \hline
+    \end{tabular}
+    \end{table}
 The minimized total cost is 30500\$.
 
 \paragraph*{d)}
@@ -178,30 +194,22 @@ If the time availability for machine 3 is changed, total cost does not change.
 \paragraph*{f)}
 If the model is forced to produce at least one handmade cheesecake, the problem should be solved again.
 While solved again, the products should be produced as follows in order to minimize the total cost:
-\begin{figure}[H]
-%    \includegraphics{Picture7.png}
-\end{figure}
-However since this is a real life problem, counts must be integers. Therefore, if we round the non-integer values to the nearest integer, making sure that none of the constraints are violated, the products should be produced as follows in order to minimize the total cost:
-\begin{figure}[H]
-%    \includegraphics{Picture9.png}
-\end{figure}
+\begin{table}
+    \centering
+    \caption{Production amounts}
+    \begin{tabular}{|l|l|l|l|l|}
+    \hline
+               & Handmade & Machine1 & Machine2 & Machine3 \\ \hline
+    Cheesecake & 1     & 0        & 2999     & 0        \\ \hline
+    Muffin     & 2998.2     & 0        & 0        & 2001.8     \\ \hline
+    Cake       & 0        & 0        & 2000        & 2000     \\ \hline
+    \end{tabular}
+\end{table}
+
 In this case, the minimized total cost is 32002\$.
 
 While the cost of producting a handmade cheesecake is in the range $[3, \infty)$, the current basis remains optimal.
 
 For all values of the cost of producing a handmade cheesecake, handmade cheesecake takes a positive value because in this problem it is always greater than 1.
 
-A latex table example:
-
-\begin{table}[H]
-    \centering
-    \caption{Total Cost (\$)}
-    \begin{tabular}{lllll}
-        \hline
-        \multicolumn{1}{|l|}{}           & \multicolumn{1}{l|}{Handmade} & \multicolumn{1}{l|}{Machine1} & \multicolumn{1}{l|}{Machine2} & \multicolumn{1}{l|}{Machine3} \\ \hline
-        \multicolumn{1}{|l|}{Cheesecake} & \multicolumn{1}{l|}{5}        & \multicolumn{1}{l|}{0}        & \multicolumn{1}{l|}{8997}     & \multicolumn{1}{l|}{0}        \\ \hline
-        \multicolumn{1}{|l|}{Muffin}     & \multicolumn{1}{l|}{8994}     & \multicolumn{1}{l|}{0}        & \multicolumn{1}{l|}{0}        & \multicolumn{1}{l|}{6006}     \\ \hline
-        \multicolumn{1}{|l|}{Cake}       & \multicolumn{1}{l|}{0}        & \multicolumn{1}{l|}{0}        & \multicolumn{1}{l|}{0}        & \multicolumn{1}{l|}{8000}     \\ \hline
-    \end{tabular}
-\end{table}
 \end{document}
