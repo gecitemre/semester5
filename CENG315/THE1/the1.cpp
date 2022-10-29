@@ -1,4 +1,4 @@
-#include <iostream>
+#include "the1.h"
 #include <climits>
 using namespace std;
 /*If the size of the array is less than K, then sort the array by using insertion sort.(You can use the insertion sort algorithm given to you in THE0.)
@@ -37,18 +37,17 @@ void heapify(int* arr, int size, int i, long &comparison, long &swap)
     int smallest = i;
     int left = 2*i + 1;
     int right = 2*i + 2;
-    if (left < size && arr[left] < arr[smallest])
+    if (arr[left] != INT_MAX && left < size && (comparison++, arr[left] < arr[smallest]))
     {
         smallest = left;
     }
-    if (right < size && arr[right] < arr[smallest])
+    if (arr[right] != INT_MAX && right < size && (comparison++, arr[right] < arr[smallest]))
     {
         smallest = right;
     }
-    comparison+=2;
     if (smallest != i)
     {
-        swap++;
+        swap += 1;
         int temp = arr[i];
         arr[i] = arr[smallest];
         arr[smallest] = temp;
@@ -111,21 +110,4 @@ int kWayMergeSortWithHeap(int* arr, int K, int size, long& comparison, long& swa
     delete[] heap;
     delete[] indices;
     return number_of_calls;
-}
-
-
-
-int main()
-{
-    int size, K;
-    size = 12;
-    K = 3;
-    int arr[size] = { 15, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 };
-    long comparison = 0, swap = 0;
-    kWayMergeSortWithHeap(arr, K, size, comparison, swap);
-    for (int i = 0; i < size; i++)
-    {
-        cout << arr[i] << " ";
-    }
-    cout << endl;
 }
