@@ -8,7 +8,7 @@ long multiDigitRadixSort(int *arr, bool ascending, int arraySize, int groupSize,
     int count[base];
     int temp[arraySize];
 
-    for (int h = 0; h < maxDigitLength; h+=groupSize)
+    for (int h = 0; h < maxDigitLength; h += groupSize)
     {
         if (h + groupSize > maxDigitLength)
         {
@@ -46,6 +46,6 @@ long multiDigitRadixSort(int *arr, bool ascending, int arraySize, int groupSize,
             arr[i] = temp[i];
             numberOfIterations++;
         }
-   }
+    }
     return numberOfIterations;
 }
