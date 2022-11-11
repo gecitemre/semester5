@@ -88,7 +88,7 @@ void test(){
     int* len;
     randomArray(arr, len, size);
     std::cout << "Array:" << std::endl;
-    printArrayInLine(arr, size);
+    printArrayInLine(arr, len, size);
 
 
 
