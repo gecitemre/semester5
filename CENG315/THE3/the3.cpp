@@ -10,7 +10,6 @@ using namespace std;
                                               : 2)
 #define inverse_value(x) ((x) == 2 ? 2 : 1 - (x))
 
-
 int recursive_sln(int N, char **&arr, int *&len, int &number_of_calls)
 { // direct recursive
 
@@ -32,7 +31,7 @@ int recursive_sln(int N, char **&arr, int *&len, int &number_of_calls)
     if (number_of_calls == 1)
     {
         maximum = recursive_sln(N - 1, arr, len, number_of_calls);
-        for (int i = N-1; i >= 0; i--)
+        for (int i = N - 1; i >= 0; i--)
         {
             if (MATCHES(start(N), end(i)))
             {
@@ -44,7 +43,7 @@ int recursive_sln(int N, char **&arr, int *&len, int &number_of_calls)
     else
     {
         maximum = len[N];
-        for (int i = N-1; i >= 0; i--)
+        for (int i = N - 1; i >= 0; i--)
         {
             if (MATCHES(start(N), end(i)))
             {
@@ -52,9 +51,10 @@ int recursive_sln(int N, char **&arr, int *&len, int &number_of_calls)
                 break;
             }
         }
-        for (int i = N-1; i >= 0; i--)
+        for (int i = N - 1; i >= 0; i--)
         {
-            if (end(i) == end(N)) {
+            if (end(i) == end(N))
+            {
                 maximum = max(maximum, recursive_sln(i, arr, len, number_of_calls));
                 break;
             }
