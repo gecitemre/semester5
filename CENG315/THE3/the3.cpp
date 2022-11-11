@@ -10,28 +10,33 @@ using namespace std;
                                               : 2)
 #define inverse_value(x) ((x) == 2 ? 2 : 1 - (x))
 
+
 int recursive_sln(int N, char **&arr, int *&len, int &number_of_calls)
 { // direct recursive
 
     /*
     IF  N == size-1
-        M(N) = max{ M(N-1), M(i)+len(N) IF start(N) MATCHES end(i) }
+        M(N) = max{ M( n ) where n < N, M(i)+len(N) IF start(N) MATCHES end(i) where i < N}
     ELSE
         M(N) = max{ M(j) IF end(N) equals to end(j), M(i)+len(N) IF start(N) MATCHES end(i) }
     where
         i <= N-1  &&  i > t FOR ALL t start(N) matches end(t)
-        j <= N-1  &&  j > t FOR ALL end(N) matches end(t)
+        j <= N-1  &&  j > t FOR ALL t end(N) equals to end(t)
     start( x ) MATCHES end( y ) IFF {{start( x ) =='I' && end( y ) =='O} OR {start( x )=='O' && end( y )=='I'} OR {start( x )=='S' && end( y ) =='S'}}
    */
     number_of_calls += 1;
     if (N == 0)
         return len[0];
     int maximum;
+    maximum = len[N];
 
     if (number_of_calls == 1)
     {
-        maximum = recursive_sln(N - 1, arr, len, number_of_calls);
-        for (int i = N - 1; i >= 0; i--)
+        for (int i = N-1; i >= 0; i--)
+        {
+            maximum = max(maximum, recursive_sln(i, arr, len, number_of_calls));
+        }
+        for (int i = N-1; i >= 0; i--)
         {
             if (MATCHES(start(N), end(i)))
             {
@@ -42,8 +47,7 @@ int recursive_sln(int N, char **&arr, int *&len, int &number_of_calls)
     }
     else
     {
-        maximum = len[N];
-        for (int i = N - 1; i >= 0; i--)
+        for (int i = N-1; i >= 0; i--)
         {
             if (MATCHES(start(N), end(i)))
             {
@@ -51,10 +55,9 @@ int recursive_sln(int N, char **&arr, int *&len, int &number_of_calls)
                 break;
             }
         }
-        for (int i = N - 1; i >= 0; i--)
+        for (int i = N-1; i >= 0; i--)
         {
-            if (end(i) == end(N))
-            {
+            if (end(i) == end(N)) {
                 maximum = max(maximum, recursive_sln(i, arr, len, number_of_calls));
                 break;
             }
