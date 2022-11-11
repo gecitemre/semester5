@@ -24,13 +24,12 @@ int recursive_sln(int N, char **&arr, int *&len, int &number_of_calls)
         j <= N-1  &&  j > t FOR ALL end(N) matches end(t)
     start( x ) MATCHES end( y ) IFF {{start( x ) =='I' && end( y ) =='O} OR {start( x )=='O' && end( y )=='I'} OR {start( x )=='S' && end( y ) =='S'}}
    */
+    number_of_calls += 1;
     if (N == 0)
         return len[0];
-    bool firstCall = number_of_calls == 0;
-    number_of_calls += 1;
     int maximum;
 
-    if (firstCall)
+    if (number_of_calls == 1)
     {
         maximum = recursive_sln(N - 1, arr, len, number_of_calls);
         for (int i = N-1; i >= 0; i--)
