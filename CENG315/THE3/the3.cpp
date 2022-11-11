@@ -23,14 +23,16 @@ int recursive_sln(int N, char **&arr, int *&len, int &number_of_calls)
         return len[0];
     bool firstCall = number_of_calls == 0;
     number_of_calls += 1;
-    int maximum = 0;
+    int maximum = len[N];
 
     if (firstCall)
     {
-        maximum = recursive_sln(N - 1, arr, len, number_of_calls);
         for (int i = 0; i < N; i++) {
             if (MATCHES(start(N), end(i))) {
                 maximum = max(maximum, recursive_sln(i, arr, len, number_of_calls) + len[N]);
+            }
+            else {
+                maximum = max(maximum, recursive_sln(i, arr, len, number_of_calls));
             }
         }
     }
@@ -45,12 +47,33 @@ int recursive_sln(int N, char **&arr, int *&len, int &number_of_calls)
     return maximum;
 }
 
-int memoization_sln(int i, char **&arr, int *&len, int **&mem)
+int memoization_sln(int N, char **&arr, int *&len, int **&mem)
 { // memoization
-
-    // your code here
-
-    return 0; // this is a dummy return value. YOU SHOULD CHANGE THIS!
+    if (N == 0) return len[N];
+    int index;
+    switch (start(N))
+    {
+    case 'I':
+        index = 0;
+        break;
+    case 'O':
+        index = 1;
+        break;
+    case 'S':
+        index = 2;
+        break;
+    }
+    int maximum = len[N];
+    for (int i = 0; i < N; i++) {
+        for (int j = 0; j < 3; j++) {
+            if (mem[i][j] == -1) mem[i][j] = memoization_sln(i, arr, len, mem);
+            if (index == j)
+                maximum = max(maximum, mem[i][j] + len[N]);
+            else
+                maximum = max(maximum, mem[i][j]);
+        }
+    }
+    return maximum;
 }
 
 int dp_sln(int size, char **&arr, int *&len, int **&mem)
