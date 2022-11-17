@@ -1,0 +1,2 @@
+SELECT DISTINCT Name FROM Course, Teaching, Professor WHERE
+Course.DeptID = 'CENG' AND Teaching.CourseId = Course.CourseId AND Professor.ProfessorId = Teaching.ProfessorId AND Professor.DeptID <> 'CENG' ORDER BY Name ASC;

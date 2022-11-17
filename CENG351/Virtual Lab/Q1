@@ -1,0 +1,3 @@
+SELECT DISTINCT sid
+FROM Reserves
+ORDER BY sid;

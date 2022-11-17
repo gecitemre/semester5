@@ -1,0 +1,14 @@
+SELECT DISTINCT S.Name
+FROM (SELECT T.StudentId
+FROM Transcript T
+WHERE NOT EXISTS(
+SELECT CourseId
+FROM Course
+WHERE CourseId LIKE "EE%"
+EXCEPT
+SELECT CourseId
+FROM Transcript
+WHERE CourseId LIKE "EE%" AND StudentId=T.StudentId
+)) T, Student S
+WHERE S.StudentId=T.StudentId
+ORDER BY S.Name;

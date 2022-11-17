@@ -1,0 +1,6 @@
+SELECT rating, MIN(age)
+FROM Sailors
+WHERE Sailors.age >= 18
+GROUP BY rating
+HAVING (SELECT COUNT(*) FROM Sailors S WHERE Sailors.rating=s.rating) >= 2
+ORDER BY rating, age;

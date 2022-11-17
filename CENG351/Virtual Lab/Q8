@@ -1,0 +1,4 @@
+SELECT *
+FROM Sailors
+WHERE Sailors.Rating = (SELECT MAX(Rating) FROM Sailors)
+ORDER BY sid, sname, rating, age;

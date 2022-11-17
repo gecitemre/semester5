@@ -1,0 +1,6 @@
+SELECT StudentId, AVG(Score)
+FROM Transcript
+WHERE Semester in ('F2013', 'S2014')
+GROUP BY StudentId
+HAVING AVG(Score) > 50
+ORDER BY StudentId ASC;

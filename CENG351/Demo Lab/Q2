@@ -1,0 +1,7 @@
+SELECT Name FROM 
+(SELECT StudentId FROM Transcript, Course WHERE Transcript.CourseId=Course.CourseId AND Course.CourseName='Introduction to C Programming'
+INTERSECT
+SELECT StudentId FROM Transcript, Course WHERE Transcript.CourseId=Course.CourseId AND Course.CourseName='Electrical Circuits Laboratory') T,
+Student S
+WHERE S.StudentId = T.StudentId
+ORDER BY Name ASC;

@@ -1,0 +1,9 @@
+SELECT King.kingName, COUNT(*), AVG(Heir.diedAt-Heir.birthDate)
+FROM Heir, King
+WHERE Heir.ruled AND Heir.kingID=King.kingID
+GROUP BY King.kingID
+HAVING COUNT(*) = (SELECT MAX(T.C)
+FROM (SELECT COUNT(*) AS C
+FROM Heir, King
+WHERE ruled AND King.kingID=Heir.kingID GROUP BY King.kingID) T)
+ORDER BY King.kingName;

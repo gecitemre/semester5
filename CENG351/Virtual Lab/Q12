@@ -1,0 +1,5 @@
+SELECT Reserves.bid, COUNT(*) as c
+FROM Reserves, Boats
+WHERE Reserves.bid=Boats.bid AND Boats.color='red'
+GROUP BY Boats.bid
+ORDER BY Reserves.bid, C;

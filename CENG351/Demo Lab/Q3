@@ -1,0 +1,4 @@
+SELECT Name, Age FROM (SELECT ProfessorId FROM Teaching WHERE CourseId LIKE "CENG%"
+UNION
+SELECT ProfessorId FROM Professor WHERE DeptID='CENG') T, Professor P
+WHERE T.ProfessorId=P.ProfessorId ORDER BY Name ASC;

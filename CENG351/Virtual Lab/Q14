@@ -1,0 +1,6 @@
+SELECT rating, MIN(A)
+FROM
+(SELECT AVG(age) as A, rating
+FROM Sailors
+GROUP BY rating)
+ORDER BY rating, A;

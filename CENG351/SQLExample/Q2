@@ -1,0 +1,17 @@
+SELECT DISTINCT kingName, dateDied - dateCrowned
+FROM King, Kingdom, Alliance, Heir
+WHERE
+King.kingdomID=Kingdom.kingdomID
+AND
+Kingdom.kingdomName='Kingdom of the North'
+AND EXISTS(
+SELECT *
+FROM Alliance
+WHERE Alliance.kingID1=King.kingID OR Alliance.kingID2=King.kingID
+)
+AND NOT EXISTS(
+SELECT *
+FROM Heir
+WHERE Heir.kingID=King.kingID
+)
+ORDER BY kingName DESC;

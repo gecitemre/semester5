@@ -1,0 +1,4 @@
+SELECT DISTINCT sid
+FROM Reserves, Boats
+WHERE Reserves.bid=Boats.bid AND (Boats.color='red' OR Boats.color='green')
+ORDER BY sid;

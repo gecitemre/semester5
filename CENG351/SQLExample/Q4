@@ -1,0 +1,8 @@
+SELECT DISTINCT kingName
+FROM King King1
+WHERE NOT EXISTS(
+SELECT kingID FROM Kingdom, King WHERE kingdomName='Principality of Dorne' AND King.kingdomID=Kingdom.kingdomID
+EXCEPT
+SELECT King2.kingID FROM King King2, Alliance, Kingdom WHERE Kingdom.kingdomName='Principality of Dorne' AND Kingdom.kingdomID=King2.kingdomID AND ((Alliance.kingID1=King1.kingID AND Alliance.kingID2=King2.kingID) OR (Alliance.kingID2=King1.kingID AND Alliance.kingID1=King2.kingID))
+)
+ORDER BY kingName ASC;

@@ -1,0 +1,10 @@
+SELECT sname
+FROM (SELECT sid
+FROM Reserves, Boats
+WHERE Reserves.bid=Boats.bid AND Boats.color='red'
+INTERSECT
+SELECT sid
+FROM Reserves, Boats
+WHERE Reserves.bid=Boats.bid AND Boats.color='green') temp, Sailors
+WHERE temp.sid=Sailors.sid
+ORDER BY sname;

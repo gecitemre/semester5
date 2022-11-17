@@ -1,0 +1,8 @@
+SELECT sid, sname, rating, age
+FROM Sailors s1
+WHERE NOT EXISTS(
+SELECT *
+FROM Sailors s2
+WHERE s2.sname='Horatio' AND s2.rating >= s1.rating
+)
+ORDER BY sid, sname, rating, age;

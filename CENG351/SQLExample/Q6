@@ -1,0 +1,10 @@
+SELECT kingName, dateCrowned, Kingdom.kingdomID
+FROM King, Kingdom, War
+WHERE NOT EXISTS(SELECT * FROM War WHERE (War.kingdomID1=King.kingdomID OR War.kingdomID2=King.kingdomID) AND War.winnerID!=King.kingdomID AND War.dateOfWar BETWEEN King.dateCrowned AND King.dateDied)
+AND King.kingdomID=Kingdom.kingdomID
+EXCEPT
+SELECT kingName, dateCrowned, Kingdom.kingdomID
+FROM King, Kingdom
+WHERE NOT EXISTS(SELECT * FROM War WHERE War.kingdomID1=Kingdom.kingdomID OR War.kingdomID2=Kingdom.kingdomID AND War.dateOfWar BETWEEN King.dateCrowned AND King.dateDied)
+AND King.kingdomID=Kingdom.kingdomID
+ORDER BY kingName;

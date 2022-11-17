@@ -1,0 +1,6 @@
+SELECT rating, MIN(age)
+FROM Sailors
+WHERE Sailors.age >= 18
+GROUP BY rating
+HAVING Count(*) >= 2
+ORDER BY rating, age;

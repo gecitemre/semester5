@@ -1,0 +1,8 @@
+SELECT DISTINCT sname
+FROM (
+SELECT sid
+FROM Reserves
+WHERE bid=103
+) T, Sailors
+WHERE T.sid=Sailors.sid
+ORDER BY sname;

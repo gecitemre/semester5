@@ -1,0 +1,10 @@
+SELECT King.kingName, King.dateCrowned, COUNT(*)
+FROM Heir, King
+WHERE King.kingID=Heir.kingID
+GROUP BY King.kingID
+HAVING EXISTS(
+SELECT *
+FROM Kingdom, King King2
+WHERE kingdomName='Kingdom of the Mountain and the Vale' AND King2.kingID=King.KingID AND dateDied-dateCrowned>20 AND Kingdom.kingdomID=King.kingdomID
+)
+ORDER BY King.kingName;

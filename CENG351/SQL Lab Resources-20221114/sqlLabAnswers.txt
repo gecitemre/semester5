@@ -1,0 +1,71 @@
+---Q1 Answer
+Select K.kingName, K.dateCrowned, count(*)
+From King K, Kingdom C, Heir H 
+Where K.kingID = H.kingID and K.kingdomID = C.kingdomID and C.kingdomName = 'Kingdom of the Mountain and the Vale' and (K.dateDied - K.dateCrowned) > 20
+Group By K.kingID, K.kingName
+Order By K.kingName ASC;
+
+
+
+---Q2 Answer
+Select DISTINCT K.kingName, K.dateDied - K.dateCrowned
+From King K, Alliance A, Kingdom C
+Where (K.kingID = A.kingID1 or K.kingID = A.kingID2) and C.kingdomID = K.kingdomID and C.kingdomName = "Kingdom of the North" 
+and K.kingID NOT IN (Select K1.kingID 
+					From King K1, Heir H 
+					Where K1.kingID = H.kingID)
+Order by K.kingName DESC;
+
+
+---Q3 Answer
+Select K.kingName, KingsOfDorne.kingName, A.duration
+From King K, Alliance A, (Select K2.kingID,K2.kingName 
+						From King K2, Kingdom C 
+						Where K2.kingdomID = C.kingdomID And C.kingdomName = "Principality of Dorne") as KingsOfDorne
+Where ((K.kingID = A.kingID1 and A.kingID2 = KingsOfDorne.kingID) or (K.kingID = A.kingID2 and A.kingID1 = KingsOfDorne.kingID)) and A.duration > 5 
+Order by A.duration ASC;
+
+
+---Q4 Answer
+Select K.kingName
+From King K
+Where K.kingID IN (
+				Select K.kingID
+				From King K, Alliance A, 
+						(Select K2.kingID,K2.kingName 
+						From King K2, Kingdom C 
+						Where K2.kingdomID = C.kingdomID And C.kingdomName = "Principality of Dorne") as KingsOfDorne
+Where (K.kingID = A.kingID1 and A.kingID2 = KingsOfDorne.kingID) or (K.kingID = A.kingID2 and A.kingID1 = KingsOfDorne.kingID)
+GROUP BY K.kingID
+HAVING COUNT(*) = (Select Count(*) 
+					From King K, Kingdom C 
+					WHERE K.kingdomID = C.kingdomID and C.kingdomName = "Principality of Dorne")) 
+Order by K.kingName;
+
+
+---Q5 Answer
+Select K.kingName, Count(*) , AVG(H.diedAt - H.birthDate) 
+From Heir H, King K
+Where H.ruled = 1 and K.kingID = H.kingID 
+Group By K.kingID, K.kingName
+HAVING Count(*) = (
+				Select MAX(HeirCounts.counts)
+				FROM (Select Count(*) as counts
+					From Heir H, King K
+					Where H.ruled = 1 and K.kingID = H.kingID 
+					Group By K.kingID) as HeirCounts)
+Order by K.kingName ASC;
+
+---Q6 Answer
+Select DISTINCT K.kingName, K.dateCrowned, C.kingdomName
+From King K, Kingdom C, War W1
+Where W1.winnerID = C.kingdomID and K.kingdomID = C.kingdomID and W1.dateOfWar BETWEEN K.dateCrowned and K.dateDied 
+and NOT EXISTS (Select warID
+				From  War W 
+				where (C.kingdomID = W.kingdomID1 or C.kingdomID = W.kingdomID2) and W.dateOfWar BETWEEN K.dateCrowned and K.dateDied
+				EXCEPT
+
+				Select warID
+				From  War W 
+				where C.kingdomID = W.winnerID  and W.dateOfWar BETWEEN K.dateCrowned and K.dateDied) 
+Order By K.kingName ASC;

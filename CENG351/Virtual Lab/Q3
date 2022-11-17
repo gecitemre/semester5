@@ -1,0 +1,8 @@
+SELECT sid
+FROM Reserves, Boats
+WHERE Reserves.bid=Boats.bid AND Boats.color='red'
+INTERSECT
+SELECT sid
+FROM Reserves, Boats
+WHERE Reserves.bid=Boats.bid AND Boats.color='green'
+ORDER BY sid;

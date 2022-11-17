@@ -1,0 +1,7 @@
+SELECT King.kingName, King2.kingName, duration
+FROM Kingdom, King, Alliance, King King2
+WHERE
+(Alliance.kingID1=King.kingID AND Alliance.kingID2=King2.kingID AND Kingdom.kingdomName='Principality of Dorne' AND Kingdom.kingdomID=King2.kingdomID AND Alliance.duration>5)
+OR
+(Alliance.kingID2=King.kingID AND Alliance.kingID1=King2.kingID AND Kingdom.kingdomName='Principality of Dorne' AND Kingdom.kingdomID=King2.kingdomID AND Alliance.duration>5)
+ORDER BY duration;

@@ -1,0 +1,61 @@
+1.
+SELECT DISTINCT P.Name
+FROM Professor P, Teaching T
+WHERE P.ProfessorId=T.ProfessorId AND T.CourseId LIKE 'CENG%' AND P.DeptID<>'CENG'
+order by P.Name;
+
+2.
+SELECT S.Name
+FROM Student S, Transcript T, Course C
+WHERE C.CourseName = 'Introduction to C Programming' 
+	AND C.CourseId=T.CourseId 
+	AND S.StudentId = T.StudentId 
+INTERSECT
+SELECT S.Name
+FROM Student S, Transcript T, Course C
+WHERE C.CourseName = 'Electrical Circuits Laboratory' 
+	AND C.CourseId=T.CourseId 
+	AND S.StudentId = T.StudentId
+ORDER BY S.Name;
+
+3.
+SELECT  P.Name, P.Age  
+FROM Professor P, Teaching T
+WHERE P.ProfessorId=T.ProfessorId AND T.CourseId LIKE 'CENG%'
+UNION
+SELECT P.Name,P.Age
+FROM Professor P
+WHERE P.DeptID='CENG'
+order by P.Name;
+
+4.
+SELECT S.Name, S.Gpa
+FROM Student S
+WHERE S.GPA > (SELECT MAX(S1.GPA)
+				FROM Student S1
+				WHERE S1.Status='Senior')
+ORDER BY S.Name;		
+
+
+
+
+5.
+SELECT T.StudentId, AVG(T.Score) 
+FROM Transcript T
+WHERE T.Semester IN ('F2013','S2014')
+GROUP BY T.StudentId
+HAVING AVG(T.Score)>50
+ORDER BY T.StudentId;
+
+6.
+SELECT S.Name
+FROM Student S
+WHERE NOT EXISTS(
+	SELECT C.CourseId 
+	FROM Course C
+	WHERE C.CourseId LIKE 'EE%'
+	EXCEPT
+	SELECT R.CourseId
+	FROM Transcript R
+	WHERE R.StudentId = S.StudentId)
+ORDER BY S.Name;
