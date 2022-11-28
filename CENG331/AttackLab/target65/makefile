@@ -1,4 +1,4 @@
-all: p1 p2 p3
+all: p1 p2 p3 p4
 
 p1: phase1/phase1.raw
 
@@ -20,3 +20,8 @@ phase3/phase3.dump: phase3/phase3.o
 
 phase3/phase3.raw: phase3/phase3.hex
 	./hex2raw -i phase3/phase3.hex > phase3/phase3.raw
+
+p4: phase4/phase4.raw
+
+phase4/phase4.raw: phase4/phase4.hex
+	./hex2raw -i phase4/phase4.hex > phase4/phase4.raw
