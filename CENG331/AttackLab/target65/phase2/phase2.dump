@@ -1,5 +1,5 @@
 
-phase2.o:     file format elf64-x86-64
+phase2/phase2.o:     file format elf64-x86-64
 
 
 Disassembly of section .text:
@@ -8,5 +8,4 @@ Disassembly of section .text:
    0:	48 c7 c7 17 fc 0d 11 	mov    $0x110dfc17,%rdi
    7:	48 c7 c6 c4 da 0e 11 	mov    $0x110edac4,%rsi
    e:	48 c7 c2 b3 99 0f 11 	mov    $0x110f99b3,%rdx
-  15:	48 c7 c4 73 15 40 00 	mov    $0x401573,%rsp
-  1c:	c3                   	ret    
+  15:	c3                   	ret    
