@@ -1,7 +1,4 @@
-// define the5.h
-
 #include <vector>
-#include <iostream>
 using namespace std;
 
 struct Room {
