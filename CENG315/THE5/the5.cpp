@@ -25,7 +25,6 @@ vector<int> maze_trace(vector<Room*> maze) {
     vector<int> path;
     vector<bool> visited(maze.size(), false);
     maze_trace_helper(maze[0], path, visited);
-    cout << "test";
 
     return path;
 }
