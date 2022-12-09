@@ -1,15 +1,5 @@
 #include "the5.h"
 
-/* 
-    in the5.h "struct Room" is defined as below:
-    
-    struct Room {
-        int id;
-        char content;
-        vector<Room*> neighbors;
-    };
-
-*/
 bool maze_trace_helper(Room* room, vector<int> &path, vector<bool> &visited) { 
     visited[room->id] = true;
     path.push_back(room->id);
