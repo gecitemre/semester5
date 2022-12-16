@@ -1,0 +1,2703 @@
+----- CASE 6 -----
+
+CASE 6
+-------------------------------------------------
+
+Given Pipelines: 
+{
+ PIPELINE 0,
+     between: 0 and 0,
+     cost of consumption: 689
+ PIPELINE 1,
+     between: 1 and 1,
+     cost of consumption: 698
+ PIPELINE 2,
+     between: 2 and 2,
+     cost of consumption: 463
+ PIPELINE 3,
+     between: 3 and 3,
+     cost of consumption: 823
+ PIPELINE 4,
+     between: 4 and 4,
+     cost of consumption: 730
+ PIPELINE 5,
+     between: 5 and 5,
+     cost of consumption: 511
+ PIPELINE 6,
+     between: 6 and 6,
+     cost of consumption: 751
+ PIPELINE 7,
+     between: 7 and 7,
+     cost of consumption: 429
+ PIPELINE 8,
+     between: 8 and 8,
+     cost of consumption: 744
+ PIPELINE 9,
+     between: 9 and 9,
+     cost of consumption: 900
+ PIPELINE 10,
+     between: 10 and 10,
+     cost of consumption: 838
+ PIPELINE 11,
+     between: 11 and 11,
+     cost of consumption: 177
+ PIPELINE 12,
+     between: 12 and 12,
+     cost of consumption: 579
+ PIPELINE 13,
+     between: 13 and 13,
+     cost of consumption: 380
+ PIPELINE 14,
+     between: 14 and 14,
+     cost of consumption: 712
+ PIPELINE 15,
+     between: 15 and 15,
+     cost of consumption: 922
+ PIPELINE 16,
+     between: 16 and 16,
+     cost of consumption: 120
+ PIPELINE 17,
+     between: 17 and 17,
+     cost of consumption: 846
+ PIPELINE 18,
+     between: 18 and 18,
+     cost of consumption: 446
+ PIPELINE 19,
+     between: 19 and 19,
+     cost of consumption: 620
+ PIPELINE 20,
+     between: 20 and 20,
+     cost of consumption: 631
+ PIPELINE 21,
+     between: 21 and 21,
+     cost of consumption: 286
+ PIPELINE 22,
+     between: 22 and 22,
+     cost of consumption: 478
+ PIPELINE 23,
+     between: 23 and 23,
+     cost of consumption: 950
+ PIPELINE 24,
+     between: 24 and 24,
+     cost of consumption: 531
+ PIPELINE 25,
+     between: 25 and 25,
+     cost of consumption: 157
+ PIPELINE 26,
+     between: 26 and 26,
+     cost of consumption: 102
+ PIPELINE 27,
+     between: 27 and 27,
+     cost of consumption: 951
+ PIPELINE 28,
+     between: 28 and 28,
+     cost of consumption: 216
+ PIPELINE 29,
+     between: 29 and 29,
+     cost of consumption: 782
+ PIPELINE 30,
+     between: 30 and 30,
+     cost of consumption: 996
+ PIPELINE 31,
+     between: 31 and 31,
+     cost of consumption: 252
+ PIPELINE 32,
+     between: 32 and 32,
+     cost of consumption: 475
+ PIPELINE 33,
+     between: 33 and 33,
+     cost of consumption: 454
+ PIPELINE 34,
+     between: 34 and 34,
+     cost of consumption: 422
+ PIPELINE 35,
+     between: 35 and 35,
+     cost of consumption: 553
+ PIPELINE 36,
+     between: 36 and 36,
+     cost of consumption: 312
+ PIPELINE 37,
+     between: 37 and 37,
+     cost of consumption: 168
+ PIPELINE 38,
+     between: 38 and 38,
+     cost of consumption: 329
+ PIPELINE 39,
+     between: 39 and 39,
+     cost of consumption: 51
+ PIPELINE 40,
+     between: 40 and 40,
+     cost of consumption: 415
+ PIPELINE 41,
+     between: 41 and 41,
+     cost of consumption: 162
+ PIPELINE 42,
+     between: 42 and 42,
+     cost of consumption: 576
+ PIPELINE 43,
+     between: 43 and 43,
+     cost of consumption: 989
+ PIPELINE 44,
+     between: 44 and 44,
+     cost of consumption: 537
+ PIPELINE 45,
+     between: 45 and 45,
+     cost of consumption: 283
+ PIPELINE 46,
+     between: 46 and 46,
+     cost of consumption: 258
+ PIPELINE 47,
+     between: 47 and 47,
+     cost of consumption: 652
+ PIPELINE 48,
+     between: 48 and 48,
+     cost of consumption: 476
+ PIPELINE 49,
+     between: 49 and 49,
+     cost of consumption: 700
+ PIPELINE 50,
+     between: 50 and 50,
+     cost of consumption: 619
+ PIPELINE 51,
+     between: 51 and 51,
+     cost of consumption: 102
+ PIPELINE 52,
+     between: 52 and 52,
+     cost of consumption: 333
+ PIPELINE 53,
+     between: 53 and 53,
+     cost of consumption: 444
+ PIPELINE 54,
+     between: 54 and 54,
+     cost of consumption: 48
+ PIPELINE 55,
+     between: 55 and 55,
+     cost of consumption: 859
+ PIPELINE 56,
+     between: 56 and 56,
+     cost of consumption: 948
+ PIPELINE 57,
+     between: 57 and 57,
+     cost of consumption: 145
+ PIPELINE 58,
+     between: 58 and 58,
+     cost of consumption: 805
+ PIPELINE 59,
+     between: 59 and 59,
+     cost of consumption: 159
+ PIPELINE 60,
+     between: 60 and 60,
+     cost of consumption: 274
+ PIPELINE 61,
+     between: 61 and 61,
+     cost of consumption: 148
+ PIPELINE 62,
+     between: 62 and 62,
+     cost of consumption: 758
+ PIPELINE 63,
+     between: 63 and 63,
+     cost of consumption: 97
+ PIPELINE 64,
+     between: 64 and 64,
+     cost of consumption: 597
+ PIPELINE 65,
+     between: 65 and 65,
+     cost of consumption: 175
+ PIPELINE 66,
+     between: 66 and 66,
+     cost of consumption: 645
+ PIPELINE 67,
+     between: 67 and 67,
+     cost of consumption: 904
+ PIPELINE 68,
+     between: 68 and 68,
+     cost of consumption: 691
+ PIPELINE 69,
+     between: 69 and 69,
+     cost of consumption: 321
+ PIPELINE 70,
+     between: 70 and 70,
+     cost of consumption: 951
+ PIPELINE 71,
+     between: 71 and 71,
+     cost of consumption: 101
+ PIPELINE 72,
+     between: 72 and 72,
+     cost of consumption: 478
+ PIPELINE 73,
+     between: 73 and 73,
+     cost of consumption: 522
+ PIPELINE 74,
+     between: 74 and 74,
+     cost of consumption: 438
+ PIPELINE 75,
+     between: 75 and 75,
+     cost of consumption: 362
+ PIPELINE 76,
+     between: 76 and 76,
+     cost of consumption: 152
+ PIPELINE 77,
+     between: 77 and 77,
+     cost of consumption: 43
+ PIPELINE 78,
+     between: 78 and 78,
+     cost of consumption: 9
+ PIPELINE 79,
+     between: 79 and 79,
+     cost of consumption: 975
+ PIPELINE 80,
+     between: 80 and 80,
+     cost of consumption: 738
+ PIPELINE 81,
+     between: 81 and 81,
+     cost of consumption: 624
+ PIPELINE 82,
+     between: 82 and 82,
+     cost of consumption: 73
+ PIPELINE 83,
+     between: 83 and 83,
+     cost of consumption: 418
+ PIPELINE 84,
+     between: 84 and 84,
+     cost of consumption: 415
+ PIPELINE 85,
+     between: 85 and 85,
+     cost of consumption: 468
+ PIPELINE 86,
+     between: 86 and 86,
+     cost of consumption: 624
+ PIPELINE 87,
+     between: 87 and 87,
+     cost of consumption: 359
+ PIPELINE 88,
+     between: 88 and 88,
+     cost of consumption: 960
+ PIPELINE 89,
+     between: 89 and 89,
+     cost of consumption: 776
+ PIPELINE 90,
+     between: 90 and 90,
+     cost of consumption: 865
+ PIPELINE 91,
+     between: 91 and 91,
+     cost of consumption: 230
+ PIPELINE 92,
+     between: 92 and 92,
+     cost of consumption: 919
+ PIPELINE 93,
+     between: 93 and 93,
+     cost of consumption: 619
+ PIPELINE 94,
+     between: 94 and 94,
+     cost of consumption: 674
+ PIPELINE 95,
+     between: 95 and 95,
+     cost of consumption: 511
+ PIPELINE 96,
+     between: 96 and 96,
+     cost of consumption: 141
+ PIPELINE 97,
+     between: 97 and 97,
+     cost of consumption: 666
+ PIPELINE 98,
+     between: 98 and 98,
+     cost of consumption: 763
+ PIPELINE 99,
+     between: 99 and 99,
+     cost of consumption: 827
+ PIPELINE 100,
+     between: 100 and 100,
+     cost of consumption: 982
+ PIPELINE 101,
+     between: 101 and 101,
+     cost of consumption: 61
+ PIPELINE 102,
+     between: 102 and 102,
+     cost of consumption: 276
+ PIPELINE 103,
+     between: 103 and 103,
+     cost of consumption: 455
+ PIPELINE 104,
+     between: 104 and 104,
+     cost of consumption: 930
+ PIPELINE 105,
+     between: 105 and 105,
+     cost of consumption: 709
+ PIPELINE 106,
+     between: 106 and 106,
+     cost of consumption: 812
+ PIPELINE 107,
+     between: 107 and 107,
+     cost of consumption: 429
+ PIPELINE 108,
+     between: 108 and 108,
+     cost of consumption: 747
+ PIPELINE 109,
+     between: 109 and 109,
+     cost of consumption: 168
+ PIPELINE 110,
+     between: 110 and 110,
+     cost of consumption: 399
+ PIPELINE 111,
+     between: 111 and 111,
+     cost of consumption: 833
+ PIPELINE 112,
+     between: 112 and 112,
+     cost of consumption: 139
+ PIPELINE 113,
+     between: 113 and 113,
+     cost of consumption: 467
+ PIPELINE 114,
+     between: 114 and 114,
+     cost of consumption: 598
+ PIPELINE 115,
+     between: 115 and 115,
+     cost of consumption: 550
+ PIPELINE 116,
+     between: 116 and 116,
+     cost of consumption: 282
+ PIPELINE 117,
+     between: 117 and 117,
+     cost of consumption: 218
+ PIPELINE 118,
+     between: 118 and 118,
+     cost of consumption: 904
+ PIPELINE 119,
+     between: 119 and 119,
+     cost of consumption: 238
+ PIPELINE 120,
+     between: 120 and 120,
+     cost of consumption: 341
+ PIPELINE 121,
+     between: 121 and 121,
+     cost of consumption: 116
+ PIPELINE 122,
+     between: 122 and 122,
+     cost of consumption: 815
+ PIPELINE 123,
+     between: 123 and 123,
+     cost of consumption: 256
+ PIPELINE 124,
+     between: 124 and 124,
+     cost of consumption: 730
+ PIPELINE 125,
+     between: 125 and 125,
+     cost of consumption: 484
+ PIPELINE 126,
+     between: 126 and 126,
+     cost of consumption: 114
+ PIPELINE 127,
+     between: 127 and 127,
+     cost of consumption: 867
+ PIPELINE 128,
+     between: 20 and 115,
+     cost of consumption: 41
+ PIPELINE 129,
+     between: 93 and 35,
+     cost of consumption: 312
+ PIPELINE 130,
+     between: 87 and 32,
+     cost of consumption: 368
+ PIPELINE 131,
+     between: 78 and 40,
+     cost of consumption: 463
+ PIPELINE 132,
+     between: 1 and 107,
+     cost of consumption: 291
+ PIPELINE 133,
+     between: 32 and 81,
+     cost of consumption: 236
+ PIPELINE 134,
+     between: 25 and 127,
+     cost of consumption: 801
+ PIPELINE 135,
+     between: 4 and 40,
+     cost of consumption: 138
+ PIPELINE 136,
+     between: 43 and 90,
+     cost of consumption: 741
+ PIPELINE 137,
+     between: 49 and 121,
+     cost of consumption: 850
+ PIPELINE 138,
+     between: 119 and 13,
+     cost of consumption: 70
+ PIPELINE 139,
+     between: 11 and 106,
+     cost of consumption: 345
+ PIPELINE 140,
+     between: 39 and 65,
+     cost of consumption: 898
+ PIPELINE 141,
+     between: 122 and 15,
+     cost of consumption: 874
+ PIPELINE 142,
+     between: 28 and 16,
+     cost of consumption: 245
+ PIPELINE 143,
+     between: 50 and 48,
+     cost of consumption: 431
+ PIPELINE 144,
+     between: 18 and 73,
+     cost of consumption: 894
+ PIPELINE 145,
+     between: 126 and 77,
+     cost of consumption: 942
+ PIPELINE 146,
+     between: 35 and 121,
+     cost of consumption: 800
+ PIPELINE 147,
+     between: 115 and 42,
+     cost of consumption: 137
+ PIPELINE 148,
+     between: 49 and 33,
+     cost of consumption: 966
+ PIPELINE 149,
+     between: 98 and 44,
+     cost of consumption: 616
+ PIPELINE 150,
+     between: 54 and 83,
+     cost of consumption: 185
+ PIPELINE 151,
+     between: 43 and 78,
+     cost of consumption: 536
+ PIPELINE 152,
+     between: 73 and 106,
+     cost of consumption: 480
+ PIPELINE 153,
+     between: 81 and 29,
+     cost of consumption: 505
+ PIPELINE 154,
+     between: 43 and 47,
+     cost of consumption: 154
+ PIPELINE 155,
+     between: 4 and 45,
+     cost of consumption: 32
+ PIPELINE 156,
+     between: 5 and 81,
+     cost of consumption: 249
+ PIPELINE 157,
+     between: 96 and 68,
+     cost of consumption: 531
+ PIPELINE 158,
+     between: 52 and 117,
+     cost of consumption: 92
+ PIPELINE 159,
+     between: 21 and 87,
+     cost of consumption: 968
+ PIPELINE 160,
+     between: 96 and 14,
+     cost of consumption: 820
+ PIPELINE 161,
+     between: 108 and 57,
+     cost of consumption: 10
+ PIPELINE 162,
+     between: 7 and 2,
+     cost of consumption: 644
+ PIPELINE 163,
+     between: 51 and 84,
+     cost of consumption: 713
+ PIPELINE 164,
+     between: 15 and 127,
+     cost of consumption: 448
+ PIPELINE 165,
+     between: 52 and 4,
+     cost of consumption: 646
+ PIPELINE 166,
+     between: 39 and 9,
+     cost of consumption: 791
+ PIPELINE 167,
+     between: 19 and 106,
+     cost of consumption: 619
+ PIPELINE 168,
+     between: 41 and 30,
+     cost of consumption: 977
+ PIPELINE 169,
+     between: 96 and 52,
+     cost of consumption: 632
+ PIPELINE 170,
+     between: 68 and 20,
+     cost of consumption: 926
+ PIPELINE 171,
+     between: 123 and 1,
+     cost of consumption: 752
+ PIPELINE 172,
+     between: 0 and 8,
+     cost of consumption: 682
+ PIPELINE 173,
+     between: 111 and 59,
+     cost of consumption: 958
+ PIPELINE 174,
+     between: 124 and 74,
+     cost of consumption: 358
+ PIPELINE 175,
+     between: 55 and 127,
+     cost of consumption: 770
+ PIPELINE 176,
+     between: 32 and 38,
+     cost of consumption: 483
+ PIPELINE 177,
+     between: 90 and 58,
+     cost of consumption: 293
+ PIPELINE 178,
+     between: 89 and 99,
+     cost of consumption: 684
+ PIPELINE 179,
+     between: 77 and 68,
+     cost of consumption: 616
+ PIPELINE 180,
+     between: 24 and 8,
+     cost of consumption: 700
+ PIPELINE 181,
+     between: 114 and 3,
+     cost of consumption: 173
+ PIPELINE 182,
+     between: 5 and 3,
+     cost of consumption: 862
+ PIPELINE 183,
+     between: 26 and 114,
+     cost of consumption: 945
+ PIPELINE 184,
+     between: 4 and 110,
+     cost of consumption: 572
+ PIPELINE 185,
+     between: 109 and 38,
+     cost of consumption: 891
+ PIPELINE 186,
+     between: 90 and 70,
+     cost of consumption: 985
+ PIPELINE 187,
+     between: 80 and 33,
+     cost of consumption: 395
+ PIPELINE 188,
+     between: 49 and 122,
+     cost of consumption: 999
+ PIPELINE 189,
+     between: 48 and 71,
+     cost of consumption: 235
+ PIPELINE 190,
+     between: 99 and 95,
+     cost of consumption: 771
+ PIPELINE 191,
+     between: 42 and 81,
+     cost of consumption: 70
+ PIPELINE 192,
+     between: 115 and 86,
+     cost of consumption: 489
+ PIPELINE 193,
+     between: 68 and 113,
+     cost of consumption: 371
+ PIPELINE 194,
+     between: 80 and 117,
+     cost of consumption: 722
+ PIPELINE 195,
+     between: 39 and 98,
+     cost of consumption: 688
+ PIPELINE 196,
+     between: 125 and 60,
+     cost of consumption: 910
+ PIPELINE 197,
+     between: 122 and 12,
+     cost of consumption: 823
+ PIPELINE 198,
+     between: 48 and 61,
+     cost of consumption: 745
+ PIPELINE 199,
+     between: 74 and 109,
+     cost of consumption: 296
+ PIPELINE 200,
+     between: 40 and 80,
+     cost of consumption: 456
+ PIPELINE 201,
+     between: 14 and 123,
+     cost of consumption: 145
+ PIPELINE 202,
+     between: 119 and 110,
+     cost of consumption: 464
+ PIPELINE 203,
+     between: 99 and 50,
+     cost of consumption: 89
+ PIPELINE 204,
+     between: 66 and 2,
+     cost of consumption: 974
+ PIPELINE 205,
+     between: 15 and 42,
+     cost of consumption: 176
+ PIPELINE 206,
+     between: 2 and 39,
+     cost of consumption: 108
+ PIPELINE 207,
+     between: 59 and 33,
+     cost of consumption: 600
+ PIPELINE 208,
+     between: 22 and 82,
+     cost of consumption: 294
+ PIPELINE 209,
+     between: 106 and 28,
+     cost of consumption: 867
+ PIPELINE 210,
+     between: 6 and 69,
+     cost of consumption: 932
+ PIPELINE 211,
+     between: 1 and 83,
+     cost of consumption: 183
+ PIPELINE 212,
+     between: 77 and 75,
+     cost of consumption: 141
+ PIPELINE 213,
+     between: 112 and 46,
+     cost of consumption: 15
+ PIPELINE 214,
+     between: 4 and 112,
+     cost of consumption: 393
+ PIPELINE 215,
+     between: 13 and 127,
+     cost of consumption: 843
+ PIPELINE 216,
+     between: 120 and 1,
+     cost of consumption: 955
+ PIPELINE 217,
+     between: 31 and 61,
+     cost of consumption: 708
+ PIPELINE 218,
+     between: 83 and 83,
+     cost of consumption: 494
+ PIPELINE 219,
+     between: 68 and 61,
+     cost of consumption: 307
+ PIPELINE 220,
+     between: 34 and 67,
+     cost of consumption: 728
+ PIPELINE 221,
+     between: 81 and 68,
+     cost of consumption: 171
+ PIPELINE 222,
+     between: 123 and 18,
+     cost of consumption: 758
+ PIPELINE 223,
+     between: 19 and 2,
+     cost of consumption: 621
+ PIPELINE 224,
+     between: 93 and 7,
+     cost of consumption: 477
+ PIPELINE 225,
+     between: 42 and 20,
+     cost of consumption: 397
+ PIPELINE 226,
+     between: 32 and 13,
+     cost of consumption: 710
+ PIPELINE 227,
+     between: 62 and 44,
+     cost of consumption: 27
+ PIPELINE 228,
+     between: 126 and 127,
+     cost of consumption: 814
+ PIPELINE 229,
+     between: 15 and 67,
+     cost of consumption: 516
+ PIPELINE 230,
+     between: 61 and 102,
+     cost of consumption: 719
+ PIPELINE 231,
+     between: 48 and 55,
+     cost of consumption: 932
+ PIPELINE 232,
+     between: 119 and 51,
+     cost of consumption: 294
+ PIPELINE 233,
+     between: 8 and 70,
+     cost of consumption: 264
+ PIPELINE 234,
+     between: 72 and 36,
+     cost of consumption: 279
+ PIPELINE 235,
+     between: 121 and 78,
+     cost of consumption: 660
+ PIPELINE 236,
+     between: 41 and 110,
+     cost of consumption: 929
+ PIPELINE 237,
+     between: 90 and 45,
+     cost of consumption: 837
+ PIPELINE 238,
+     between: 73 and 43,
+     cost of consumption: 333
+ PIPELINE 239,
+     between: 10 and 58,
+     cost of consumption: 408
+ PIPELINE 240,
+     between: 9 and 120,
+     cost of consumption: 574
+ PIPELINE 241,
+     between: 76 and 40,
+     cost of consumption: 462
+ PIPELINE 242,
+     between: 83 and 31,
+     cost of consumption: 897
+ PIPELINE 243,
+     between: 108 and 40,
+     cost of consumption: 71
+ PIPELINE 244,
+     between: 7 and 112,
+     cost of consumption: 291
+ PIPELINE 245,
+     between: 42 and 105,
+     cost of consumption: 649
+ PIPELINE 246,
+     between: 97 and 18,
+     cost of consumption: 984
+ PIPELINE 247,
+     between: 37 and 109,
+     cost of consumption: 597
+ PIPELINE 248,
+     between: 21 and 54,
+     cost of consumption: 544
+ PIPELINE 249,
+     between: 5 and 64,
+     cost of consumption: 314
+ PIPELINE 250,
+     between: 57 and 74,
+     cost of consumption: 210
+ PIPELINE 251,
+     between: 82 and 22,
+     cost of consumption: 955
+ PIPELINE 252,
+     between: 35 and 105,
+     cost of consumption: 418
+ PIPELINE 253,
+     between: 39 and 85,
+     cost of consumption: 1002
+ PIPELINE 254,
+     between: 114 and 92,
+     cost of consumption: 27
+ PIPELINE 255,
+     between: 96 and 6,
+     cost of consumption: 964
+ PIPELINE 256,
+     between: 29 and 103,
+     cost of consumption: 207
+ PIPELINE 257,
+     between: 72 and 12,
+     cost of consumption: 812
+ PIPELINE 258,
+     between: 32 and 34,
+     cost of consumption: 802
+ PIPELINE 259,
+     between: 35 and 39,
+     cost of consumption: 338
+ PIPELINE 260,
+     between: 96 and 96,
+     cost of consumption: 932
+ PIPELINE 261,
+     between: 22 and 51,
+     cost of consumption: 650
+ PIPELINE 262,
+     between: 116 and 86,
+     cost of consumption: 419
+ PIPELINE 263,
+     between: 113 and 126,
+     cost of consumption: 232
+ PIPELINE 264,
+     between: 23 and 112,
+     cost of consumption: 349
+ PIPELINE 265,
+     between: 45 and 80,
+     cost of consumption: 395
+ PIPELINE 266,
+     between: 44 and 109,
+     cost of consumption: 27
+ PIPELINE 267,
+     between: 62 and 53,
+     cost of consumption: 871
+ PIPELINE 268,
+     between: 61 and 85,
+     cost of consumption: 761
+ PIPELINE 269,
+     between: 114 and 120,
+     cost of consumption: 673
+ PIPELINE 270,
+     between: 104 and 89,
+     cost of consumption: 713
+ PIPELINE 271,
+     between: 39 and 111,
+     cost of consumption: 156
+ PIPELINE 272,
+     between: 125 and 99,
+     cost of consumption: 755
+ PIPELINE 273,
+     between: 59 and 84,
+     cost of consumption: 105
+ PIPELINE 274,
+     between: 79 and 107,
+     cost of consumption: 625
+ PIPELINE 275,
+     between: 63 and 24,
+     cost of consumption: 601
+ PIPELINE 276,
+     between: 53 and 69,
+     cost of consumption: 383
+ PIPELINE 277,
+     between: 19 and 3,
+     cost of consumption: 596
+ PIPELINE 278,
+     between: 126 and 65,
+     cost of consumption: 538
+ PIPELINE 279,
+     between: 10 and 51,
+     cost of consumption: 98
+ PIPELINE 280,
+     between: 62 and 27,
+     cost of consumption: 883
+ PIPELINE 281,
+     between: 83 and 67,
+     cost of consumption: 802
+ PIPELINE 282,
+     between: 26 and 64,
+     cost of consumption: 453
+ PIPELINE 283,
+     between: 56 and 123,
+     cost of consumption: 954
+ PIPELINE 284,
+     between: 84 and 74,
+     cost of consumption: 949
+ PIPELINE 285,
+     between: 96 and 9,
+     cost of consumption: 814
+ PIPELINE 286,
+     between: 61 and 63,
+     cost of consumption: 507
+ PIPELINE 287,
+     between: 7 and 82,
+     cost of consumption: 582
+ PIPELINE 288,
+     between: 6 and 80,
+     cost of consumption: 199
+ PIPELINE 289,
+     between: 91 and 91,
+     cost of consumption: 451
+ PIPELINE 290,
+     between: 41 and 25,
+     cost of consumption: 726
+ PIPELINE 291,
+     between: 79 and 108,
+     cost of consumption: 601
+ PIPELINE 292,
+     between: 101 and 7,
+     cost of consumption: 721
+ PIPELINE 293,
+     between: 93 and 63,
+     cost of consumption: 853
+ PIPELINE 294,
+     between: 42 and 20,
+     cost of consumption: 575
+ PIPELINE 295,
+     between: 99 and 116,
+     cost of consumption: 585
+ PIPELINE 296,
+     between: 52 and 49,
+     cost of consumption: 920
+ PIPELINE 297,
+     between: 74 and 56,
+     cost of consumption: 658
+ PIPELINE 298,
+     between: 99 and 63,
+     cost of consumption: 963
+ PIPELINE 299,
+     between: 62 and 26,
+     cost of consumption: 646
+ PIPELINE 300,
+     between: 76 and 67,
+     cost of consumption: 671
+ PIPELINE 301,
+     between: 117 and 19,
+     cost of consumption: 804
+ PIPELINE 302,
+     between: 98 and 120,
+     cost of consumption: 843
+ PIPELINE 303,
+     between: 14 and 85,
+     cost of consumption: 538
+ PIPELINE 304,
+     between: 54 and 0,
+     cost of consumption: 342
+ PIPELINE 305,
+     between: 41 and 99,
+     cost of consumption: 579
+ PIPELINE 306,
+     between: 37 and 23,
+     cost of consumption: 492
+ PIPELINE 307,
+     between: 96 and 97,
+     cost of consumption: 461
+ PIPELINE 308,
+     between: 109 and 68,
+     cost of consumption: 132
+ PIPELINE 309,
+     between: 75 and 2,
+     cost of consumption: 686
+ PIPELINE 310,
+     between: 4 and 78,
+     cost of consumption: 570
+ PIPELINE 311,
+     between: 87 and 68,
+     cost of consumption: 661
+ PIPELINE 312,
+     between: 22 and 38,
+     cost of consumption: 109
+ PIPELINE 313,
+     between: 92 and 52,
+     cost of consumption: 66
+ PIPELINE 314,
+     between: 97 and 107,
+     cost of consumption: 778
+ PIPELINE 315,
+     between: 123 and 20,
+     cost of consumption: 893
+ PIPELINE 316,
+     between: 9 and 57,
+     cost of consumption: 220
+ PIPELINE 317,
+     between: 72 and 25,
+     cost of consumption: 261
+ PIPELINE 318,
+     between: 64 and 6,
+     cost of consumption: 946
+ PIPELINE 319,
+     between: 119 and 82,
+     cost of consumption: 468
+ PIPELINE 320,
+     between: 73 and 86,
+     cost of consumption: 275
+ PIPELINE 321,
+     between: 94 and 45,
+     cost of consumption: 143
+ PIPELINE 322,
+     between: 6 and 67,
+     cost of consumption: 965
+ PIPELINE 323,
+     between: 38 and 31,
+     cost of consumption: 161
+ PIPELINE 324,
+     between: 27 and 1,
+     cost of consumption: 932
+ PIPELINE 325,
+     between: 17 and 124,
+     cost of consumption: 496
+ PIPELINE 326,
+     between: 105 and 5,
+     cost of consumption: 489
+ PIPELINE 327,
+     between: 89 and 77,
+     cost of consumption: 826
+ PIPELINE 328,
+     between: 41 and 14,
+     cost of consumption: 809
+ PIPELINE 329,
+     between: 62 and 5,
+     cost of consumption: 451
+ PIPELINE 330,
+     between: 86 and 78,
+     cost of consumption: 689
+ PIPELINE 331,
+     between: 60 and 44,
+     cost of consumption: 247
+ PIPELINE 332,
+     between: 102 and 50,
+     cost of consumption: 570
+ PIPELINE 333,
+     between: 54 and 88,
+     cost of consumption: 850
+ PIPELINE 334,
+     between: 58 and 116,
+     cost of consumption: 619
+ PIPELINE 335,
+     between: 42 and 5,
+     cost of consumption: 919
+ PIPELINE 336,
+     between: 45 and 110,
+     cost of consumption: 620
+ PIPELINE 337,
+     between: 106 and 71,
+     cost of consumption: 913
+ PIPELINE 338,
+     between: 63 and 113,
+     cost of consumption: 607
+ PIPELINE 339,
+     between: 27 and 47,
+     cost of consumption: 477
+ PIPELINE 340,
+     between: 73 and 5,
+     cost of consumption: 555
+ PIPELINE 341,
+     between: 78 and 65,
+     cost of consumption: 760
+ PIPELINE 342,
+     between: 0 and 39,
+     cost of consumption: 746
+ PIPELINE 343,
+     between: 117 and 93,
+     cost of consumption: 971
+ PIPELINE 344,
+     between: 10 and 24,
+     cost of consumption: 495
+ PIPELINE 345,
+     between: 32 and 66,
+     cost of consumption: 444
+ PIPELINE 346,
+     between: 50 and 111,
+     cost of consumption: 706
+ PIPELINE 347,
+     between: 73 and 89,
+     cost of consumption: 498
+ PIPELINE 348,
+     between: 46 and 25,
+     cost of consumption: 427
+ PIPELINE 349,
+     between: 32 and 52,
+     cost of consumption: 434
+ PIPELINE 350,
+     between: 24 and 126,
+     cost of consumption: 984
+ PIPELINE 351,
+     between: 95 and 76,
+     cost of consumption: 697
+ PIPELINE 352,
+     between: 82 and 76,
+     cost of consumption: 361
+ PIPELINE 353,
+     between: 119 and 65,
+     cost of consumption: 638
+ PIPELINE 354,
+     between: 117 and 76,
+     cost of consumption: 686
+ PIPELINE 355,
+     between: 103 and 108,
+     cost of consumption: 432
+ PIPELINE 356,
+     between: 94 and 31,
+     cost of consumption: 720
+ PIPELINE 357,
+     between: 68 and 104,
+     cost of consumption: 33
+ PIPELINE 358,
+     between: 113 and 22,
+     cost of consumption: 546
+ PIPELINE 359,
+     between: 15 and 55,
+     cost of consumption: 711
+ PIPELINE 360,
+     between: 92 and 79,
+     cost of consumption: 677
+ PIPELINE 361,
+     between: 47 and 46,
+     cost of consumption: 777
+ PIPELINE 362,
+     between: 68 and 0,
+     cost of consumption: 957
+ PIPELINE 363,
+     between: 0 and 120,
+     cost of consumption: 134
+ PIPELINE 364,
+     between: 25 and 109,
+     cost of consumption: 506
+ PIPELINE 365,
+     between: 75 and 85,
+     cost of consumption: 687
+ PIPELINE 366,
+     between: 62 and 51,
+     cost of consumption: 942
+ PIPELINE 367,
+     between: 33 and 119,
+     cost of consumption: 886
+ PIPELINE 368,
+     between: 94 and 104,
+     cost of consumption: 781
+ PIPELINE 369,
+     between: 51 and 119,
+     cost of consumption: 228
+ PIPELINE 370,
+     between: 61 and 84,
+     cost of consumption: 51
+ PIPELINE 371,
+     between: 69 and 3,
+     cost of consumption: 154
+ PIPELINE 372,
+     between: 25 and 71,
+     cost of consumption: 938
+ PIPELINE 373,
+     between: 57 and 71,
+     cost of consumption: 202
+ PIPELINE 374,
+     between: 27 and 97,
+     cost of consumption: 560
+ PIPELINE 375,
+     between: 72 and 44,
+     cost of consumption: 501
+ PIPELINE 376,
+     between: 98 and 106,
+     cost of consumption: 168
+ PIPELINE 377,
+     between: 27 and 12,
+     cost of consumption: 264
+ PIPELINE 378,
+     between: 61 and 106,
+     cost of consumption: 928
+ PIPELINE 379,
+     between: 117 and 29,
+     cost of consumption: 288
+ PIPELINE 380,
+     between: 100 and 91,
+     cost of consumption: 772
+ PIPELINE 381,
+     between: 34 and 32,
+     cost of consumption: 711
+ PIPELINE 382,
+     between: 15 and 58,
+     cost of consumption: 799
+ PIPELINE 383,
+     between: 125 and 115,
+     cost of consumption: 742
+ PIPELINE 384,
+     between: 98 and 14,
+     cost of consumption: 527
+ PIPELINE 385,
+     between: 53 and 87,
+     cost of consumption: 835
+ PIPELINE 386,
+     between: 93 and 57,
+     cost of consumption: 446
+ PIPELINE 387,
+     between: 57 and 85,
+     cost of consumption: 426
+ PIPELINE 388,
+     between: 12 and 18,
+     cost of consumption: 452
+ PIPELINE 389,
+     between: 71 and 7,
+     cost of consumption: 769
+ PIPELINE 390,
+     between: 122 and 107,
+     cost of consumption: 732
+ PIPELINE 391,
+     between: 1 and 13,
+     cost of consumption: 69
+ PIPELINE 392,
+     between: 12 and 29,
+     cost of consumption: 847
+ PIPELINE 393,
+     between: 94 and 26,
+     cost of consumption: 722
+ PIPELINE 394,
+     between: 119 and 124,
+     cost of consumption: 177
+ PIPELINE 395,
+     between: 114 and 50,
+     cost of consumption: 712
+ PIPELINE 396,
+     between: 24 and 15,
+     cost of consumption: 9
+ PIPELINE 397,
+     between: 41 and 72,
+     cost of consumption: 358
+ PIPELINE 398,
+     between: 70 and 84,
+     cost of consumption: 992
+ PIPELINE 399,
+     between: 77 and 28,
+     cost of consumption: 983
+ PIPELINE 400,
+     between: 114 and 22,
+     cost of consumption: 610
+ PIPELINE 401,
+     between: 113 and 24,
+     cost of consumption: 568
+ PIPELINE 402,
+     between: 17 and 36,
+     cost of consumption: 709
+ PIPELINE 403,
+     between: 107 and 2,
+     cost of consumption: 615
+ PIPELINE 404,
+     between: 57 and 121,
+     cost of consumption: 187
+ PIPELINE 405,
+     between: 21 and 107,
+     cost of consumption: 629
+ PIPELINE 406,
+     between: 72 and 4,
+     cost of consumption: 789
+ PIPELINE 407,
+     between: 52 and 45,
+     cost of consumption: 181
+ PIPELINE 408,
+     between: 118 and 116,
+     cost of consumption: 66
+ PIPELINE 409,
+     between: 73 and 65,
+     cost of consumption: 366
+ PIPELINE 410,
+     between: 36 and 51,
+     cost of consumption: 364
+ PIPELINE 411,
+     between: 105 and 37,
+     cost of consumption: 180
+ PIPELINE 412,
+     between: 60 and 54,
+     cost of consumption: 872
+ PIPELINE 413,
+     between: 44 and 34,
+     cost of consumption: 234
+ PIPELINE 414,
+     between: 54 and 91,
+     cost of consumption: 356
+ PIPELINE 415,
+     between: 61 and 112,
+     cost of consumption: 759
+ PIPELINE 416,
+     between: 117 and 56,
+     cost of consumption: 979
+ PIPELINE 417,
+     between: 61 and 108,
+     cost of consumption: 457
+ PIPELINE 418,
+     between: 78 and 98,
+     cost of consumption: 965
+ PIPELINE 419,
+     between: 51 and 44,
+     cost of consumption: 598
+ PIPELINE 420,
+     between: 52 and 80,
+     cost of consumption: 474
+ PIPELINE 421,
+     between: 75 and 57,
+     cost of consumption: 671
+ PIPELINE 422,
+     between: 123 and 118,
+     cost of consumption: 253
+ PIPELINE 423,
+     between: 78 and 34,
+     cost of consumption: 711
+ PIPELINE 424,
+     between: 36 and 89,
+     cost of consumption: 466
+ PIPELINE 425,
+     between: 115 and 22,
+     cost of consumption: 690
+ PIPELINE 426,
+     between: 45 and 11,
+     cost of consumption: 738
+ PIPELINE 427,
+     between: 108 and 73,
+     cost of consumption: 615
+ PIPELINE 428,
+     between: 88 and 23,
+     cost of consumption: 729
+ PIPELINE 429,
+     between: 56 and 74,
+     cost of consumption: 717
+ PIPELINE 430,
+     between: 89 and 126,
+     cost of consumption: 909
+ PIPELINE 431,
+     between: 46 and 73,
+     cost of consumption: 559
+ PIPELINE 432,
+     between: 40 and 68,
+     cost of consumption: 933
+ PIPELINE 433,
+     between: 89 and 19,
+     cost of consumption: 31
+ PIPELINE 434,
+     between: 43 and 55,
+     cost of consumption: 520
+ PIPELINE 435,
+     between: 89 and 42,
+     cost of consumption: 582
+ PIPELINE 436,
+     between: 118 and 87,
+     cost of consumption: 490
+ PIPELINE 437,
+     between: 76 and 67,
+     cost of consumption: 731
+ PIPELINE 438,
+     between: 14 and 27,
+     cost of consumption: 834
+ PIPELINE 439,
+     between: 50 and 83,
+     cost of consumption: 156
+ PIPELINE 440,
+     between: 3 and 45,
+     cost of consumption: 762
+ PIPELINE 441,
+     between: 35 and 91,
+     cost of consumption: 659
+ PIPELINE 442,
+     between: 125 and 4,
+     cost of consumption: 728
+ PIPELINE 443,
+     between: 77 and 93,
+     cost of consumption: 835
+ PIPELINE 444,
+     between: 64 and 8,
+     cost of consumption: 210
+ PIPELINE 445,
+     between: 11 and 97,
+     cost of consumption: 204
+ PIPELINE 446,
+     between: 109 and 88,
+     cost of consumption: 923
+ PIPELINE 447,
+     between: 90 and 36,
+     cost of consumption: 695
+ PIPELINE 448,
+     between: 16 and 50,
+     cost of consumption: 970
+ PIPELINE 449,
+     between: 93 and 100,
+     cost of consumption: 62
+ PIPELINE 450,
+     between: 116 and 103,
+     cost of consumption: 211
+ PIPELINE 451,
+     between: 9 and 11,
+     cost of consumption: 238
+ PIPELINE 452,
+     between: 103 and 8,
+     cost of consumption: 810
+ PIPELINE 453,
+     between: 10 and 86,
+     cost of consumption: 527
+ PIPELINE 454,
+     between: 64 and 22,
+     cost of consumption: 96
+ PIPELINE 455,
+     between: 45 and 33,
+     cost of consumption: 977
+ PIPELINE 456,
+     between: 68 and 14,
+     cost of consumption: 913
+ PIPELINE 457,
+     between: 51 and 104,
+     cost of consumption: 581
+ PIPELINE 458,
+     between: 101 and 120,
+     cost of consumption: 647
+ PIPELINE 459,
+     between: 50 and 85,
+     cost of consumption: 836
+ PIPELINE 460,
+     between: 83 and 73,
+     cost of consumption: 211
+ PIPELINE 461,
+     between: 33 and 82,
+     cost of consumption: 678
+ PIPELINE 462,
+     between: 75 and 58,
+     cost of consumption: 495
+ PIPELINE 463,
+     between: 120 and 68,
+     cost of consumption: 885
+ PIPELINE 464,
+     between: 3 and 5,
+     cost of consumption: 579
+ PIPELINE 465,
+     between: 22 and 50,
+     cost of consumption: 444
+ PIPELINE 466,
+     between: 10 and 119,
+     cost of consumption: 707
+ PIPELINE 467,
+     between: 87 and 42,
+     cost of consumption: 203
+ PIPELINE 468,
+     between: 71 and 15,
+     cost of consumption: 364
+ PIPELINE 469,
+     between: 106 and 65,
+     cost of consumption: 313
+ PIPELINE 470,
+     between: 113 and 21,
+     cost of consumption: 259
+ PIPELINE 471,
+     between: 95 and 54,
+     cost of consumption: 605
+ PIPELINE 472,
+     between: 89 and 1,
+     cost of consumption: 359
+ PIPELINE 473,
+     between: 91 and 122,
+     cost of consumption: 596
+ PIPELINE 474,
+     between: 51 and 125,
+     cost of consumption: 145
+ PIPELINE 475,
+     between: 33 and 19,
+     cost of consumption: 211
+ PIPELINE 476,
+     between: 48 and 29,
+     cost of consumption: 994
+ PIPELINE 477,
+     between: 78 and 116,
+     cost of consumption: 764
+ PIPELINE 478,
+     between: 85 and 60,
+     cost of consumption: 563
+ PIPELINE 479,
+     between: 84 and 38,
+     cost of consumption: 709
+ PIPELINE 480,
+     between: 40 and 23,
+     cost of consumption: 258
+ PIPELINE 481,
+     between: 70 and 118,
+     cost of consumption: 416
+ PIPELINE 482,
+     between: 55 and 79,
+     cost of consumption: 770
+ PIPELINE 483,
+     between: 97 and 42,
+     cost of consumption: 476
+ PIPELINE 484,
+     between: 80 and 93,
+     cost of consumption: 705
+ PIPELINE 485,
+     between: 68 and 126,
+     cost of consumption: 900
+ PIPELINE 486,
+     between: 107 and 47,
+     cost of consumption: 737
+ PIPELINE 487,
+     between: 8 and 125,
+     cost of consumption: 422
+ PIPELINE 488,
+     between: 80 and 82,
+     cost of consumption: 234
+ PIPELINE 489,
+     between: 38 and 38,
+     cost of consumption: 816
+ PIPELINE 490,
+     between: 62 and 79,
+     cost of consumption: 351
+ PIPELINE 491,
+     between: 107 and 21,
+     cost of consumption: 45
+ PIPELINE 492,
+     between: 79 and 76,
+     cost of consumption: 925
+ PIPELINE 493,
+     between: 52 and 46,
+     cost of consumption: 479
+ PIPELINE 494,
+     between: 19 and 126,
+     cost of consumption: 941
+ PIPELINE 495,
+     between: 111 and 67,
+     cost of consumption: 883
+ PIPELINE 496,
+     between: 94 and 46,
+     cost of consumption: 450
+ PIPELINE 497,
+     between: 106 and 54,
+     cost of consumption: 992
+ PIPELINE 498,
+     between: 107 and 6,
+     cost of consumption: 58
+ PIPELINE 499,
+     between: 40 and 45,
+     cost of consumption: 9
+ PIPELINE 500,
+     between: 11 and 107,
+     cost of consumption: 856
+ PIPELINE 501,
+     between: 5 and 87,
+     cost of consumption: 501
+ PIPELINE 502,
+     between: 118 and 38,
+     cost of consumption: 546
+ PIPELINE 503,
+     between: 54 and 90,
+     cost of consumption: 48
+ PIPELINE 504,
+     between: 32 and 109,
+     cost of consumption: 598
+ PIPELINE 505,
+     between: 104 and 92,
+     cost of consumption: 689
+ PIPELINE 506,
+     between: 47 and 58,
+     cost of consumption: 823
+ PIPELINE 507,
+     between: 36 and 36,
+     cost of consumption: 694
+ PIPELINE 508,
+     between: 23 and 16,
+     cost of consumption: 60
+ PIPELINE 509,
+     between: 93 and 56,
+     cost of consumption: 481
+ PIPELINE 510,
+     between: 73 and 68,
+     cost of consumption: 365
+ PIPELINE 511,
+     between: 4 and 73,
+     cost of consumption: 612
+ PIPELINE 512,
+     between: 84 and 63,
+     cost of consumption: 986
+ PIPELINE 513,
+     between: 113 and 117,
+     cost of consumption: 252
+ PIPELINE 514,
+     between: 60 and 22,
+     cost of consumption: 585
+ PIPELINE 515,
+     between: 6 and 126,
+     cost of consumption: 333
+ PIPELINE 516,
+     between: 18 and 45,
+     cost of consumption: 95
+ PIPELINE 517,
+     between: 77 and 82,
+     cost of consumption: 251
+ PIPELINE 518,
+     between: 62 and 105,
+     cost of consumption: 923
+ PIPELINE 519,
+     between: 53 and 70,
+     cost of consumption: 340
+ PIPELINE 520,
+     between: 90 and 15,
+     cost of consumption: 664
+ PIPELINE 521,
+     between: 106 and 19,
+     cost of consumption: 593
+ PIPELINE 522,
+     between: 81 and 104,
+     cost of consumption: 169
+ PIPELINE 523,
+     between: 94 and 89,
+     cost of consumption: 310
+ PIPELINE 524,
+     between: 69 and 22,
+     cost of consumption: 844
+ PIPELINE 525,
+     between: 25 and 28,
+     cost of consumption: 355
+ PIPELINE 526,
+     between: 73 and 46,
+     cost of consumption: 720
+ PIPELINE 527,
+     between: 51 and 123,
+     cost of consumption: 90
+ PIPELINE 528,
+     between: 65 and 57,
+     cost of consumption: 452
+ PIPELINE 529,
+     between: 96 and 111,
+     cost of consumption: 506
+ PIPELINE 530,
+     between: 55 and 73,
+     cost of consumption: 962
+ PIPELINE 531,
+     between: 82 and 51,
+     cost of consumption: 317
+ PIPELINE 532,
+     between: 54 and 4,
+     cost of consumption: 421
+ PIPELINE 533,
+     between: 90 and 98,
+     cost of consumption: 167
+ PIPELINE 534,
+     between: 116 and 39,
+     cost of consumption: 597
+ PIPELINE 535,
+     between: 35 and 64,
+     cost of consumption: 657
+ PIPELINE 536,
+     between: 81 and 9,
+     cost of consumption: 383
+ PIPELINE 537,
+     between: 45 and 60,
+     cost of consumption: 891
+ PIPELINE 538,
+     between: 90 and 125,
+     cost of consumption: 924
+ PIPELINE 539,
+     between: 113 and 93,
+     cost of consumption: 891
+ PIPELINE 540,
+     between: 79 and 20,
+     cost of consumption: 268
+ PIPELINE 541,
+     between: 60 and 102,
+     cost of consumption: 415
+ PIPELINE 542,
+     between: 60 and 29,
+     cost of consumption: 939
+ PIPELINE 543,
+     between: 37 and 119,
+     cost of consumption: 173
+ PIPELINE 544,
+     between: 103 and 107,
+     cost of consumption: 716
+ PIPELINE 545,
+     between: 63 and 15,
+     cost of consumption: 796
+ PIPELINE 546,
+     between: 51 and 96,
+     cost of consumption: 445
+ PIPELINE 547,
+     between: 85 and 13,
+     cost of consumption: 401
+ PIPELINE 548,
+     between: 115 and 104,
+     cost of consumption: 263
+ PIPELINE 549,
+     between: 75 and 89,
+     cost of consumption: 652
+ PIPELINE 550,
+     between: 17 and 40,
+     cost of consumption: 201
+ PIPELINE 551,
+     between: 33 and 100,
+     cost of consumption: 623
+ PIPELINE 552,
+     between: 99 and 33,
+     cost of consumption: 508
+ PIPELINE 553,
+     between: 42 and 70,
+     cost of consumption: 20
+ PIPELINE 554,
+     between: 82 and 45,
+     cost of consumption: 519
+ PIPELINE 555,
+     between: 34 and 108,
+     cost of consumption: 142
+ PIPELINE 556,
+     between: 49 and 31,
+     cost of consumption: 591
+ PIPELINE 557,
+     between: 74 and 116,
+     cost of consumption: 284
+ PIPELINE 558,
+     between: 30 and 104,
+     cost of consumption: 604
+ PIPELINE 559,
+     between: 112 and 51,
+     cost of consumption: 702
+ PIPELINE 560,
+     between: 32 and 68,
+     cost of consumption: 78
+ PIPELINE 561,
+     between: 100 and 101,
+     cost of consumption: 691
+ PIPELINE 562,
+     between: 14 and 73,
+     cost of consumption: 852
+ PIPELINE 563,
+     between: 86 and 115,
+     cost of consumption: 682
+ PIPELINE 564,
+     between: 21 and 69,
+     cost of consumption: 343
+ PIPELINE 565,
+     between: 63 and 103,
+     cost of consumption: 779
+ PIPELINE 566,
+     between: 121 and 25,
+     cost of consumption: 994
+ PIPELINE 567,
+     between: 19 and 99,
+     cost of consumption: 718
+ PIPELINE 568,
+     between: 58 and 1,
+     cost of consumption: 486
+ PIPELINE 569,
+     between: 74 and 114,
+     cost of consumption: 273
+ PIPELINE 570,
+     between: 51 and 18,
+     cost of consumption: 614
+ PIPELINE 571,
+     between: 68 and 118,
+     cost of consumption: 771
+ PIPELINE 572,
+     between: 58 and 4,
+     cost of consumption: 508
+ PIPELINE 573,
+     between: 81 and 90,
+     cost of consumption: 759
+ PIPELINE 574,
+     between: 46 and 111,
+     cost of consumption: 45
+ PIPELINE 575,
+     between: 56 and 47,
+     cost of consumption: 428
+ PIPELINE 576,
+     between: 46 and 40,
+     cost of consumption: 701
+ PIPELINE 577,
+     between: 67 and 59,
+     cost of consumption: 656
+ PIPELINE 578,
+     between: 77 and 117,
+     cost of consumption: 690
+ PIPELINE 579,
+     between: 62 and 63,
+     cost of consumption: 764
+ PIPELINE 580,
+     between: 99 and 114,
+     cost of consumption: 822
+ PIPELINE 581,
+     between: 76 and 55,
+     cost of consumption: 116
+ PIPELINE 582,
+     between: 26 and 113,
+     cost of consumption: 560
+ PIPELINE 583,
+     between: 50 and 67,
+     cost of consumption: 363
+ PIPELINE 584,
+     between: 60 and 113,
+     cost of consumption: 538
+ PIPELINE 585,
+     between: 12 and 42,
+     cost of consumption: 601
+ PIPELINE 586,
+     between: 68 and 88,
+     cost of consumption: 41
+ PIPELINE 587,
+     between: 20 and 28,
+     cost of consumption: 796
+ PIPELINE 588,
+     between: 72 and 105,
+     cost of consumption: 146
+ PIPELINE 589,
+     between: 125 and 39,
+     cost of consumption: 41
+ PIPELINE 590,
+     between: 36 and 10,
+     cost of consumption: 180
+ PIPELINE 591,
+     between: 93 and 86,
+     cost of consumption: 987
+ PIPELINE 592,
+     between: 12 and 113,
+     cost of consumption: 852
+ PIPELINE 593,
+     between: 63 and 35,
+     cost of consumption: 271
+ PIPELINE 594,
+     between: 77 and 95,
+     cost of consumption: 921
+ PIPELINE 595,
+     between: 75 and 108,
+     cost of consumption: 843
+ PIPELINE 596,
+     between: 119 and 48,
+     cost of consumption: 811
+ PIPELINE 597,
+     between: 76 and 68,
+     cost of consumption: 815
+ PIPELINE 598,
+     between: 91 and 12,
+     cost of consumption: 568
+ PIPELINE 599,
+     between: 96 and 9,
+     cost of consumption: 256
+ PIPELINE 600,
+     between: 37 and 45,
+     cost of consumption: 146
+ PIPELINE 601,
+     between: 92 and 10,
+     cost of consumption: 849
+ PIPELINE 602,
+     between: 74 and 22,
+     cost of consumption: 834
+ PIPELINE 603,
+     between: 41 and 86,
+     cost of consumption: 901
+ PIPELINE 604,
+     between: 76 and 35,
+     cost of consumption: 860
+ PIPELINE 605,
+     between: 96 and 110,
+     cost of consumption: 48
+ PIPELINE 606,
+     between: 30 and 102,
+     cost of consumption: 944
+ PIPELINE 607,
+     between: 52 and 50,
+     cost of consumption: 893
+ PIPELINE 608,
+     between: 103 and 13,
+     cost of consumption: 545
+ PIPELINE 609,
+     between: 2 and 110,
+     cost of consumption: 291
+ PIPELINE 610,
+     between: 69 and 19,
+     cost of consumption: 888
+ PIPELINE 611,
+     between: 19 and 111,
+     cost of consumption: 155
+ PIPELINE 612,
+     between: 55 and 57,
+     cost of consumption: 201
+ PIPELINE 613,
+     between: 76 and 98,
+     cost of consumption: 287
+ PIPELINE 614,
+     between: 4 and 46,
+     cost of consumption: 67
+ PIPELINE 615,
+     between: 27 and 14,
+     cost of consumption: 777
+ PIPELINE 616,
+     between: 31 and 44,
+     cost of consumption: 15
+ PIPELINE 617,
+     between: 82 and 97,
+     cost of consumption: 465
+ PIPELINE 618,
+     between: 74 and 72,
+     cost of consumption: 271
+ PIPELINE 619,
+     between: 79 and 74,
+     cost of consumption: 573
+ PIPELINE 620,
+     between: 93 and 16,
+     cost of consumption: 760
+ PIPELINE 621,
+     between: 24 and 35,
+     cost of consumption: 655
+ PIPELINE 622,
+     between: 94 and 90,
+     cost of consumption: 944
+ PIPELINE 623,
+     between: 59 and 38,
+     cost of consumption: 122
+ PIPELINE 624,
+     between: 109 and 42,
+     cost of consumption: 809
+ PIPELINE 625,
+     between: 67 and 69,
+     cost of consumption: 919
+ PIPELINE 626,
+     between: 8 and 100,
+     cost of consumption: 996
+ PIPELINE 627,
+     between: 50 and 55,
+     cost of consumption: 845
+ PIPELINE 628,
+     between: 15 and 1,
+     cost of consumption: 925
+ PIPELINE 629,
+     between: 121 and 80,
+     cost of consumption: 503
+ PIPELINE 630,
+     between: 81 and 45,
+     cost of consumption: 183
+ PIPELINE 631,
+     between: 60 and 70,
+     cost of consumption: 106
+ PIPELINE 632,
+     between: 22 and 36,
+     cost of consumption: 116
+ PIPELINE 633,
+     between: 41 and 95,
+     cost of consumption: 746
+ PIPELINE 634,
+     between: 30 and 77,
+     cost of consumption: 892
+ PIPELINE 635,
+     between: 66 and 16,
+     cost of consumption: 58
+ PIPELINE 636,
+     between: 117 and 24,
+     cost of consumption: 990
+ PIPELINE 637,
+     between: 84 and 75,
+     cost of consumption: 277
+ PIPELINE 638,
+     between: 20 and 90,
+     cost of consumption: 511
+ PIPELINE 639,
+     between: 28 and 83,
+     cost of consumption: 231
+ PIPELINE 640,
+     between: 110 and 36,
+     cost of consumption: 77
+ PIPELINE 641,
+     between: 81 and 96,
+     cost of consumption: 931
+ PIPELINE 642,
+     between: 86 and 118,
+     cost of consumption: 943
+ PIPELINE 643,
+     between: 54 and 31,
+     cost of consumption: 15
+ PIPELINE 644,
+     between: 59 and 61,
+     cost of consumption: 428
+ PIPELINE 645,
+     between: 107 and 0,
+     cost of consumption: 244
+ PIPELINE 646,
+     between: 96 and 117,
+     cost of consumption: 941
+ PIPELINE 647,
+     between: 57 and 73,
+     cost of consumption: 176
+ PIPELINE 648,
+     between: 74 and 93,
+     cost of consumption: 114
+ PIPELINE 649,
+     between: 92 and 121,
+     cost of consumption: 669
+ PIPELINE 650,
+     between: 62 and 103,
+     cost of consumption: 113
+ PIPELINE 651,
+     between: 78 and 56,
+     cost of consumption: 849
+ PIPELINE 652,
+     between: 36 and 15,
+     cost of consumption: 879
+ PIPELINE 653,
+     between: 31 and 69,
+     cost of consumption: 494
+ PIPELINE 654,
+     between: 121 and 0,
+     cost of consumption: 811
+ PIPELINE 655,
+     between: 32 and 107,
+     cost of consumption: 283
+ PIPELINE 656,
+     between: 87 and 75,
+     cost of consumption: 528
+ PIPELINE 657,
+     between: 39 and 5,
+     cost of consumption: 889
+ PIPELINE 658,
+     between: 66 and 79,
+     cost of consumption: 854
+ PIPELINE 659,
+     between: 55 and 43,
+     cost of consumption: 47
+ PIPELINE 660,
+     between: 127 and 105,
+     cost of consumption: 967
+ PIPELINE 661,
+     between: 107 and 56,
+     cost of consumption: 143
+ PIPELINE 662,
+     between: 55 and 92,
+     cost of consumption: 678
+ PIPELINE 663,
+     between: 121 and 123,
+     cost of consumption: 387
+ PIPELINE 664,
+     between: 90 and 116,
+     cost of consumption: 12
+ PIPELINE 665,
+     between: 121 and 20,
+     cost of consumption: 439
+ PIPELINE 666,
+     between: 23 and 108,
+     cost of consumption: 723
+ PIPELINE 667,
+     between: 43 and 19,
+     cost of consumption: 848
+ PIPELINE 668,
+     between: 7 and 86,
+     cost of consumption: 791
+ PIPELINE 669,
+     between: 65 and 13,
+     cost of consumption: 410
+ PIPELINE 670,
+     between: 115 and 13,
+     cost of consumption: 579
+ PIPELINE 671,
+     between: 13 and 120,
+     cost of consumption: 723
+ PIPELINE 672,
+     between: 96 and 48,
+     cost of consumption: 120
+ PIPELINE 673,
+     between: 65 and 41,
+     cost of consumption: 355
+ PIPELINE 674,
+     between: 104 and 4,
+     cost of consumption: 144
+ PIPELINE 675,
+     between: 15 and 125,
+     cost of consumption: 908
+ PIPELINE 676,
+     between: 33 and 20,
+     cost of consumption: 888
+ PIPELINE 677,
+     between: 127 and 63,
+     cost of consumption: 668
+ PIPELINE 678,
+     between: 98 and 71,
+     cost of consumption: 474
+ PIPELINE 679,
+     between: 20 and 8,
+     cost of consumption: 711
+ PIPELINE 680,
+     between: 113 and 123,
+     cost of consumption: 748
+ PIPELINE 681,
+     between: 56 and 9,
+     cost of consumption: 693
+ PIPELINE 682,
+     between: 54 and 105,
+     cost of consumption: 37
+ PIPELINE 683,
+     between: 17 and 42,
+     cost of consumption: 710
+ PIPELINE 684,
+     between: 104 and 18,
+     cost of consumption: 850
+ PIPELINE 685,
+     between: 51 and 33,
+     cost of consumption: 263
+ PIPELINE 686,
+     between: 18 and 67,
+     cost of consumption: 932
+ PIPELINE 687,
+     between: 94 and 66,
+     cost of consumption: 731
+ PIPELINE 688,
+     between: 61 and 37,
+     cost of consumption: 194
+ PIPELINE 689,
+     between: 114 and 57,
+     cost of consumption: 522
+ PIPELINE 690,
+     between: 52 and 43,
+     cost of consumption: 110
+ PIPELINE 691,
+     between: 4 and 99,
+     cost of consumption: 271
+ PIPELINE 692,
+     between: 76 and 25,
+     cost of consumption: 792
+ PIPELINE 693,
+     between: 68 and 43,
+     cost of consumption: 50
+ PIPELINE 694,
+     between: 101 and 19,
+     cost of consumption: 781
+ PIPELINE 695,
+     between: 11 and 70,
+     cost of consumption: 638
+ PIPELINE 696,
+     between: 45 and 88,
+     cost of consumption: 409
+ PIPELINE 697,
+     between: 100 and 54,
+     cost of consumption: 460
+ PIPELINE 698,
+     between: 91 and 115,
+     cost of consumption: 689
+ PIPELINE 699,
+     between: 24 and 101,
+     cost of consumption: 530
+ PIPELINE 700,
+     between: 94 and 26,
+     cost of consumption: 741
+ PIPELINE 701,
+     between: 31 and 30,
+     cost of consumption: 896
+ PIPELINE 702,
+     between: 105 and 106,
+     cost of consumption: 66
+ PIPELINE 703,
+     between: 28 and 46,
+     cost of consumption: 365
+ PIPELINE 704,
+     between: 121 and 19,
+     cost of consumption: 848
+ PIPELINE 705,
+     between: 105 and 30,
+     cost of consumption: 950
+ PIPELINE 706,
+     between: 123 and 76,
+     cost of consumption: 630
+ PIPELINE 707,
+     between: 79 and 48,
+     cost of consumption: 421
+ PIPELINE 708,
+     between: 102 and 11,
+     cost of consumption: 984
+ PIPELINE 709,
+     between: 34 and 36,
+     cost of consumption: 494
+ PIPELINE 710,
+     between: 24 and 2,
+     cost of consumption: 656
+ PIPELINE 711,
+     between: 56 and 33,
+     cost of consumption: 566
+ PIPELINE 712,
+     between: 60 and 10,
+     cost of consumption: 912
+ PIPELINE 713,
+     between: 89 and 38,
+     cost of consumption: 430
+ PIPELINE 714,
+     between: 33 and 31,
+     cost of consumption: 473
+ PIPELINE 715,
+     between: 124 and 9,
+     cost of consumption: 888
+ PIPELINE 716,
+     between: 29 and 4,
+     cost of consumption: 636
+ PIPELINE 717,
+     between: 22 and 83,
+     cost of consumption: 996
+ PIPELINE 718,
+     between: 70 and 58,
+     cost of consumption: 344
+ PIPELINE 719,
+     between: 106 and 92,
+     cost of consumption: 220
+ PIPELINE 720,
+     between: 115 and 116,
+     cost of consumption: 142
+ PIPELINE 721,
+     between: 22 and 45,
+     cost of consumption: 215
+ PIPELINE 722,
+     between: 87 and 105,
+     cost of consumption: 57
+ PIPELINE 723,
+     between: 2 and 66,
+     cost of consumption: 455
+ PIPELINE 724,
+     between: 91 and 99,
+     cost of consumption: 806
+ PIPELINE 725,
+     between: 71 and 95,
+     cost of consumption: 239
+ PIPELINE 726,
+     between: 82 and 124,
+     cost of consumption: 35
+ PIPELINE 727,
+     between: 41 and 18,
+     cost of consumption: 951
+ PIPELINE 728,
+     between: 49 and 89,
+     cost of consumption: 793
+ PIPELINE 729,
+     between: 68 and 67,
+     cost of consumption: 893
+ PIPELINE 730,
+     between: 123 and 54,
+     cost of consumption: 482
+ PIPELINE 731,
+     between: 52 and 76,
+     cost of consumption: 943
+ PIPELINE 732,
+     between: 14 and 35,
+     cost of consumption: 168
+ PIPELINE 733,
+     between: 114 and 37,
+     cost of consumption: 570
+ PIPELINE 734,
+     between: 124 and 0,
+     cost of consumption: 213
+ PIPELINE 735,
+     between: 37 and 71,
+     cost of consumption: 236
+ PIPELINE 736,
+     between: 88 and 26,
+     cost of consumption: 640
+ PIPELINE 737,
+     between: 14 and 67,
+     cost of consumption: 698
+ PIPELINE 738,
+     between: 24 and 116,
+     cost of consumption: 179
+ PIPELINE 739,
+     between: 92 and 56,
+     cost of consumption: 62
+ PIPELINE 740,
+     between: 125 and 51,
+     cost of consumption: 836
+ PIPELINE 741,
+     between: 18 and 103,
+     cost of consumption: 152
+ PIPELINE 742,
+     between: 84 and 117,
+     cost of consumption: 571
+ PIPELINE 743,
+     between: 127 and 103,
+     cost of consumption: 352
+ PIPELINE 744,
+     between: 108 and 99,
+     cost of consumption: 920
+ PIPELINE 745,
+     between: 60 and 9,
+     cost of consumption: 744
+ PIPELINE 746,
+     between: 107 and 97,
+     cost of consumption: 58
+ PIPELINE 747,
+     between: 22 and 111,
+     cost of consumption: 493
+ PIPELINE 748,
+     between: 83 and 8,
+     cost of consumption: 98
+ PIPELINE 749,
+     between: 106 and 100,
+     cost of consumption: 858
+ PIPELINE 750,
+     between: 67 and 97,
+     cost of consumption: 990
+ PIPELINE 751,
+     between: 83 and 115,
+     cost of consumption: 981
+ PIPELINE 752,
+     between: 46 and 71,
+     cost of consumption: 395
+ PIPELINE 753,
+     between: 45 and 70,
+     cost of consumption: 930
+ PIPELINE 754,
+     between: 80 and 50,
+     cost of consumption: 742
+ PIPELINE 755,
+     between: 116 and 110,
+     cost of consumption: 279
+ PIPELINE 756,
+     between: 95 and 89,
+     cost of consumption: 480
+ PIPELINE 757,
+     between: 100 and 111,
+     cost of consumption: 375
+ PIPELINE 758,
+     between: 44 and 67,
+     cost of consumption: 559
+ PIPELINE 759,
+     between: 105 and 45,
+     cost of consumption: 172
+ PIPELINE 760,
+     between: 95 and 112,
+     cost of consumption: 453
+ PIPELINE 761,
+     between: 8 and 67,
+     cost of consumption: 881
+ PIPELINE 762,
+     between: 24 and 114,
+     cost of consumption: 744
+ PIPELINE 763,
+     between: 30 and 31,
+     cost of consumption: 855
+ PIPELINE 764,
+     between: 12 and 111,
+     cost of consumption: 129
+ PIPELINE 765,
+     between: 93 and 99,
+     cost of consumption: 128
+ PIPELINE 766,
+     between: 55 and 66,
+     cost of consumption: 433
+ PIPELINE 767,
+     between: 114 and 38,
+     cost of consumption: 681
+ PIPELINE 768,
+     between: 28 and 83,
+     cost of consumption: 916
+ PIPELINE 769,
+     between: 79 and 60,
+     cost of consumption: 17
+ PIPELINE 770,
+     between: 102 and 27,
+     cost of consumption: 689
+ PIPELINE 771,
+     between: 94 and 35,
+     cost of consumption: 117
+ PIPELINE 772,
+     between: 74 and 60,
+     cost of consumption: 799
+ PIPELINE 773,
+     between: 126 and 90,
+     cost of consumption: 302
+ PIPELINE 774,
+     between: 120 and 102,
+     cost of consumption: 325
+ PIPELINE 775,
+     between: 36 and 67,
+     cost of consumption: 785
+ PIPELINE 776,
+     between: 63 and 122,
+     cost of consumption: 67
+ PIPELINE 777,
+     between: 52 and 108,
+     cost of consumption: 930
+ PIPELINE 778,
+     between: 24 and 9,
+     cost of consumption: 213
+ PIPELINE 779,
+     between: 63 and 88,
+     cost of consumption: 305
+ PIPELINE 780,
+     between: 19 and 62,
+     cost of consumption: 117
+ PIPELINE 781,
+     between: 87 and 28,
+     cost of consumption: 280
+ PIPELINE 782,
+     between: 95 and 103,
+     cost of consumption: 124
+ PIPELINE 783,
+     between: 89 and 101,
+     cost of consumption: 39
+ PIPELINE 784,
+     between: 114 and 93,
+     cost of consumption: 301
+ PIPELINE 785,
+     between: 123 and 1,
+     cost of consumption: 649
+ PIPELINE 786,
+     between: 103 and 65,
+     cost of consumption: 707
+ PIPELINE 787,
+     between: 21 and 117,
+     cost of consumption: 952
+ PIPELINE 788,
+     between: 106 and 13,
+     cost of consumption: 457
+ PIPELINE 789,
+     between: 18 and 76,
+     cost of consumption: 777
+ PIPELINE 790,
+     between: 119 and 95,
+     cost of consumption: 431
+ PIPELINE 791,
+     between: 119 and 54,
+     cost of consumption: 219
+ PIPELINE 792,
+     between: 26 and 22,
+     cost of consumption: 370
+ PIPELINE 793,
+     between: 122 and 111,
+     cost of consumption: 623
+ PIPELINE 794,
+     between: 52 and 98,
+     cost of consumption: 476
+ PIPELINE 795,
+     between: 84 and 93,
+     cost of consumption: 758
+ PIPELINE 796,
+     between: 56 and 68,
+     cost of consumption: 591
+ PIPELINE 797,
+     between: 23 and 89,
+     cost of consumption: 756
+ PIPELINE 798,
+     between: 98 and 68,
+     cost of consumption: 929
+ PIPELINE 799,
+     between: 54 and 86,
+     cost of consumption: 373
+ PIPELINE 800,
+     between: 98 and 77,
+     cost of consumption: 452
+ PIPELINE 801,
+     between: 76 and 68,
+     cost of consumption: 498
+ PIPELINE 802,
+     between: 82 and 95,
+     cost of consumption: 976
+ PIPELINE 803,
+     between: 64 and 89,
+     cost of consumption: 680
+ PIPELINE 804,
+     between: 18 and 13,
+     cost of consumption: 906
+ PIPELINE 805,
+     between: 66 and 97,
+     cost of consumption: 975
+ PIPELINE 806,
+     between: 115 and 26,
+     cost of consumption: 19
+ PIPELINE 807,
+     between: 101 and 49,
+     cost of consumption: 100
+ PIPELINE 808,
+     between: 76 and 19,
+     cost of consumption: 496
+ PIPELINE 809,
+     between: 64 and 73,
+     cost of consumption: 415
+ PIPELINE 810,
+     between: 0 and 43,
+     cost of consumption: 508
+ PIPELINE 811,
+     between: 31 and 119,
+     cost of consumption: 889
+ PIPELINE 812,
+     between: 116 and 73,
+     cost of consumption: 184
+ PIPELINE 813,
+     between: 96 and 9,
+     cost of consumption: 161
+ PIPELINE 814,
+     between: 59 and 28,
+     cost of consumption: 206
+ PIPELINE 815,
+     between: 120 and 94,
+     cost of consumption: 967
+ PIPELINE 816,
+     between: 18 and 81,
+     cost of consumption: 89
+ PIPELINE 817,
+     between: 112 and 54,
+     cost of consumption: 922
+ PIPELINE 818,
+     between: 39 and 2,
+     cost of consumption: 469
+ PIPELINE 819,
+     between: 35 and 66,
+     cost of consumption: 830
+ PIPELINE 820,
+     between: 117 and 66,
+     cost of consumption: 481
+ PIPELINE 821,
+     between: 20 and 97,
+     cost of consumption: 848
+ PIPELINE 822,
+     between: 120 and 85,
+     cost of consumption: 498
+ PIPELINE 823,
+     between: 59 and 53,
+     cost of consumption: 499
+ PIPELINE 824,
+     between: 87 and 112,
+     cost of consumption: 767
+ PIPELINE 825,
+     between: 0 and 104,
+     cost of consumption: 477
+ PIPELINE 826,
+     between: 11 and 122,
+     cost of consumption: 734
+ PIPELINE 827,
+     between: 47 and 106,
+     cost of consumption: 124
+ PIPELINE 828,
+     between: 5 and 18,
+     cost of consumption: 46
+ PIPELINE 829,
+     between: 109 and 53,
+     cost of consumption: 776
+ PIPELINE 830,
+     between: 31 and 42,
+     cost of consumption: 386
+ PIPELINE 831,
+     between: 123 and 62,
+     cost of consumption: 619
+ PIPELINE 832,
+     between: 79 and 55,
+     cost of consumption: 25
+ PIPELINE 833,
+     between: 108 and 114,
+     cost of consumption: 574
+ PIPELINE 834,
+     between: 18 and 74,
+     cost of consumption: 591
+ PIPELINE 835,
+     between: 85 and 74,
+     cost of consumption: 31
+ PIPELINE 836,
+     between: 117 and 85,
+     cost of consumption: 866
+ PIPELINE 837,
+     between: 103 and 5,
+     cost of consumption: 108
+ PIPELINE 838,
+     between: 14 and 10,
+     cost of consumption: 854
+ PIPELINE 839,
+     between: 56 and 119,
+     cost of consumption: 947
+ PIPELINE 840,
+     between: 35 and 22,
+     cost of consumption: 797
+ PIPELINE 841,
+     between: 81 and 18,
+     cost of consumption: 556
+ PIPELINE 842,
+     between: 95 and 97,
+     cost of consumption: 811
+ PIPELINE 843,
+     between: 67 and 77,
+     cost of consumption: 741
+ PIPELINE 844,
+     between: 93 and 95,
+     cost of consumption: 503
+ PIPELINE 845,
+     between: 103 and 52,
+     cost of consumption: 650
+ PIPELINE 846,
+     between: 89 and 42,
+     cost of consumption: 495
+ PIPELINE 847,
+     between: 70 and 17,
+     cost of consumption: 124
+ PIPELINE 848,
+     between: 30 and 31,
+     cost of consumption: 806
+ PIPELINE 849,
+     between: 7 and 87,
+     cost of consumption: 710
+ PIPELINE 850,
+     between: 38 and 123,
+     cost of consumption: 956
+ PIPELINE 851,
+     between: 110 and 76,
+     cost of consumption: 78
+ PIPELINE 852,
+     between: 117 and 43,
+     cost of consumption: 567
+ PIPELINE 853,
+     between: 51 and 111,
+     cost of consumption: 620
+ PIPELINE 854,
+     between: 100 and 76,
+     cost of consumption: 380
+ PIPELINE 855,
+     between: 94 and 51,
+     cost of consumption: 960
+ PIPELINE 856,
+     between: 35 and 12,
+     cost of consumption: 186
+ PIPELINE 857,
+     between: 62 and 83,
+     cost of consumption: 787
+ PIPELINE 858,
+     between: 93 and 113,
+     cost of consumption: 235
+ PIPELINE 859,
+     between: 7 and 120,
+     cost of consumption: 922
+ PIPELINE 860,
+     between: 40 and 30,
+     cost of consumption: 269
+ PIPELINE 861,
+     between: 95 and 13,
+     cost of consumption: 9
+ PIPELINE 862,
+     between: 41 and 2,
+     cost of consumption: 109
+ PIPELINE 863,
+     between: 83 and 54,
+     cost of consumption: 940
+ PIPELINE 864,
+     between: 75 and 26,
+     cost of consumption: 720
+ PIPELINE 865,
+     between: 34 and 120,
+     cost of consumption: 739
+ PIPELINE 866,
+     between: 45 and 28,
+     cost of consumption: 671
+ PIPELINE 867,
+     between: 99 and 90,
+     cost of consumption: 434
+ PIPELINE 868,
+     between: 41 and 55,
+     cost of consumption: 427
+ PIPELINE 869,
+     between: 15 and 62,
+     cost of consumption: 852
+ PIPELINE 870,
+     between: 77 and 102,
+     cost of consumption: 354
+ PIPELINE 871,
+     between: 5 and 70,
+     cost of consumption: 727
+ PIPELINE 872,
+     between: 10 and 111,
+     cost of consumption: 170
+ PIPELINE 873,
+     between: 58 and 66,
+     cost of consumption: 192
+ PIPELINE 874,
+     between: 89 and 13,
+     cost of consumption: 530
+ PIPELINE 875,
+     between: 68 and 47,
+     cost of consumption: 330
+ PIPELINE 876,
+     between: 98 and 93,
+     cost of consumption: 590
+ PIPELINE 877,
+     between: 12 and 64,
+     cost of consumption: 504
+ PIPELINE 878,
+     between: 10 and 105,
+     cost of consumption: 488
+ PIPELINE 879,
+     between: 120 and 121,
+     cost of consumption: 398
+ PIPELINE 880,
+     between: 95 and 70,
+     cost of consumption: 589
+ PIPELINE 881,
+     between: 101 and 75,
+     cost of consumption: 363
+ PIPELINE 882,
+     between: 119 and 85,
+     cost of consumption: 794
+ PIPELINE 883,
+     between: 12 and 15,
+     cost of consumption: 796
+ PIPELINE 884,
+     between: 87 and 104,
+     cost of consumption: 986
+ PIPELINE 885,
+     between: 60 and 44,
+     cost of consumption: 737
+ PIPELINE 886,
+     between: 26 and 14,
+     cost of consumption: 358
+ PIPELINE 887,
+     between: 19 and 27,
+     cost of consumption: 382
+ PIPELINE 888,
+     between: 103 and 37,
+     cost of consumption: 240
+}
+
+Number of Buildings: 
+128
+
+Builded Pipelined Structure of the Algorithm: 
+
+Expected pipelined structure : 78, 396, 499, 861, 161, 664, 213, 616, 643, 769, 806, 553, 832, 227, 254, 266, 433, 835, 155, 357, 726, 682, 783, 128, 586, 589, 77, 491, 574, 828, 659, 54, 503, 605, 693, 39, 370, 722, 498, 635, 746, 508, 101, 449, 739, 313, 408, 702, 614, 776, 391, 138, 191, 243, 82, 640, 560, 851, 203, 816, 527, 158, 516, 454, 63, 279, 748, 807, 71, 26, 51, 273, 631, 206, 837, 312, 862, 690, 650, 126, 648, 121, 581, 632, 771, 16, 672, 623, 782, 827, 847, 765, 764, 363, 212, 555, 321, 661, 201, 588, 600, 371, 439, 25, 813, 533, 181, 65, 205, 647, 11, 211, 873, 288, 814, 256, 475, 734, 91, 263, 377, 860, 320, 102, 244, 519, 743, 583
+
+Returned pipelined structure :78, 396, 499, 861, 161, 664, 213, 616, 643, 769, 806, 553, 832, 227, 254, 266, 433, 835, 155, 357, 726, 682, 783, 128, 586, 589, 77, 491, 574, 828, 659, 54, 503, 605, 693, 39, 370, 722, 498, 635, 746, 508, 101, 449, 739, 313, 408, 702, 614, 776, 391, 138, 191, 243, 82, 640, 560, 851, 203, 816, 527, 158, 516, 454, 63, 279, 748, 807, 71, 26, 51, 273, 631, 206, 837, 312, 862, 690, 650, 126, 648, 121, 581, 632, 771, 16, 672, 623, 782, 827, 847, 765, 764, 363, 212, 555, 321, 661, 201, 588, 600, 371, 439, 25, 813, 533, 181, 65, 205, 647, 11, 211, 873, 288, 814, 256, 475, 734, 91, 263, 377, 860, 320, 102, 244, 519, 743, 583
+
+CASE 6-initial pipeline construction of the algorithm: [OK]
+
+
+
+The new pipeline : 
+{
+ PIPELINE 889,
+     between: 59 and 100,
+     cost of consumption: 66
+}
+
+Expected updated pipelined structure : 78, 396, 499, 861, 161, 664, 213, 616, 643, 769, 806, 553, 832, 227, 254, 266, 433, 835, 155, 357, 726, 682, 783, 128, 586, 589, 77, 491, 574, 828, 659, 54, 503, 605, 693, 39, 370, 722, 498, 635, 746, 508, 101, 449, 739, 313, 408, 702, 614, 776, 391, 138, 191, 243, 82, 640, 560, 851, 203, 816, 527, 158, 516, 454, 63, 279, 748, 807, 71, 26, 51, 273, 631, 206, 837, 312, 862, 690, 650, 126, 648, 121, 581, 632, 771, 16, 672, 623, 782, 827, 847, 765, 764, 363, 212, 555, 321, 661, 201, 588, 600, 371, 439, 25, 813, 533, 181, 65, 205, 647, 11, 889, 873, 288, 814, 256, 475, 734, 91, 263, 377, 860, 320, 102, 244, 519, 743, 583
+
+Returned updated pipelined structure :78, 396, 499, 861, 161, 664, 213, 616, 643, 769, 806, 553, 832, 227, 254, 266, 433, 835, 155, 357, 726, 682, 783, 128, 586, 589, 77, 491, 574, 828, 659, 54, 503, 605, 693, 39, 370, 722, 498, 635, 746, 508, 101, 449, 739, 313, 408, 702, 614, 776, 391, 138, 191, 243, 82, 640, 560, 851, 203, 816, 527, 158, 516, 454, 63, 279, 748, 807, 71, 26, 51, 273, 631, 206, 837, 312, 862, 690, 650, 126, 648, 121, 581, 632, 771, 16, 672, 623, 782, 827, 847, 765, 764, 363, 212, 555, 321, 661, 201, 588, 600, 371, 439, 25, 813, 533, 181, 65, 205, 647, 11, 889, 873, 288, 814, 256, 475, 734, 91, 263, 377, 860, 320, 102, 244, 519, 743, 583
+
+CASE 6-updated pipeline construction of the algorithm: [OK]
+------------------------------------------------
+------------------------------------------------

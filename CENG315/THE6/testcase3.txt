@@ -1,0 +1,228 @@
+----- CASE 3 -----
+
+CASE 3
+-------------------------------------------------
+
+Given Pipelines: 
+{
+ PIPELINE 0,
+     between: 0 and 0,
+     cost of consumption: 505
+ PIPELINE 1,
+     between: 1 and 1,
+     cost of consumption: 303
+ PIPELINE 2,
+     between: 2 and 2,
+     cost of consumption: 712
+ PIPELINE 3,
+     between: 3 and 3,
+     cost of consumption: 516
+ PIPELINE 4,
+     between: 4 and 4,
+     cost of consumption: 863
+ PIPELINE 5,
+     between: 5 and 5,
+     cost of consumption: 518
+ PIPELINE 6,
+     between: 6 and 6,
+     cost of consumption: 527
+ PIPELINE 7,
+     between: 7 and 7,
+     cost of consumption: 488
+ PIPELINE 8,
+     between: 8 and 8,
+     cost of consumption: 288
+ PIPELINE 9,
+     between: 9 and 9,
+     cost of consumption: 441
+ PIPELINE 10,
+     between: 10 and 10,
+     cost of consumption: 260
+ PIPELINE 11,
+     between: 11 and 11,
+     cost of consumption: 607
+ PIPELINE 12,
+     between: 12 and 12,
+     cost of consumption: 363
+ PIPELINE 13,
+     between: 13 and 13,
+     cost of consumption: 38
+ PIPELINE 14,
+     between: 14 and 14,
+     cost of consumption: 401
+ PIPELINE 15,
+     between: 15 and 15,
+     cost of consumption: 995
+ PIPELINE 16,
+     between: 16 and 16,
+     cost of consumption: 473
+ PIPELINE 17,
+     between: 17 and 17,
+     cost of consumption: 608
+ PIPELINE 18,
+     between: 18 and 18,
+     cost of consumption: 739
+ PIPELINE 19,
+     between: 19 and 19,
+     cost of consumption: 588
+ PIPELINE 20,
+     between: 20 and 20,
+     cost of consumption: 710
+ PIPELINE 21,
+     between: 21 and 21,
+     cost of consumption: 138
+ PIPELINE 22,
+     between: 22 and 22,
+     cost of consumption: 679
+ PIPELINE 23,
+     between: 23 and 23,
+     cost of consumption: 68
+ PIPELINE 24,
+     between: 24 and 24,
+     cost of consumption: 218
+ PIPELINE 25,
+     between: 25 and 25,
+     cost of consumption: 383
+ PIPELINE 26,
+     between: 26 and 26,
+     cost of consumption: 923
+ PIPELINE 27,
+     between: 27 and 27,
+     cost of consumption: 109
+ PIPELINE 28,
+     between: 28 and 28,
+     cost of consumption: 94
+ PIPELINE 29,
+     between: 29 and 29,
+     cost of consumption: 751
+ PIPELINE 30,
+     between: 30 and 30,
+     cost of consumption: 860
+ PIPELINE 31,
+     between: 31 and 31,
+     cost of consumption: 946
+ PIPELINE 32,
+     between: 4 and 18,
+     cost of consumption: 809
+ PIPELINE 33,
+     between: 14 and 19,
+     cost of consumption: 332
+ PIPELINE 34,
+     between: 25 and 22,
+     cost of consumption: 120
+ PIPELINE 35,
+     between: 16 and 0,
+     cost of consumption: 830
+ PIPELINE 36,
+     between: 18 and 4,
+     cost of consumption: 820
+ PIPELINE 37,
+     between: 22 and 0,
+     cost of consumption: 906
+ PIPELINE 38,
+     between: 22 and 9,
+     cost of consumption: 39
+ PIPELINE 39,
+     between: 8 and 24,
+     cost of consumption: 604
+ PIPELINE 40,
+     between: 26 and 30,
+     cost of consumption: 709
+ PIPELINE 41,
+     between: 12 and 24,
+     cost of consumption: 916
+ PIPELINE 42,
+     between: 9 and 29,
+     cost of consumption: 830
+ PIPELINE 43,
+     between: 22 and 11,
+     cost of consumption: 609
+ PIPELINE 44,
+     between: 29 and 5,
+     cost of consumption: 23
+ PIPELINE 45,
+     between: 24 and 21,
+     cost of consumption: 40
+ PIPELINE 46,
+     between: 1 and 7,
+     cost of consumption: 452
+ PIPELINE 47,
+     between: 16 and 30,
+     cost of consumption: 468
+ PIPELINE 48,
+     between: 29 and 20,
+     cost of consumption: 541
+ PIPELINE 49,
+     between: 8 and 28,
+     cost of consumption: 29
+ PIPELINE 50,
+     between: 7 and 23,
+     cost of consumption: 84
+ PIPELINE 51,
+     between: 23 and 3,
+     cost of consumption: 588
+ PIPELINE 52,
+     between: 14 and 12,
+     cost of consumption: 137
+ PIPELINE 53,
+     between: 23 and 2,
+     cost of consumption: 941
+ PIPELINE 54,
+     between: 19 and 31,
+     cost of consumption: 186
+ PIPELINE 55,
+     between: 6 and 23,
+     cost of consumption: 71
+ PIPELINE 56,
+     between: 25 and 24,
+     cost of consumption: 335
+ PIPELINE 57,
+     between: 16 and 8,
+     cost of consumption: 797
+ PIPELINE 58,
+     between: 8 and 6,
+     cost of consumption: 689
+ PIPELINE 59,
+     between: 8 and 14,
+     cost of consumption: 37
+ PIPELINE 60,
+     between: 1 and 21,
+     cost of consumption: 572
+ PIPELINE 61,
+     between: 24 and 13,
+     cost of consumption: 383
+ PIPELINE 62,
+     between: 7 and 27,
+     cost of consumption: 764
+ PIPELINE 63,
+     between: 20 and 19,
+     cost of consumption: 870
+}
+
+Number of Buildings: 
+32
+
+Builded Pipelined Structure of the Algorithm: 
+
+Expected pipelined structure : 44, 49, 59, 13, 38, 45, 23, 55, 50, 28, 27, 34, 52, 21, 54, 10, 1, 33, 56, 47, 16, 0, 3, 5, 48, 11, 17, 40, 2, 18, 32, 15
+
+Returned pipelined structure :44, 49, 59, 13, 38, 45, 23, 55, 50, 28, 27, 34, 52, 21, 54, 10, 1, 33, 56, 47, 16, 0, 3, 5, 48, 11, 17, 40, 2, 18, 32, 15
+
+CASE 3-initial pipeline construction of the algorithm: [OK]
+
+
+
+The new pipeline : 
+{
+ PIPELINE 64,
+     between: 9 and 17,
+     cost of consumption: 267
+}
+
+Expected updated pipelined structure : 44, 49, 59, 13, 38, 45, 23, 55, 50, 28, 27, 34, 52, 21, 54, 10, 1, 33, 56, 47, 16, 0, 3, 5, 48, 11, 17, 40, 2, 18, 32, 15
+
+Returned updated pipelined structure :44, 49, 59, 13, 38, 45, 23, 55, 50, 28, 27, 34, 52, 21, 54, 10, 1, 33, 56, 47, 16, 0, 3, 5, 48, 11, 17, 40, 2, 18, 32, 15
+
+CASE 3-updated pipeline construction of the algorithm: [OK]
+------------------------------------------------
+------------------------------------------------

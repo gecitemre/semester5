@@ -1,0 +1,93 @@
+----- CASE 1 -----
+
+CASE 1
+-------------------------------------------------
+
+Given Pipelines: 
+{
+ PIPELINE 0,
+     between: 0 and 0,
+     cost of consumption: 784
+ PIPELINE 1,
+     between: 1 and 1,
+     cost of consumption: 518
+ PIPELINE 2,
+     between: 2 and 2,
+     cost of consumption: 403
+ PIPELINE 3,
+     between: 3 and 3,
+     cost of consumption: 609
+ PIPELINE 4,
+     between: 4 and 4,
+     cost of consumption: 146
+ PIPELINE 5,
+     between: 5 and 5,
+     cost of consumption: 808
+ PIPELINE 6,
+     between: 6 and 6,
+     cost of consumption: 575
+ PIPELINE 7,
+     between: 7 and 7,
+     cost of consumption: 273
+ PIPELINE 8,
+     between: 7 and 2,
+     cost of consumption: 288
+ PIPELINE 9,
+     between: 1 and 1,
+     cost of consumption: 221
+ PIPELINE 10,
+     between: 4 and 3,
+     cost of consumption: 957
+ PIPELINE 11,
+     between: 5 and 5,
+     cost of consumption: 176
+ PIPELINE 12,
+     between: 0 and 6,
+     cost of consumption: 841
+ PIPELINE 13,
+     between: 5 and 5,
+     cost of consumption: 918
+ PIPELINE 14,
+     between: 1 and 5,
+     cost of consumption: 809
+ PIPELINE 15,
+     between: 1 and 5,
+     cost of consumption: 601
+ PIPELINE 16,
+     between: 0 and 1,
+     cost of consumption: 511
+ PIPELINE 17,
+     between: 0 and 4,
+     cost of consumption: 208
+ PIPELINE 18,
+     between: 3 and 7,
+     cost of consumption: 391
+}
+
+Number of Buildings: 
+8
+
+Builded Pipelined Structure of the Algorithm: 
+
+Expected pipelined structure : 4, 11, 17, 9, 7, 8, 18, 6
+
+Returned pipelined structure :4, 11, 17, 9, 7, 8, 18, 6
+
+CASE 1-initial pipeline construction of the algorithm: [OK]
+
+
+
+The new pipeline : 
+{
+ PIPELINE 19,
+     between: 5 and 7,
+     cost of consumption: 242
+}
+
+Expected updated pipelined structure : 4, 11, 17, 9, 19, 8, 18, 6
+
+Returned updated pipelined structure :4, 11, 17, 9, 19, 8, 18, 6
+
+CASE 1-updated pipeline construction of the algorithm: [OK]
+------------------------------------------------
+------------------------------------------------
