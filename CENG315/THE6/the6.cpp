@@ -76,46 +76,29 @@ vector<int> plan_min_cost_pipeline_usage(vector<Pipeline*> pipelines, int num_of
     }
 
     quick_sort(pipelines, 0, pipelines.size() - 1);
-    cout << "sorted: ";
     for (int i = 0; i < pipelines.size(); i++) {
         if (pipelines[i]->end1 == pipelines[i]->end2) {
             if (pipelines[i]->cost_of_consumption < furnace_cost_f(pipelines[i]->end1)) {
                 furnace_cost[parent[pipelines[i]->end1]] = pipelines[i]->cost_of_consumption;
                 solution.push_back(pipelines[i]->id);
-                cout << "connected: " << pipelines[i]->id << " " << pipelines[i]->end1 << " " << pipelines[i]->end2 << endl;
             }
         }
         else if (!connected(pipelines[i]->end1, pipelines[i]->end2)) {
             if (furnace_cost_f(pipelines[i]->end1) == INT_MAX || furnace_cost_f(pipelines[i]->end2) == INT_MAX) {
                 merge(pipelines[i]->end1, pipelines[i]->end2);
                 solution.push_back(pipelines[i]->id);
-                cout << "connected: " << pipelines[i]->id << " " << pipelines[i]->end1 << " " << pipelines[i]->end2 << endl;
             }
         }
-        else {
-            cout << "skipped: " << pipelines[i]->id << " " << pipelines[i]->end1 << " " << pipelines[i]->end2 << endl;
-        }
     }
-    cout << endl;
 
     unordered_set<int> components;
 
-    cout << "ancestors: ";
-    for (int i = 0; i < num_of_buildings; i++) {
-        cout << ancestor(i) << " ";
-    }
-    cout << endl;
     for (int i = 0; i < num_of_buildings; i++) {
         if (components.find(ancestor(i)) == components.end()) {
             components.insert(ancestor(i));
         }
     }
 
-    cout << "components: ";
-    for (int i: components) {
-        cout << i << " ";
-    }
-    cout << endl;
     vector<int> component_min(num_of_buildings, INT_MAX);
     for (int i = 0; i < num_of_buildings; i++) {
         if (furnace_cost[i] < component_min[ancestor(i)]) {
