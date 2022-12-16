@@ -1,0 +1,167 @@
+\documentclass{article}
+\usepackage{mathtools}
+
+\author{Emre Geçit}
+
+\title{\includegraphics{9.4.png}\\ IE407 - Homework 2}
+
+\begin{document}
+\maketitle
+
+\newpage
+
+\section*{a)}
+
+Decision variables:
+\begin{itemize}
+    \item $x_{ij}$: The amount of product produced at Plant $i$ and shipped to Warehouse $j$ (in tons).
+    \item $y_{ij}$: The amount of product shipped from Warehouse $i$ to Customer $j$ (in tons).
+    \item $w_{ij}$: The cost of shipping product from Plant $i$ to Warehouse $j$ (in dollars per ton).
+    \item $z_{ij}$: The cost of shipping product from Warehouse $i$ to Customer $j$ (in dollars per ton).
+\end{itemize}
+
+The cost function to be minimized:
+
+\begin{equation}
+    C = \sum \sum w_{ij} x_{ij} + \sum \sum z_{ij} y_{ij}
+\end{equation}
+
+Constraints:
+
+\begin{itemize}
+    \item Plant Constraints: $\sum{x_{1j}} \leq 300$, $\sum{x_{2j}} \leq 200$, $\sum{x_{3j}} \leq 300$, $\sum{x_{ij}} \leq 200$, $\sum{y_{1j}} \leq 400$
+    \item Customer Constraints: $\sum{y_{i1}} \geq 200$, $\sum{y_{i2}} \geq 300$, $\sum{y_{i3}} \geq 250$, $\sum{y_{i4}} \geq 350$
+    \item Transportation Constraints: $\sum_{i=1}^5 {x_{ij}} = \sum_{k=1}^4 {y_{jk}} \quad \forall j$
+\end{itemize}
+
+To minimize the cost of meeting customer demand, decisions should be made as follows:
+
+\begin{itemize}
+    \item The amount of product produced at Plant $i$ and shipped to Warehouse $j$ should be as in Table 1.
+    \item The amount of product shipped from Warehouse $i$ to Customer $j$ should be as in Table 2.
+\end{itemize}
+
+When these decisions are made, minimized total cost is $C = 53800$.
+
+\begin{table}[ht]
+    \caption{Amount produced at Plant $i$ and shipped to Warehouse $j$ (tons)}
+    \centering
+    \begin{tabular}{llllll}
+        \cline {3-5}
+        ~ & \multicolumn{1}{l|}{} & ~ & \multicolumn{1}{c}{To} & \multicolumn{1}{l|}{} & ~ \\ \cline{2-6}
+        ~ & \multicolumn{1}{|l|}{} & \multicolumn{1}{l|}{Warehouse 1} & \multicolumn{1}{l|}{Warehouse 2} & \multicolumn{1}{l|}{Warehouse 3} & \multicolumn{1}{l|}{Total} \\ \hline
+        \multicolumn{1}{|l|}{} & \multicolumn{1}{l|}{Plant 1} & \multicolumn{1}{l|}{0} & \multicolumn{1}{l|}{0} & \multicolumn{1}{l|}{0} & \multicolumn{1}{l|}{0} \\ \cline{2-6}
+        \multicolumn{1}{|l|}{} & \multicolumn{1}{l|}{Plant 2} & \multicolumn{1}{l|}{0} & \multicolumn{1}{l|}{200} & \multicolumn{1}{l|}{0} & \multicolumn{1}{l|}{200} \\ \cline{2-6}
+        \multicolumn{1}{|l|}{From} & \multicolumn{1}{l|}{Plant 3} & \multicolumn{1}{l|}{0} & \multicolumn{1}{l|}{50} & \multicolumn{1}{l|}{250} & \multicolumn{1}{l|}{300} \\ \cline{2-6}
+        \multicolumn{1}{|l|}{} & \multicolumn{1}{l|}{Plant 4} & \multicolumn{1}{l|}{200} & \multicolumn{1}{l|}{0} & \multicolumn{1}{l|}{0} & \multicolumn{1}{l|}{200} \\ \cline{2-6}
+        \multicolumn{1}{|l|}{} & \multicolumn{1}{l|}{Plant 5} & \multicolumn{1}{l|}{350} & \multicolumn{1}{l|}{50} & \multicolumn{1}{l|}{0} & \multicolumn{1}{l|}{400} \\ \hline
+        \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{Total} & \multicolumn{1}{l|}{550} & \multicolumn{1}{l|}{300} & \multicolumn{1}{l|}{250} & ~ \\ \cline{2-5}
+    \end{tabular}
+\end{table}
+
+
+\begin{table}[ht]
+    \caption{Amount shipped from Warehouse $i$ to Customer $j$ (tons)}
+    \begin{tabular}{ll|lllll}
+    \cline{3-6}
+                               &             & \multicolumn{4}{c|}{To}                                                                                                                                            \\ \cline{2-7} 
+    \multicolumn{1}{l|}{}      &             & \multicolumn{1}{l|}{Customer 1} & \multicolumn{1}{l|}{Customer 2} & \multicolumn{1}{l|}{Customer 3} & \multicolumn{1}{l|}{Customer 4} & \multicolumn{1}{l|}{Total} \\ \hline
+    \multicolumn{1}{|l|}{}     & Warehouse 1 & \multicolumn{1}{l|}{200}        & \multicolumn{1}{l|}{0}          & \multicolumn{1}{l|}{0}          & \multicolumn{1}{l|}{350}        & \multicolumn{1}{l|}{550}   \\ \cline{2-7} 
+    \multicolumn{1}{|l|}{From} & Warehouse 2 & \multicolumn{1}{l|}{0}          & \multicolumn{1}{l|}{300}        & \multicolumn{1}{l|}{0}          & \multicolumn{1}{l|}{0}          & \multicolumn{1}{l|}{300}   \\ \cline{2-7} 
+    \multicolumn{1}{|l|}{}     & Warehouse 3 & \multicolumn{1}{l|}{0}          & \multicolumn{1}{l|}{0}          & \multicolumn{1}{l|}{250}        & \multicolumn{1}{l|}{0}          & \multicolumn{1}{l|}{250}   \\ \hline
+    \multicolumn{1}{l|}{}      & Total       & \multicolumn{1}{l|}{200}        & \multicolumn{1}{l|}{300}        & \multicolumn{1}{l|}{250}        & \multicolumn{1}{l|}{350}        &                            \\ \cline{2-6}
+    \end{tabular}
+\end{table}
+
+
+\section*{b)}
+New constraints and variables should be added to the model to solve this problem.
+
+Decision variables:
+\begin{itemize}
+    \item $p_{i}$: Binary variable that is equal to 1 if Plant $i$ is used and 0 otherwise. 
+    \item $w_{i}$: Binary variable that is equal to 1 if Warehouse $i$ is used and 0 otherwise.
+\end{itemize}
+
+The cost function to be minimized: 
+\begin{equation}
+    C = \sum \sum w_{ij} x_{ij} + \sum \sum z_{ij} y_{ij} + 40p_1 + 50p_2 + 45p_3 + 50p_4 + 45p_5 + 30w_1 + 40w_2 + 30w_3
+\end{equation}
+
+Constraints:
+\begin{itemize}
+    \item Plant Constraints: $\sum{x_{1j}} \leq 300p_1$, $\sum{x_{2j}} \leq 200p_2$, $\sum{x_{3j}} \leq 300p_3$, $\sum{x_{ij}} \leq 200p_4$, $\sum{y_{1j}} \leq 400p_5$
+    \item Warehouse Constraints: $\sum{x_{ij}} \leq 1100w_1$, $\sum{x_{ij}} \leq 1100w_2$, $\sum{x_{ij}} \leq 1100w_3$
+\end{itemize}
+
+To minimize the cost of meeting customer demand, decisions should be made as follows:
+
+\begin{itemize}
+    \item All warehouses and plants should be used except for plant 1. Mathematically, $p_i = 1 \quad \forall i, i \neq 1$ and $w_i = 1 \quad \forall i$.
+    \item The amount of product produced at Plant $i$ and shipped to Warehouse $j$ should be as in Table 3.
+    \item The amount of product shipped from Warehouse $i$ to Customer $j$ should be as in Table 4.
+\end{itemize}
+
+\begin{table}[ht]
+    \caption{Amount produced at Plant $i$ and shipped to Warehouse $j$ (tons)}
+    \centering
+    \begin{tabular}{llllll}
+        \cline {3-5}
+        ~ & \multicolumn{1}{l|}{} & ~ & \multicolumn{1}{c}{To} & \multicolumn{1}{l|}{} & ~ \\ \cline{2-6}
+        ~ & \multicolumn{1}{|l|}{} & \multicolumn{1}{l|}{Warehouse 1} & \multicolumn{1}{l|}{Warehouse 2} & \multicolumn{1}{l|}{Warehouse 3} & \multicolumn{1}{l|}{Total} \\ \hline
+        \multicolumn{1}{|l|}{} & \multicolumn{1}{l|}{Plant 1} & \multicolumn{1}{l|}{8.52651E-14} & \multicolumn{1}{l|}{0} & \multicolumn{1}{l|}{0} & \multicolumn{1}{l|}{8.52651E-14} \\ \cline{2-6}
+        \multicolumn{1}{|l|}{} & \multicolumn{1}{l|}{Plant 2} & \multicolumn{1}{l|}{0} & \multicolumn{1}{l|}{200} & \multicolumn{1}{l|}{0} & \multicolumn{1}{l|}{200} \\ \cline{2-6}
+        \multicolumn{1}{|l|}{From} & \multicolumn{1}{l|}{Plant 3} & \multicolumn{1}{l|}{0} & \multicolumn{1}{l|}{50} & \multicolumn{1}{l|}{250} & \multicolumn{1}{l|}{300} \\ \cline{2-6}
+        \multicolumn{1}{|l|}{} & \multicolumn{1}{l|}{Plant 4} & \multicolumn{1}{l|}{200} & \multicolumn{1}{l|}{0} & \multicolumn{1}{l|}{0} & \multicolumn{1}{l|}{200} \\ \cline{2-6}
+        \multicolumn{1}{|l|}{} & \multicolumn{1}{l|}{Plant 5} & \multicolumn{1}{l|}{350} & \multicolumn{1}{l|}{50} & \multicolumn{1}{l|}{0} & \multicolumn{1}{l|}{400} \\ \hline
+        \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{Total} & \multicolumn{1}{l|}{550} & \multicolumn{1}{l|}{300} & \multicolumn{1}{l|}{250} & ~ \\ \cline{2-5}
+    \end{tabular}
+\end{table}
+
+\begin{table}[ht]
+    \caption{Amount shipped from Warehouse $i$ to Customer $j$ (tons)}
+    \begin{tabular}{ll|lllll}
+    \cline{3-6}
+                               &             & \multicolumn{4}{c|}{To}                                                                                                                                            \\ \cline{2-7} 
+    \multicolumn{1}{l|}{}      &             & \multicolumn{1}{l|}{Customer 1} & \multicolumn{1}{l|}{Customer 2} & \multicolumn{1}{l|}{Customer 3} & \multicolumn{1}{l|}{Customer 4} & \multicolumn{1}{l|}{Total} \\ \hline
+    \multicolumn{1}{|l|}{}     & Warehouse 1 & \multicolumn{1}{l|}{200}        & \multicolumn{1}{l|}{0}          & \multicolumn{1}{l|}{0}          & \multicolumn{1}{l|}{350}        & \multicolumn{1}{l|}{550}   \\ \cline{2-7} 
+    \multicolumn{1}{|l|}{From} & Warehouse 2 & \multicolumn{1}{l|}{0}          & \multicolumn{1}{l|}{300}        & \multicolumn{1}{l|}{0}          & \multicolumn{1}{l|}{0}          & \multicolumn{1}{l|}{300}   \\ \cline{2-7} 
+    \multicolumn{1}{|l|}{}     & Warehouse 3 & \multicolumn{1}{l|}{0}          & \multicolumn{1}{l|}{0}          & \multicolumn{1}{l|}{250}        & \multicolumn{1}{l|}{0}          & \multicolumn{1}{l|}{250}   \\ \hline
+    \multicolumn{1}{l|}{}      & Total       & \multicolumn{1}{l|}{200}        & \multicolumn{1}{l|}{300}        & \multicolumn{1}{l|}{250}        & \multicolumn{1}{l|}{350}        &                            \\ \cline{2-6}
+    \end{tabular}
+\end{table}
+
+When these decisions are made, minimized total cost is $C = 54090$.
+
+\section*{c)}
+In addition to existing variables and constraints, the following should be added to the model:
+
+Decision variables:
+\begin{itemize}
+    \item $s_i$: explained in Equation 3. A binary variable.
+    \item $t_i$: equal to the amount of prouct sold to Customer $i$ more than 100 tons. A continuous variable.
+\end{itemize}
+\begin{equation}
+    s_i = \begin{cases}
+        1 & \text{if Warehouse $1$ sells to Customer $i$ more than 100 tons} \\
+        0 & \text{otherwise}
+    \end{cases}
+\end{equation}
+
+Constraints:
+\begin{itemize}
+    \item $t_i \geq 100s_i$
+    \item $t_i \leq 350s_i$
+    \item $100*(1-s_i) + t_i = y_{1i}$
+\end{itemize}
+
+The new cost function is as follows:
+
+\begin{align*}
+    C &= \sum \sum w_{ij} x_{ij} + \sum \sum z_{ij} y_{ij} + 40p_1 + 50p_2 + 45p_3 + 50p_4 + 45p_5 + 30w_1 \\
+    & + 40w_2 + 30w_3 + 1000s_1 - 10t_1 + 4000s_2 - 40t_2 + 6000s_3 - 60t_3 + 2000s_4 - 20t_4
+\end{align*}
+
+The minimized total cost is $C = 52455$.
+
+\end{document}
