@@ -91,3 +91,24 @@ Returned updated pipelined structure :4, 11, 17, 9, 19, 8, 18, 6
 CASE 1-updated pipeline construction of the algorithm: [OK]
 ------------------------------------------------
 ------------------------------------------------
+
+size = 8;
+pipelines.push_back(createPipeline(0, 0, 784, pipelines.size()));
+pipelines.push_back(createPipeline(1, 1, 518, pipelines.size()));
+pipelines.push_back(createPipeline(2, 2, 403, pipelines.size()));
+pipelines.push_back(createPipeline(3, 3, 609, pipelines.size()));
+pipelines.push_back(createPipeline(4, 4, 146, pipelines.size()));
+pipelines.push_back(createPipeline(5, 5, 808, pipelines.size()));
+pipelines.push_back(createPipeline(6, 6, 575, pipelines.size()));
+pipelines.push_back(createPipeline(7, 7, 273, pipelines.size()));
+pipelines.push_back(createPipeline(7, 2, 288, pipelines.size()));
+pipelines.push_back(createPipeline(1, 1, 221, pipelines.size()));
+pipelines.push_back(createPipeline(4, 3, 957, pipelines.size()));
+pipelines.push_back(createPipeline(5, 5, 176, pipelines.size()));
+pipelines.push_back(createPipeline(0, 6, 841, pipelines.size()));
+pipelines.push_back(createPipeline(5, 5, 918, pipelines.size()));
+pipelines.push_back(createPipeline(1, 5, 809, pipelines.size()));
+pipelines.push_back(createPipeline(1, 5, 601, pipelines.size()));
+pipelines.push_back(createPipeline(0, 1, 511, pipelines.size()));
+pipelines.push_back(createPipeline(0, 4, 208, pipelines.size()));
+pipelines.push_back(createPipeline(3, 7, 391, pipelines.size()));
