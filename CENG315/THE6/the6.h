@@ -1,7 +1,6 @@
 #ifndef THE6_H
 #define THE6_H
 
-#include <vector>
 #include <iostream>
 #include <climits>
 #include <vector>

@@ -13,6 +13,7 @@ using namespace std;
 */
 
 int parent[0b1 << 18];
+pair<int, int> furnace_cost[0b1 << 18];
 
 int ancestor(int p) {
     if (parent[p] == p) return p;
@@ -57,40 +58,50 @@ void quick_sort(vector<Pipeline*> &pipelines, int left, int right) {
 vector<int> plan_min_cost_pipeline_usage(vector<Pipeline*> pipelines, int num_of_buildings) {
     
     vector<int> solution;
-    
     for (int i = 0; i < num_of_buildings; i++) parent[i] = i;
 
     quick_sort(pipelines, 0, pipelines.size() - 1);
-
+    cout << "sorted: ";
     for (int i = 0; i < pipelines.size(); i++) {
-        if (!connected(pipelines[i]->end1, pipelines[i]->end2)) {
+        cout << pipelines[i]->id << " ";
+        if (pipelines[i]->end1 == pipelines[i]->end2) {
+            furnace_cost[pipelines[i]->end1] = {pipelines[i]->cost_of_consumption, pipelines[i]->id};
+        }
+        else if (!connected(pipelines[i]->end1, pipelines[i]->end2)) {
             merge(pipelines[i]->end1, pipelines[i]->end2);
             solution.push_back(pipelines[i]->id);
+            cout << "connected: " << pipelines[i]->end1 << " " << pipelines[i]->end2 << endl;
         }
     }
+    cout << endl;
 
     unordered_set<int> components;
-    
+
+    cout << "ancestors: ";
+    for (int i = 0; i < num_of_buildings; i++) {
+        cout << ancestor(i) << " ";
+    }
+    cout << endl;
     for (int i = 0; i < num_of_buildings; i++) {
         if (components.find(ancestor(i)) == components.end()) {
             components.insert(ancestor(i));
         }
     }
 
-    vector<pair<int, int>> component_min(components.size(), {INT_MAX, -1});
+    cout << "components: ";
+    for (int i: components) {
+        cout << i << " ";
+    }
+    cout << endl;
+    vector<pair<int, int>> component_min(num_of_buildings, {INT_MAX, -1});
     for (int i = 0; i < num_of_buildings; i++) {
-        if (component_min[ancestor(i)].first > pipelines[i]->cost_of_consumption) {
-            component_min[ancestor(i)].first = pipelines[i]->cost_of_consumption;
-            component_min[ancestor(i)].second = i;
+        if (furnace_cost[i].first < component_min[ancestor(i)].first) {
+            component_min[ancestor(i)] = furnace_cost[i];
         }
     }
-
-    for (int i = 0; i < component_min.size(); i++) {
-        if (component_min[i].second != -1) {
-            solution.push_back(pipelines[component_min[i].second]->id);
-        }
+    for (int i: components) {
+        solution.push_back(component_min[i].second);
     }
-    
     return solution; // this is a dummy return value. YOU SHOULD CHANGE THIS!
     
 }

@@ -123,23 +123,43 @@ void copyGraph(vector<Pipeline*>& pipelines, vector<Pipeline*>& pipelines_copy) 
 void manualGraph(vector<Pipeline*>& pipelines, int& size) {
     
     // EXAMPLE-1
-    /*
-    size = 6;
-    pipelines.push_back(createPipeline(0, 0, 90, pipelines.size()));
-    pipelines.push_back(createPipeline(0, 1, 30, pipelines.size()));
-    pipelines.push_back(createPipeline(0, 5, 20, pipelines.size()));
-    pipelines.push_back(createPipeline(1, 1, 20, pipelines.size()));
-    pipelines.push_back(createPipeline(1, 2, 75, pipelines.size()));
-    pipelines.push_back(createPipeline(1, 3, 55, pipelines.size()));
-    pipelines.push_back(createPipeline(2, 2, 60, pipelines.size()));
-    pipelines.push_back(createPipeline(2, 3, 80, pipelines.size()));
-    pipelines.push_back(createPipeline(3, 3, 40, pipelines.size()));
-    pipelines.push_back(createPipeline(3, 4, 45, pipelines.size()));
-    pipelines.push_back(createPipeline(4, 4, 65, pipelines.size()));
-    pipelines.push_back(createPipeline(4, 5, 90, pipelines.size()));
-    pipelines.push_back(createPipeline(5, 5, 15, pipelines.size()));
-    */
-    
+    // size = 6;
+    // pipelines.push_back(createPipeline(0, 0, 90, pipelines.size()));
+    // pipelines.push_back(createPipeline(0, 1, 30, pipelines.size()));
+    // pipelines.push_back(createPipeline(0, 5, 20, pipelines.size()));
+    // pipelines.push_back(createPipeline(1, 1, 20, pipelines.size()));
+    // pipelines.push_back(createPipeline(1, 2, 75, pipelines.size()));
+    // pipelines.push_back(createPipeline(1, 3, 55, pipelines.size()));
+    // pipelines.push_back(createPipeline(2, 2, 60, pipelines.size()));
+    // pipelines.push_back(createPipeline(2, 3, 80, pipelines.size()));
+    // pipelines.push_back(createPipeline(3, 3, 40, pipelines.size()));
+    // pipelines.push_back(createPipeline(3, 4, 45, pipelines.size()));
+    // pipelines.push_back(createPipeline(4, 4, 65, pipelines.size()));
+    // pipelines.push_back(createPipeline(4, 5, 90, pipelines.size()));
+    // pipelines.push_back(createPipeline(5, 5, 15, pipelines.size()));
+
+    // testcase 1
+    size = 8;
+    pipelines.push_back(createPipeline(0, 0, 784, pipelines.size()));
+    pipelines.push_back(createPipeline(1, 1, 518, pipelines.size()));
+    pipelines.push_back(createPipeline(2, 2, 403, pipelines.size()));
+    pipelines.push_back(createPipeline(3, 3, 609, pipelines.size()));
+    pipelines.push_back(createPipeline(4, 4, 146, pipelines.size()));
+    pipelines.push_back(createPipeline(5, 5, 808, pipelines.size()));
+    pipelines.push_back(createPipeline(6, 6, 575, pipelines.size()));
+    pipelines.push_back(createPipeline(7, 7, 273, pipelines.size()));
+    pipelines.push_back(createPipeline(7, 2, 288, pipelines.size()));
+    pipelines.push_back(createPipeline(1, 1, 221, pipelines.size()));
+    pipelines.push_back(createPipeline(4, 3, 957, pipelines.size()));
+    pipelines.push_back(createPipeline(5, 5, 176, pipelines.size()));
+    pipelines.push_back(createPipeline(0, 6, 841, pipelines.size()));
+    pipelines.push_back(createPipeline(5, 5, 918, pipelines.size()));
+    pipelines.push_back(createPipeline(1, 5, 809, pipelines.size()));
+    pipelines.push_back(createPipeline(1, 5, 601, pipelines.size()));
+    pipelines.push_back(createPipeline(0, 1, 511, pipelines.size()));
+    pipelines.push_back(createPipeline(0, 4, 208, pipelines.size()));
+    pipelines.push_back(createPipeline(3, 7, 391, pipelines.size()));
+        
     // EXAMPLE-2
     /*
     size = 7;
@@ -276,8 +296,8 @@ void test(){
     
     int size = 15;
     vector<Pipeline*> pipelines, pipelines_copy;
-	randomGraph(pipelines, size);
-    //manualGraph(pipelines, size);
+	//randomGraph(pipelines, size);
+    manualGraph(pipelines, size);
     copyGraph(pipelines, pipelines_copy);
     int num_of_pipelines = pipelines.size();
 
