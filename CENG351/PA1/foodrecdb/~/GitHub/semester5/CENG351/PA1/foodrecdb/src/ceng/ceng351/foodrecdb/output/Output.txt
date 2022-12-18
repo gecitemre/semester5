@@ -1,0 +1,108 @@
+
+--------------------------------------------------------------
+*** Drop tables ***
+Dropped 5 tables.
+
+--------------------------------------------------------------
+
+--------------------------------------------------------------
+*** Create tables ***
+Created 5 tables.
+
+--------------------------------------------------------------
+
+--------------------------------------------------------------
+*** Insert into MenuItems ***
+0 menu items are inserted.
+
+--------------------------------------------------------------
+
+--------------------------------------------------------------
+*** Insert into Ingredients ***
+0 ingredients are inserted.
+
+--------------------------------------------------------------
+
+--------------------------------------------------------------
+*** Insert into Includes ***
+0 includes rows are inserted.
+
+--------------------------------------------------------------
+
+--------------------------------------------------------------
+*** Insert into Ratings ***
+0 ratings are inserted.
+
+--------------------------------------------------------------
+
+--------------------------------------------------------------
+*** Insert into DietaryCategories ***
+0 dietary category rows are inserted.
+
+--------------------------------------------------------------
+
+--------------------------------------------------------------
+*** List all menu items that include a given ingredient ***
+ItemID	Name	Cuisine	Price
+
+--------------------------------------------------------------
+
+--------------------------------------------------------------
+*** List menu items that do not have any ingredients in the database ***
+ItemID	Name	Cuisine	Price
+
+--------------------------------------------------------------
+
+--------------------------------------------------------------
+*** Find ingredients that have not been included in any menu items ***
+ingredientID	Name
+
+--------------------------------------------------------------
+
+--------------------------------------------------------------
+*** Find the menu item that includes the biggest count of ingredients ***
+ItemID	Name	Cuisine	Price
+
+--------------------------------------------------------------
+
+--------------------------------------------------------------
+*** List the average rating of each menu item ***
+ItemID	Name	Average Rating
+
+--------------------------------------------------------------
+
+--------------------------------------------------------------
+*** List menu items suitable to a given dietary category ***
+ItemID	Name	Cuisine	Price
+
+--------------------------------------------------------------
+
+--------------------------------------------------------------
+*** Find the most used ingredient across all menu items ***
+ingredientID	Name
+
+--------------------------------------------------------------
+
+--------------------------------------------------------------
+*** List the cuisines with the average rating of menu items belonging to that cuisine ***
+Cuisine	Average Rating
+
+--------------------------------------------------------------
+
+--------------------------------------------------------------
+*** List the cuisines with average ingredient count of menu items for each cuisine ***
+Cuisine	Average Ingredient Count Per Item
+
+--------------------------------------------------------------
+
+--------------------------------------------------------------
+*** Increase the price of all menu items that include a given ingredient by a given amount ***
+0 rows are changed.
+
+--------------------------------------------------------------
+
+--------------------------------------------------------------
+*** Delete all ratings that have an earlier rating date than the given date ***
+RatingID	ItemID	Rating	Rating Date
+
+--------------------------------------------------------------

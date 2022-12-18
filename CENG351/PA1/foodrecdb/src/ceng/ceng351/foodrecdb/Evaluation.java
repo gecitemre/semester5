@@ -112,7 +112,7 @@ public class Evaluation {
 
        /***********************************************************/
        // TODO While running on your local machine, change foodrecdbDirectory accordingly
-       String foodrecdbDirectory = "/PATH/TO/foodrecdb/src" + System.getProperty("file.separator") +
+       String foodrecdbDirectory = "/home/emre/GitHub/semester5/CENG351/PA1/foodrecdb/src" + System.getProperty("file.separator") +
                "ceng" + System.getProperty("file.separator") +
                        "ceng351" + System.getProperty("file.separator") +
                        "foodrecdb";
