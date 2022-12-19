@@ -1,7 +1,5 @@
 package ceng.ceng351.foodrecdb;
 
-import ceng.ceng351.foodrecdb.QueryResult.MenuItemAverageRatingResult;
-import ceng.ceng351.foodrecdb.QueryResult.CuisineWithAverageResult;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
