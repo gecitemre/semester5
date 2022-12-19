@@ -51,22 +51,22 @@ public class FOODRECDB implements IFOODRECDB {
 
             // Includes(itemID:int, ingredientID:int)
             statement.executeUpdate("CREATE TABLE Includes(" +
-                    "itemID INT," +
-                    "ingredientID INT," +
+                    "itemID INT REFERENCES MenuItems(itemID)," +
+                    "ingredientID INT REFERENCES Ingredients(ingredientID)," +
                     "PRIMARY KEY(itemID, ingredientID))");
             result++;
 
             // Ratings(ratingID:int, itemID:int, rating:int, ratingDate:date)
             statement.executeUpdate("CREATE TABLE Ratings(" +
                     "ratingID INT PRIMARY KEY," +
-                    "itemID INT," +
+                    "itemID INT REFERENCES MenuItems(itemID)," +
                     "rating INT," +
                     "ratingDate DATE)");
             result++;
 
             // DietaryCategories(ingredientID:int, dietaryCategory:varchar(20))
             statement.executeUpdate("CREATE TABLE DietaryCategories(" +
-                    "ingredientID INT," +
+                    "ingredientID INT REFERENCES Ingredients(ingredientID)," +
                     "dietaryCategory VARCHAR(20)," +
                     "PRIMARY KEY(ingredientID, dietaryCategory))");
             result++;
