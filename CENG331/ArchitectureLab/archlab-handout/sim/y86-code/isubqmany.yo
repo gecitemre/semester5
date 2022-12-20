@@ -1,0 +1,12 @@
+0x000:                      | .pos 0
+0x000: 30f00a00000000000000 |     irmovq $10, %rax
+0x00a: d0f01400000000000000 |     isubq $20, %rax
+0x014: 2008                 |     rrmovq %rax, %r8
+0x016: d0f01e00000000000000 |     isubq $30, %rax
+0x020: 2009                 |     rrmovq %rax, %r9
+0x022: d0f06400000000000000 |     isubq $100, %rax
+0x02c: 200a                 |     rrmovq %rax, %r10
+0x02e: d0f00000000000000000 |     isubq $0, %rax
+0x038: 200b                 |     rrmovq %rax, %r11
+0x03a: d0f06400000000000000 |     isubq $100, %rax
+0x044: 00                   |     halt
