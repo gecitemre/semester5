@@ -18,7 +18,6 @@ not_zero:
 check:
     andq %rdi, %rdi
     jne loop
-    andq %rdi, %rdi
     ret
 
 # absolutely positioned here to debug addresses more easily.

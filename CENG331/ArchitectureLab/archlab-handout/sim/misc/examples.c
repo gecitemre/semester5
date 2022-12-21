@@ -37,7 +37,7 @@ long kth_bst(struct Node* root, long *k)
     if (root) {
         long candidate = kth_bst(root->left, k);
        
-        if (k > 0){
+        if (*k > 0){
             -- *k;
             if (*k == 0)
                 return root->data; /* Return the kth element */

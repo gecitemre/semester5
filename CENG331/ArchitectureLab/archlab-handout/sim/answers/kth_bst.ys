@@ -7,17 +7,25 @@
 
 kth_bst:
     andq %rdi, %rdi
-    je .return
+    je return
     pushq %rdi
     mrmovq 8(%rdi), %rdi
     call kth_bst
     popq %rdi
-    movq %rsi %rdx
-    subq $1, %rdx
-    jl gt0
+    mrmovq (%rsi), %rdx
+    irmovq $1, %rcx
+    subq %rcx, %rdx
+    jge gt0
     ret
 gt0:
-    # TODO
+    rmmovq %rdx, (%rsi)
+    je recurse_right
+    mrmovq (%rdi), %rax
+    ret
+recurse_right:
+    mrmovq 16(%rdi), %rdi
+    call kth_bst
+    ret
 return:
     irmovq $-1, %rax
     ret
@@ -62,14 +70,14 @@ node19:
 node40:
 .quad 40
 .quad 0
-.quad 52
+.quad node52
 node52:
 .quad 52
 .quad 0
 .quad 0
 
 k:
-.quad 8
+.quad 7
 
 .pos 0x400
 Stack:
