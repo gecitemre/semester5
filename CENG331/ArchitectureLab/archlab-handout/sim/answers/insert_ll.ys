@@ -1,3 +1,6 @@
+# Emre Geçit
+# 2521581
+
 .pos 0
     irmovq stack, %rsp
     irmovq ele0, %rdi
