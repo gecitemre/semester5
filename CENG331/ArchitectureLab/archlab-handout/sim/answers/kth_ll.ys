@@ -1,7 +1,7 @@
 .pos 0
     irmovq Stack, %rsp
     irmovq ele0, %rdi
-    irmovq $3, %rsi
+    irmovq $3, %rsi # k
     call kth_ll
     halt
 
