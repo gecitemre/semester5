@@ -4,6 +4,10 @@
 #  Copyright (C) Randal E. Bryant, David R. O'Hallaron, 2010       #
 ####################################################################
 
+# Student Information
+# name: Emre Geçit
+# id: 2521581
+
 ## Your task is to implement the isubq instruction
 ## The file contains a declaration of the icodes
 ## for isubq (ISUBQ)
@@ -108,29 +112,29 @@ word ifun = [
 
 bool instr_valid = icode in 
 	{ INOP, IHALT, IRRMOVQ, IIRMOVQ, IRMMOVQ, IMRMOVQ,
-	       IOPQ, IJXX, ICALL, IRET, IPUSHQ, IPOPQ };
+	       IOPQ, IJXX, ICALL, IRET, IPUSHQ, IPOPQ , IISUBQ};
 
 # Does fetched instruction require a regid byte?
 bool need_regids =
 	icode in { IRRMOVQ, IOPQ, IPUSHQ, IPOPQ, 
-		     IIRMOVQ, IRMMOVQ, IMRMOVQ };
+		     IIRMOVQ, IRMMOVQ, IMRMOVQ, IISUBQ };
 
 # Does fetched instruction require a constant word?
 bool need_valC =
-icode in { IIRMOVQ, IRMMOVQ, IMRMOVQ, IJXX, ICALL };
+icode in { IIRMOVQ, IRMMOVQ, IMRMOVQ, IJXX, ICALL, IISUBQ};
 
 ################ Decode Stage    ###################################
 
 ## What register should be used as the A source?
 word srcA = [
-	icode in { IRRMOVQ, IRMMOVQ, IOPQ, IPUSHQ  } : rA;
+	icode in { IRRMOVQ, IRMMOVQ, IOPQ, IPUSHQ } : rA;
 	icode in { IPOPQ, IRET } : RRSP;
 	1 : RNONE; # Don't need register
 ];
 
 ## What register should be used as the B source?
 word srcB = [
-	icode in { IOPQ, IRMMOVQ, IMRMOVQ  } : rB;
+	icode in { IOPQ, IRMMOVQ, IMRMOVQ, IISUBQ } : rB;
 	icode in { IPUSHQ, IPOPQ, ICALL, IRET } : RRSP;
 	1 : RNONE;  # Don't need register
 ];
@@ -138,7 +142,7 @@ word srcB = [
 ## What register should be used as the E destination?
 word dstE = [
 	icode in { IRRMOVQ } && Cnd : rB;
-	icode in { IIRMOVQ, IOPQ} : rB;
+	icode in { IIRMOVQ, IOPQ, IISUBQ } : rB;
 	icode in { IPUSHQ, IPOPQ, ICALL, IRET } : RRSP;
 	1 : RNONE;  # Don't write any register
 ];
@@ -154,7 +158,7 @@ word dstM = [
 ## Select input A to ALU
 word aluA = [
 	icode in { IRRMOVQ, IOPQ } : valA;
-	icode in { IIRMOVQ, IRMMOVQ, IMRMOVQ } : valC;
+	icode in { IIRMOVQ, IRMMOVQ, IMRMOVQ, IISUBQ } : valC;
 	icode in { ICALL, IPUSHQ } : -8;
 	icode in { IRET, IPOPQ } : 8;
 	# Other instructions don't need ALU
@@ -163,7 +167,7 @@ word aluA = [
 ## Select input B to ALU
 word aluB = [
 	icode in { IRMMOVQ, IMRMOVQ, IOPQ, ICALL, 
-		      IPUSHQ, IRET, IPOPQ } : valB;
+		      IPUSHQ, IRET, IPOPQ, IISUBQ } : valB;
 	icode in { IRRMOVQ, IIRMOVQ } : 0;
 	# Other instructions don't need ALU
 ];
@@ -171,11 +175,12 @@ word aluB = [
 ## Set the ALU function
 word alufun = [
 	icode == IOPQ : ifun;
+	icode == IISUBQ : ALUSUB;
 	1 : ALUADD;
 ];
 
 ## Should the condition codes be updated?
-bool set_cc = icode in { IOPQ };
+bool set_cc = icode in { IOPQ, IISUBQ };
 
 ################ Memory Stage    ###################################
 
@@ -216,7 +221,7 @@ word Stat = [
 word new_pc = [
 	# Call.  Use instruction constant
 	icode == ICALL : valC;
-	# Taken branch.  Use instruction constant
+	# Taken branch.  Use instruction constantALUADD
 	icode == IJXX && Cnd : valC;
 	# Completion of RET instruction.  Use value from stack
 	icode == IRET : valM;
