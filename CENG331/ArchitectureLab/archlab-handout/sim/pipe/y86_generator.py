@@ -1,4 +1,4 @@
-#/* $begin abscopy-ys */
+head = """#/* $begin abscopy-ys */
 ##################################################################
 # abscopy.ys - copy the absolute values of a src block of n words to dst.
 # Return the sum of copied (absolute) values.
@@ -15,40 +15,21 @@ abscopy:
 ##################################################################
 # You can modify this portion
         irmovq $1, %r11         # %r11 = 1, will be used inside the loop
-        irmovq $8, %r8          # %r8 = 8, will be used inside the loop
-        irmovq $2, %rcx         # %rcx = 2 = AC (accumulator count)
-        # Loop header
+        irmovq $8, %r8          # %r8 = 8, will be used inside the loop\n"""
+
+ac = int(input())
+i = 0
+AC_loader = f"irmovq {ac}, %rcx\n"
+
+check = """        # Loop header
         xorq %rax,%rax          # sum = 0;
 Check:
         subq %rcx, %rdx         # %rdx -= %rcx
-        jl Remaining            # if n < AC, goto Remaining
-Loop1:
-        mrmovq (%rdi), %r10     # read val from src...
-        andq %r10, %r10         # val >= 0?
-        jge Positive1           # if so, skip negating
-        isubq $0, %r10          # Use isubq to negate val
-Positive1:
-        addq %r10, %rax         # sum += absval   
-        rmmovq %r10, (%rsi)     # ...and store it to dst
-        # irmovq $1, %r10 | This costs an extra cycle each loop and unnecessary. Instead dedicated register %r11 is used.
-        # irmovq $8, %r10 | This costs an extra cycle each loop and unnecessary. Instead dedicated register %r8 is used.
-        addq %r8, %rsi          # dst++
-        addq %r8, %rdi          # src++
-Loop2:
-        mrmovq (%rdi), %r10     # read val from src...
-        andq %r10, %r10         # val >= 0?
-        jge Positive2           # if so, skip negating
-        isubq $0, %r10          # Use isubq to negate val
-Positive2:
-        addq %r10, %rax         # sum += absval   
-        rmmovq %r10, (%rsi)     # ...and store it to dst
-        # irmovq $1, %r10 | This costs an extra cycle each loop and unnecessary. Instead dedicated register %r11 is used.
-        # irmovq $8, %r10 | This costs an extra cycle each loop and unnecessary. Instead dedicated register %r8 is used.
-        addq %r8, %rsi          # dst++
-        addq %r8, %rdi          # src++
-        jmp Check               # goto Check
+        jl Remaining            # if n < AC, goto Remaining\n
+"""
 
-Remaining:
+
+remaining = """Remaining:
         addq %rcx, %rdx         # %rdx += %rcx
 Loop:
         je Done                # if n == 0, goto Done
@@ -75,4 +56,24 @@ Done:
 ##################################################################
 # Keep the following label at the end of your function
 End:
-#/* $end abscopy-ys */
+#/* $end abscopy-ys */"""
+
+y86 = head + AC_loader + check
+for i in range(1, ac + 1):
+    y86 += f"""Loop{i}:
+        mrmovq (%rdi), %r10     # read val from src...
+        andq %r10, %r10         # val >= 0?
+        jge Positive1           # if so, skip negating
+        isubq $0, %r10          # Use isubq to negate val
+Positive{i}:
+        addq %r10, %rax         # sum += absval   
+        rmmovq %r10, (%rsi)     # ...and store it to dst
+        # irmovq $1, %r10 | This costs an extra cycle each loop and unnecessary. Instead dedicated register %r11 is used.
+        # irmovq $8, %r10 | This costs an extra cycle each loop and unnecessary. Instead dedicated register %r8 is used.
+        addq %r8, %rsi          # dst++
+        addq %r8, %rdi          # src++\n"""
+
+y86 += remaining
+
+with open("generated_abscopy.ys", "w") as f:
+    f.write(y86)

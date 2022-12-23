@@ -3,6 +3,11 @@
 #    HCL Description of Control for Pipelined Y86-64 Processor     #
 #    Copyright (C) Randal E. Bryant, David R. O'Hallaron, 2014     #
 ####################################################################
+# Student Information
+# name: Emre Geçit
+# id: 2521581
+# I have implemented ISUBQ instruction the same way in the part B.
+# Now, it takes 1 clock cycle to negate val, instead of 3.
 
 ## Here you'll find the control logic for PIPE. A bit more involved
 ## than SEQ that's for sure! Don't let that scare you though, you
