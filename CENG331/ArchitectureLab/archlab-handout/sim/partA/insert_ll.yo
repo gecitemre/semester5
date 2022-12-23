@@ -1,8 +1,11 @@
+                            | # Emre Geçit
+                            | # 2521581
+                            | 
 0x000:                      | .pos 0
 0x000: 30f40005000000000000 |     irmovq stack, %rsp
 0x00a: 30f70002000000000000 |     irmovq ele0, %rdi
 0x014: 30f60004000000000000 |     irmovq array, %rsi
-0x01e: 30f2f3ffffffffffffff |     irmovq $-13, %rdx # value
+0x01e: 30f20d00000000000000 |     irmovq $13, %rdx # value
 0x028: 803200000000000000   |     call insert_ll
 0x031: 00                   |     halt
                             | 
@@ -25,7 +28,7 @@
 0x08a: 705e00000000000000   |     jmp while
 0x093:                      | break:
 0x093: 40860800000000000000 |     rmmovq %r8, 8(%rsi) # *(array + 1) = temp->next
-0x09d: 40680000000000000000 |     rmmovq %rsi, (%r8) # temp->next = array
+0x09d: 40610800000000000000 |     rmmovq %rsi, 8(%rcx) # temp->next = array
 0x0a7: 2070                 |     rrmovq %rdi, %rax # return head
 0x0a9: 90                   |     ret
 0x0aa:                      | insert_head:

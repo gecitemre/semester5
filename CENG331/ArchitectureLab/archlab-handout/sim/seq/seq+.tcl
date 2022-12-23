@@ -143,7 +143,7 @@ pack .r.lab -in .r -side top
 # button .r.c -text "Clear" -command clearReg -width 6
 # pack .r.labreg .r.regid .r.labval .r.regval .r.doset .r.c  -in .r.cntl -side left
 
-set regnames [list "%rax" "%rcx" "%rdx" "%rbx" "%rsp" "%rbp" "%rsi" "%rdi" "%r8 " "%r8 " "%r10" "%r11" "%r12" "%r13" "%r14" ""]
+set regnames [list "%rax" "%rcx" "%rdx" "%rbx" "%rsp" "%rbp" "%rsi" "%rdi" "%r8 " "%r9 " "%r10" "%r11" "%r12" "%r13" "%r14" ""]
 
 # Create rows of register labels and displays
 for {set j 0} {$j < 3} {incr j 1} {

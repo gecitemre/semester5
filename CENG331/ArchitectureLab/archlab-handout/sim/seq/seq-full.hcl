@@ -1,12 +1,20 @@
+# Student Information
+# name: Emre Geçit
+# id: 2521581
+# ISUBQ instruction implementation details:
+# 1. IISUBQ is added to the list of valid instructions.
+# 2. IISUBQ is added to the list of instructions that require a regid byte.
+# 3. IISUBQ is added to the list of instructions that require a constant word.
+# 4. If the instruction is IISUBQ, valB is the value of rB.
+
+
+
 #/* $begin seq-all-hcl */
 ####################################################################
 #  HCL Description of Control for Single Cycle Y86-64 Processor SEQ   #
 #  Copyright (C) Randal E. Bryant, David R. O'Hallaron, 2010       #
 ####################################################################
 
-# Student Information
-# name: Emre Geçit
-# id: 2521581
 
 ## Your task is to implement the isubq instruction
 ## The file contains a declaration of the icodes

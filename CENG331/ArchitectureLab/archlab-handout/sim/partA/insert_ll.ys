@@ -28,7 +28,7 @@ while:
     jmp while
 break:
     rmmovq %r8, 8(%rsi) # *(array + 1) = temp->next
-    rmmovq %rsi, (%r8) # temp->next = array
+    rmmovq %rsi, 8(%rcx) # temp->next = array
     rrmovq %rdi, %rax # return head
     ret
 insert_head:
