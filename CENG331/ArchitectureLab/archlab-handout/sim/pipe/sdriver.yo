@@ -37,38 +37,38 @@
 0x0a0:                      | abscopy:
                             | ##################################################################
                             | # You can modify this portion
+0x0a0: 30fb0100000000000000 |         irmovq $1, %r11         # %r11 = 1, will be used inside the loop
+0x0aa: 30f80800000000000000 |         irmovq $8, %r8          # %r8 = 8, will be used inside the loop
                             |         # Loop header
-0x0a0: 6300                 |         xorq %rax,%rax          # sum = 0;
-0x0a2: 6222                 |         andq %rdx,%rdx          # n <= 0?
-0x0a4: 71f900000000000000   |         jle Done                # if so, goto Done:
+0x0b4: 6300                 |         xorq %rax,%rax          # sum = 0;
+0x0b6: 6222                 |         andq %rdx,%rdx          # n <= 0?
+0x0b8: 71fd00000000000000   |         jle Done                # if so, goto Done:
                             | 
-0x0ad:                      | Loop:   
-0x0ad: 50a70000000000000000 |         mrmovq (%rdi), %r10     # read val from src...
-0x0b7: 62aa                 |         andq %r10, %r10         # val >= 0?
-0x0b9: 75c800000000000000   |         jge Positive            # if so, skip negating
-0x0c2: 20a9                 |         rrmovq %r10, %r9        # temporary move
-0x0c4: 63aa                 |         xorq %r10, %r10         # zero r10
-0x0c6: 619a                 |         subq %r9, %r10          # negation achieved!
-0x0c8:                      | Positive:
-0x0c8: 60a0                 |         addq %r10, %rax         # sum += absval   
-0x0ca: 40a60000000000000000 |         rmmovq %r10, (%rsi)     # ...and store it to dst
-0x0d4: 30fa0100000000000000 |         irmovq $1, %r10
-0x0de: 61a2                 |         subq %r10, %rdx         # n--
-0x0e0: 30fa0800000000000000 |         irmovq $8, %r10
-0x0ea: 60a6                 |         addq %r10, %rsi         # dst++
-0x0ec: 60a7                 |         addq %r10, %rdi         # src++
-0x0ee: 6222                 |         andq %rdx,%rdx          # n > 0?
-0x0f0: 76ad00000000000000   |         jg Loop                 # if so, goto Loop:
+0x0c1:                      | Loop:   
+0x0c1: 50a70000000000000000 |         mrmovq (%rdi), %r10     # read val from src...
+0x0cb: 62aa                 |         andq %r10, %r10         # val >= 0?
+0x0cd: 75e000000000000000   |         jge Positive            # if so, skip negating
+0x0d6: d0fa0000000000000000 |         isubq $0, %r10          # r10 = -val
+0x0e0:                      | Positive:
+0x0e0: 60a0                 |         addq %r10, %rax         # sum += absval   
+0x0e2: 40a60000000000000000 |         rmmovq %r10, (%rsi)     # ...and store it to dst
+                            |         # irmovq $1, %r10 | This costs an extra cycle each loop and unnecessary. Instead dedicated register %r11 is used.
+0x0ec: 61b2                 |         subq %r11, %rdx         # n--
+                            |         # irmovq $8, %r10 | This costs an extra cycle each loop and unnecessary. Instead dedicated register %r8 is used.
+0x0ee: 6086                 |         addq %r8, %rsi          # dst++
+0x0f0: 6087                 |         addq %r8, %rdi          # src++
+0x0f2: 6222                 |         andq %rdx, %rdx         # n > 0?
+0x0f4: 76c100000000000000   |         jg Loop                 # if so, goto Loop:
                             | ##################################################################
                             | # Do not modify the following section of code
                             | # Function epilogue.
-0x0f9:                      | Done:
-0x0f9: 90                   |         ret
+0x0fd:                      | Done:
+0x0fd: 90                   |         ret
                             | ##################################################################
                             | # Keep the following label at the end of your function
-0x0fa:                      | End:
+0x0fe:                      | End:
                             | #/* $end abscopy-ys */
-0x0fa:                      | EndFun:
+0x0fe:                      | EndFun:
                             | 
                             | ###############################
                             | # Source and destination blocks 
@@ -76,9 +76,9 @@
 0x100:                      | 	.align 8
 0x100:                      | src:
 0x100: ffffffffffffffff     | 	.quad -1
-0x108: 0200000000000000     | 	.quad 2
+0x108: feffffffffffffff     | 	.quad -2
 0x110: 0300000000000000     | 	.quad 3
-0x118: fcffffffffffffff     | 	.quad -4
+0x118: 0400000000000000     | 	.quad 4
 0x120: fadebc0000000000     | 	.quad 0xbcdefa # This shouldn't get moved
                             | 
 0x130:                      | 	.align 16

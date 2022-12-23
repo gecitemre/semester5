@@ -162,7 +162,7 @@ word f_ifun = [
 # Is instruction valid?
 bool instr_valid = f_icode in 
 	{ INOP, IHALT, IRRMOVQ, IIRMOVQ, IRMMOVQ, IMRMOVQ,
-	  IOPQ, IJXX, ICALL, IRET, IPUSHQ, IPOPQ };
+	  IOPQ, IJXX, ICALL, IRET, IPUSHQ, IPOPQ, IISUBQ };
 
 # Determine status code for fetched instruction
 word f_stat = [
@@ -175,11 +175,11 @@ word f_stat = [
 # Does fetched instruction require a regid byte?
 bool need_regids =
 	f_icode in { IRRMOVQ, IOPQ, IPUSHQ, IPOPQ, 
-	     IIRMOVQ, IRMMOVQ, IMRMOVQ };
+	     IIRMOVQ, IRMMOVQ, IMRMOVQ, IISUBQ };
 
 # Does fetched instruction require a constant word?
 bool need_valC =
-f_icode in { IIRMOVQ, IRMMOVQ, IMRMOVQ, IJXX, ICALL };
+f_icode in { IIRMOVQ, IRMMOVQ, IMRMOVQ, IJXX, ICALL, IISUBQ };
 
 # Predict next value of PC
 word f_predPC = [
@@ -199,14 +199,14 @@ D_icode in { IRRMOVQ, IRMMOVQ, IOPQ, IPUSHQ  } : D_rA;
 
 ## What register should be used as the B source?
 word d_srcB = [
-D_icode in { IOPQ, IRMMOVQ, IMRMOVQ  } : D_rB;
+D_icode in { IOPQ, IRMMOVQ, IMRMOVQ, IISUBQ } : D_rB;
 	D_icode in { IPUSHQ, IPOPQ, ICALL, IRET } : RRSP;
 	1 : RNONE;  # Don't need register
 ];
 
 ## What register should be used as the E destination?
 word d_dstE = [
-	D_icode in { IRRMOVQ, IIRMOVQ, IOPQ} : D_rB;
+	D_icode in { IRRMOVQ, IIRMOVQ, IOPQ, IISUBQ } : D_rB;
 	D_icode in { IPUSHQ, IPOPQ, ICALL, IRET } : RRSP;
 	1 : RNONE;  # Don't write any register
 ];
@@ -242,7 +242,7 @@ word d_valB = [
 
 ## Select input A to ALU
 word aluA = [
-    E_icode in { IRRMOVQ, IOPQ } : E_valA;
+    E_icode in { IRRMOVQ, IOPQ, IISUBQ } : E_valA;
 	E_icode in { IIRMOVQ, IRMMOVQ, IMRMOVQ } : E_valC;
 	E_icode in { ICALL, IPUSHQ } : -8;
 	E_icode in { IRET, IPOPQ } : 8;
@@ -254,12 +254,14 @@ word aluB = [
 E_icode in { IRMMOVQ, IMRMOVQ, IOPQ, ICALL, 
 		     IPUSHQ, IRET, IPOPQ } : E_valB;
 	E_icode in { IRRMOVQ, IIRMOVQ } : 0;
+	E_icode == IISUBQ : E_valC;
 	# Other instructions don't need ALU
 ];
 
 ## Set the ALU function
 word alufun = [
 	E_icode == IOPQ : E_ifun;
+	E_icode == IISUBQ : ALUSUB;
 	1 : ALUADD;
 ];
 

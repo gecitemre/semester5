@@ -17,15 +17,14 @@ abscopy:
         # Loop header
         xorq %rax,%rax          # sum = 0;
         andq %rdx,%rdx          # n <= 0?
-        jle Done                # if so, goto Done:
+        jg Loop
+        ret
 
 Loop:   
         mrmovq (%rdi), %r10     # read val from src...
         andq %r10, %r10         # val >= 0?
         jge Positive            # if so, skip negating
-        rrmovq %r10, %r9        # temporary move
-        xorq %r10, %r10         # zero r10
-        subq %r9, %r10          # negation achieved!
+        isubq $0, %r10          # r10 = -val
 Positive:
         addq %r10, %rax         # sum += absval   
         rmmovq %r10, (%rsi)     # ...and store it to dst

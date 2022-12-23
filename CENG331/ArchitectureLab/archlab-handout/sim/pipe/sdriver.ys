@@ -37,6 +37,8 @@ StartFun:
 abscopy:
 ##################################################################
 # You can modify this portion
+        irmovq $1, %r11         # %r11 = 1, will be used inside the loop
+        irmovq $8, %r8          # %r8 = 8, will be used inside the loop
         # Loop header
         xorq %rax,%rax          # sum = 0;
         andq %rdx,%rdx          # n <= 0?
@@ -46,18 +48,16 @@ Loop:
         mrmovq (%rdi), %r10     # read val from src...
         andq %r10, %r10         # val >= 0?
         jge Positive            # if so, skip negating
-        rrmovq %r10, %r9        # temporary move
-        xorq %r10, %r10         # zero r10
-        subq %r9, %r10          # negation achieved!
+        isubq $0, %r10          # r10 = -val
 Positive:
         addq %r10, %rax         # sum += absval   
         rmmovq %r10, (%rsi)     # ...and store it to dst
-        irmovq $1, %r10
-        subq %r10, %rdx         # n--
-        irmovq $8, %r10
-        addq %r10, %rsi         # dst++
-        addq %r10, %rdi         # src++
-        andq %rdx,%rdx          # n > 0?
+        # irmovq $1, %r10 | This costs an extra cycle each loop and unnecessary. Instead dedicated register %r11 is used.
+        subq %r11, %rdx         # n--
+        # irmovq $8, %r10 | This costs an extra cycle each loop and unnecessary. Instead dedicated register %r8 is used.
+        addq %r8, %rsi          # dst++
+        addq %r8, %rdi          # src++
+        andq %rdx, %rdx         # n > 0?
         jg Loop                 # if so, goto Loop:
 ##################################################################
 # Do not modify the following section of code
@@ -76,9 +76,9 @@ EndFun:
 	.align 8
 src:
 	.quad -1
-	.quad 2
+	.quad -2
 	.quad 3
-	.quad -4
+	.quad 4
 	.quad 0xbcdefa # This shouldn't get moved
 
 	.align 16
