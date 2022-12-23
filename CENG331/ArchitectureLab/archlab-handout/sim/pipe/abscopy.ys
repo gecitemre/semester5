@@ -21,9 +21,13 @@ Loop:
         mrmovq (%rdi), %r10     # read val from src...
         andq %r10, %r10         # val >= 0?
         jge Positive            # if so, skip negating
-        rrmovq %r10, %r9        # temporary move
-        xorq %r10, %r10         # zero r10
-        subq %r9, %r10          # negation achieved!
+        irmovq $0xffffffffffffffff, %r14
+        xorq %r14, %r10           # val = ~val
+        irmovq $1, %r9
+        addq %r9, %r10          # val = ~val + 1 (negation)
+        # rrmovq %r10, %r9        # temporary move
+        # xorq %r10, %r10         # zero r10
+        # subq %r9, %r10          # negation achieved!
 Positive:
         addq %r10, %rax         # sum += absval   
         rmmovq %r10, (%rsi)     # ...and store it to dst
