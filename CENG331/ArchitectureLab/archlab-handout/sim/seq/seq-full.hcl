@@ -157,8 +157,9 @@ word dstM = [
 
 ## Select input A to ALU
 word aluA = [
+	icode == IISUBQ : valB;
 	icode in { IRRMOVQ, IOPQ } : valA;
-	icode in { IIRMOVQ, IRMMOVQ, IMRMOVQ, IISUBQ } : valC;
+	icode in { IIRMOVQ, IRMMOVQ, IMRMOVQ } : valC;
 	icode in { ICALL, IPUSHQ } : -8;
 	icode in { IRET, IPOPQ } : 8;
 	# Other instructions don't need ALU
@@ -166,8 +167,9 @@ word aluA = [
 
 ## Select input B to ALU
 word aluB = [
+	icode == IISUBQ : valC;
 	icode in { IRMMOVQ, IMRMOVQ, IOPQ, ICALL, 
-		      IPUSHQ, IRET, IPOPQ, IISUBQ } : valB;
+		      IPUSHQ, IRET, IPOPQ } : valB;
 	icode in { IRRMOVQ, IIRMOVQ } : 0;
 	# Other instructions don't need ALU
 ];
