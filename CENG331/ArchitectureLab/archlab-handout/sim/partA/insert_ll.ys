@@ -5,7 +5,7 @@
     irmovq stack, %rsp
     irmovq ele0, %rdi
     irmovq array, %rsi
-    irmovq $13, %rdx # value
+    irmovq $0x999, %rdx # value
     call insert_ll
     halt
 
@@ -40,7 +40,7 @@ insert_head:
 .pos 0x200
 ele0:
     .quad 0x0005
-    .quad ele2
+    .quad ele1
 ele1:
     .quad 0x000c
     .quad ele2
