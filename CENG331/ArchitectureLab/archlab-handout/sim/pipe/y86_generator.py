@@ -5,7 +5,8 @@ head = """#/* $begin abscopy-ys */
 #
 # name: Emre Geçit
 # id: 2521581
-
+# I have tried different configurations for loop count.
+# Best result is achieved with 5 loops.
 
 ##################################################################
 # Do not modify this portion
@@ -19,7 +20,7 @@ abscopy:
 
 ac = int(input())
 i = 0
-AC_loader = f"irmovq {ac}, %rcx\n"
+AC_loader = f"irmovq ${ac}, %rcx\n"
 
 check = """        # Loop header
         xorq %rax,%rax          # sum = 0;
@@ -29,7 +30,10 @@ Check:
 """
 
 
-remaining = """Remaining:
+remaining = """
+        jmp Check               # goto Check
+
+Remaining:
         addq %rcx, %rdx         # %rdx += %rcx
 Loop:
         je Done                # if n == 0, goto Done
@@ -56,14 +60,14 @@ Done:
 ##################################################################
 # Keep the following label at the end of your function
 End:
-#/* $end abscopy-ys */"""
+#/* $end abscopy-ys */\n"""
 
 y86 = head + AC_loader + check
 for i in range(1, ac + 1):
     y86 += f"""Loop{i}:
         mrmovq (%rdi), %r10     # read val from src...
         andq %r10, %r10         # val >= 0?
-        jge Positive1           # if so, skip negating
+        jge Positive{i}           # if so, skip negating
         isubq $0, %r10          # Use isubq to negate val
 Positive{i}:
         addq %r10, %rax         # sum += absval   

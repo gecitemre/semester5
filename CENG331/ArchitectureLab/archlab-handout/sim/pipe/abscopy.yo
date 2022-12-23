@@ -1,0 +1,248 @@
+                            | #/* $begin abscopy-ys */
+                            | ##################################################################
+                            | # abscopy.ys - copy the absolute values of a src block of n words to dst.
+                            | # Return the sum of copied (absolute) values.
+                            | #
+                            | # name: Emre Geçit
+                            | # id: 2521581
+                            | 
+                            | 
+                            | ##################################################################
+                            | # Do not modify this portion
+                            | # Function prologue.
+                            | # %rdi = src, %rsi = dst, %rdx = n
+0x000:                      | abscopy:
+                            | ##################################################################
+                            | # You can modify this portion
+0x000: 30fb0100000000000000 |         irmovq $1, %r11         # %r11 = 1, will be used inside the loop
+0x00a: 30f80800000000000000 |         irmovq $8, %r8          # %r8 = 8, will be used inside the loop
+0x014: 30f11000000000000000 | irmovq $16, %rcx
+                            |         # Loop header
+0x01e: 6300                 |         xorq %rax,%rax          # sum = 0;
+0x020:                      | Check:
+0x020: 6112                 |         subq %rcx, %rdx         # %rdx -= %rcx
+0x022: 722403000000000000   |         jl Remaining            # if n < AC, goto Remaining
+                            | 
+0x02b:                      | Loop1:
+0x02b: 50a70000000000000000 |         mrmovq (%rdi), %r10     # read val from src...
+0x035: 62aa                 |         andq %r10, %r10         # val >= 0?
+0x037: 754a00000000000000   |         jge Positive1           # if so, skip negating
+0x040: d0fa0000000000000000 |         isubq $0, %r10          # Use isubq to negate val
+0x04a:                      | Positive1:
+0x04a: 60a0                 |         addq %r10, %rax         # sum += absval   
+0x04c: 40a60000000000000000 |         rmmovq %r10, (%rsi)     # ...and store it to dst
+                            |         # irmovq $1, %r10 | This costs an extra cycle each loop and unnecessary. Instead dedicated register %r11 is used.
+                            |         # irmovq $8, %r10 | This costs an extra cycle each loop and unnecessary. Instead dedicated register %r8 is used.
+0x056: 6086                 |         addq %r8, %rsi          # dst++
+0x058: 6087                 |         addq %r8, %rdi          # src++
+0x05a:                      | Loop2:
+0x05a: 50a70000000000000000 |         mrmovq (%rdi), %r10     # read val from src...
+0x064: 62aa                 |         andq %r10, %r10         # val >= 0?
+0x066: 757900000000000000   |         jge Positive2           # if so, skip negating
+0x06f: d0fa0000000000000000 |         isubq $0, %r10          # Use isubq to negate val
+0x079:                      | Positive2:
+0x079: 60a0                 |         addq %r10, %rax         # sum += absval   
+0x07b: 40a60000000000000000 |         rmmovq %r10, (%rsi)     # ...and store it to dst
+                            |         # irmovq $1, %r10 | This costs an extra cycle each loop and unnecessary. Instead dedicated register %r11 is used.
+                            |         # irmovq $8, %r10 | This costs an extra cycle each loop and unnecessary. Instead dedicated register %r8 is used.
+0x085: 6086                 |         addq %r8, %rsi          # dst++
+0x087: 6087                 |         addq %r8, %rdi          # src++
+0x089:                      | Loop3:
+0x089: 50a70000000000000000 |         mrmovq (%rdi), %r10     # read val from src...
+0x093: 62aa                 |         andq %r10, %r10         # val >= 0?
+0x095: 75a800000000000000   |         jge Positive3           # if so, skip negating
+0x09e: d0fa0000000000000000 |         isubq $0, %r10          # Use isubq to negate val
+0x0a8:                      | Positive3:
+0x0a8: 60a0                 |         addq %r10, %rax         # sum += absval   
+0x0aa: 40a60000000000000000 |         rmmovq %r10, (%rsi)     # ...and store it to dst
+                            |         # irmovq $1, %r10 | This costs an extra cycle each loop and unnecessary. Instead dedicated register %r11 is used.
+                            |         # irmovq $8, %r10 | This costs an extra cycle each loop and unnecessary. Instead dedicated register %r8 is used.
+0x0b4: 6086                 |         addq %r8, %rsi          # dst++
+0x0b6: 6087                 |         addq %r8, %rdi          # src++
+0x0b8:                      | Loop4:
+0x0b8: 50a70000000000000000 |         mrmovq (%rdi), %r10     # read val from src...
+0x0c2: 62aa                 |         andq %r10, %r10         # val >= 0?
+0x0c4: 75d700000000000000   |         jge Positive4           # if so, skip negating
+0x0cd: d0fa0000000000000000 |         isubq $0, %r10          # Use isubq to negate val
+0x0d7:                      | Positive4:
+0x0d7: 60a0                 |         addq %r10, %rax         # sum += absval   
+0x0d9: 40a60000000000000000 |         rmmovq %r10, (%rsi)     # ...and store it to dst
+                            |         # irmovq $1, %r10 | This costs an extra cycle each loop and unnecessary. Instead dedicated register %r11 is used.
+                            |         # irmovq $8, %r10 | This costs an extra cycle each loop and unnecessary. Instead dedicated register %r8 is used.
+0x0e3: 6086                 |         addq %r8, %rsi          # dst++
+0x0e5: 6087                 |         addq %r8, %rdi          # src++
+0x0e7:                      | Loop5:
+0x0e7: 50a70000000000000000 |         mrmovq (%rdi), %r10     # read val from src...
+0x0f1: 62aa                 |         andq %r10, %r10         # val >= 0?
+0x0f3: 750601000000000000   |         jge Positive5           # if so, skip negating
+0x0fc: d0fa0000000000000000 |         isubq $0, %r10          # Use isubq to negate val
+0x106:                      | Positive5:
+0x106: 60a0                 |         addq %r10, %rax         # sum += absval   
+0x108: 40a60000000000000000 |         rmmovq %r10, (%rsi)     # ...and store it to dst
+                            |         # irmovq $1, %r10 | This costs an extra cycle each loop and unnecessary. Instead dedicated register %r11 is used.
+                            |         # irmovq $8, %r10 | This costs an extra cycle each loop and unnecessary. Instead dedicated register %r8 is used.
+0x112: 6086                 |         addq %r8, %rsi          # dst++
+0x114: 6087                 |         addq %r8, %rdi          # src++
+0x116:                      | Loop6:
+0x116: 50a70000000000000000 |         mrmovq (%rdi), %r10     # read val from src...
+0x120: 62aa                 |         andq %r10, %r10         # val >= 0?
+0x122: 753501000000000000   |         jge Positive6           # if so, skip negating
+0x12b: d0fa0000000000000000 |         isubq $0, %r10          # Use isubq to negate val
+0x135:                      | Positive6:
+0x135: 60a0                 |         addq %r10, %rax         # sum += absval   
+0x137: 40a60000000000000000 |         rmmovq %r10, (%rsi)     # ...and store it to dst
+                            |         # irmovq $1, %r10 | This costs an extra cycle each loop and unnecessary. Instead dedicated register %r11 is used.
+                            |         # irmovq $8, %r10 | This costs an extra cycle each loop and unnecessary. Instead dedicated register %r8 is used.
+0x141: 6086                 |         addq %r8, %rsi          # dst++
+0x143: 6087                 |         addq %r8, %rdi          # src++
+0x145:                      | Loop7:
+0x145: 50a70000000000000000 |         mrmovq (%rdi), %r10     # read val from src...
+0x14f: 62aa                 |         andq %r10, %r10         # val >= 0?
+0x151: 756401000000000000   |         jge Positive7           # if so, skip negating
+0x15a: d0fa0000000000000000 |         isubq $0, %r10          # Use isubq to negate val
+0x164:                      | Positive7:
+0x164: 60a0                 |         addq %r10, %rax         # sum += absval   
+0x166: 40a60000000000000000 |         rmmovq %r10, (%rsi)     # ...and store it to dst
+                            |         # irmovq $1, %r10 | This costs an extra cycle each loop and unnecessary. Instead dedicated register %r11 is used.
+                            |         # irmovq $8, %r10 | This costs an extra cycle each loop and unnecessary. Instead dedicated register %r8 is used.
+0x170: 6086                 |         addq %r8, %rsi          # dst++
+0x172: 6087                 |         addq %r8, %rdi          # src++
+0x174:                      | Loop8:
+0x174: 50a70000000000000000 |         mrmovq (%rdi), %r10     # read val from src...
+0x17e: 62aa                 |         andq %r10, %r10         # val >= 0?
+0x180: 759301000000000000   |         jge Positive8           # if so, skip negating
+0x189: d0fa0000000000000000 |         isubq $0, %r10          # Use isubq to negate val
+0x193:                      | Positive8:
+0x193: 60a0                 |         addq %r10, %rax         # sum += absval   
+0x195: 40a60000000000000000 |         rmmovq %r10, (%rsi)     # ...and store it to dst
+                            |         # irmovq $1, %r10 | This costs an extra cycle each loop and unnecessary. Instead dedicated register %r11 is used.
+                            |         # irmovq $8, %r10 | This costs an extra cycle each loop and unnecessary. Instead dedicated register %r8 is used.
+0x19f: 6086                 |         addq %r8, %rsi          # dst++
+0x1a1: 6087                 |         addq %r8, %rdi          # src++
+0x1a3:                      | Loop9:
+0x1a3: 50a70000000000000000 |         mrmovq (%rdi), %r10     # read val from src...
+0x1ad: 62aa                 |         andq %r10, %r10         # val >= 0?
+0x1af: 75c201000000000000   |         jge Positive9           # if so, skip negating
+0x1b8: d0fa0000000000000000 |         isubq $0, %r10          # Use isubq to negate val
+0x1c2:                      | Positive9:
+0x1c2: 60a0                 |         addq %r10, %rax         # sum += absval   
+0x1c4: 40a60000000000000000 |         rmmovq %r10, (%rsi)     # ...and store it to dst
+                            |         # irmovq $1, %r10 | This costs an extra cycle each loop and unnecessary. Instead dedicated register %r11 is used.
+                            |         # irmovq $8, %r10 | This costs an extra cycle each loop and unnecessary. Instead dedicated register %r8 is used.
+0x1ce: 6086                 |         addq %r8, %rsi          # dst++
+0x1d0: 6087                 |         addq %r8, %rdi          # src++
+0x1d2:                      | Loop10:
+0x1d2: 50a70000000000000000 |         mrmovq (%rdi), %r10     # read val from src...
+0x1dc: 62aa                 |         andq %r10, %r10         # val >= 0?
+0x1de: 75f101000000000000   |         jge Positive10           # if so, skip negating
+0x1e7: d0fa0000000000000000 |         isubq $0, %r10          # Use isubq to negate val
+0x1f1:                      | Positive10:
+0x1f1: 60a0                 |         addq %r10, %rax         # sum += absval   
+0x1f3: 40a60000000000000000 |         rmmovq %r10, (%rsi)     # ...and store it to dst
+                            |         # irmovq $1, %r10 | This costs an extra cycle each loop and unnecessary. Instead dedicated register %r11 is used.
+                            |         # irmovq $8, %r10 | This costs an extra cycle each loop and unnecessary. Instead dedicated register %r8 is used.
+0x1fd: 6086                 |         addq %r8, %rsi          # dst++
+0x1ff: 6087                 |         addq %r8, %rdi          # src++
+0x201:                      | Loop11:
+0x201: 50a70000000000000000 |         mrmovq (%rdi), %r10     # read val from src...
+0x20b: 62aa                 |         andq %r10, %r10         # val >= 0?
+0x20d: 752002000000000000   |         jge Positive11           # if so, skip negating
+0x216: d0fa0000000000000000 |         isubq $0, %r10          # Use isubq to negate val
+0x220:                      | Positive11:
+0x220: 60a0                 |         addq %r10, %rax         # sum += absval   
+0x222: 40a60000000000000000 |         rmmovq %r10, (%rsi)     # ...and store it to dst
+                            |         # irmovq $1, %r10 | This costs an extra cycle each loop and unnecessary. Instead dedicated register %r11 is used.
+                            |         # irmovq $8, %r10 | This costs an extra cycle each loop and unnecessary. Instead dedicated register %r8 is used.
+0x22c: 6086                 |         addq %r8, %rsi          # dst++
+0x22e: 6087                 |         addq %r8, %rdi          # src++
+0x230:                      | Loop12:
+0x230: 50a70000000000000000 |         mrmovq (%rdi), %r10     # read val from src...
+0x23a: 62aa                 |         andq %r10, %r10         # val >= 0?
+0x23c: 754f02000000000000   |         jge Positive12           # if so, skip negating
+0x245: d0fa0000000000000000 |         isubq $0, %r10          # Use isubq to negate val
+0x24f:                      | Positive12:
+0x24f: 60a0                 |         addq %r10, %rax         # sum += absval   
+0x251: 40a60000000000000000 |         rmmovq %r10, (%rsi)     # ...and store it to dst
+                            |         # irmovq $1, %r10 | This costs an extra cycle each loop and unnecessary. Instead dedicated register %r11 is used.
+                            |         # irmovq $8, %r10 | This costs an extra cycle each loop and unnecessary. Instead dedicated register %r8 is used.
+0x25b: 6086                 |         addq %r8, %rsi          # dst++
+0x25d: 6087                 |         addq %r8, %rdi          # src++
+0x25f:                      | Loop13:
+0x25f: 50a70000000000000000 |         mrmovq (%rdi), %r10     # read val from src...
+0x269: 62aa                 |         andq %r10, %r10         # val >= 0?
+0x26b: 757e02000000000000   |         jge Positive13           # if so, skip negating
+0x274: d0fa0000000000000000 |         isubq $0, %r10          # Use isubq to negate val
+0x27e:                      | Positive13:
+0x27e: 60a0                 |         addq %r10, %rax         # sum += absval   
+0x280: 40a60000000000000000 |         rmmovq %r10, (%rsi)     # ...and store it to dst
+                            |         # irmovq $1, %r10 | This costs an extra cycle each loop and unnecessary. Instead dedicated register %r11 is used.
+                            |         # irmovq $8, %r10 | This costs an extra cycle each loop and unnecessary. Instead dedicated register %r8 is used.
+0x28a: 6086                 |         addq %r8, %rsi          # dst++
+0x28c: 6087                 |         addq %r8, %rdi          # src++
+0x28e:                      | Loop14:
+0x28e: 50a70000000000000000 |         mrmovq (%rdi), %r10     # read val from src...
+0x298: 62aa                 |         andq %r10, %r10         # val >= 0?
+0x29a: 75ad02000000000000   |         jge Positive14           # if so, skip negating
+0x2a3: d0fa0000000000000000 |         isubq $0, %r10          # Use isubq to negate val
+0x2ad:                      | Positive14:
+0x2ad: 60a0                 |         addq %r10, %rax         # sum += absval   
+0x2af: 40a60000000000000000 |         rmmovq %r10, (%rsi)     # ...and store it to dst
+                            |         # irmovq $1, %r10 | This costs an extra cycle each loop and unnecessary. Instead dedicated register %r11 is used.
+                            |         # irmovq $8, %r10 | This costs an extra cycle each loop and unnecessary. Instead dedicated register %r8 is used.
+0x2b9: 6086                 |         addq %r8, %rsi          # dst++
+0x2bb: 6087                 |         addq %r8, %rdi          # src++
+0x2bd:                      | Loop15:
+0x2bd: 50a70000000000000000 |         mrmovq (%rdi), %r10     # read val from src...
+0x2c7: 62aa                 |         andq %r10, %r10         # val >= 0?
+0x2c9: 75dc02000000000000   |         jge Positive15           # if so, skip negating
+0x2d2: d0fa0000000000000000 |         isubq $0, %r10          # Use isubq to negate val
+0x2dc:                      | Positive15:
+0x2dc: 60a0                 |         addq %r10, %rax         # sum += absval   
+0x2de: 40a60000000000000000 |         rmmovq %r10, (%rsi)     # ...and store it to dst
+                            |         # irmovq $1, %r10 | This costs an extra cycle each loop and unnecessary. Instead dedicated register %r11 is used.
+                            |         # irmovq $8, %r10 | This costs an extra cycle each loop and unnecessary. Instead dedicated register %r8 is used.
+0x2e8: 6086                 |         addq %r8, %rsi          # dst++
+0x2ea: 6087                 |         addq %r8, %rdi          # src++
+0x2ec:                      | Loop16:
+0x2ec: 50a70000000000000000 |         mrmovq (%rdi), %r10     # read val from src...
+0x2f6: 62aa                 |         andq %r10, %r10         # val >= 0?
+0x2f8: 750b03000000000000   |         jge Positive16           # if so, skip negating
+0x301: d0fa0000000000000000 |         isubq $0, %r10          # Use isubq to negate val
+0x30b:                      | Positive16:
+0x30b: 60a0                 |         addq %r10, %rax         # sum += absval   
+0x30d: 40a60000000000000000 |         rmmovq %r10, (%rsi)     # ...and store it to dst
+                            |         # irmovq $1, %r10 | This costs an extra cycle each loop and unnecessary. Instead dedicated register %r11 is used.
+                            |         # irmovq $8, %r10 | This costs an extra cycle each loop and unnecessary. Instead dedicated register %r8 is used.
+0x317: 6086                 |         addq %r8, %rsi          # dst++
+0x319: 6087                 |         addq %r8, %rdi          # src++
+                            | 
+0x31b: 702000000000000000   |         jmp Check               # goto Check
+                            | 
+0x324:                      | Remaining:
+0x324: 6012                 |         addq %rcx, %rdx         # %rdx += %rcx
+0x326:                      | Loop:
+0x326: 736b03000000000000   |         je Done                # if n == 0, goto Done
+0x32f: 50a70000000000000000 |         mrmovq (%rdi), %r10     # read val from src...
+0x339: 62aa                 |         andq %r10, %r10         # val >= 0?
+0x33b: 754e03000000000000   |         jge Positive            # if so, skip negating
+0x344: d0fa0000000000000000 |         isubq $0, %r10          # Use isubq to negate val
+0x34e:                      | Positive:
+0x34e: 60a0                 |         addq %r10, %rax         # sum += absval   
+0x350: 40a60000000000000000 |         rmmovq %r10, (%rsi)     # ...and store it to dst
+                            |         # irmovq $1, %r10 | This costs an extra cycle each loop and unnecessary. Instead dedicated register %r11 is used.
+                            |         # irmovq $8, %r10 | This costs an extra cycle each loop and unnecessary. Instead dedicated register %r8 is used.
+0x35a: 6086                 |         addq %r8, %rsi          # dst++
+0x35c: 6087                 |         addq %r8, %rdi          # src++
+0x35e: 61b2                 |         subq %r11, %rdx         # n--
+0x360: 6222                 |         andq %rdx, %rdx         # n > 0?
+0x362: 762603000000000000   |         jg Loop                 # if so, goto Loop:
+                            |         
+                            | ##################################################################
+                            | # Do not modify the following section of code
+                            | # Function epilogue.
+0x36b:                      | Done:
+0x36b: 90                   |         ret
+                            | ##################################################################
+                            | # Keep the following label at the end of your function
+0x36c:                      | End:
+                            | #/* $end abscopy-ys */
