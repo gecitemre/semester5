@@ -1,11 +1,20 @@
 # Student Information
 # name: Emre Geçit
 # id: 2521581
+
 # ISUBQ instruction implementation details:
-# 1. IISUBQ is added to the list of valid instructions.
-# 2. IISUBQ is added to the list of instructions that require a regid byte.
-# 3. IISUBQ is added to the list of instructions that require a constant word.
-# 4. If the instruction is IISUBQ, valB is the value of rB.
+# -----------------------------------------
+# Stage
+# -----------------------------------------
+# Fetch     | icode:ifun <- M1[PC]
+#           | _:rB <- M1[PC+1]
+#           | valC <- M8[PC+2]
+# Decode    | valB <- R[rB]
+#           | valP <- PC+10
+# Execute   | valE <- valC - valB
+# Memory    | 
+# Writeback | R[rB] <- valE
+# PC Update | PC <- valP
 
 
 
