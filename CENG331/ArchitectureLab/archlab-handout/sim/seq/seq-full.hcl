@@ -121,7 +121,7 @@ bool need_regids =
 
 # Does fetched instruction require a constant word?
 bool need_valC =
-icode in { IIRMOVQ, IRMMOVQ, IMRMOVQ, IJXX, ICALL, IISUBQ};
+icode in { IIRMOVQ, IRMMOVQ, IMRMOVQ, IJXX, ICALL, IISUBQ };
 
 ################ Decode Stage    ###################################
 
