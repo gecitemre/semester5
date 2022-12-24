@@ -104,7 +104,6 @@ Loop:
         addq %r8, %rsi          # dst++
         addq %r8, %rdi          # src++
         subq %r11, %rdx         # n--
-        andq %rdx, %rdx         # n > 0?
         jg Loop                 # if so, goto Loop:
         
 ##################################################################
