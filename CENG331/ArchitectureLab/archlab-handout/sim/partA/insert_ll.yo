@@ -5,7 +5,7 @@
 0x000: 30f40005000000000000 |     irmovq stack, %rsp
 0x00a: 30f70002000000000000 |     irmovq ele0, %rdi
 0x014: 30f60004000000000000 |     irmovq array, %rsi
-0x01e: 30f29909000000000000 |     irmovq $0x999, %rdx # value
+0x01e: 30f23800000000000000 |     irmovq $56, %rdx # value
 0x028: 803200000000000000   |     call insert_ll
 0x031: 00                   |     halt
                             | 

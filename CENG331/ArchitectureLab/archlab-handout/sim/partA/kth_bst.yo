@@ -1,3 +1,6 @@
+                            | # Emre Geçit
+                            | # 2521581
+                            | 
 0x000:                      | .pos 0
 0x000: 30f40004000000000000 |     irmovq Stack, %rsp
 0x00a: 30f70002000000000000 |     irmovq root, %rdi
