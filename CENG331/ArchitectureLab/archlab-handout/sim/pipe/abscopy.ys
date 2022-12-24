@@ -6,7 +6,7 @@
 # name: Emre Geçit
 # id: 2521581
 # I have tried different configurations for loop count.
-# Best performance is achieved with 5 loops.
+# Best performance is achieved with 6 loops.
 
 ##################################################################
 # Do not modify this portion
@@ -17,70 +17,71 @@ abscopy:
 # You can modify this portion
         irmovq $1, %r11         # %r11 = 1, will be used inside the loop
         irmovq $8, %r8          # %r8 = 8, will be used inside the loop
-        irmovq $48, %r9
-irmovq $6, %rcx
+        irmovq $6, %rcx #loop unrolling amount
+
+        irmovq $48, %r9 #unrolling * 8
         # Loop header
         xorq %rax,%rax          # sum = 0;
 Check:
         subq %rcx, %rdx         # %rdx -= %rcx
         jl Remaining            # if n < AC, goto Remaining
 
-Loop1:
+Loop1_1:
         mrmovq 0(%rdi), %r10     # read val from src...
         andq %r10, %r10         # val >= 0?
-        jge Positive1           # if so, skip negating
+        jge Positive1_1           # if so, skip negating
         isubq $0, %r10          # Use isubq to negate val
-Positive1:
+Positive1_1:
         addq %r10, %rax         # sum += absval   
         rmmovq %r10, 0(%rsi)     # ...and store it to dst
         # irmovq $1, %r10 | This costs an extra cycle each loop and unnecessary. Instead dedicated register %r11 is used.
         # irmovq $8, %r10 | This costs an extra cycle each loop and unnecessary. Instead dedicated register %r8 is used.
-Loop2:
+Loop1_2:
         mrmovq 8(%rdi), %r10     # read val from src...
         andq %r10, %r10         # val >= 0?
-        jge Positive2           # if so, skip negating
+        jge Positive1_2           # if so, skip negating
         isubq $0, %r10          # Use isubq to negate val
-Positive2:
+Positive1_2:
         addq %r10, %rax         # sum += absval   
         rmmovq %r10, 8(%rsi)     # ...and store it to dst
         # irmovq $1, %r10 | This costs an extra cycle each loop and unnecessary. Instead dedicated register %r11 is used.
         # irmovq $8, %r10 | This costs an extra cycle each loop and unnecessary. Instead dedicated register %r8 is used.
-Loop3:
+Loop1_3:
         mrmovq 16(%rdi), %r10     # read val from src...
         andq %r10, %r10         # val >= 0?
-        jge Positive3           # if so, skip negating
+        jge Positive1_3           # if so, skip negating
         isubq $0, %r10          # Use isubq to negate val
-Positive3:
+Positive1_3:
         addq %r10, %rax         # sum += absval   
         rmmovq %r10, 16(%rsi)     # ...and store it to dst
         # irmovq $1, %r10 | This costs an extra cycle each loop and unnecessary. Instead dedicated register %r11 is used.
         # irmovq $8, %r10 | This costs an extra cycle each loop and unnecessary. Instead dedicated register %r8 is used.
-Loop4:
+Loop1_4:
         mrmovq 24(%rdi), %r10     # read val from src...
         andq %r10, %r10         # val >= 0?
-        jge Positive4           # if so, skip negating
+        jge Positive1_4           # if so, skip negating
         isubq $0, %r10          # Use isubq to negate val
-Positive4:
+Positive1_4:
         addq %r10, %rax         # sum += absval   
         rmmovq %r10, 24(%rsi)     # ...and store it to dst
         # irmovq $1, %r10 | This costs an extra cycle each loop and unnecessary. Instead dedicated register %r11 is used.
         # irmovq $8, %r10 | This costs an extra cycle each loop and unnecessary. Instead dedicated register %r8 is used.
-Loop5:
+Loop1_5:
         mrmovq 32(%rdi), %r10     # read val from src...
         andq %r10, %r10         # val >= 0?
-        jge Positive5           # if so, skip negating
+        jge Positive1_5           # if so, skip negating
         isubq $0, %r10          # Use isubq to negate val
-Positive5:
+Positive1_5:
         addq %r10, %rax         # sum += absval   
         rmmovq %r10, 32(%rsi)     # ...and store it to dst
         # irmovq $1, %r10 | This costs an extra cycle each loop and unnecessary. Instead dedicated register %r11 is used.
         # irmovq $8, %r10 | This costs an extra cycle each loop and unnecessary. Instead dedicated register %r8 is used.
-Loop6:
+Loop1_6:
         mrmovq 40(%rdi), %r10     # read val from src...
         andq %r10, %r10         # val >= 0?
-        jge Positive6           # if so, skip negating
+        jge Positive1_6           # if so, skip negating
         isubq $0, %r10          # Use isubq to negate val
-Positive6:
+Positive1_6:
         addq %r10, %rax         # sum += absval   
         rmmovq %r10, 40(%rsi)     # ...and store it to dst
         # irmovq $1, %r10 | This costs an extra cycle each loop and unnecessary. Instead dedicated register %r11 is used.
