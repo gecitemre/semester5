@@ -23,8 +23,8 @@ abscopy:
 # You can modify this portion
         irmovq $1, %r11         # %r11 = 1, will be used inside the loop
         irmovq $8, %r8          # %r8 = 8, will be used inside the loop
-        irmovq $48, %r9
-irmovq $6, %rcx
+        irmovq $32, %r9
+irmovq $4, %rcx
         # Loop header
         xorq %rax,%rax          # sum = 0;
 Check:
@@ -65,24 +65,6 @@ Loop4:
         cmovg %r12, %r10        # if %r12 > 0, %r10 = -%r10 
         addq %r10, %rax         # sum += absval   
         rmmovq %r10, 24(%rsi)     # ...and store it to dst
-        # irmovq $1, %r10 | This costs an extra cycle each loop and unnecessary. Instead dedicated register %r11 is used.
-        # irmovq $8, %r10 | This costs an extra cycle each loop and unnecessary. Instead dedicated register %r8 is used.
-Loop5:
-        mrmovq 32(%rdi), %r10     # read val from src...
-        xorq %r12, %r12         # %r12 = 0
-        subq %r10, %r12         # %r12 = -%r10
-        cmovg %r12, %r10        # if %r12 > 0, %r10 = -%r10 
-        addq %r10, %rax         # sum += absval   
-        rmmovq %r10, 32(%rsi)     # ...and store it to dst
-        # irmovq $1, %r10 | This costs an extra cycle each loop and unnecessary. Instead dedicated register %r11 is used.
-        # irmovq $8, %r10 | This costs an extra cycle each loop and unnecessary. Instead dedicated register %r8 is used.
-Loop6:
-        mrmovq 40(%rdi), %r10     # read val from src...
-        xorq %r12, %r12         # %r12 = 0
-        subq %r10, %r12         # %r12 = -%r10
-        cmovg %r12, %r10        # if %r12 > 0, %r10 = -%r10 
-        addq %r10, %rax         # sum += absval   
-        rmmovq %r10, 40(%rsi)     # ...and store it to dst
         # irmovq $1, %r10 | This costs an extra cycle each loop and unnecessary. Instead dedicated register %r11 is used.
         # irmovq $8, %r10 | This costs an extra cycle each loop and unnecessary. Instead dedicated register %r8 is used.
 
