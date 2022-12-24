@@ -1,4 +1,4 @@
-ac = 6
+ac = int(input())
 
 head = f"""#/* $begin abscopy-ys */
 ##################################################################
@@ -8,7 +8,7 @@ head = f"""#/* $begin abscopy-ys */
 # name: Emre Geçit
 # id: 2521581
 # I have tried different configurations for loop count.
-# Best performance is achieved with 6 loops.
+# Best performance is achieved with 5 loops.
 
 ##################################################################
 # Do not modify this portion
@@ -18,10 +18,11 @@ abscopy:
 ##################################################################
 # You can modify this portion
         irmovq $1, %r11         # %r11 = 1, will be used inside the loop
-        irmovq $8, %r8          # %r8 = 8, will be used inside the loop\n"""
+        irmovq $8, %r8          # %r8 = 8, will be used inside the loop
+        irmovq ${ac*8}, %r9\n"""
 
-AC_loader = f"""        irmovq ${ac}, %rcx #loop unrolling amount\n
-        irmovq ${ac*8}, %r9 #unrolling * 8\n"""
+i = 0
+AC_loader = f"irmovq ${ac}, %rcx\n"
 
 check = """        # Loop header
         xorq %rax,%rax          # sum = 0;
@@ -32,6 +33,10 @@ Check:
 
 
 remaining = """
+        addq %r9, %rdi          # src += AC*8
+        addq %r9, %rsi          # dst += AC*8
+        jmp Check               # goto Check
+
 Remaining:
         addq %rcx, %rdx         # %rdx += %rcx
 Loop:
@@ -62,15 +67,13 @@ End:
 #/* $end abscopy-ys */\n"""
 
 y86 = head + AC_loader + check
-
-j = 16
 for i in range(1, ac + 1):
-    y86 += f"""Loop{j}_{i}:
+    y86 += f"""Loop{i}:
         mrmovq {8*(i-1)}(%rdi), %r10     # read val from src...
         andq %r10, %r10         # val >= 0?
-        jge Positive{j}_{i}           # if so, skip negating
+        jge Positive{i}           # if so, skip negating
         isubq $0, %r10          # Use isubq to negate val
-Positive{j}_{i}:
+Positive{i}:
         addq %r10, %rax         # sum += absval   
         rmmovq %r10, {8*(i-1)}(%rsi)     # ...and store it to dst
         # irmovq $1, %r10 | This costs an extra cycle each loop and unnecessary. Instead dedicated register %r11 is used.
