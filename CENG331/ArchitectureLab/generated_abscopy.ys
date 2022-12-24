@@ -28,7 +28,6 @@ Check:
 Loop1:
         mrmovq 0(%rdi), %r10     # read val from src...
         xorq %r12, %r12         # %r12 = 0
-        andq %r10, %r10         
         subq %r10, %r12         # %r12 = -%r10
         cmovg %r12, %r10        # if %r12 > 0, %r10 = -%r10 
         addq %r10, %rax         # sum += absval   
@@ -38,7 +37,6 @@ Loop1:
 Loop2:
         mrmovq 8(%rdi), %r10     # read val from src...
         xorq %r12, %r12         # %r12 = 0
-        andq %r10, %r10         
         subq %r10, %r12         # %r12 = -%r10
         cmovg %r12, %r10        # if %r12 > 0, %r10 = -%r10 
         addq %r10, %rax         # sum += absval   
@@ -48,7 +46,6 @@ Loop2:
 Loop3:
         mrmovq 16(%rdi), %r10     # read val from src...
         xorq %r12, %r12         # %r12 = 0
-        andq %r10, %r10         
         subq %r10, %r12         # %r12 = -%r10
         cmovg %r12, %r10        # if %r12 > 0, %r10 = -%r10 
         addq %r10, %rax         # sum += absval   
@@ -58,7 +55,6 @@ Loop3:
 Loop4:
         mrmovq 24(%rdi), %r10     # read val from src...
         xorq %r12, %r12         # %r12 = 0
-        andq %r10, %r10         
         subq %r10, %r12         # %r12 = -%r10
         cmovg %r12, %r10        # if %r12 > 0, %r10 = -%r10 
         addq %r10, %rax         # sum += absval   
@@ -68,7 +64,6 @@ Loop4:
 Loop5:
         mrmovq 32(%rdi), %r10     # read val from src...
         xorq %r12, %r12         # %r12 = 0
-        andq %r10, %r10         
         subq %r10, %r12         # %r12 = -%r10
         cmovg %r12, %r10        # if %r12 > 0, %r10 = -%r10 
         addq %r10, %rax         # sum += absval   
@@ -78,7 +73,6 @@ Loop5:
 Loop6:
         mrmovq 40(%rdi), %r10     # read val from src...
         xorq %r12, %r12         # %r12 = 0
-        andq %r10, %r10         
         subq %r10, %r12         # %r12 = -%r10
         cmovg %r12, %r10        # if %r12 > 0, %r10 = -%r10 
         addq %r10, %rax         # sum += absval   
@@ -96,14 +90,10 @@ Loop:
         je Done                # if n == 0, goto Done
         mrmovq (%rdi), %r10     # read val from src...
         xorq %r12, %r12         # %r12 = 0
-        andq %r10, %r10         
         subq %r10, %r12         # %r12 = -%r10
         cmovg %r12, %r10        # if %r12 > 0, %r10 = -%r10 
-Positive:
         addq %r10, %rax         # sum += absval   
         rmmovq %r10, (%rsi)     # ...and store it to dst
-        # irmovq $1, %r10 | This costs an extra cycle each loop and unnecessary. Instead dedicated register %r11 is used.
-        # irmovq $8, %r10 | This costs an extra cycle each loop and unnecessary. Instead dedicated register %r8 is used.
         addq %r8, %rsi          # dst++
         addq %r8, %rdi          # src++
         subq %r11, %rdx         # n--

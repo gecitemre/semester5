@@ -43,14 +43,10 @@ Loop:
         je Done                # if n == 0, goto Done
         mrmovq (%rdi), %r10     # read val from src...
         xorq %r12, %r12         # %r12 = 0
-        andq %r10, %r10         
         subq %r10, %r12         # %r12 = -%r10
         cmovg %r12, %r10        # if %r12 > 0, %r10 = -%r10 
-Positive:
         addq %r10, %rax         # sum += absval   
         rmmovq %r10, (%rsi)     # ...and store it to dst
-        # irmovq $1, %r10 | This costs an extra cycle each loop and unnecessary. Instead dedicated register %r11 is used.
-        # irmovq $8, %r10 | This costs an extra cycle each loop and unnecessary. Instead dedicated register %r8 is used.
         addq %r8, %rsi          # dst++
         addq %r8, %rdi          # src++
         subq %r11, %rdx         # n--
@@ -72,7 +68,6 @@ for i in range(1, ac + 1):
     y86 += f"""Loop{i}:
         mrmovq {8*(i-1)}(%rdi), %r10     # read val from src...
         xorq %r12, %r12         # %r12 = 0
-        andq %r10, %r10         
         subq %r10, %r12         # %r12 = -%r10
         cmovg %r12, %r10        # if %r12 > 0, %r10 = -%r10 
         addq %r10, %rax         # sum += absval   
