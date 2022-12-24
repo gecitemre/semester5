@@ -28,7 +28,7 @@ abscopy:
         irmovq ${ac*8}, %r9\n"""
 
 i = 0
-AC_loader = f"irmovq ${ac}, %rcx\n"
+AC_loader = f"        irmovq ${ac}, %rcx\n"
 
 check = """        # Loop header
         xorq %rax,%rax          # sum = 0;
@@ -69,7 +69,7 @@ Done:
 End:
 #/* $end abscopy-ys */\n"""
 
-y86 = head + AC_loader + check
+y86 = AC_loader + head + check
 for i in range(1, ac + 1):
     y86 += f"""Loop{i}:
         mrmovq {8*(i-1)}(%rdi), %r10     # read val from src...

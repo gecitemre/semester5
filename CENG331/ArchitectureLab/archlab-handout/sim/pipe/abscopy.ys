@@ -14,6 +14,8 @@
 #        subq %r10, %r12         # %r12 = -%r10
 #        cmovg %r12, %r10        # if %r12 > 0, %r10 = -%r10 
 
+# I removed and reordered some instructions in order to improve performance.
+
 ##################################################################
 # Do not modify this portion
 # Function prologue.
@@ -21,65 +23,77 @@
 abscopy:
 ##################################################################
 # You can modify this portion
-        irmovq $1, %r11         # %r11 = 1, will be used inside the loop
-        irmovq $8, %r8          # %r8 = 8, will be used inside the loop
-        irmovq $32, %r9
-irmovq $4, %rcx
+
+        irmovq $6, %r8          # %r8 = 2, will be used inside the loop
+        irmovq $48, %r14          # %r14 = 16, will be used inside the loop
         # Loop header
         xorq %rax,%rax          # sum = 0;
-Check:
-        subq %rcx, %rdx         # %rdx -= %rcx
-        jl Remaining            # if n < AC, goto Remaining
+        subq %r8, %rdx         # n -= 2
+        jl Remaining                # if n == 0, goto Done
 
-Loop1:
-        mrmovq 0(%rdi), %r10     # read val from src...
-        xorq %r12, %r12         # %r12 = 0
-        subq %r10, %r12         # %r12 = -%r10
-        cmovg %r12, %r10        # if %r12 > 0, %r10 = -%r10 
-        addq %r10, %rax         # sum += absval   
-        rmmovq %r10, 0(%rsi)     # ...and store it to dst
-Loop2:
-        mrmovq 8(%rdi), %r10     # read val from src...
-        xorq %r12, %r12         # %r12 = 0
-        subq %r10, %r12         # %r12 = -%r10
-        cmovg %r12, %r10        # if %r12 > 0, %r10 = -%r10 
-        addq %r10, %rax         # sum += absval   
-        rmmovq %r10, 8(%rsi)     # ...and store it to dst
-Loop3:
-        mrmovq 16(%rdi), %r10     # read val from src...
-        xorq %r12, %r12         # %r12 = 0
-        subq %r10, %r12         # %r12 = -%r10
-        cmovg %r12, %r10        # if %r12 > 0, %r10 = -%r10 
-        addq %r10, %rax         # sum += absval   
-        rmmovq %r10, 16(%rsi)     # ...and store it to dst
-Loop4:
-        mrmovq 24(%rdi), %r10     # read val from src...
-        xorq %r12, %r12         # %r12 = 0
-        subq %r10, %r12         # %r12 = -%r10
-        cmovg %r12, %r10        # if %r12 > 0, %r10 = -%r10 
-        addq %r10, %rax         # sum += absval   
-        rmmovq %r10, 24(%rsi)     # ...and store it to dst
-
-        addq %r9, %rdi          # src += AC*8
-        addq %r9, %rsi          # dst += AC*8
-        subq %rcx, %rdx         # %rdx -= %rcx
-        jge Loop1               # if n >= AC, goto Loop1
-
-Remaining:
-        addq %rcx, %rdx         # %rdx += %rcx
 Loop:
+        mrmovq (%rdi), %r10     # read val from src...
+        mrmovq 8(%rdi), %r11     # read val from src...
+        mrmovq 16(%rdi), %rbp     # read val from src...
+        xorq %r12, %r12         # %r12 = 0
+        xorq %r13, %r13         # %r12 = 0
+        xorq %rcx, %rcx         # %r12 = 0
+        subq %r10, %r12         # %r12 = -%r10
+        cmovg %r12, %r10        # if %r12 > 0, %r10 = -%r10
+        subq %r11, %r13         # %r12 = -%r10
+        cmovg %r13, %r11        # if %r12 > 0, %r10 = -%r10
+        subq %rbp, %rcx         # %r12 = -%r10
+        cmovg %rcx, %rbp        # if %r12 > 0, %r10 = -%r10
+        addq %r10, %rax         # sum += absval
+        addq %r11, %rax         # sum += absval
+        addq %rbp, %rax         # sum += absval
+        rmmovq %r10, (%rsi)     # ...and store it to dst
+        rmmovq %r11, 8(%rsi)     # ...and store it to dst
+        rmmovq %rbp, 16(%rsi)     # ...and store it to dst
+
+        mrmovq 24(%rdi), %r10     # read val from src...
+        mrmovq 32(%rdi), %r11     # read val from src...
+        mrmovq 40(%rdi), %rbp     # read val from src...
+        xorq %r12, %r12         # %r12 = 0
+        xorq %r13, %r13         # %r12 = 0
+        xorq %rcx, %rcx         # %r12 = 0
+        subq %r10, %r12         # %r12 = -%r10
+        cmovg %r12, %r10        # if %r12 > 0, %r10 = -%r10
+        subq %r11, %r13         # %r12 = -%r10
+        cmovg %r13, %r11        # if %r12 > 0, %r10 = -%r10
+        subq %rbp, %rcx         # %r12 = -%r10
+        cmovg %rcx, %rbp        # if %r12 > 0, %r10 = -%r10
+        addq %r10, %rax         # sum += absval
+        addq %r11, %rax         # sum += absval
+        addq %rbp, %rax         # sum += absval
+        rmmovq %r10, 24(%rsi)     # ...and store it to dst
+        rmmovq %r11, 32(%rsi)     # ...and store it to dst
+        rmmovq %rbp, 40(%rsi)     # ...and store it to dst
+        
+
+        
+        addq %r14, %rsi          # dst++
+        addq %r14, %rdi          # src++
+        subq %r8, %rdx         # n -= 2
+        jge Loop                 # if n > 0, goto Loop
+        
+Remaining:
+        addq %r8, %rdx         # n += 2
+        irmovq $1, %r8          # %r8 = 1, will be used inside the loop
+        irmovq $8, %r14          # %r14 = 8, will be used inside the loop
         je Done                # if n == 0, goto Done
+Loop2:
         mrmovq (%rdi), %r10     # read val from src...
         xorq %r12, %r12         # %r12 = 0
         subq %r10, %r12         # %r12 = -%r10
-        cmovg %r12, %r10        # if %r12 > 0, %r10 = -%r10 
-        addq %r10, %rax         # sum += absval   
+        cmovg %r12, %r10        # if %r12 > 0, %r10 = -%r10
+        addq %r10, %rax         # sum += absval
         rmmovq %r10, (%rsi)     # ...and store it to dst
-        addq %r8, %rsi          # dst++
-        addq %r8, %rdi          # src++
-        subq %r11, %rdx         # n--
-        jg Loop                 # if so, goto Loop:
-        
+        addq %r14, %rsi          # dst++
+        addq %r14, %rdi          # src++
+        subq %r8, %rdx         # n--
+        jg Loop2                 # if n > 0, goto Loop2
+
 ##################################################################
 # Do not modify the following section of code
 # Function epilogue.
