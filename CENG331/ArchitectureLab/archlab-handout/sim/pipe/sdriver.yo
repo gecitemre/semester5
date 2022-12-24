@@ -1,0 +1,174 @@
+                            | #######################################################################
+                            | # Test for copying block of size 4;
+                            | #######################################################################
+0x000:                      | 	.pos 0
+0x000: 30f4b002000000000000 | main:	irmovq Stack, %rsp  	# Set up stack pointer
+                            | 
+                            | 	# Set up arguments for copy function and then invoke it
+0x00a: 30f20400000000000000 | 	irmovq $4, %rdx		# src and dst have 4 elements
+0x014: 30f60802000000000000 | 	irmovq dest, %rsi	# dst array
+0x01e: 30f7d001000000000000 | 	irmovq src, %rdi	# src array
+                            |     # corrupt all the unused registers to prevent assumptions
+0x028: 30f03103710500000000 |     irmovq $0x5710331, %rax
+0x032: 30f33103710500000000 |     irmovq $0x5710331, %rbx
+0x03c: 30f13103710500000000 |     irmovq $0x5710331, %rcx
+0x046: 30f53103710500000000 |     irmovq $0x5710331, %rbp
+0x050: 30f83103710500000000 |     irmovq $0x5710331, %r8
+0x05a: 30f93103710500000000 |     irmovq $0x5710331, %r9
+0x064: 30fa3103710500000000 |     irmovq $0x5710331, %r10
+0x06e: 30fb3103710500000000 |     irmovq $0x5710331, %r11
+0x078: 30fc3103710500000000 |     irmovq $0x5710331, %r12
+0x082: 30fd3103710500000000 |     irmovq $0x5710331, %r13
+0x08c: 30fe3103710500000000 |     irmovq $0x5710331, %r14
+0x096: 80a000000000000000   | 	call abscopy		 
+0x09f: 00                   | 	halt			# should halt with abs sum in %rax
+0x0a0:                      | StartFun:
+                            | #/* $begin abscopy-ys */
+                            | ##################################################################
+                            | # abscopy.ys - copy the absolute values of a src block of n words to dst.
+                            | # Return the sum of copied (absolute) values.
+                            | #
+                            | # name: Emre Geçit
+                            | # id: 2521581
+                            | 
+                            | # I have tried different configurations for loop unrolling.
+                            | # Best performance is achieved with 2 loops.
+                            | 
+                            | # I used 3 different registers to improve the pipeline.
+                            | 
+                            | # I used the following three lines in order to improve performance during taking the absolute value.
+                            | #        xorq %r12, %r12         # %r12 = 0
+                            | #        subq %r10, %r12         # %r12 = -%r10
+                            | #        cmovg %r12, %r10        # if %r12 > 0, %r10 = -%r10 
+                            | 
+                            | # I removed and reordered some instructions in order to improve performance.
+                            | 
+                            | ##################################################################
+                            | # Do not modify this portion
+                            | # Function prologue.
+                            | # %rdi = src, %rsi = dst, %rdx = n
+0x0a0:                      | abscopy:
+                            | ##################################################################
+                            | # You can modify this portion
+                            | 
+0x0a0: 30f80600000000000000 |         irmovq $6, %r8  
+0x0aa: 30fe3000000000000000 |         irmovq $48, %r14
+0x0b4: 6300                 |         xorq %rax,%rax  
+0x0b6: d0f80000000000000000 |         isubq $0, %r8
+0x0c0: 6182                 |         subq %r8, %rdx  
+0x0c2: 728201000000000000   |         jl Remaining    
+                            | 
+0x0cb:                      | Loop:
+0x0cb: 50a70000000000000000 |         mrmovq (%rdi), %r10  
+0x0d5: 50b70800000000000000 |         mrmovq 8(%rdi), %r11 
+0x0df: 50571000000000000000 |         mrmovq 16(%rdi), %rbp
+0x0e9: 63cc                 |         xorq %r12, %r12      
+0x0eb: 63dd                 |         xorq %r13, %r13      
+0x0ed: 6311                 |         xorq %rcx, %rcx      
+0x0ef: 61ac                 |         subq %r10, %r12      
+0x0f1: 26ca                 |         cmovg %r12, %r10     
+0x0f3: 61bd                 |         subq %r11, %r13      
+0x0f5: 26db                 |         cmovg %r13, %r11     
+0x0f7: 6151                 |         subq %rbp, %rcx      
+0x0f9: 2615                 |         cmovg %rcx, %rbp     
+0x0fb: 60a0                 |         addq %r10, %rax      
+0x0fd: 60b0                 |         addq %r11, %rax      
+0x0ff: 6050                 |         addq %rbp, %rax      
+0x101: 40a60000000000000000 |         rmmovq %r10, (%rsi)  
+0x10b: 40b60800000000000000 |         rmmovq %r11, 8(%rsi) 
+0x115: 40561000000000000000 |         rmmovq %rbp, 16(%rsi)
+                            | 
+0x11f: 50a71800000000000000 |         mrmovq 24(%rdi), %r10
+0x129: 50b72000000000000000 |         mrmovq 32(%rdi), %r11
+0x133: 50572800000000000000 |         mrmovq 40(%rdi), %rbp
+0x13d: 63cc                 |         xorq %r12, %r12      
+0x13f: 63dd                 |         xorq %r13, %r13      
+0x141: 6311                 |         xorq %rcx, %rcx      
+0x143: 61ac                 |         subq %r10, %r12      
+0x145: 26ca                 |         cmovg %r12, %r10     
+0x147: 61bd                 |         subq %r11, %r13      
+0x149: 26db                 |         cmovg %r13, %r11     
+0x14b: 6151                 |         subq %rbp, %rcx      
+0x14d: 2615                 |         cmovg %rcx, %rbp     
+0x14f: 60a0                 |         addq %r10, %rax      
+0x151: 60b0                 |         addq %r11, %rax      
+0x153: 6050                 |         addq %rbp, %rax      
+0x155: 40a61800000000000000 |         rmmovq %r10, 24(%rsi)
+0x15f: 40b62000000000000000 |         rmmovq %r11, 32(%rsi)
+0x169: 40562800000000000000 |         rmmovq %rbp, 40(%rsi)
+                            |         
+0x173: 60e6                 |         addq %r14, %rsi    
+0x175: 60e7                 |         addq %r14, %rdi    
+0x177: 6182                 |         subq %r8, %rdx     
+0x179: 75cb00000000000000   |         jge Loop           
+                            | 
+0x182:                      | Remaining:
+0x182: 6082                 |         addq %r8, %rdx     
+0x184: 30f80100000000000000 |         irmovq $1, %r8     
+0x18e: 30fe0800000000000000 |         irmovq $8, %r14    
+0x198: 73cc01000000000000   |         je Done            
+0x1a1:                      | Loop2:
+0x1a1: 50a70000000000000000 |         mrmovq (%rdi), %r10
+0x1ab: 63cc                 |         xorq %r12, %r12    
+0x1ad: 61ac                 |         subq %r10, %r12    
+0x1af: 26ca                 |         cmovg %r12, %r10   
+0x1b1: 60a0                 |         addq %r10, %rax    
+0x1b3: 40a60000000000000000 |         rmmovq %r10, (%rsi)
+0x1bd: 60e6                 |         addq %r14, %rsi    
+0x1bf: 60e7                 |         addq %r14, %rdi    
+0x1c1: 6182                 |         subq %r8, %rdx     
+0x1c3: 76a101000000000000   |         jg Loop2           
+                            | 
+                            | ##################################################################
+                            | # Do not modify the following section of code
+                            | # Function epilogue.
+0x1cc:                      | Done:
+0x1cc: 90                   |         ret
+                            | ##################################################################
+                            | # Keep the following label at the end of your function
+0x1cd:                      | End:
+                            | #/* $end abscopy-ys */
+0x1cd:                      | EndFun:
+                            | 
+                            | ###############################
+                            | # Source and destination blocks 
+                            | ###############################
+0x1d0:                      | 	.align 8
+0x1d0:                      | src:
+0x1d0: 0100000000000000     | 	.quad 1
+0x1d8: feffffffffffffff     | 	.quad -2
+0x1e0: fdffffffffffffff     | 	.quad -3
+0x1e8: 0400000000000000     | 	.quad 4
+0x1f0: fadebc0000000000     | 	.quad 0xbcdefa # This shouldn't get moved
+                            | 
+0x200:                      | 	.align 16
+0x200:                      | Predest:
+0x200: fadebc0000000000     | 	.quad 0xbcdefa
+0x208:                      | dest:
+0x208: abefcd0000000000     | 	.quad 0xcdefab
+0x210: abefcd0000000000     | 	.quad 0xcdefab
+0x218: abefcd0000000000     | 	.quad 0xcdefab
+0x220: abefcd0000000000     | 	.quad 0xcdefab
+0x228:                      | Postdest:
+0x228: bcfade0000000000     | 	.quad 0xdefabc
+                            | 
+0x230:                      | .align 8
+                            | # Run time stack
+0x230: 0000000000000000     | 	.quad 0
+0x238: 0000000000000000     | 	.quad 0
+0x240: 0000000000000000     | 	.quad 0
+0x248: 0000000000000000     | 	.quad 0
+0x250: 0000000000000000     | 	.quad 0
+0x258: 0000000000000000     | 	.quad 0
+0x260: 0000000000000000     | 	.quad 0
+0x268: 0000000000000000     | 	.quad 0
+0x270: 0000000000000000     | 	.quad 0
+0x278: 0000000000000000     | 	.quad 0
+0x280: 0000000000000000     | 	.quad 0
+0x288: 0000000000000000     | 	.quad 0
+0x290: 0000000000000000     | 	.quad 0
+0x298: 0000000000000000     | 	.quad 0
+0x2a0: 0000000000000000     | 	.quad 0
+0x2a8: 0000000000000000     | 	.quad 0
+                            | 
+0x2b0:                      | Stack:
