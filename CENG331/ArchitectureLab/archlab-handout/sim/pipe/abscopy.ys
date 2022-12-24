@@ -27,7 +27,6 @@ abscopy:
 # You can modify this portion
 
         irmovq $6, %r8  
-        irmovq $48, %r14
         xorq %rax,%rax  
         subq %r8, %rdx  
         jl Remaining    
@@ -71,16 +70,15 @@ Loop:
         rmmovq %r11, 32(%rsi)
         rmmovq %rbp, 40(%rsi)
         
-        addq %r14, %rsi    
-        addq %r14, %rdi    
+        isubq $48, %rsi    
+        isubq $48, %rdi    
         subq %r8, %rdx     
         jge Loop           
 
 Remaining:
         addq %r8, %rdx     
-        irmovq $1, %r8     
-        irmovq $8, %r14    
         je Done            
+        irmovq $1, %r8     
 Loop2:
         mrmovq (%rdi), %r10
         xorq %r12, %r12    
@@ -88,8 +86,8 @@ Loop2:
         cmovg %r12, %r10   
         addq %r10, %rax    
         rmmovq %r10, (%rsi)
-        addq %r14, %rsi    
-        addq %r14, %rdi    
+        isubq $8, %rsi    
+        isubq $8, %rdi    
         subq %r8, %rdx     
         jg Loop2           
 

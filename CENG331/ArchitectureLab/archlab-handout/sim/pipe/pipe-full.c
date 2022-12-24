@@ -124,12 +124,12 @@ long long gen_d_valB()
 long long gen_aluA()
 {
     return (((id_ex_curr->icode) == (I_RRMOVQ) || (id_ex_curr->icode) == 
-        (I_ALU) || (id_ex_curr->icode) == (I_ISUBQ)) ? (id_ex_curr->vala)
-       : ((id_ex_curr->icode) == (I_IRMOVQ) || (id_ex_curr->icode) == 
-        (I_RMMOVQ) || (id_ex_curr->icode) == (I_MRMOVQ)) ? 
-      (id_ex_curr->valc) : ((id_ex_curr->icode) == (I_CALL) || 
-        (id_ex_curr->icode) == (I_PUSHQ)) ? -8 : ((id_ex_curr->icode) == 
-        (I_RET) || (id_ex_curr->icode) == (I_POPQ)) ? 8 : 0);
+        (I_ALU)) ? (id_ex_curr->vala) : ((id_ex_curr->icode) == (I_IRMOVQ)
+         || (id_ex_curr->icode) == (I_RMMOVQ) || (id_ex_curr->icode) == 
+        (I_MRMOVQ)) ? (id_ex_curr->valc) : ((id_ex_curr->icode) == (I_CALL)
+         || (id_ex_curr->icode) == (I_PUSHQ)) ? -8 : ((id_ex_curr->icode) == 
+        (I_RET) || (id_ex_curr->icode) == (I_POPQ)) ? 8 : (
+        (id_ex_curr->icode) == (I_ISUBQ)) ? (id_ex_curr->valb) : 0);
 }
 
 long long gen_aluB()
@@ -146,7 +146,7 @@ long long gen_aluB()
 long long gen_alufun()
 {
     return (((id_ex_curr->icode) == (I_ALU)) ? (id_ex_curr->ifun) : (
-        (id_ex_curr->icode) == (I_ISUBQ)) ? (A_SUB) : (A_ADD));
+        (id_ex_curr->icode) == (I_ISUBQ)) ? (A_ADD) : (A_ADD));
 }
 
 long long gen_set_cc()

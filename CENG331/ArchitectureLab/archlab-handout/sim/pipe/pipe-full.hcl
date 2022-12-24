@@ -197,7 +197,7 @@ word f_predPC = [
 
 ## What register should be used as the A source?
 word d_srcA = [
-D_icode in { IRRMOVQ, IRMMOVQ, IOPQ, IPUSHQ  } : D_rA;
+D_icode in { IRRMOVQ, IRMMOVQ, IOPQ, IPUSHQ } : D_rA;
 	D_icode in { IPOPQ, IRET } : RRSP;
 	1 : RNONE; # Don't need register
 ];
@@ -247,10 +247,11 @@ word d_valB = [
 
 ## Select input A to ALU
 word aluA = [
-    E_icode in { IRRMOVQ, IOPQ, IISUBQ } : E_valA;
+    E_icode in { IRRMOVQ, IOPQ } : E_valA;
 	E_icode in { IIRMOVQ, IRMMOVQ, IMRMOVQ } : E_valC;
 	E_icode in { ICALL, IPUSHQ } : -8;
 	E_icode in { IRET, IPOPQ } : 8;
+	E_icode == IISUBQ : E_valB;
 	# Other instructions don't need ALU
 ];
 
@@ -266,7 +267,7 @@ E_icode in { IRMMOVQ, IMRMOVQ, IOPQ, ICALL,
 ## Set the ALU function
 word alufun = [
 	E_icode == IOPQ : E_ifun;
-	E_icode == IISUBQ : ALUSUB;
+	E_icode == IISUBQ : ALUADD;
 	1 : ALUADD;
 ];
 
