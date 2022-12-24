@@ -1,4 +1,4 @@
-ac = int(input())
+ac = 4
 
 head = f"""#/* $begin abscopy-ys */
 ##################################################################
@@ -9,7 +9,7 @@ head = f"""#/* $begin abscopy-ys */
 # id: 2521581
 
 # I have tried different configurations for loop count.
-# Best performance is achieved with 6 loops.
+# Best performance is achieved with {ac} loops.
 
 # I used the following three lines in order to improve performance during taking the absolute value.
 #        xorq %r12, %r12         # %r12 = 0
@@ -77,9 +77,7 @@ for i in range(1, ac + 1):
         subq %r10, %r12         # %r12 = -%r10
         cmovg %r12, %r10        # if %r12 > 0, %r10 = -%r10 
         addq %r10, %rax         # sum += absval   
-        rmmovq %r10, {8*(i-1)}(%rsi)     # ...and store it to dst
-        # irmovq $1, %r10 | This costs an extra cycle each loop and unnecessary. Instead dedicated register %r11 is used.
-        # irmovq $8, %r10 | This costs an extra cycle each loop and unnecessary. Instead dedicated register %r8 is used.\n"""
+        rmmovq %r10, {8*(i-1)}(%rsi)     # ...and store it to dst\n"""
 
 y86 += remaining
 

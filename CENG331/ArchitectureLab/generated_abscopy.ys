@@ -7,7 +7,7 @@
 # id: 2521581
 
 # I have tried different configurations for loop count.
-# Best performance is achieved with 6 loops.
+# Best performance is achieved with 4 loops.
 
 # I used the following three lines in order to improve performance during taking the absolute value.
 #        xorq %r12, %r12         # %r12 = 0
@@ -38,8 +38,6 @@ Loop1:
         cmovg %r12, %r10        # if %r12 > 0, %r10 = -%r10 
         addq %r10, %rax         # sum += absval   
         rmmovq %r10, 0(%rsi)     # ...and store it to dst
-        # irmovq $1, %r10 | This costs an extra cycle each loop and unnecessary. Instead dedicated register %r11 is used.
-        # irmovq $8, %r10 | This costs an extra cycle each loop and unnecessary. Instead dedicated register %r8 is used.
 Loop2:
         mrmovq 8(%rdi), %r10     # read val from src...
         xorq %r12, %r12         # %r12 = 0
@@ -47,8 +45,6 @@ Loop2:
         cmovg %r12, %r10        # if %r12 > 0, %r10 = -%r10 
         addq %r10, %rax         # sum += absval   
         rmmovq %r10, 8(%rsi)     # ...and store it to dst
-        # irmovq $1, %r10 | This costs an extra cycle each loop and unnecessary. Instead dedicated register %r11 is used.
-        # irmovq $8, %r10 | This costs an extra cycle each loop and unnecessary. Instead dedicated register %r8 is used.
 Loop3:
         mrmovq 16(%rdi), %r10     # read val from src...
         xorq %r12, %r12         # %r12 = 0
@@ -56,8 +52,6 @@ Loop3:
         cmovg %r12, %r10        # if %r12 > 0, %r10 = -%r10 
         addq %r10, %rax         # sum += absval   
         rmmovq %r10, 16(%rsi)     # ...and store it to dst
-        # irmovq $1, %r10 | This costs an extra cycle each loop and unnecessary. Instead dedicated register %r11 is used.
-        # irmovq $8, %r10 | This costs an extra cycle each loop and unnecessary. Instead dedicated register %r8 is used.
 Loop4:
         mrmovq 24(%rdi), %r10     # read val from src...
         xorq %r12, %r12         # %r12 = 0
@@ -65,8 +59,6 @@ Loop4:
         cmovg %r12, %r10        # if %r12 > 0, %r10 = -%r10 
         addq %r10, %rax         # sum += absval   
         rmmovq %r10, 24(%rsi)     # ...and store it to dst
-        # irmovq $1, %r10 | This costs an extra cycle each loop and unnecessary. Instead dedicated register %r11 is used.
-        # irmovq $8, %r10 | This costs an extra cycle each loop and unnecessary. Instead dedicated register %r8 is used.
 
         addq %r9, %rdi          # src += AC*8
         addq %r9, %rsi          # dst += AC*8
