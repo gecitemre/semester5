@@ -145,8 +145,9 @@ long long gen_aluB()
 
 long long gen_alufun()
 {
-    return (((id_ex_curr->icode) == (I_ALU)) ? (id_ex_curr->ifun) : (
-        (id_ex_curr->icode) == (I_ISUBQ)) ? (A_ADD) : (A_ADD));
+    return (((id_ex_curr->icode) == (I_ALU)) ? (id_ex_curr->ifun) : ((
+          (id_ex_curr->icode) == (I_ISUBQ)) & ((id_ex_curr->valb) < 0)) ? 
+      (A_SUB) : (A_ADD));
 }
 
 long long gen_set_cc()

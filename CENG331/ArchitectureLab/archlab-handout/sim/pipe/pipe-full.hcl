@@ -267,7 +267,7 @@ E_icode in { IRMMOVQ, IMRMOVQ, IOPQ, ICALL,
 ## Set the ALU function
 word alufun = [
 	E_icode == IOPQ : E_ifun;
-	E_icode == IISUBQ : ALUADD;
+	E_icode == IISUBQ && E_valB < 0 : ALUSUB;
 	1 : ALUADD;
 ];
 

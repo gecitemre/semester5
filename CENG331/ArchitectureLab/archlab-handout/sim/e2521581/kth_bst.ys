@@ -1,5 +1,5 @@
-# Emre Geçit
-# 2521581
+# name: Emre Geçit
+# id: 2521581
 
 .pos 0
     irmovq Stack, %rsp

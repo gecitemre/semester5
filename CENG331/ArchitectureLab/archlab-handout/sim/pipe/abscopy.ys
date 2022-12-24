@@ -35,15 +35,9 @@ Loop:
         mrmovq (%rdi), %r10  
         mrmovq 8(%rdi), %r11 
         mrmovq 16(%rdi), %rbp
-        xorq %r12, %r12      
-        xorq %r13, %r13      
-        xorq %rcx, %rcx      
-        subq %r10, %r12      
-        cmovg %r12, %r10     
-        subq %r11, %r13      
-        cmovg %r13, %r11     
-        subq %rbp, %rcx      
-        cmovg %rcx, %rbp     
+        isubq $0, %r10
+        isubq $0, %r11
+        isubq $0, %rbp   
         addq %r10, %rax      
         addq %r11, %rax      
         addq %rbp, %rax      
@@ -54,15 +48,9 @@ Loop:
         mrmovq 24(%rdi), %r10
         mrmovq 32(%rdi), %r11
         mrmovq 40(%rdi), %rbp
-        xorq %r12, %r12      
-        xorq %r13, %r13      
-        xorq %rcx, %rcx      
-        subq %r10, %r12      
-        cmovg %r12, %r10     
-        subq %r11, %r13      
-        cmovg %r13, %r11     
-        subq %rbp, %rcx      
-        cmovg %rcx, %rbp     
+        isubq $0, %r10
+        isubq $0, %r11
+        isubq $0, %rbp    
         addq %r10, %rax      
         addq %r11, %rax      
         addq %rbp, %rax      
@@ -81,9 +69,7 @@ Remaining:
         irmovq $1, %r8     
 Loop2:
         mrmovq (%rdi), %r10
-        xorq %r12, %r12    
-        subq %r10, %r12    
-        cmovg %r12, %r10   
+        isubq $0, %r10
         addq %r10, %rax    
         rmmovq %r10, (%rsi)
         isubq $8, %rsi    
@@ -100,3 +86,4 @@ Done:
 # Keep the following label at the end of your function
 End:
 #/* $end abscopy-ys */
+

@@ -52,9 +52,7 @@ abscopy:
 # You can modify this portion
 
         irmovq $6, %r8  
-        irmovq $48, %r14
         xorq %rax,%rax  
-        isubq $0, %r8
         subq %r8, %rdx  
         jl Remaining    
 
@@ -97,16 +95,15 @@ Loop:
         rmmovq %r11, 32(%rsi)
         rmmovq %rbp, 40(%rsi)
         
-        addq %r14, %rsi    
-        addq %r14, %rdi    
+        isubq $48, %rsi    
+        isubq $48, %rdi    
         subq %r8, %rdx     
         jge Loop           
 
 Remaining:
         addq %r8, %rdx     
-        irmovq $1, %r8     
-        irmovq $8, %r14    
         je Done            
+        irmovq $1, %r8     
 Loop2:
         mrmovq (%rdi), %r10
         xorq %r12, %r12    
@@ -114,8 +111,8 @@ Loop2:
         cmovg %r12, %r10   
         addq %r10, %rax    
         rmmovq %r10, (%rsi)
-        addq %r14, %rsi    
-        addq %r14, %rdi    
+        isubq $8, %rsi    
+        isubq $8, %rdi    
         subq %r8, %rdx     
         jg Loop2           
 
@@ -128,6 +125,7 @@ Done:
 # Keep the following label at the end of your function
 End:
 #/* $end abscopy-ys */
+
 EndFun:
 
 ###############################
@@ -135,10 +133,10 @@ EndFun:
 ###############################
 	.align 8
 src:
-	.quad 1
-	.quad -2
-	.quad -3
-	.quad 4
+	.quad -1
+	.quad 2
+	.quad 3
+	.quad -4
 	.quad 0xbcdefa # This shouldn't get moved
 
 	.align 16

@@ -52,93 +52,91 @@
                             | # You can modify this portion
                             | 
 0x0a0: 30f80600000000000000 |         irmovq $6, %r8  
-0x0aa: 30fe3000000000000000 |         irmovq $48, %r14
-0x0b4: 6300                 |         xorq %rax,%rax  
-0x0b6: d0f80000000000000000 |         isubq $0, %r8
-0x0c0: 6182                 |         subq %r8, %rdx  
-0x0c2: 728201000000000000   |         jl Remaining    
+0x0aa: 6300                 |         xorq %rax,%rax  
+0x0ac: 6182                 |         subq %r8, %rdx  
+0x0ae: 727e01000000000000   |         jl Remaining    
                             | 
-0x0cb:                      | Loop:
-0x0cb: 50a70000000000000000 |         mrmovq (%rdi), %r10  
-0x0d5: 50b70800000000000000 |         mrmovq 8(%rdi), %r11 
-0x0df: 50571000000000000000 |         mrmovq 16(%rdi), %rbp
-0x0e9: 63cc                 |         xorq %r12, %r12      
-0x0eb: 63dd                 |         xorq %r13, %r13      
-0x0ed: 6311                 |         xorq %rcx, %rcx      
-0x0ef: 61ac                 |         subq %r10, %r12      
-0x0f1: 26ca                 |         cmovg %r12, %r10     
-0x0f3: 61bd                 |         subq %r11, %r13      
-0x0f5: 26db                 |         cmovg %r13, %r11     
-0x0f7: 6151                 |         subq %rbp, %rcx      
-0x0f9: 2615                 |         cmovg %rcx, %rbp     
-0x0fb: 60a0                 |         addq %r10, %rax      
-0x0fd: 60b0                 |         addq %r11, %rax      
-0x0ff: 6050                 |         addq %rbp, %rax      
-0x101: 40a60000000000000000 |         rmmovq %r10, (%rsi)  
-0x10b: 40b60800000000000000 |         rmmovq %r11, 8(%rsi) 
-0x115: 40561000000000000000 |         rmmovq %rbp, 16(%rsi)
+0x0b7:                      | Loop:
+0x0b7: 50a70000000000000000 |         mrmovq (%rdi), %r10  
+0x0c1: 50b70800000000000000 |         mrmovq 8(%rdi), %r11 
+0x0cb: 50571000000000000000 |         mrmovq 16(%rdi), %rbp
+0x0d5: 63cc                 |         xorq %r12, %r12      
+0x0d7: 63dd                 |         xorq %r13, %r13      
+0x0d9: 6311                 |         xorq %rcx, %rcx      
+0x0db: 61ac                 |         subq %r10, %r12      
+0x0dd: 26ca                 |         cmovg %r12, %r10     
+0x0df: 61bd                 |         subq %r11, %r13      
+0x0e1: 26db                 |         cmovg %r13, %r11     
+0x0e3: 6151                 |         subq %rbp, %rcx      
+0x0e5: 2615                 |         cmovg %rcx, %rbp     
+0x0e7: 60a0                 |         addq %r10, %rax      
+0x0e9: 60b0                 |         addq %r11, %rax      
+0x0eb: 6050                 |         addq %rbp, %rax      
+0x0ed: 40a60000000000000000 |         rmmovq %r10, (%rsi)  
+0x0f7: 40b60800000000000000 |         rmmovq %r11, 8(%rsi) 
+0x101: 40561000000000000000 |         rmmovq %rbp, 16(%rsi)
                             | 
-0x11f: 50a71800000000000000 |         mrmovq 24(%rdi), %r10
-0x129: 50b72000000000000000 |         mrmovq 32(%rdi), %r11
-0x133: 50572800000000000000 |         mrmovq 40(%rdi), %rbp
-0x13d: 63cc                 |         xorq %r12, %r12      
-0x13f: 63dd                 |         xorq %r13, %r13      
-0x141: 6311                 |         xorq %rcx, %rcx      
-0x143: 61ac                 |         subq %r10, %r12      
-0x145: 26ca                 |         cmovg %r12, %r10     
-0x147: 61bd                 |         subq %r11, %r13      
-0x149: 26db                 |         cmovg %r13, %r11     
-0x14b: 6151                 |         subq %rbp, %rcx      
-0x14d: 2615                 |         cmovg %rcx, %rbp     
-0x14f: 60a0                 |         addq %r10, %rax      
-0x151: 60b0                 |         addq %r11, %rax      
-0x153: 6050                 |         addq %rbp, %rax      
-0x155: 40a61800000000000000 |         rmmovq %r10, 24(%rsi)
-0x15f: 40b62000000000000000 |         rmmovq %r11, 32(%rsi)
-0x169: 40562800000000000000 |         rmmovq %rbp, 40(%rsi)
+0x10b: 50a71800000000000000 |         mrmovq 24(%rdi), %r10
+0x115: 50b72000000000000000 |         mrmovq 32(%rdi), %r11
+0x11f: 50572800000000000000 |         mrmovq 40(%rdi), %rbp
+0x129: 63cc                 |         xorq %r12, %r12      
+0x12b: 63dd                 |         xorq %r13, %r13      
+0x12d: 6311                 |         xorq %rcx, %rcx      
+0x12f: 61ac                 |         subq %r10, %r12      
+0x131: 26ca                 |         cmovg %r12, %r10     
+0x133: 61bd                 |         subq %r11, %r13      
+0x135: 26db                 |         cmovg %r13, %r11     
+0x137: 6151                 |         subq %rbp, %rcx      
+0x139: 2615                 |         cmovg %rcx, %rbp     
+0x13b: 60a0                 |         addq %r10, %rax      
+0x13d: 60b0                 |         addq %r11, %rax      
+0x13f: 6050                 |         addq %rbp, %rax      
+0x141: 40a61800000000000000 |         rmmovq %r10, 24(%rsi)
+0x14b: 40b62000000000000000 |         rmmovq %r11, 32(%rsi)
+0x155: 40562800000000000000 |         rmmovq %rbp, 40(%rsi)
                             |         
-0x173: 60e6                 |         addq %r14, %rsi    
-0x175: 60e7                 |         addq %r14, %rdi    
-0x177: 6182                 |         subq %r8, %rdx     
-0x179: 75cb00000000000000   |         jge Loop           
+0x15f: d0f63000000000000000 |         isubq $48, %rsi    
+0x169: d0f73000000000000000 |         isubq $48, %rdi    
+0x173: 6182                 |         subq %r8, %rdx     
+0x175: 75b700000000000000   |         jge Loop           
                             | 
-0x182:                      | Remaining:
-0x182: 6082                 |         addq %r8, %rdx     
-0x184: 30f80100000000000000 |         irmovq $1, %r8     
-0x18e: 30fe0800000000000000 |         irmovq $8, %r14    
-0x198: 73cc01000000000000   |         je Done            
-0x1a1:                      | Loop2:
-0x1a1: 50a70000000000000000 |         mrmovq (%rdi), %r10
-0x1ab: 63cc                 |         xorq %r12, %r12    
-0x1ad: 61ac                 |         subq %r10, %r12    
-0x1af: 26ca                 |         cmovg %r12, %r10   
-0x1b1: 60a0                 |         addq %r10, %rax    
-0x1b3: 40a60000000000000000 |         rmmovq %r10, (%rsi)
-0x1bd: 60e6                 |         addq %r14, %rsi    
-0x1bf: 60e7                 |         addq %r14, %rdi    
-0x1c1: 6182                 |         subq %r8, %rdx     
-0x1c3: 76a101000000000000   |         jg Loop2           
+0x17e:                      | Remaining:
+0x17e: 6082                 |         addq %r8, %rdx     
+0x180: 73ce01000000000000   |         je Done            
+0x189: 30f80100000000000000 |         irmovq $1, %r8     
+0x193:                      | Loop2:
+0x193: 50a70000000000000000 |         mrmovq (%rdi), %r10
+0x19d: 63cc                 |         xorq %r12, %r12    
+0x19f: 61ac                 |         subq %r10, %r12    
+0x1a1: 26ca                 |         cmovg %r12, %r10   
+0x1a3: 60a0                 |         addq %r10, %rax    
+0x1a5: 40a60000000000000000 |         rmmovq %r10, (%rsi)
+0x1af: d0f60800000000000000 |         isubq $8, %rsi    
+0x1b9: d0f70800000000000000 |         isubq $8, %rdi    
+0x1c3: 6182                 |         subq %r8, %rdx     
+0x1c5: 769301000000000000   |         jg Loop2           
                             | 
                             | ##################################################################
                             | # Do not modify the following section of code
                             | # Function epilogue.
-0x1cc:                      | Done:
-0x1cc: 90                   |         ret
+0x1ce:                      | Done:
+0x1ce: 90                   |         ret
                             | ##################################################################
                             | # Keep the following label at the end of your function
-0x1cd:                      | End:
+0x1cf:                      | End:
                             | #/* $end abscopy-ys */
-0x1cd:                      | EndFun:
+                            | 
+0x1cf:                      | EndFun:
                             | 
                             | ###############################
                             | # Source and destination blocks 
                             | ###############################
 0x1d0:                      | 	.align 8
 0x1d0:                      | src:
-0x1d0: 0100000000000000     | 	.quad 1
-0x1d8: feffffffffffffff     | 	.quad -2
-0x1e0: fdffffffffffffff     | 	.quad -3
-0x1e8: 0400000000000000     | 	.quad 4
+0x1d0: ffffffffffffffff     | 	.quad -1
+0x1d8: 0200000000000000     | 	.quad 2
+0x1e0: 0300000000000000     | 	.quad 3
+0x1e8: fcffffffffffffff     | 	.quad -4
 0x1f0: fadebc0000000000     | 	.quad 0xbcdefa # This shouldn't get moved
                             | 
 0x200:                      | 	.align 16

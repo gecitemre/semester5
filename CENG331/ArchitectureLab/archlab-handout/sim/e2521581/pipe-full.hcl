@@ -6,8 +6,8 @@
 # Student Information
 # name: Emre Geçit
 # id: 2521581
-# I have implemented ISUBQ instruction the same way in the part B.
-# Now, it takes 1 clock cycle to negate val, instead of 3.
+# I have implemented IISUBQ instruction as the same as in part B, but instead of using ALUSUB, it uses ALUADD.
+# Basically, IISUBQ is IADDQ instruction now.
 
 ## Here you'll find the control logic for PIPE. A bit more involved
 ## than SEQ that's for sure! Don't let that scare you though, you
