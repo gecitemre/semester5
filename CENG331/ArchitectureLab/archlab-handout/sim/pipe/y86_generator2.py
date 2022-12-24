@@ -7,8 +7,14 @@ head = f"""#/* $begin abscopy-ys */
 #
 # name: Emre Geçit
 # id: 2521581
+
 # I have tried different configurations for loop count.
-# Best performance is achieved with 5 loops.
+# Best performance is achieved with 6 loops.
+
+# I used the following three lines in order to improve performance during taking the absolute value.
+#        xorq %r12, %r12         # %r12 = 0
+#        subq %r10, %r12         # %r12 = -%r10
+#        cmovg %r12, %r10        # if %r12 > 0, %r10 = -%r10 
 
 ##################################################################
 # Do not modify this portion
@@ -35,7 +41,8 @@ Check:
 remaining = """
         addq %r9, %rdi          # src += AC*8
         addq %r9, %rsi          # dst += AC*8
-        jmp Check               # goto Check
+        subq %rcx, %rdx         # %rdx -= %rcx
+        jge Loop1               # if n >= AC, goto Loop1
 
 Remaining:
         addq %rcx, %rdx         # %rdx += %rcx
