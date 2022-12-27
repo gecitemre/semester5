@@ -38,85 +38,35 @@ public class PlaylistNodePrimaryIndex extends PlaylistNode {
 			return this.audioIds.get(index);
 		}
 	}
+
 	
-	public CengSong searchSong(Integer audioId) {
-		// find the greatest audioId that is smaller than the given audioId
+	public PlaylistNode addSong(CengSong song) {
+		// This function returns null if song is added successfully. Otherwise, it splits the node and returns the pushed-up node.
 		int low = 0;
-		int high = audioIds.size() - 1;
+		int high = this.audioIdCount();
 		int mid = 0;
-		while (low <= high) {
+		while (low < high) {
 			mid = (low + high) / 2;
-			if (audioId < audioIds.get(mid)) {
-				high = mid - 1;
-			}
-			else {
+			if (song.audioId() > this.audioIdAtIndex(mid)) {
 				low = mid + 1;
+			} else {
+				high = mid;
 			}
 		}
-		// if the audioId is not found, return null
-		if (low == 0) {
-			return null;
-		}
-		PlaylistNode node = children.get(low - 1);
-		if (node instanceof PlaylistNodePrimaryLeaf) {
-			PlaylistNodePrimaryLeaf leaf = (PlaylistNodePrimaryLeaf) node;
-			return leaf.searchSong(audioId);
-		}
-		else {
-			PlaylistNodePrimaryIndex index = (PlaylistNodePrimaryIndex) node;
-			return index.searchSong(audioId);
-		}
-	}
 
-	public void indent(int depth) {
-        for (int i = 0; i < depth; i++) {
-            System.out.print("\t");
-        }
-    }
-
-	public void print(int depth) {
-		indent(depth);
-		System.out.println("<Index>");
-		for (PlaylistNode node : children) {
-			if (node instanceof PlaylistNodePrimaryLeaf) {
-				PlaylistNodePrimaryLeaf leaf = (PlaylistNodePrimaryLeaf) node;
-				leaf.print(depth + 1);
+		PlaylistNode child = this.getChildrenAt(low);
+		if (child instanceof PlaylistNodePrimaryIndex) {
+			PlaylistNodePrimaryIndex index = (PlaylistNodePrimaryIndex) child;
+			if (index.audioIdCount() < 2 * PlaylistNode.order) {
+				index.addSong(song);
+				return null;	
 			}
-			else {
-				PlaylistNodePrimaryIndex index = (PlaylistNodePrimaryIndex) node;
-				index.print(depth + 1);
-			}
+			// bisect
+		} else {
+			PlaylistNodePrimaryLeaf leaf = (PlaylistNodePrimaryLeaf) child;
+			// bisect
+			leaf.addSong(low, song);
 		}
-		indent(depth);
-		System.out.println("</Index>");
-	}
-
-	public void addSong(CengSong song) {
-		// find the greatest audioId that is smaller than the given audioId
-		int low = 0;
-		int high = audioIds.size() - 1;
-		int mid = 0;
-		while (low <= high) {
-			mid = (low + high) / 2;
-			if (song.audioId() < audioIds.get(mid)) {
-				high = mid - 1;
-			}
-			else {
-				low = mid + 1;
-			}
-		}
-		// if the audioId is not found, return null
-		if (low == 0) {
-			return;
-		}
-		PlaylistNode node = children.get(low - 1);
-		if (node instanceof PlaylistNodePrimaryLeaf) {
-			PlaylistNodePrimaryLeaf leaf = (PlaylistNodePrimaryLeaf) node;
-			leaf.addSong(song);
-		}
-		else {
-			PlaylistNodePrimaryIndex index = (PlaylistNodePrimaryIndex) node;
-			index.addSong(song);
-		}
+		return null;
 	}
 }

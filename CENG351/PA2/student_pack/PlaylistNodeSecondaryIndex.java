@@ -43,29 +43,4 @@ public class PlaylistNodeSecondaryIndex extends PlaylistNode {
 			return this.genres.get(index);
 		}
 	}
-	
-	public void indent(int depth) {
-        for (int i = 0; i < depth; i++) {
-            System.out.print("\t");
-        }
-    }
-
-	public void print(int depth) {
-		indent(depth);
-		System.out.println("<Index>");
-		for (PlaylistNode node : children) {
-			if (node instanceof PlaylistNodePrimaryLeaf) {
-				PlaylistNodePrimaryLeaf leaf = (PlaylistNodePrimaryLeaf) node;
-				leaf.print(depth + 1);
-			}
-			else {
-				PlaylistNodePrimaryIndex index = (PlaylistNodePrimaryIndex) node;
-				index.print(depth + 1);
-			}
-		}
-		indent(depth);
-		System.out.println("</Index>");
-	}
-
-
 }
