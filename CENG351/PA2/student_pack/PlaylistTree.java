@@ -1,4 +1,22 @@
 import java.util.ArrayList;
+import java.util.Arrays;
+
+class CengSongTools {
+	public static int bisectRight (ArrayList<CengSong> songs, Integer audioId) {
+		int low = 0;
+		int high = songs.size();
+		int mid = 0;
+		while (low < high) {
+			mid = (low + high) / 2;
+			if (audioId > songs.get(mid).audioId()) {
+				low = mid + 1;
+			} else {
+				high = mid;
+			}
+		}
+		return low;
+	}
+}
 
 public class PlaylistTree {
 
@@ -21,19 +39,7 @@ public class PlaylistTree {
 
 			} else {
 				ArrayList<CengSong> songs = primaryRootAsLeaf.getSongs();
-				// insert song into songs using bisect right
-				int low = 0;
-				int high = songs.size();
-				int mid = 0;
-				while (low < high) {
-					mid = (low + high) / 2;
-					if (song.audioId() > songs.get(mid).audioId()) {
-						low = mid + 1;
-					} else {
-						high = mid;
-					}
-				}
-				primaryRootAsLeaf.addSong(low, song);
+				primaryRootAsLeaf.addSong(-(Arrays.binarySearch(songs.toArray(), song)+1), song);
 			}
 		} else {
 			PlaylistNodePrimaryIndex primaryRootAsInternal = (PlaylistNodePrimaryIndex) primaryRoot;

@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class PlaylistNodePrimaryIndex extends PlaylistNode {
 	private ArrayList<Integer> audioIds;
@@ -40,32 +41,49 @@ public class PlaylistNodePrimaryIndex extends PlaylistNode {
 	}
 
 	
-	public PlaylistNode addSong(CengSong song) {
+	public ArrayList<PlaylistNode> addSong(CengSong song) {
 		// This function returns null if song is added successfully. Otherwise, it splits the node and returns the pushed-up node.
-		int low = 0;
-		int high = this.audioIdCount();
-		int mid = 0;
-		while (low < high) {
-			mid = (low + high) / 2;
-			if (song.audioId() > this.audioIdAtIndex(mid)) {
-				low = mid + 1;
-			} else {
-				high = mid;
-			}
-		}
+		
+		int insertIndex = -(Arrays.binarySearch(audioIds.toArray(), song.audioId())+1);
 
-		PlaylistNode child = this.getChildrenAt(low);
+		PlaylistNode child = getChildrenAt(insertIndex);
 		if (child instanceof PlaylistNodePrimaryIndex) {
 			PlaylistNodePrimaryIndex index = (PlaylistNodePrimaryIndex) child;
-			if (index.audioIdCount() < 2 * PlaylistNode.order) {
-				index.addSong(song);
-				return null;	
+			index.addSong(song);
+			if (index.audioIdCount() == 2 * PlaylistNode.order) {
+				PlaylistNodePrimaryIndex leftIndex = new PlaylistNodePrimaryIndex(this);
+				PlaylistNodePrimaryIndex rightIndex = new PlaylistNodePrimaryIndex(this);
+				int i;
+				for (i = 0; i < PlaylistNode.order; i++) {
+					leftIndex.audioIds.add(audioIds.get(i));
+					leftIndex.children.add(children.get(i));
+				}
+				for (; i < 2 * PlaylistNode.order; i++) {
+					rightIndex.audioIds.add(audioIds.get(i));
+					rightIndex.children.add(children.get(i));
+				}
+				child = leftIndex;
+				children.add(insertIndex + 1, rightIndex);
+				audioIds.add(insertIndex, rightIndex.audioIds.get(0));
 			}
-			// bisect
 		} else {
 			PlaylistNodePrimaryLeaf leaf = (PlaylistNodePrimaryLeaf) child;
-			// bisect
-			leaf.addSong(low, song);
+			insertIndex = -(Arrays.binarySearch(leaf.getSongs().toArray(), song)+1);
+			leaf.addSong(insertIndex, song);
+			if (leaf.songCount() == 2 * PlaylistNode.order) {
+				PlaylistNodePrimaryLeaf leftLeaf = new PlaylistNodePrimaryLeaf(this);
+				PlaylistNodePrimaryLeaf rightLeaf = new PlaylistNodePrimaryLeaf(this);
+				int i;
+				for (i = 0; i < PlaylistNode.order; i++) {
+					leftLeaf.addSong(i, leaf.getSongs().get(i));
+				}
+				for (; i < 2 * PlaylistNode.order; i++) {
+					rightLeaf.addSong(i - PlaylistNode.order, leaf.getSongs().get(i));
+				}
+				child = leftLeaf;
+				children.add(insertIndex + 1, rightLeaf);
+				audioIds.add(insertIndex, rightLeaf.getSongs().get(0).audioId());
+			}
 		}
 		return null;
 	}
