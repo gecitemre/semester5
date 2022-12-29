@@ -1,23 +1,6 @@
 import java.util.ArrayList;
 import java.util.Arrays;
 
-class CengSongTools {
-	public static int bisectRight (ArrayList<CengSong> songs, Integer audioId) {
-		int low = 0;
-		int high = songs.size();
-		int mid = 0;
-		while (low < high) {
-			mid = (low + high) / 2;
-			if (audioId > songs.get(mid).audioId()) {
-				low = mid + 1;
-			} else {
-				high = mid;
-			}
-		}
-		return low;
-	}
-}
-
 public class PlaylistTree {
 
 	public PlaylistNode primaryRoot; // root of the primary B+ tree
@@ -32,94 +15,77 @@ public class PlaylistTree {
 	}
 
 	public void addSong(CengSong song) {
-		if (primaryRoot instanceof PlaylistNodePrimaryLeaf) {
-			PlaylistNodePrimaryLeaf primaryRootAsLeaf = (PlaylistNodePrimaryLeaf) primaryRoot;
-			if (primaryRootAsLeaf.songCount() == 2 * PlaylistNode.order) {
-				// split
-
-			} else {
-				ArrayList<CengSong> songs = primaryRootAsLeaf.getSongs();
-				primaryRootAsLeaf.addSong(-(Arrays.binarySearch(songs.toArray(), song)+1), song);
-			}
-		} else {
-			PlaylistNodePrimaryIndex primaryRootAsInternal = (PlaylistNodePrimaryIndex) primaryRoot;
-			
+		switch (primaryRoot.type) {
+			case Internal:
+				PlaylistNodePrimaryIndex primaryRootAsInternal = (PlaylistNodePrimaryIndex) primaryRoot;
+				primaryRootAsInternal.addSong(song);
+				PlaylistNodeSecondaryIndex secondaryRootAsInternal = (PlaylistNodeSecondaryIndex) secondaryRoot;
+				secondaryRootAsInternal.addSong(song);
+				break;
+			case Leaf:
+				PlaylistNodePrimaryLeaf primaryRootAsLeaf = (PlaylistNodePrimaryLeaf) primaryRoot;
+				primaryRootAsLeaf.addSong(1 - (Arrays.binarySearch(primaryRootAsLeaf.getSongs().toArray(), song)),
+						song);
+				PlaylistNodeSecondaryLeaf secondaryRootAsLeaf = (PlaylistNodeSecondaryLeaf) secondaryRoot;
+				secondaryRootAsLeaf
+						.addSong(1 - (Arrays.binarySearch(secondaryRootAsLeaf.getSongBucket().toArray(), song)), song);
+				break;
 		}
-
-		if (secondaryRoot instanceof PlaylistNodeSecondaryLeaf) {
-			PlaylistNodeSecondaryLeaf secondaryRootAsLeaf = (PlaylistNodeSecondaryLeaf) secondaryRoot;
-			if (secondaryRootAsLeaf.genreCount() == 2 * PlaylistNode.order) {
-				// split
-
-			} else {
-				ArrayList<ArrayList<CengSong>> songBucket = secondaryRootAsLeaf.getSongBucket();
-				// insert song into songs using bisect right
-
-				int low = 0;
-				int high = songBucket.size();
-				int mid = 0;
-				while (low < high) {
-					mid = (low + high) / 2;
-					if (song.genre().compareTo(songBucket.get(mid).get(0).genre()) > 0) {
-						low = mid + 1;
-					} else {
-						high = mid;
-					}
-				}
-			}
-		} else {
-			PlaylistNodeSecondaryIndex secondaryRootAsInternal = (PlaylistNodeSecondaryIndex) secondaryRoot;
-			
-		}
-
 	}
 
 	public CengSong searchSong(Integer audioId) {
-		if (primaryRoot instanceof PlaylistNodePrimaryLeaf) {
-			PlaylistNodePrimaryLeaf primaryRootAsLeaf = (PlaylistNodePrimaryLeaf) primaryRoot;
-			// TODO
-			return null;
-		} else {
-			PlaylistNodePrimaryIndex primaryRootAsInternal = (PlaylistNodePrimaryIndex) primaryRoot;
-			return primaryRootAsInternal.searchSong(audioId);
+		switch (primaryRoot.type) {
+			case Internal:
+				PlaylistNodePrimaryIndex primaryRootAsInternal = (PlaylistNodePrimaryIndex) primaryRoot;
+				return primaryRootAsInternal.searchSong(audioId);
+			case Leaf:
+				PlaylistNodePrimaryLeaf primaryRootAsLeaf = (PlaylistNodePrimaryLeaf) primaryRoot;
+				int index = Arrays.binarySearch(primaryRootAsLeaf.getSongs().toArray(),
+						new CengSong(audioId, null, null, null));
+				if (index >= 0) {
+					return primaryRootAsLeaf.getSongs().get(index);
+				}
+			default:
+				System.out.println("Could not find " + audioId);
+				return null;
 		}
 	}
 
 	public void printPrimaryPlaylist() {
-		// TODO: Implement this method
-		// print the primary B+ tree in Depth-first order
-		/*
-		 * All non-leaf and leaf nodes should be printed with a proper indentation (with
-		 * tabs) for each
-		 * level in the tree.
-		 * For non-leaf nodes, you should print the search key enclosed by <index> and
-		 * </index> tags.
-		 * For leaf nodes, you should print the content between <data> and </data> tags.
-		 * Records
-		 * should be printed between with <record> and </record> tags.
-		 */
-
-		if (primaryRoot instanceof PlaylistNodePrimaryLeaf) {
-			PlaylistNodePrimaryLeaf primaryRootAsLeaf = (PlaylistNodePrimaryLeaf) primaryRoot;
-			// TODO
-		} else {
-			PlaylistNodePrimaryIndex primaryRootAsInternal = (PlaylistNodePrimaryIndex) primaryRoot;
-			primaryRootAsInternal.print(0);
+		switch (primaryRoot.type) {
+			case Internal:
+				PlaylistNodePrimaryIndex primaryRootAsInternal = (PlaylistNodePrimaryIndex) primaryRoot;
+				primaryRootAsInternal.print(0);
+				break;
+			case Leaf:
+				PlaylistNodePrimaryLeaf primaryRootAsLeaf = (PlaylistNodePrimaryLeaf) primaryRoot;
+				System.out.println("<data>");
+				for (CengSong song : primaryRootAsLeaf.getSongs()) {
+					System.out.println("\t<record>" + song.audioId() + "</record>");
+				}
+				System.out.println("</data>");
+				break;
 		}
 	}
 
 	public void printSecondaryPlaylist() {
-		// TODO: Implement this method
-		// print the secondary B+ tree in Depth-first order
-
-		if (secondaryRoot instanceof PlaylistNodeSecondaryLeaf) {
-			PlaylistNodeSecondaryLeaf secondaryRootAsLeaf = (PlaylistNodeSecondaryLeaf) secondaryRoot;
-			// TODO
-		} else {
-			PlaylistNodeSecondaryIndex secondaryRootAsInternal = (PlaylistNodeSecondaryIndex) secondaryRoot;
-			secondaryRootAsInternal.print(0);
+		switch (secondaryRoot.type) {
+			case Internal:
+				PlaylistNodeSecondaryIndex secondaryRootAsInternal = (PlaylistNodeSecondaryIndex) secondaryRoot;
+				secondaryRootAsInternal.print(0);
+				break;
+			case Leaf:
+				PlaylistNodeSecondaryLeaf secondaryRootAsLeaf = (PlaylistNodeSecondaryLeaf) secondaryRoot;
+				System.out.println("<data>");
+				for (ArrayList<CengSong> songBucket : secondaryRootAsLeaf.getSongBucket()) {
+					System.out.println(songBucket.get(0).genre());
+					for (CengSong song : songBucket) {
+						System.out.print("\t<record>" + song.fullName() + "</record>");
+					}
+				}
+				System.out.println("</data>");
+				break;
 		}
-		return;
 	}
 
 	// Extra functions if needed
