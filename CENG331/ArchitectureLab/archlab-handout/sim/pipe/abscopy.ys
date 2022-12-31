@@ -1,0 +1,89 @@
+#/* $begin abscopy-ys */
+##################################################################
+# abscopy.ys - copy the absolute values of a src block of n words to dst.
+# Return the sum of copied (absolute) values.
+#
+# name: Emre Geçit
+# id: 2521581
+
+# I have tried different configurations for loop unrolling.
+# Best performance is achieved with 2 loops.
+
+# I used 3 different registers to improve the pipeline.
+
+# I used the following three lines in order to improve performance during taking the absolute value.
+#        xorq %r12, %r12         # %r12 = 0
+#        subq %r10, %r12         # %r12 = -%r10
+#        cmovg %r12, %r10        # if %r12 > 0, %r10 = -%r10 
+
+# I removed and reordered some instructions in order to improve performance.
+
+##################################################################
+# Do not modify this portion
+# Function prologue.
+# %rdi = src, %rsi = dst, %rdx = n
+abscopy:
+##################################################################
+# You can modify this portion
+
+        irmovq $6, %r8  
+        xorq %rax,%rax  
+        subq %r8, %rdx  
+        jl Remaining    
+
+Loop:
+        mrmovq (%rdi), %r10  
+        mrmovq 8(%rdi), %r11 
+        mrmovq 16(%rdi), %rbp
+        isubq $0, %r10
+        isubq $0, %r11
+        isubq $0, %rbp   
+        addq %r10, %rax      
+        addq %r11, %rax      
+        addq %rbp, %rax      
+        rmmovq %r10, (%rsi)  
+        rmmovq %r11, 8(%rsi) 
+        rmmovq %rbp, 16(%rsi)
+
+        mrmovq 24(%rdi), %r10
+        mrmovq 32(%rdi), %r11
+        mrmovq 40(%rdi), %rbp
+        isubq $0, %r10
+        isubq $0, %r11
+        isubq $0, %rbp    
+        addq %r10, %rax      
+        addq %r11, %rax      
+        addq %rbp, %rax      
+        rmmovq %r10, 24(%rsi)
+        rmmovq %r11, 32(%rsi)
+        rmmovq %rbp, 40(%rsi)
+        
+        isubq $48, %rsi    
+        isubq $48, %rdi    
+        subq %r8, %rdx     
+        jge Loop           
+
+Remaining:
+        addq %r8, %rdx     
+        je Done            
+        irmovq $1, %r8     
+Loop2:
+        mrmovq (%rdi), %r10
+        isubq $0, %r10
+        addq %r10, %rax    
+        rmmovq %r10, (%rsi)
+        isubq $8, %rsi    
+        isubq $8, %rdi    
+        subq %r8, %rdx     
+        jg Loop2           
+
+##################################################################
+# Do not modify the following section of code
+# Function epilogue.
+Done:
+        ret
+##################################################################
+# Keep the following label at the end of your function
+End:
+#/* $end abscopy-ys */
+
