@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class PlaylistTree {
 
@@ -24,12 +23,24 @@ public class PlaylistTree {
 				break;
 			case Leaf:
 				PlaylistNodePrimaryLeaf primaryRootAsLeaf = (PlaylistNodePrimaryLeaf) primaryRoot;
-				primaryRootAsLeaf.addSong(1 - (Arrays.binarySearch(primaryRootAsLeaf.getSongs().toArray(), song)),
-						song);
+				// convert to binary search later
+				for (int i = 0; i < primaryRootAsLeaf.songCount(); i++) {
+					if (primaryRootAsLeaf.songAtIndex(i).audioId() > song.audioId()) {
+						primaryRootAsLeaf.addSong(i, song);
+						break;
+					}
+				}
+				if (primaryRootAsLeaf.songAtIndex(primaryRootAsLeaf.songCount() - 1).audioId() < song.audioId()) { // change with i later ?
+					primaryRootAsLeaf.addSong(primaryRootAsLeaf.songCount(), song);
+				}
 				PlaylistNodeSecondaryLeaf secondaryRootAsLeaf = (PlaylistNodeSecondaryLeaf) secondaryRoot;
-				secondaryRootAsLeaf
-						.addSong(1 - (Arrays.binarySearch(secondaryRootAsLeaf.getSongBucket().toArray(), song)), song);
-				break;
+				for (int g = 0; g < secondaryRootAsLeaf.genreCount(); g++) {
+					if (secondaryRootAsLeaf.genreAtIndex(g).equals(song.genre())) {
+						secondaryRootAsLeaf.addSong(g, song);
+						return;
+					}
+				}
+				secondaryRootAsLeaf.addSong(secondaryRootAsLeaf.genreCount(), song);
 		}
 	}
 
@@ -40,10 +51,10 @@ public class PlaylistTree {
 				return primaryRootAsInternal.searchSong(audioId);
 			case Leaf:
 				PlaylistNodePrimaryLeaf primaryRootAsLeaf = (PlaylistNodePrimaryLeaf) primaryRoot;
-				int index = Arrays.binarySearch(primaryRootAsLeaf.getSongs().toArray(),
-						new CengSong(audioId, null, null, null));
-				if (index >= 0) {
-					return primaryRootAsLeaf.getSongs().get(index);
+				for (int i = 0; i < primaryRootAsLeaf.getSongs().size(); i++) {
+					if (primaryRootAsLeaf.songAtIndex(i).audioId() == audioId) {
+						return primaryRootAsLeaf.songAtIndex(i);
+					}
 				}
 			default:
 				System.out.println("Could not find " + audioId);

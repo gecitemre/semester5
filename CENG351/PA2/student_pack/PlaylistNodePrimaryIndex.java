@@ -139,7 +139,7 @@ public class PlaylistNodePrimaryIndex extends PlaylistNode {
 					System.out.println("<data>");
 					for (CengSong song : leaf.getSongs()) {
 						indent(depth + 2);
-						System.out.println("\t<record>" + song.audioId() + "</record>");
+						System.out.println("\t<record>" + song.fullName() + "</record>");
 					}
 					indent(depth + 1);
 					System.out.println("</data>");
