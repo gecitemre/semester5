@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 public class PlaylistTree {
 
@@ -18,29 +19,82 @@ public class PlaylistTree {
 			case Internal:
 				PlaylistNodePrimaryIndex primaryRootAsInternal = (PlaylistNodePrimaryIndex) primaryRoot;
 				primaryRootAsInternal.addSong(song);
-				PlaylistNodeSecondaryIndex secondaryRootAsInternal = (PlaylistNodeSecondaryIndex) secondaryRoot;
-				secondaryRootAsInternal.addSong(song);
 				break;
 			case Leaf:
 				PlaylistNodePrimaryLeaf primaryRootAsLeaf = (PlaylistNodePrimaryLeaf) primaryRoot;
-				// convert to binary search later
+				// TODO: challenge: convert to binary search
+				if (primaryRootAsLeaf.songCount() == 0) {
+					primaryRootAsLeaf.addSong(0, song);
+					break;
+				}
 				for (int i = 0; i < primaryRootAsLeaf.songCount(); i++) {
 					if (primaryRootAsLeaf.songAtIndex(i).audioId() > song.audioId()) {
 						primaryRootAsLeaf.addSong(i, song);
 						break;
 					}
 				}
-				if (primaryRootAsLeaf.songAtIndex(primaryRootAsLeaf.songCount() - 1).audioId() < song.audioId()) { // change with i later ?
+				if (primaryRootAsLeaf.songAtIndex(primaryRootAsLeaf.songCount() - 1).audioId() < song.audioId()) {
 					primaryRootAsLeaf.addSong(primaryRootAsLeaf.songCount(), song);
 				}
+				if (primaryRootAsLeaf.songCount() > 2 * PlaylistNode.order) {
+					// split
+					ArrayList<CengSong> songs = new ArrayList<CengSong>() {
+						{
+							for (int i = PlaylistNode.order; i < primaryRootAsLeaf.songCount(); i++) {
+								add(primaryRootAsLeaf.songAtIndex(i));
+							}
+						}
+					};
+					for (int i = 2 * PlaylistNode.order; i >= PlaylistNode.order; i--) {
+						primaryRootAsLeaf.getSongs().remove(i);
+					}
+					PlaylistNodePrimaryLeaf newLeaf = new PlaylistNodePrimaryLeaf(primaryRootAsLeaf.getParent(), songs);
+					ArrayList<PlaylistNode> children = new ArrayList<PlaylistNode>() {
+						{
+							add(primaryRootAsLeaf);
+							add(newLeaf);
+						}
+					};
+					ArrayList<Integer> audioIds = new ArrayList<Integer>() {
+						{
+							add(newLeaf.songAtIndex(0).audioId());
+						}
+					};
+					primaryRoot = new PlaylistNodePrimaryIndex(null, audioIds, children);
+				}
+		}
+		switch (secondaryRoot.type) {
+			case Internal:
+				PlaylistNodeSecondaryIndex secondaryRootAsInternal = (PlaylistNodeSecondaryIndex) secondaryRoot;
+				secondaryRootAsInternal.addSong(song);
+				break;
+			case Leaf:
 				PlaylistNodeSecondaryLeaf secondaryRootAsLeaf = (PlaylistNodeSecondaryLeaf) secondaryRoot;
+				if (secondaryRootAsLeaf.genreCount() == 0) {
+					secondaryRootAsLeaf.addSong(0, song);
+					break;
+				}
 				for (int g = 0; g < secondaryRootAsLeaf.genreCount(); g++) {
 					if (secondaryRootAsLeaf.genreAtIndex(g).equals(song.genre())) {
 						secondaryRootAsLeaf.addSong(g, song);
-						return;
+						break;
 					}
 				}
-				secondaryRootAsLeaf.addSong(secondaryRootAsLeaf.genreCount(), song);
+				if (secondaryRootAsLeaf.genreAtIndex(secondaryRootAsLeaf.genreCount() - 1)
+						.compareTo(song.genre()) < 0) {
+					secondaryRootAsLeaf.addSong(secondaryRootAsLeaf.genreCount(), song);
+				}
+				if (secondaryRootAsLeaf.genreCount() > 2 * PlaylistNode.order) {
+					// split
+					secondaryRoot = new PlaylistNodeSecondaryIndex(null);
+					PlaylistNodeSecondaryLeaf newLeaf = new PlaylistNodeSecondaryLeaf(secondaryRoot);
+					for (int i = PlaylistNode.order; i < secondaryRootAsLeaf.genreCount(); i++) {
+						newLeaf.getSongBucket().add(i - PlaylistNode.order, secondaryRootAsLeaf.getSongBucket().get(i));
+					}
+					for (int i = 2 * PlaylistNode.order; i >= PlaylistNode.order; i--) {
+						secondaryRootAsLeaf.getSongBucket().remove(i);
+					}
+				}
 		}
 	}
 
@@ -51,7 +105,7 @@ public class PlaylistTree {
 				return primaryRootAsInternal.searchSong(audioId);
 			case Leaf:
 				PlaylistNodePrimaryLeaf primaryRootAsLeaf = (PlaylistNodePrimaryLeaf) primaryRoot;
-				for (int i = 0; i < primaryRootAsLeaf.getSongs().size(); i++) {
+				for (int i = 0; i < primaryRootAsLeaf.songCount(); i++) {
 					if (primaryRootAsLeaf.songAtIndex(i).audioId() == audioId) {
 						return primaryRootAsLeaf.songAtIndex(i);
 					}
@@ -91,7 +145,7 @@ public class PlaylistTree {
 				for (ArrayList<CengSong> songBucket : secondaryRootAsLeaf.getSongBucket()) {
 					System.out.println(songBucket.get(0).genre());
 					for (CengSong song : songBucket) {
-						System.out.print("\t<record>" + song.fullName() + "</record>");
+						System.out.println("\t<record>" + song.fullName() + "</record>");
 					}
 				}
 				System.out.println("</data>");

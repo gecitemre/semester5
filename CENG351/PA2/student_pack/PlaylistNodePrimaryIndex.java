@@ -41,39 +41,61 @@ public class PlaylistNodePrimaryIndex extends PlaylistNode {
 	}
 
 	public void addSong(CengSong song) {
-		int low = 0;
-		int high = audioIdCount() - 1;
-		int mid;
-		while (low < high) {
-			mid = (low + high) / 2;
-			if (audioIds.get(mid) < song.audioId()) {
-				low = mid + 1;
-			} else if (audioIds.get(mid) > song.audioId()) {
-				high = mid;
+		if (audioIdCount() == 0) {
+			audioIds.add(song.audioId());
+			PlaylistNodePrimaryLeaf leaf = new PlaylistNodePrimaryLeaf(this);
+			children.add(leaf);
+			leaf.addSong(0, song);
+			return;
+		}
+		int nodeIndex;
+		for (nodeIndex = 0; nodeIndex < audioIdCount(); nodeIndex++) {
+			if (audioIdAtIndex(nodeIndex) > song.audioId()) {
+				break;
 			}
 		}
-		PlaylistNode node = children.get(high);
+		PlaylistNode node = children.get(nodeIndex);
 		switch (node.type) {
 			case Internal:
 				((PlaylistNodePrimaryIndex) node).addSong(song);
 				break;
 			case Leaf:
 				PlaylistNodePrimaryLeaf leaf = (PlaylistNodePrimaryLeaf) node;
-				low = 0;
-				high = leaf.songCount() - 1;
-				while (low < high) {
-					mid = (low + high) / 2;
-					if (leaf.songAtIndex(mid).audioId() < song.audioId()) {
-						low = mid + 1;
-					} else if (leaf.songAtIndex(mid).audioId() > song.audioId()) {
-						high = mid;
+				int songIndex;
+				for (songIndex = 0; songIndex < leaf.songCount(); songIndex++) {
+					if (leaf.songAtIndex(songIndex).audioId() > song.audioId()) {
+						break;
 					}
 				}
-				leaf.addSong(high, song);
-				if (leaf.songCount() == 2 * order) {
+				leaf.addSong(songIndex, song);
+				if (leaf.songCount() > 2 * order) {
 					// split
+					ArrayList<CengSong> songs = new ArrayList<CengSong>() {
+						{
+							for (int i = PlaylistNode.order; i < leaf.songCount(); i++) {
+								add(leaf.songAtIndex(i));
+							}
+						}
+					};
+					for (int i = 2 * PlaylistNode.order; i >= PlaylistNode.order; i--) {
+						leaf.getSongs().remove(i);
+					}
+					PlaylistNodePrimaryLeaf newLeaf = new PlaylistNodePrimaryLeaf(leaf.getParent(), songs);
+					ArrayList<PlaylistNode> children = new ArrayList<PlaylistNode>() {
+						{
+							add(leaf);
+							add(newLeaf);
+						}
+					};
+					ArrayList<Integer> audioIds = new ArrayList<Integer>() {
+						{
+							add(newLeaf.songAtIndex(0).audioId());
+						}
+					};
+					this.children.set(nodeIndex, new PlaylistNodePrimaryIndex(this, audioIds, children));
 				}
 		}
+
 	}
 
 	public CengSong searchSong(Integer audioId) {
@@ -112,7 +134,7 @@ public class PlaylistNodePrimaryIndex extends PlaylistNode {
 				System.out.println("Could not find " + audioId);
 				return null;
 		}
-		
+
 	}
 
 	private void indent(int depth) {

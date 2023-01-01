@@ -41,7 +41,40 @@ public class PlaylistNodeSecondaryIndex extends PlaylistNode {
 	}
 
 	public void addSong(CengSong song) {
-		return;
+		if (genreCount() == 0) {
+			genres.add(song.genre());
+			PlaylistNodeSecondaryLeaf leaf = new PlaylistNodeSecondaryLeaf(this);
+			children.add(leaf);
+			leaf.addSong(0, song);
+			return;
+		}
+		int low = 0;
+		int high = genreCount() - 1;
+		int mid;
+		while (low < high) {
+			mid = (low + high) / 2;
+			if (genres.get(mid).compareTo(song.genre()) < 0) {
+				low = mid + 1;
+			} else if (genres.get(mid).compareTo(song.genre()) > 0) {
+				high = mid;
+			} else {
+				((PlaylistNodeSecondaryLeaf) children.get(mid)).addSong(0, song);
+				return;
+			}
+		}
+		if (genres.get(low).compareTo(song.genre()) < 0) {
+			genres.add(low + 1, song.genre());
+			PlaylistNodeSecondaryLeaf leaf = new PlaylistNodeSecondaryLeaf(this);
+			children.add(low + 1, leaf);
+			leaf.addSong(0, song);
+		} else if (genres.get(low).compareTo(song.genre()) > 0) {
+			genres.add(low, song.genre());
+			PlaylistNodeSecondaryLeaf leaf = new PlaylistNodeSecondaryLeaf(this);
+			children.add(low, leaf);
+			leaf.addSong(0, song);
+		} else {
+			((PlaylistNodeSecondaryLeaf) children.get(low)).addSong(0, song);
+		}
 	}
 
 	private void indent(int depth) {

@@ -59,6 +59,4 @@ public class PlaylistNodeSecondaryLeaf extends PlaylistNode {
     public ArrayList<ArrayList<CengSong>> getSongBucket(){
         return songBucket;
     }
-
-
 }
