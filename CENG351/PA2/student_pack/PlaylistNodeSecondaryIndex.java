@@ -1,5 +1,14 @@
 import java.util.ArrayList;
 
+class AudioIdPlaylistNodeSecondaryPair {
+	public String genre;
+	public PlaylistNode node;
+	AudioIdPlaylistNodeSecondaryPair(String genre, PlaylistNode node) {
+		this.genre = genre;
+		this.node = node;
+	}
+}
+
 public class PlaylistNodeSecondaryIndex extends PlaylistNode {
 	private ArrayList<String> genres;
 	private ArrayList<PlaylistNode> children;
@@ -40,40 +49,39 @@ public class PlaylistNodeSecondaryIndex extends PlaylistNode {
 		}
 	}
 
-	public void addSong(CengSong song) {
+	public AudioIdPlaylistNodeSecondaryPair addSong(CengSong song) {
 		if (genreCount() == 0) {
 			genres.add(song.genre());
 			PlaylistNodeSecondaryLeaf leaf = new PlaylistNodeSecondaryLeaf(this);
 			children.add(leaf);
 			leaf.addSong(0, song);
-			return;
+			return null;
 		}
-		int low = 0;
-		int high = genreCount() - 1;
-		int mid;
-		while (low < high) {
-			mid = (low + high) / 2;
-			if (genres.get(mid).compareTo(song.genre()) < 0) {
-				low = mid + 1;
-			} else if (genres.get(mid).compareTo(song.genre()) > 0) {
-				high = mid;
-			} else {
-				((PlaylistNodeSecondaryLeaf) children.get(mid)).addSong(0, song);
-				return;
+		int nodeIndex;
+		for (nodeIndex = 0; nodeIndex < genreCount(); nodeIndex++) {
+			if (song.genre().compareTo(genreAtIndex(nodeIndex)) < 0) {
+				break;
 			}
 		}
-		if (genres.get(low).compareTo(song.genre()) < 0) {
-			genres.add(low + 1, song.genre());
-			PlaylistNodeSecondaryLeaf leaf = new PlaylistNodeSecondaryLeaf(this);
-			children.add(low + 1, leaf);
-			leaf.addSong(0, song);
-		} else if (genres.get(low).compareTo(song.genre()) > 0) {
-			genres.add(low, song.genre());
-			PlaylistNodeSecondaryLeaf leaf = new PlaylistNodeSecondaryLeaf(this);
-			children.add(low, leaf);
-			leaf.addSong(0, song);
-		} else {
-			((PlaylistNodeSecondaryLeaf) children.get(low)).addSong(0, song);
+		PlaylistNode node = children.get(nodeIndex);
+		switch (node.type) {
+			case Internal:
+				PlaylistNodeSecondaryIndex index = (PlaylistNodeSecondaryIndex) node;
+				return index.addSong(song);
+			case Leaf:
+				PlaylistNodeSecondaryLeaf leaf = (PlaylistNodeSecondaryLeaf) node;
+				if (leaf.genreAtIndex(0).equals(song.genre())) {
+					leaf.addSong(0, song);
+					return null;
+				} else {
+					genres.add(nodeIndex, song.genre());
+					PlaylistNodeSecondaryLeaf newLeaf = new PlaylistNodeSecondaryLeaf(this);
+					newLeaf.addSong(0, song);
+					children.add(nodeIndex, newLeaf);
+					return new AudioIdPlaylistNodeSecondaryPair(leaf.genreAtIndex(0), leaf);
+				}
+			default:
+				return null;
 		}
 	}
 

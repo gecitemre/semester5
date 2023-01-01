@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.stream.Collectors;
 
 public class PlaylistTree {
 
@@ -18,7 +17,28 @@ public class PlaylistTree {
 		switch (primaryRoot.type) {
 			case Internal:
 				PlaylistNodePrimaryIndex primaryRootAsInternal = (PlaylistNodePrimaryIndex) primaryRoot;
-				primaryRootAsInternal.addSong(song);
+				AudioIdPlaylistNodePrimaryPair pair = primaryRootAsInternal.addSong(song);
+				if (pair != null) {
+
+					// split the node
+
+					// children
+					ArrayList<PlaylistNode> children = new ArrayList<PlaylistNode>() {
+						{
+							add(primaryRootAsInternal);
+							add(pair.node);
+						}
+					};
+
+					// audioIds
+					ArrayList<Integer> audioIds = new ArrayList<Integer>() {
+						{
+							add(pair.audioId);
+						}
+					};
+
+					primaryRoot = new PlaylistNodePrimaryIndex(null, audioIds, children);
+				}
 				break;
 			case Leaf:
 				PlaylistNodePrimaryLeaf primaryRootAsLeaf = (PlaylistNodePrimaryLeaf) primaryRoot;
@@ -28,12 +48,12 @@ public class PlaylistTree {
 					break;
 				}
 				for (int i = 0; i < primaryRootAsLeaf.songCount(); i++) {
-					if (primaryRootAsLeaf.songAtIndex(i).audioId() > song.audioId()) {
+					if (primaryRootAsLeaf.audioIdAtIndex(i) > song.audioId()) {
 						primaryRootAsLeaf.addSong(i, song);
 						break;
 					}
 				}
-				if (primaryRootAsLeaf.songAtIndex(primaryRootAsLeaf.songCount() - 1).audioId() < song.audioId()) {
+				if (primaryRootAsLeaf.audioIdAtIndex(primaryRootAsLeaf.songCount() - 1) < song.audioId()) {
 					primaryRootAsLeaf.addSong(primaryRootAsLeaf.songCount(), song);
 				}
 				if (primaryRootAsLeaf.songCount() > 2 * PlaylistNode.order) {
@@ -49,52 +69,85 @@ public class PlaylistTree {
 						primaryRootAsLeaf.getSongs().remove(i);
 					}
 					PlaylistNodePrimaryLeaf newLeaf = new PlaylistNodePrimaryLeaf(primaryRootAsLeaf.getParent(), songs);
-					ArrayList<PlaylistNode> children = new ArrayList<PlaylistNode>() {
+					ArrayList<PlaylistNode> children2 = new ArrayList<PlaylistNode>() {
 						{
 							add(primaryRootAsLeaf);
 							add(newLeaf);
 						}
 					};
-					ArrayList<Integer> audioIds = new ArrayList<Integer>() {
+					ArrayList<Integer> audioIds2 = new ArrayList<Integer>() {
 						{
-							add(newLeaf.songAtIndex(0).audioId());
+							add(newLeaf.audioIdAtIndex(0));
 						}
 					};
-					primaryRoot = new PlaylistNodePrimaryIndex(null, audioIds, children);
+					primaryRoot = new PlaylistNodePrimaryIndex(null, audioIds2, children2);
 				}
 		}
 		switch (secondaryRoot.type) {
 			case Internal:
 				PlaylistNodeSecondaryIndex secondaryRootAsInternal = (PlaylistNodeSecondaryIndex) secondaryRoot;
-				secondaryRootAsInternal.addSong(song);
+				AudioIdPlaylistNodeSecondaryPair pair = secondaryRootAsInternal.addSong(song);
+				if (pair != null) {
+					ArrayList<PlaylistNode> children = new ArrayList<PlaylistNode>() {
+						{
+							add(secondaryRootAsInternal);
+							add(pair.node);
+						}
+					};
+
+					// genres
+					ArrayList<String> genres = new ArrayList<String>() {
+						{
+							add(pair.genre);
+						}
+					};
+
+					secondaryRoot = new PlaylistNodeSecondaryIndex(null, genres, children);
+				}
 				break;
 			case Leaf:
 				PlaylistNodeSecondaryLeaf secondaryRootAsLeaf = (PlaylistNodeSecondaryLeaf) secondaryRoot;
+				
 				if (secondaryRootAsLeaf.genreCount() == 0) {
 					secondaryRootAsLeaf.addSong(0, song);
 					break;
 				}
-				for (int g = 0; g < secondaryRootAsLeaf.genreCount(); g++) {
-					if (secondaryRootAsLeaf.genreAtIndex(g).equals(song.genre())) {
-						secondaryRootAsLeaf.addSong(g, song);
+				for (int i = 0; i < secondaryRootAsLeaf.genreCount(); i++) {
+					if (secondaryRootAsLeaf.genreAtIndex(i).compareTo(song.genre()) > 0) {
+						secondaryRootAsLeaf.addSong(i, song);
 						break;
 					}
 				}
-				if (secondaryRootAsLeaf.genreAtIndex(secondaryRootAsLeaf.genreCount() - 1)
-						.compareTo(song.genre()) < 0) {
+				if (secondaryRootAsLeaf.genreAtIndex(secondaryRootAsLeaf.genreCount() - 1).compareTo(song.genre()) < 0) {
 					secondaryRootAsLeaf.addSong(secondaryRootAsLeaf.genreCount(), song);
 				}
 				if (secondaryRootAsLeaf.genreCount() > 2 * PlaylistNode.order) {
 					// split
-					secondaryRoot = new PlaylistNodeSecondaryIndex(null);
-					PlaylistNodeSecondaryLeaf newLeaf = new PlaylistNodeSecondaryLeaf(secondaryRoot);
-					for (int i = PlaylistNode.order; i < secondaryRootAsLeaf.genreCount(); i++) {
-						newLeaf.getSongBucket().add(i - PlaylistNode.order, secondaryRootAsLeaf.getSongBucket().get(i));
-					}
+					ArrayList<ArrayList<CengSong>> songBucket = new ArrayList<ArrayList<CengSong>>() {
+						{
+							for (int i = PlaylistNode.order; i < secondaryRootAsLeaf.genreCount(); i++) {
+								add(secondaryRootAsLeaf.songsAtIndex(i));
+							}
+						}
+					};
 					for (int i = 2 * PlaylistNode.order; i >= PlaylistNode.order; i--) {
 						secondaryRootAsLeaf.getSongBucket().remove(i);
 					}
+					PlaylistNodeSecondaryLeaf newLeaf = new PlaylistNodeSecondaryLeaf(secondaryRootAsLeaf.getParent(), songBucket);
+					ArrayList<PlaylistNode> children2 = new ArrayList<PlaylistNode>() {
+						{
+							add(secondaryRootAsLeaf);
+							add(newLeaf);
+						}
+					};
+					ArrayList<String> genres2 = new ArrayList<String>() {
+						{
+							add(newLeaf.genreAtIndex(0));
+						}
+					};
+					secondaryRoot = new PlaylistNodeSecondaryIndex(null, genres2, children2);
 				}
+
 		}
 	}
 
@@ -106,7 +159,7 @@ public class PlaylistTree {
 			case Leaf:
 				PlaylistNodePrimaryLeaf primaryRootAsLeaf = (PlaylistNodePrimaryLeaf) primaryRoot;
 				for (int i = 0; i < primaryRootAsLeaf.songCount(); i++) {
-					if (primaryRootAsLeaf.songAtIndex(i).audioId() == audioId) {
+					if (primaryRootAsLeaf.audioIdAtIndex(audioId) == audioId) {
 						return primaryRootAsLeaf.songAtIndex(i);
 					}
 				}

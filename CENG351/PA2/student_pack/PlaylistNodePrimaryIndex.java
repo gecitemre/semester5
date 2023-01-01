@@ -1,5 +1,15 @@
 import java.util.ArrayList;
 
+class AudioIdPlaylistNodePrimaryPair {
+	public Integer audioId;
+	public PlaylistNode node;
+
+	public AudioIdPlaylistNodePrimaryPair(Integer audioId, PlaylistNode node) {
+		this.audioId = audioId;
+		this.node = node;
+	}
+}
+
 public class PlaylistNodePrimaryIndex extends PlaylistNode {
 	private ArrayList<Integer> audioIds;
 	private ArrayList<PlaylistNode> children;
@@ -40,13 +50,13 @@ public class PlaylistNodePrimaryIndex extends PlaylistNode {
 		}
 	}
 
-	public void addSong(CengSong song) {
+	public AudioIdPlaylistNodePrimaryPair addSong(CengSong song) {
 		if (audioIdCount() == 0) {
 			audioIds.add(song.audioId());
 			PlaylistNodePrimaryLeaf leaf = new PlaylistNodePrimaryLeaf(this);
 			children.add(leaf);
 			leaf.addSong(0, song);
-			return;
+			return null;
 		}
 		int nodeIndex;
 		for (nodeIndex = 0; nodeIndex < audioIdCount(); nodeIndex++) {
@@ -57,45 +67,52 @@ public class PlaylistNodePrimaryIndex extends PlaylistNode {
 		PlaylistNode node = children.get(nodeIndex);
 		switch (node.type) {
 			case Internal:
-				((PlaylistNodePrimaryIndex) node).addSong(song);
+				AudioIdPlaylistNodePrimaryPair pair = ((PlaylistNodePrimaryIndex) node).addSong(song);
+				if (pair != null) {
+					audioIds.add(nodeIndex, pair.audioId);
+					children.add(nodeIndex + 1, pair.node);
+				}
 				break;
 			case Leaf:
 				PlaylistNodePrimaryLeaf leaf = (PlaylistNodePrimaryLeaf) node;
 				int songIndex;
 				for (songIndex = 0; songIndex < leaf.songCount(); songIndex++) {
-					if (leaf.songAtIndex(songIndex).audioId() > song.audioId()) {
+					if (leaf.audioIdAtIndex(songIndex) > song.audioId()) {
 						break;
 					}
 				}
 				leaf.addSong(songIndex, song);
 				if (leaf.songCount() > 2 * order) {
-					// split
-					ArrayList<CengSong> songs = new ArrayList<CengSong>() {
-						{
-							for (int i = PlaylistNode.order; i < leaf.songCount(); i++) {
-								add(leaf.songAtIndex(i));
-							}
-						}
-					};
-					for (int i = 2 * PlaylistNode.order; i >= PlaylistNode.order; i--) {
+					// split the leaf
+					PlaylistNodePrimaryLeaf newLeaf = new PlaylistNodePrimaryLeaf(this);
+					for (int i = 2 * order; i >= order; i--) {
+						newLeaf.addSong(0, leaf.songAtIndex(i));
+					}
+					for (int i = 2 * order; i >= order; i--) {
 						leaf.getSongs().remove(i);
 					}
-					PlaylistNodePrimaryLeaf newLeaf = new PlaylistNodePrimaryLeaf(leaf.getParent(), songs);
-					ArrayList<PlaylistNode> children = new ArrayList<PlaylistNode>() {
-						{
-							add(leaf);
-							add(newLeaf);
-						}
-					};
-					ArrayList<Integer> audioIds = new ArrayList<Integer>() {
-						{
-							add(newLeaf.songAtIndex(0).audioId());
-						}
-					};
-					this.children.set(nodeIndex, new PlaylistNodePrimaryIndex(this, audioIds, children));
+					audioIds.add(nodeIndex, newLeaf.audioIdAtIndex(0));
+					children.add(nodeIndex + 1, newLeaf);
 				}
 		}
 
+		// split the node if necessary
+		if (audioIdCount() > 2 * order) {
+			// split the node
+			PlaylistNodePrimaryIndex newNode = new PlaylistNodePrimaryIndex(this.getParent());
+			int r = audioIdAtIndex(order);
+			for (int i = order + 1; i < audioIdCount(); i++) {
+				newNode.audioIds.add(audioIds.get(i));
+				newNode.children.add(children.get(i));
+			}
+			newNode.children.add(children.get(audioIdCount()));
+			for (int i = audioIdCount(); i > order; i--) {
+				audioIds.remove(i - 1);
+				children.remove(i);
+			}
+			return new AudioIdPlaylistNodePrimaryPair(r, newNode);
+		}
+		return null;
 	}
 
 	public CengSong searchSong(Integer audioId) {
@@ -121,13 +138,13 @@ public class PlaylistNodePrimaryIndex extends PlaylistNode {
 				high = leaf.songCount() - 1;
 				while (low < high) {
 					mid = (low + high) / 2;
-					if (leaf.songAtIndex(mid).audioId() < audioId) {
+					if (leaf.audioIdAtIndex(mid) < audioId) {
 						low = mid + 1;
-					} else if (leaf.songAtIndex(mid).audioId() > audioId) {
+					} else if (leaf.audioIdAtIndex(mid) > audioId) {
 						high = mid;
 					}
 				}
-				if (leaf.songAtIndex(high).audioId() == audioId) {
+				if (leaf.audioIdAtIndex(high) == audioId) {
 					return leaf.songAtIndex(high);
 				}
 			default:
