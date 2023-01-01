@@ -10,6 +10,36 @@
 
 \newpage
 
-\section*{a)}
+\section{Simplex Method}
+
+\subsection{Formulation}
+\subsubsection*{Decision Variables}
+\begin{align*}
+    &s = \text{Amount of \textbf{Sweet Corn} used in the mix (grams)}\\
+    &b = \text{Amount of \textbf{Barbeque} used in the mix (grams)}\\
+\end{align*}
+
+\subsubsection*{Constraints}
+\begin{align*}
+    &s + b = 100 && \text{Weight of the package}\\
+    &1.5 \cdot s + 3.5 \cdot b \geq 2.5 && \text{Protein}\\
+    &400 \cdot s + 600 \cdot b \leq 560 && \text{Calories}\\
+    &s, b \geq 0 && \text{Non-negativity}
+\end{align*}
+
+\subsubsection*{Objective Function}
+\begin{align*}
+    &\text{Minimize Total Cost = } 0.5 \cdot s + 0.7 \cdot b
+\end{align*}
+
+\subsection{Solution}
+
+\section{Software Solution}
+
+\section{Changing the Constraints}
+
+\section{Finding the Shadow Price}
+
+\section{Examining other Shadow Prices}
 
 \end{document}
