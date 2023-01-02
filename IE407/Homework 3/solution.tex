@@ -22,8 +22,8 @@
 \subsubsection*{Constraints}
 \begin{align*}
     &s + b = 100 && \text{Weight of the package}\\
-    &1.5 \cdot s + 3.5 \cdot b \geq 2.5 && \text{Protein}\\
-    &400 \cdot s + 600 \cdot b \leq 560 && \text{Calories}\\
+    &0.015 \cdot s + 0.035 \cdot b \geq 0.025 && \text{Protein}\\
+    &4 \cdot s + 6 \cdot b \leq 5.6 && \text{Calories}\\
     &s, b \geq 0 && \text{Non-negativity}
 \end{align*}
 
@@ -33,6 +33,33 @@
 \end{align*}
 
 \subsection{Solution}
+
+\subsubsection{Convert to Standard Form}
+\begin{align*}
+    z = 0.5 \cdot s&&{}+ 0.7 \cdot b\\
+    s&&{}+ b&& &&&&=&&100\\
+    0.015 \cdot s&&{}+ 0.035 \cdot b&&{}- e_1&&&& = &&0.025\\
+    4 \cdot s&&{}+ 6 \cdot b&&&&{}+ s_1&& = &&5.6\
+    &&s, b, e_1, s_1 \geq 0
+\end{align*}
+
+This is a system of equations of 3 equations and 4 variables.
+
+
+\subsubsection{Finding a Basic Feasible Solution}
+
+Initial Basic Feasible Solution:
+\begin{itemize}
+    \item Basic Variables: $s_1, b, s, z$
+    \item Non-basic Variables: $e_1$
+\end{itemize}
+
+For this initial basic feasible solution, 
+$s = 50,b = 50,s_1 = 60,e_1 = 0, z = 60$
+
+\subsubsection{Determining if the Solution is Optimal}
+
+
 
 \section{Software Solution}
 
