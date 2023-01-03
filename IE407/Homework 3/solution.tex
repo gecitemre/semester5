@@ -1,5 +1,7 @@
 \documentclass{article}
 \usepackage{mathtools}
+\usepackage{array}
+\usepackage[table]{xcolor}
 
 \author{Emre Geçit}
 
@@ -40,7 +42,7 @@
 \begin{align*}
     z &&{}- 0.5 \cdot s&&{}- 0.7 \cdot b&&&&&&&&&&&&&&=&&0\\
     &&s&&{}+ b&&{}+a_1&&&&&&&&&&&&=&&100\\
-    &&b&&{}- s&&&&{}+ s_1&&&&&&&&&&=&&35\\
+    &&{}-s&&{}+ b&&&&{}+ s_1&&&&&&&&&&=&&35\\
     &&s&&{}- b&&&&&&{}+ s_2&&&&&&&&=&&35\\
     &&1.5 \cdot s&&{}+ 3.5 \cdot b&&&&&&&&{}- e_1&&{}+a_2&&&& = &&250\\
     &&4 \cdot s&&{}+ 6 \cdot b&&&&&&&&&&&&{}+ s_3&& = &&550\\
@@ -49,41 +51,112 @@ Where, $s, b, s_1, s_2, s_3, e_1, a_1, a_2$ are non-negative.
 
 This is a system of equations with 6 equations and 9 variables.
 
+The matrix representation of this system is as follows:
+
+
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}l|ccccccccc|l}
+        & $z$ & $s$ & $b$ & $s_1$ & $s_2$ & $s_3$ & $e_1$ & $a_1$ & $a_2$ & RHS \\
+    \hline
+    $z$ & $1$ & $-0.5$ & $-0.7$ & $0$ & $0$ & $0$ & $0$ & $0$ & $0$ & $0$ \\
+    $a_1$ & $0$ & $1$ & $1$ & $0$ & $0$ & $0$ & $0$ & $1$ & $0$ & $100$ \\
+    $s_2$ & $0$ & $-1$ & $1$ & $0$ & $1$ & $0$ & $0$ & $0$ & $0$ & $35$ \\
+    $s_1$ & $0$ & $1$ & $-1$ & $1$ & $0$ & $0$ & $0$ & $0$ & $0$ & $35$ \\
+    $a_2$ & $0$ & $1.5$ & $3.5$ & $0$ & $0$ & $0$ & $-1$ & $0$ & $1$ & $250$ \\
+    $s_3$ & $0$ & $4$ & $6$ & $0$ & $0$ & $1$ & $0$ & $0$ & $0$ & $550$ \\
+    \hline
+\end{tabular*}
+
 
 \subsubsection{Finding a Basic Feasible Solution}
 Two-phase method will be used to find a basic feasible solution.
 
 \textbf{Objective:} Minimize $w' = a_1 + a_2$
 
-\begin{align*}
-    w' &&&&&&{}-a_1&&&&&&&&{}- a_2&&&&=&&0\\
-    &&s&&{}+ b&&{}+a_1&&&&&&&&&&&&=&&100\\
-    &&b&&{}- s&&&&{}+ s_1&&&&&&&&&&=&&35\\
-    &&s&&{}- b&&&&&&{}+ s_2&&&&&&&&=&&35\\
-    &&1.5 \cdot s&&{}+ 3.5 \cdot b&&&&&&&&{}- e_1&&{}+a_2&&&& = &&250\\
-    &&4 \cdot s&&{}+ 6 \cdot b&&&&&&&&&&&&{}+ s_3&& = &&550\\
-\end{align*}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}ccccccccc|l}
+    $w'$ & $s$ & $b$ & $s_1$ & $s_2$ & $s_3$ & $e_1$ & $a_1$ & $a_2$ & RHS\\
+    \hline
+    $1$ & $0$ & $0$ & $0$ & $0$ & $0$ & $0$ & $-1$ & $-1$ & $0$\\
+    $0$ & $1$ & $1$ & $0$ & $0$ & $0$ & $0$ & $1$ & $0$ & $100$\\
+    $0$ & $-1$ & $1$ & $0$ & $1$ & $0$ & $0$ & $0$ & $0$ & $35$\\
+    $0$ & $1$ & $-1$ & $1$ & $0$ & $0$ & $0$ & $0$ & $0$ & $35$\\
+    $0$ & $1.5$ & $3.5$ & $0$ & $0$ & $0$ & $-1$ & $0$ & $1$ & $250$\\
+    $0$ & $4$ & $6$ & $0$ & $0$ & $1$ & $0$ & $0$ & $0$ & $550$\\
+    \hline
+\end{tabular*}
 
-Add row 1 and 4 to row 0.
+\vspace{0.5cm}
+Add row $1$ and row $4$ from row $0$ to get rid of $a_1$ and $a_2$.
 
-\begin{align*}
-    w' &&{}+2.5 \cdot s&&{}+ 4.5 \cdot b&&&&&&&&{}- e_1&&&&&&=&&350\\
-    &&s&&{}+ b&&{}+a_1&&&&&&&&&&&&=&&100\\
-    &&b&&{}- s&&&&{}+ s_1&&&&&&&&&&=&&35\\
-    &&s&&{}- b&&&&&&{}+ s_2&&&&&&&&=&&35\\
-    &&1.5 \cdot s&&{}+ 3.5 \cdot b&&&&&&&&{}- e_1&&{}+a_2&&&& = &&250\\
-    &&4 \cdot s&&{}+ 6 \cdot b&&&&&&&&&&&&{}+ s_3&& = &&550\\
-\end{align*}
+Now, the matrix is ready for the first iteration of the simplex method.
 
+Variable with the most positive coefficient in row $0$ is $b$.
 
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}l|cc>{\color{red}}ccccccc|l|l}
+    & $w'$ & $s$ & $b$ & $s_1$ & $s_2$ & $s_3$ & $e_1$ & $a_1$ & $a_2$ & RHS & Ratio\\
+    \hline
+    $w'$  & $1$ & $2.5$ & $4.5$ & $0$ & $0$ & $0$ & $-1$ & $0$ & $0$ & $350$\\
+    $a_1$ & $0$ & $1$ & $1$ & $0$ & $0$ & $0$ & $0$ & $1$ & $0$ & $100$ & $100$ \\
+    $s_2$ & $0$ & $-1$ & $\mathbf{1}$ & $0$ & $1$ & $0$ & $0$ & $0$ & $0$ & $35$ & $35$ \\
+    $s_1$ & $0$ & $1$ & $-1$ & $1$ & $0$ & $0$ & $0$ & $0$ & $0$ & $35$\\
+    $a_2$ & $0$ & $1.5$ & $3.5$ & $0$ & $0$ & $0$ & $-1$ & $0$ & $1$ & $250$ & $71.4$\\
+    $s_3$ & $0$ & $4$ & $6$ & $0$ & $0$ & $1$ & $0$ & $0$ & $0$ & $550$ & $91.7$\\
+    \hline
+\end{tabular*}
 
+\vspace{0.5cm}
+$s_2$ is the winner of the ratio test. $s_2$ will exit, and $b$ will enter.
 
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}l|c>{\color{red}}cccccccc|l|l}
+    & $w'$ & $s$ & $b$ & $s_1$ & $s_2$ & $s_3$ & $e_1$ & $a_1$ & $a_2$ & RHS & Ratio\\
+    \hline
+    $w'$  & $1$ & $7$ & $0$ & $0$ & $0$ & $0$ & $-1$ & $0$ & $0$ & $192.5$\\
+    $a_1$ & $0$ & $2$ & $0$ & $0$ & $0$ & $0$ & $0$ & $1$ & $0$ & $65$ & $32.5$ \\
+    $s_2$ & $0$ & $-1$ & $1$ & $0$ & $1$ & $0$ & $0$ & $0$ & $0$ & $35$\\
+    $s_1$ & $0$ & $0$ & $0$ & $1$ & $1$ & $0$ & $0$ & $0$ & $0$ & $70$\\
+    $a_2$ & $0$ & $\mathbf{5}$ & $0$ & $0$ & $0$ & $0$ & $-1$ & $0$ & $1$ & $127.5$ & $25.5$\\
+    $s_3$ & $0$ & $10$ & $0$ & $0$ & $0$ & $1$ & $0$ & $0$ & $0$ & $340$ & $34$\\
+    \hline
+\end{tabular*}
+
+\vspace{0.5cm}
+In the next iteration, $a_2$ will be replaced by $s$.
+
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}l|cccccc>{\color{red}}ccc|l|l}
+    & $w'$ & $s$ & $b$ & $s_1$ & $s_2$ & $s_3$ & $e_1$ & $a_1$ & $a_2$ & RHS & Ratio\\
+    \hline
+    $w'$  & $1$ & $0$ & $0$ & $0$ & $0$ & $0$ & $0.4$ & $0$ & $0$ & $14$\\
+    $a_1$ & $0$ & $0$ & $0$ & $0$ & $0$ & $0$ & $0$ & $1$ & $0$ & $14$ \\
+    $s_2$ & $0$ & $0$ & $1$ & $0$ & $1$ & $0$ & $-0.2$ & $0$ & $0$ & $60.5$\\
+    $s_1$ & $0$ & $0$ & $0$ & $1$ & $1$ & $0$ & $0$ & $0$ & $0$ & $70$\\
+    $s$ & $0$ & $1$ & $0$ & $0$ & $0$ & $0$ & $-0.2$ & $0$ & $1$ & $25.5$\\
+    $s_3$ & $0$ & $0$ & $0$ & $0$ & $0$ & $1$ & $-2$ & $0$ & $-10$ & $85$\\
+    \hline
+\end{tabular*}
+
+\vspace{0.5cm}
+There is no ratio with a non-negative value. There was probably some mistake in the previous steps.
+
+\textbf{I do not have much time left to find my mistake until the deadline. From now on, I will include only the software outputs in my report.}
 \section{Software Solution}
+
+Excel solution is shown below.
+
+\includegraphics*{software.png}
 
 \section{Changing the Constraints}
 
+Excel solution is shown below.
+
+\includegraphics*{software2.png}
+
 \section{Finding the Shadow Price}
 
+According to Excel output, shadow price for protein constraint is 10.
+
 \section{Examining other Shadow Prices}
+
+There is also the shadow price for the total weight constraint (0.35).
+
+That means that there are no binding constraints other than the protein constraint and the weight constraint.
 
 \end{document}
