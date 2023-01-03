@@ -66,23 +66,51 @@ public class PlaylistNodeSecondaryIndex extends PlaylistNode {
 		PlaylistNode node = children.get(nodeIndex);
 		switch (node.type) {
 			case Internal:
-				PlaylistNodeSecondaryIndex index = (PlaylistNodeSecondaryIndex) node;
-				return index.addSong(song);
+				AudioIdPlaylistNodeSecondaryPair pair = ((PlaylistNodeSecondaryIndex) node).addSong(song);
+				if (pair != null) {
+					genres.add(nodeIndex, pair.genre);
+					children.add(nodeIndex + 1, pair.node);
+				}
+				break;
 			case Leaf:
 				PlaylistNodeSecondaryLeaf leaf = (PlaylistNodeSecondaryLeaf) node;
-				if (leaf.genreAtIndex(0).equals(song.genre())) {
-					leaf.addSong(0, song);
-					return null;
-				} else {
-					genres.add(nodeIndex, song.genre());
-					PlaylistNodeSecondaryLeaf newLeaf = new PlaylistNodeSecondaryLeaf(this);
-					newLeaf.addSong(0, song);
-					children.add(nodeIndex, newLeaf);
-					return new AudioIdPlaylistNodeSecondaryPair(leaf.genreAtIndex(0), leaf);
+				int genreIndex;
+				for (genreIndex = 0; genreIndex < leaf.genreCount(); genreIndex++) {
+					int compareResult = song.genre().compareTo(leaf.genreAtIndex(genreIndex));
+					if (compareResult < 0) {
+						break;
+					}
+					if (compareResult == 0) return null;
 				}
-			default:
-				return null;
+				leaf.addSong(genreIndex, song);
+				if (leaf.genreCount() > 2 * order) {
+					PlaylistNodeSecondaryLeaf newLeaf = new PlaylistNodeSecondaryLeaf(this);
+					for (int i = 2 * order; i >= order; i--) {
+						newLeaf.getSongBucket().add(0, leaf.songsAtIndex(i));
+					}
+					for (int i = 2 * order; i >= order; i--) {
+						leaf.getSongBucket().remove(i);
+					}
+					genres.add(nodeIndex, newLeaf.genreAtIndex(0));
+					children.add(nodeIndex + 1, newLeaf);
+				}
 		}
+
+		// Split if necessary
+		if (genreCount() > 2 * order) {
+			PlaylistNodeSecondaryIndex newIndex = new PlaylistNodeSecondaryIndex(getParent());
+			for (int i = order + 1; i < genreCount(); i++) {
+				newIndex.genres.add(genres.get(i));
+				newIndex.children.add(children.get(i));
+			}
+			newIndex.children.add(children.get(genreCount()));
+			for (int i = order + 1; i <= genreCount(); i++) {
+				children.remove(order + 1);
+				genres.remove(order + 1);
+			}
+			return new AudioIdPlaylistNodeSecondaryPair(genreAtIndex(order), newIndex);
+		}
+		return null;
 	}
 
 	private void indent(int depth) {
@@ -93,11 +121,13 @@ public class PlaylistNodeSecondaryIndex extends PlaylistNode {
 
 	public void print(int depth) {
 		indent(depth);
-		System.out.println("<Index>");
+		System.out.println("<index>");
 		for (int i = 0; i < genres.size(); i++) {
 			indent(depth + 1);
 			System.out.println(genres.get(i));
 		}
+		indent(depth);
+		System.out.println("</index>");
 		for (PlaylistNode child : children) {
 			switch (child.type) {
 				case Internal:
@@ -117,10 +147,7 @@ public class PlaylistNodeSecondaryIndex extends PlaylistNode {
 						indent(depth + 2);
 						System.out.println("</data>");
 					}
-					break;
 			}
 		}
-		indent(depth);
-		System.out.println("</Index>");
 	}
 }

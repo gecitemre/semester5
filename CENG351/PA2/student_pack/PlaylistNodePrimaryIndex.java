@@ -99,53 +99,48 @@ public class PlaylistNodePrimaryIndex extends PlaylistNode {
 		// split the node if necessary
 		if (audioIdCount() > 2 * order) {
 			// split the node
-			PlaylistNodePrimaryIndex newNode = new PlaylistNodePrimaryIndex(this.getParent());
+			PlaylistNodePrimaryIndex newIndex = new PlaylistNodePrimaryIndex(this.getParent());
 			int r = audioIdAtIndex(order);
 			for (int i = order + 1; i < audioIdCount(); i++) {
-				newNode.audioIds.add(audioIds.get(i));
-				newNode.children.add(children.get(i));
+				newIndex.audioIds.add(audioIds.get(i));
+				newIndex.children.add(children.get(i));
 			}
-			newNode.children.add(children.get(audioIdCount()));
+			newIndex.children.add(children.get(audioIdCount()));
 			for (int i = audioIdCount(); i > order; i--) {
 				audioIds.remove(i - 1);
 				children.remove(i);
 			}
-			return new AudioIdPlaylistNodePrimaryPair(r, newNode);
+			return new AudioIdPlaylistNodePrimaryPair(r, newIndex);
 		}
 		return null;
 	}
 
-	public CengSong searchSong(Integer audioId) {
-		// find the index of the first element that is greater than or equal to audioId
-		int low = 0;
-		int high = audioIdCount() - 1;
-		int mid;
-		while (low < high) {
-			mid = (low + high) / 2;
-			if (audioIds.get(mid) < audioId) {
-				low = mid + 1;
-			} else if (audioIds.get(mid) > audioId) {
-				high = mid;
+	public CengSong searchSong(Integer audioId, int depth) {
+		indent(depth);
+		System.out.println("<index>");
+		int index;
+		for (index = 0; index < audioIdCount(); index++) {
+			indent(depth + 1);
+			System.out.println("<node>" + audioIdAtIndex(index) + "</node>");
+			if (audioIdAtIndex(index) > audioId) {
+				break;
 			}
 		}
-		PlaylistNode node = children.get(high);
+		indent(depth);
+		System.out.println("</index>");
+		PlaylistNode node = children.get(index);
 		switch (node.type) {
 			case Internal:
-				return ((PlaylistNodePrimaryIndex) node).searchSong(audioId);
+				return ((PlaylistNodePrimaryIndex) node).searchSong(audioId, depth + 1);
 			case Leaf:
 				PlaylistNodePrimaryLeaf leaf = (PlaylistNodePrimaryLeaf) node;
-				low = 0;
-				high = leaf.songCount() - 1;
-				while (low < high) {
-					mid = (low + high) / 2;
-					if (leaf.audioIdAtIndex(mid) < audioId) {
-						low = mid + 1;
-					} else if (leaf.audioIdAtIndex(mid) > audioId) {
-						high = mid;
+				System.out.println("<data>");
+				for (int i = 0; i < leaf.songCount(); i++) {
+					System.out.println("<record>"+leaf.songAtIndex(i).fullName()+"</record>");
+					if (leaf.audioIdAtIndex(i) == audioId) {
+						System.out.println("</data>");
+						return leaf.songAtIndex(index);
 					}
-				}
-				if (leaf.audioIdAtIndex(high) == audioId) {
-					return leaf.songAtIndex(high);
 				}
 			default:
 				System.out.println("Could not find " + audioId);
@@ -162,11 +157,13 @@ public class PlaylistNodePrimaryIndex extends PlaylistNode {
 
 	public void print(int depth) {
 		indent(depth);
-		System.out.println("<Index>");
+		System.out.println("<index>");
 		for (int i = 0; i < audioIdCount(); i++) {
 			indent(depth + 1);
 			System.out.println(audioIds.get(i));
 		}
+		indent(depth);
+		System.out.println("</index>");
 		for (PlaylistNode child : children) {
 			switch (child.type) {
 				case Internal:
@@ -182,10 +179,7 @@ public class PlaylistNodePrimaryIndex extends PlaylistNode {
 					}
 					indent(depth + 1);
 					System.out.println("</data>");
-					break;
 			}
 		}
-		indent(depth);
-		System.out.println("</Index>");
 	}
 }

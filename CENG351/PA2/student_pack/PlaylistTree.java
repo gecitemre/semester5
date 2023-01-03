@@ -47,15 +47,13 @@ public class PlaylistTree {
 					primaryRootAsLeaf.addSong(0, song);
 					break;
 				}
-				for (int i = 0; i < primaryRootAsLeaf.songCount(); i++) {
+				int i;
+				for (i = 0; i < primaryRootAsLeaf.songCount(); i++) {
 					if (primaryRootAsLeaf.audioIdAtIndex(i) > song.audioId()) {
-						primaryRootAsLeaf.addSong(i, song);
 						break;
 					}
 				}
-				if (primaryRootAsLeaf.audioIdAtIndex(primaryRootAsLeaf.songCount() - 1) < song.audioId()) {
-					primaryRootAsLeaf.addSong(primaryRootAsLeaf.songCount(), song);
-				}
+				primaryRootAsLeaf.addSong(i, song);
 				if (primaryRootAsLeaf.songCount() > 2 * PlaylistNode.order) {
 					// split
 					ArrayList<CengSong> songs = new ArrayList<CengSong>() {
@@ -65,8 +63,8 @@ public class PlaylistTree {
 							}
 						}
 					};
-					for (int i = 2 * PlaylistNode.order; i >= PlaylistNode.order; i--) {
-						primaryRootAsLeaf.getSongs().remove(i);
+					for (int j = 2 * PlaylistNode.order; j >= PlaylistNode.order; j--) {
+						primaryRootAsLeaf.getSongs().remove(j);
 					}
 					PlaylistNodePrimaryLeaf newLeaf = new PlaylistNodePrimaryLeaf(primaryRootAsLeaf.getParent(), songs);
 					ArrayList<PlaylistNode> children2 = new ArrayList<PlaylistNode>() {
@@ -112,15 +110,17 @@ public class PlaylistTree {
 					secondaryRootAsLeaf.addSong(0, song);
 					break;
 				}
-				for (int i = 0; i < secondaryRootAsLeaf.genreCount(); i++) {
-					if (secondaryRootAsLeaf.genreAtIndex(i).compareTo(song.genre()) > 0) {
-						secondaryRootAsLeaf.addSong(i, song);
+				int i;
+				for (i = 0; i < secondaryRootAsLeaf.genreCount(); i++) {
+					int compareResult = secondaryRootAsLeaf.genreAtIndex(i).compareTo(song.genre());
+					if (compareResult > 0) {
 						break;
 					}
+					if (compareResult == 0) {
+						return;
+					}
 				}
-				if (secondaryRootAsLeaf.genreAtIndex(secondaryRootAsLeaf.genreCount() - 1).compareTo(song.genre()) < 0) {
-					secondaryRootAsLeaf.addSong(secondaryRootAsLeaf.genreCount(), song);
-				}
+				secondaryRootAsLeaf.addSong(i, song);
 				if (secondaryRootAsLeaf.genreCount() > 2 * PlaylistNode.order) {
 					// split
 					ArrayList<ArrayList<CengSong>> songBucket = new ArrayList<ArrayList<CengSong>>() {
@@ -130,8 +130,8 @@ public class PlaylistTree {
 							}
 						}
 					};
-					for (int i = 2 * PlaylistNode.order; i >= PlaylistNode.order; i--) {
-						secondaryRootAsLeaf.getSongBucket().remove(i);
+					for (int j = 2 * PlaylistNode.order; j >= PlaylistNode.order; j--) {
+						secondaryRootAsLeaf.getSongBucket().remove(j);
 					}
 					PlaylistNodeSecondaryLeaf newLeaf = new PlaylistNodeSecondaryLeaf(secondaryRootAsLeaf.getParent(), songBucket);
 					ArrayList<PlaylistNode> children2 = new ArrayList<PlaylistNode>() {
@@ -155,12 +155,16 @@ public class PlaylistTree {
 		switch (primaryRoot.type) {
 			case Internal:
 				PlaylistNodePrimaryIndex primaryRootAsInternal = (PlaylistNodePrimaryIndex) primaryRoot;
-				return primaryRootAsInternal.searchSong(audioId);
+				return primaryRootAsInternal.searchSong(audioId, 0);
 			case Leaf:
 				PlaylistNodePrimaryLeaf primaryRootAsLeaf = (PlaylistNodePrimaryLeaf) primaryRoot;
-				for (int i = 0; i < primaryRootAsLeaf.songCount(); i++) {
-					if (primaryRootAsLeaf.audioIdAtIndex(audioId) == audioId) {
-						return primaryRootAsLeaf.songAtIndex(i);
+				System.out.println("<data>");
+				int i;
+				for (i = 0; i < primaryRootAsLeaf.songCount(); i++) {
+					System.out.println("<record>" + primaryRootAsLeaf.songAtIndex(i).fullName() + "</record>");
+					if (primaryRootAsLeaf.audioIdAtIndex(i) == audioId) {
+						System.out.println("</data>");
+						return primaryRootAsLeaf.songAtIndex(i); 
 					}
 				}
 			default:
@@ -179,10 +183,9 @@ public class PlaylistTree {
 				PlaylistNodePrimaryLeaf primaryRootAsLeaf = (PlaylistNodePrimaryLeaf) primaryRoot;
 				System.out.println("<data>");
 				for (CengSong song : primaryRootAsLeaf.getSongs()) {
-					System.out.println("\t<record>" + song.audioId() + "</record>");
+					System.out.println("\t<record>" + song.fullName() + "</record>");
 				}
 				System.out.println("</data>");
-				break;
 		}
 	}
 
@@ -202,7 +205,6 @@ public class PlaylistTree {
 					}
 				}
 				System.out.println("</data>");
-				break;
 		}
 	}
 
