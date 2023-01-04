@@ -113,11 +113,8 @@ public class PlaylistTree {
 				int i;
 				for (i = 0; i < secondaryRootAsLeaf.genreCount(); i++) {
 					int compareResult = secondaryRootAsLeaf.genreAtIndex(i).compareTo(song.genre());
-					if (compareResult > 0) {
+					if (compareResult >= 0) {
 						break;
-					}
-					if (compareResult == 0) {
-						return;
 					}
 				}
 				secondaryRootAsLeaf.addSong(i, song);
@@ -155,7 +152,7 @@ public class PlaylistTree {
 		switch (primaryRoot.type) {
 			case Internal:
 				PlaylistNodePrimaryIndex primaryRootAsInternal = (PlaylistNodePrimaryIndex) primaryRoot;
-				return primaryRootAsInternal.searchSong(audioId, 0);
+				return primaryRootAsInternal.searchSong(audioId);
 			case Leaf:
 				PlaylistNodePrimaryLeaf primaryRootAsLeaf = (PlaylistNodePrimaryLeaf) primaryRoot;
 				System.out.println("<data>");
@@ -177,13 +174,13 @@ public class PlaylistTree {
 		switch (primaryRoot.type) {
 			case Internal:
 				PlaylistNodePrimaryIndex primaryRootAsInternal = (PlaylistNodePrimaryIndex) primaryRoot;
-				primaryRootAsInternal.print(0);
+				primaryRootAsInternal.print();
 				break;
 			case Leaf:
 				PlaylistNodePrimaryLeaf primaryRootAsLeaf = (PlaylistNodePrimaryLeaf) primaryRoot;
 				System.out.println("<data>");
 				for (CengSong song : primaryRootAsLeaf.getSongs()) {
-					System.out.println("\t<record>" + song.fullName() + "</record>");
+					System.out.println("<record>" + song.fullName() + "</record>");
 				}
 				System.out.println("</data>");
 		}
@@ -193,7 +190,7 @@ public class PlaylistTree {
 		switch (secondaryRoot.type) {
 			case Internal:
 				PlaylistNodeSecondaryIndex secondaryRootAsInternal = (PlaylistNodeSecondaryIndex) secondaryRoot;
-				secondaryRootAsInternal.print(0);
+				secondaryRootAsInternal.print();
 				break;
 			case Leaf:
 				PlaylistNodeSecondaryLeaf secondaryRootAsLeaf = (PlaylistNodeSecondaryLeaf) secondaryRoot;
@@ -201,7 +198,7 @@ public class PlaylistTree {
 				for (ArrayList<CengSong> songBucket : secondaryRootAsLeaf.getSongBucket()) {
 					System.out.println(songBucket.get(0).genre());
 					for (CengSong song : songBucket) {
-						System.out.println("\t<record>" + song.fullName() + "</record>");
+						System.out.println("<record>" + song.fullName() + "</record>");
 					}
 				}
 				System.out.println("</data>");

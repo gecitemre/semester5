@@ -115,29 +115,32 @@ public class PlaylistNodePrimaryIndex extends PlaylistNode {
 		return null;
 	}
 
-	public CengSong searchSong(Integer audioId, int depth) {
-		indent(depth);
+	public CengSong searchSong(Integer audioId) {
+		indent(level);
 		System.out.println("<index>");
 		int index;
 		for (index = 0; index < audioIdCount(); index++) {
-			indent(depth + 1);
-			System.out.println("<node>" + audioIdAtIndex(index) + "</node>");
+			indent(level + 1);
+			System.out.println("<node>");
 			if (audioIdAtIndex(index) > audioId) {
 				break;
 			}
 		}
-		indent(depth);
+		indent(level);
 		System.out.println("</index>");
 		PlaylistNode node = children.get(index);
 		switch (node.type) {
 			case Internal:
-				return ((PlaylistNodePrimaryIndex) node).searchSong(audioId, depth + 1);
+				return ((PlaylistNodePrimaryIndex) node).searchSong(audioId);
 			case Leaf:
 				PlaylistNodePrimaryLeaf leaf = (PlaylistNodePrimaryLeaf) node;
+				indent(level + 1);
 				System.out.println("<data>");
 				for (int i = 0; i < leaf.songCount(); i++) {
+					indent(level + 1);
 					System.out.println("<record>"+leaf.songAtIndex(i).fullName()+"</record>");
 					if (leaf.audioIdAtIndex(i) == audioId) {
+						indent(level + 1);
 						System.out.println("</data>");
 						return leaf.songAtIndex(index);
 					}
@@ -149,35 +152,35 @@ public class PlaylistNodePrimaryIndex extends PlaylistNode {
 
 	}
 
-	private void indent(int depth) {
-		for (int i = 0; i < depth; i++) {
+	private void indent(int level) {
+		for (int i = 0; i < level; i++) {
 			System.out.print("\t");
 		}
 	}
 
-	public void print(int depth) {
-		indent(depth);
+	public void print() {
+		indent(level);
 		System.out.println("<index>");
 		for (int i = 0; i < audioIdCount(); i++) {
-			indent(depth + 1);
+			indent(level);
 			System.out.println(audioIds.get(i));
 		}
-		indent(depth);
+		indent(level);
 		System.out.println("</index>");
 		for (PlaylistNode child : children) {
 			switch (child.type) {
 				case Internal:
-					((PlaylistNodePrimaryIndex) child).print(depth + 1);
+					((PlaylistNodePrimaryIndex) child).print();
 					break;
 				case Leaf:
 					PlaylistNodePrimaryLeaf leaf = (PlaylistNodePrimaryLeaf) child;
-					indent(depth + 1);
+					indent(level + 1);
 					System.out.println("<data>");
 					for (CengSong song : leaf.getSongs()) {
-						indent(depth + 2);
-						System.out.println("\t<record>" + song.fullName() + "</record>");
+						indent(level + 1);
+						System.out.println("<record>" + song.fullName() + "</record>");
 					}
-					indent(depth + 1);
+					indent(level + 1);
 					System.out.println("</data>");
 			}
 		}
