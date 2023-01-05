@@ -152,7 +152,7 @@ public class PlaylistTree {
 		switch (primaryRoot.type) {
 			case Internal:
 				PlaylistNodePrimaryIndex primaryRootAsInternal = (PlaylistNodePrimaryIndex) primaryRoot;
-				return primaryRootAsInternal.searchSong(audioId);
+				return primaryRootAsInternal.searchSong(audioId, 0);
 			case Leaf:
 				PlaylistNodePrimaryLeaf primaryRootAsLeaf = (PlaylistNodePrimaryLeaf) primaryRoot;
 				System.out.println("<data>");

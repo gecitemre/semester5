@@ -115,13 +115,15 @@ public class PlaylistNodePrimaryIndex extends PlaylistNode {
 		return null;
 	}
 
-	public CengSong searchSong(Integer audioId) {
+	public CengSong searchSong(Integer audioId, int level) {
 		indent(level);
 		System.out.println("<index>");
 		int index;
 		for (index = 0; index < audioIdCount(); index++) {
-			indent(level + 1);
-			System.out.println("<node>");
+			indent(level);
+			System.out.println(audioIdAtIndex(index));
+		}
+		for (index = 0; index < audioIdCount(); index++) {
 			if (audioIdAtIndex(index) > audioId) {
 				break;
 			}
@@ -131,15 +133,15 @@ public class PlaylistNodePrimaryIndex extends PlaylistNode {
 		PlaylistNode node = children.get(index);
 		switch (node.type) {
 			case Internal:
-				return ((PlaylistNodePrimaryIndex) node).searchSong(audioId);
+				return ((PlaylistNodePrimaryIndex) node).searchSong(audioId, level + 1);
 			case Leaf:
 				PlaylistNodePrimaryLeaf leaf = (PlaylistNodePrimaryLeaf) node;
 				indent(level + 1);
 				System.out.println("<data>");
 				for (int i = 0; i < leaf.songCount(); i++) {
-					indent(level + 1);
-					System.out.println("<record>"+leaf.songAtIndex(i).fullName()+"</record>");
 					if (leaf.audioIdAtIndex(i) == audioId) {
+						indent(level + 1);
+						System.out.println("<record>"+leaf.songAtIndex(i).fullName()+"</record>");
 						indent(level + 1);
 						System.out.println("</data>");
 						return leaf.songAtIndex(index);
