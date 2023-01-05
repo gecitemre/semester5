@@ -124,7 +124,7 @@ public class PlaylistNodeSecondaryIndex extends PlaylistNode {
 		}
 	}
 
-	public void print() {
+	public void print(int level) {
 		indent(level);
 
 		System.out.println("<index>");
@@ -137,22 +137,23 @@ public class PlaylistNodeSecondaryIndex extends PlaylistNode {
 		for (PlaylistNode child : children) {
 			switch (child.type) {
 				case Internal:
-					((PlaylistNodeSecondaryIndex) child).print();
+					((PlaylistNodeSecondaryIndex) child).print(level + 1);
 					break;
 				case Leaf:
 					PlaylistNodeSecondaryLeaf leaf = (PlaylistNodeSecondaryLeaf) child;
 					indent(level + 1);
-					System.out.println(leaf.genreAtIndex(0));
-					indent(level + 1);
 					System.out.println("<data>");
-					for (ArrayList<CengSong> songs : leaf.getSongBucket()) {
-						for (CengSong song : songs) {
-							indent(level + 1);
-							System.out.println("<record>" + song.audioId() + "</record>");
-						}
+					for (int i = 0; i < leaf.genreCount(); i++) {
+						ArrayList<CengSong> songs = leaf.songsAtIndex(i);
 						indent(level + 1);
-						System.out.println("</data>");
+						System.out.println(leaf.genreAtIndex(i));
+						for (CengSong song : songs) {
+							indent(level + 2);
+							System.out.println("<record>" + song.fullName() + "</record>");
+						}
 					}
+					indent(level + 1);
+					System.out.println("</data>");
 			}
 		}
 	}

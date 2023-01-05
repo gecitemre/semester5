@@ -174,7 +174,7 @@ public class PlaylistTree {
 		switch (primaryRoot.type) {
 			case Internal:
 				PlaylistNodePrimaryIndex primaryRootAsInternal = (PlaylistNodePrimaryIndex) primaryRoot;
-				primaryRootAsInternal.print();
+				primaryRootAsInternal.print(0);
 				break;
 			case Leaf:
 				PlaylistNodePrimaryLeaf primaryRootAsLeaf = (PlaylistNodePrimaryLeaf) primaryRoot;
@@ -190,15 +190,16 @@ public class PlaylistTree {
 		switch (secondaryRoot.type) {
 			case Internal:
 				PlaylistNodeSecondaryIndex secondaryRootAsInternal = (PlaylistNodeSecondaryIndex) secondaryRoot;
-				secondaryRootAsInternal.print();
+				secondaryRootAsInternal.print(0);
 				break;
 			case Leaf:
 				PlaylistNodeSecondaryLeaf secondaryRootAsLeaf = (PlaylistNodeSecondaryLeaf) secondaryRoot;
 				System.out.println("<data>");
-				for (ArrayList<CengSong> songBucket : secondaryRootAsLeaf.getSongBucket()) {
-					System.out.println(songBucket.get(0).genre());
-					for (CengSong song : songBucket) {
-						System.out.println("<record>" + song.fullName() + "</record>");
+				for (int i = 0; i < secondaryRootAsLeaf.genreCount(); i++) {
+					ArrayList<CengSong> songs = secondaryRootAsLeaf.songsAtIndex(i);
+					System.out.println(secondaryRootAsLeaf.genreAtIndex(i));
+					for (CengSong song : songs) {
+						System.out.println("\t<record>" + song.fullName() + "</record>");
 					}
 				}
 				System.out.println("</data>");

@@ -153,12 +153,12 @@ public class PlaylistNodePrimaryIndex extends PlaylistNode {
 	}
 
 	private void indent(int level) {
-		for (int i = 1; i < level; i++) {
+		for (int i = 0; i < level; i++) {
 			System.out.print("\t");
 		}
 	}
 
-	public void print() {
+	public void print(int level) {
 		indent(level);
 		System.out.println("<index>");
 		for (int i = 0; i < audioIdCount(); i++) {
@@ -170,7 +170,7 @@ public class PlaylistNodePrimaryIndex extends PlaylistNode {
 		for (PlaylistNode child : children) {
 			switch (child.type) {
 				case Internal:
-					((PlaylistNodePrimaryIndex) child).print();
+					((PlaylistNodePrimaryIndex) child).print(level + 1);
 					break;
 				case Leaf:
 					PlaylistNodePrimaryLeaf leaf = (PlaylistNodePrimaryLeaf) child;

@@ -4,63 +4,45 @@ shuffle 0 print2:
 0
 shuffle 0 search:
 0
+shuffle 0 print1:
+0
+shuffle 0 print2:
+0
+shuffle 0 search:
+0
+shuffle 0 print1:
+0
+shuffle 0 print2:
+0
+shuffle 0 search:
+0
+shuffle 0 print1:
+0
+shuffle 0 print2:
+0
+shuffle 0 search:
+0
 shuffle 1 print1:
 0
 shuffle 1 print2:
 0
 shuffle 1 search:
 0
-shuffle 2 print1:
+shuffle 1 print1:
 0
-shuffle 2 print2:
+shuffle 1 print2:
 0
-shuffle 2 search:
+shuffle 1 search:
 0
-shuffle 3 print1:
+shuffle 1 print1:
 0
-shuffle 3 print2:
+shuffle 1 print2:
 0
-shuffle 3 search:
+shuffle 1 search:
 0
-shuffle 4 print1:
+shuffle 1 print1:
 0
-shuffle 4 print2:
+shuffle 1 print2:
 0
-shuffle 4 search:
-0
-shuffle 5 print1:
-0
-shuffle 5 print2:
-0
-shuffle 5 search:
-0
-shuffle 6 print1:
-0
-shuffle 6 print2:
-0
-shuffle 6 search:
-0
-shuffle 7 print1:
-0
-shuffle 7 print2:
-0
-shuffle 7 search:
-0
-shuffle 8 print1:
-0
-shuffle 8 print2:
-0
-shuffle 8 search:
-0
-shuffle 9 print1:
-0
-shuffle 9 print2:
-0
-shuffle 9 search:
-0
-shuffle 10 print1:
-0
-shuffle 10 print2:
-0
-shuffle 10 search:
+shuffle 1 search:
 0

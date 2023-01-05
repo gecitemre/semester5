@@ -1,0 +1,4 @@
+shuffle 0 print1:
+512
+shuffle 0 print2:
+512
