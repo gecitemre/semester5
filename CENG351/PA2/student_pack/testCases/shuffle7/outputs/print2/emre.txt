@@ -1,0 +1,137 @@
+<index>
+canadian pop
+latin
+</index>
+<index>
+boy band
+</index>
+<index>
+big room
+</index>
+	atl hip hop
+	<data>
+	<record>34</record>
+	</data>
+	<record>27</record>
+	</data>
+	big room
+	<data>
+	<record>36</record>
+	</data>
+<index>
+canadian hip hop
+</index>
+	boy band
+	<data>
+	<record>39</record>
+	</data>
+	<record>48</record>
+	<record>46</record>
+	</data>
+	canadian hip hop
+	<data>
+	<record>28</record>
+	<record>19</record>
+	<record>15</record>
+	</data>
+<index>
+dfw rap
+</index>
+<index>
+dance pop
+</index>
+	canadian pop
+	<data>
+	<record>1</record>
+	<record>26</record>
+	</data>
+	<record>22</record>
+	<record>9</record>
+	</data>
+	dance pop
+	<data>
+	<record>35</record>
+	<record>32</record>
+	<record>3</record>
+	<record>16</record>
+	<record>12</record>
+	<record>40</record>
+	<record>42</record>
+	<record>43</record>
+	</data>
+<index>
+edm
+electropop
+</index>
+	dfw rap
+	<data>
+	<record>5</record>
+	<record>18</record>
+	</data>
+	edm
+	<data>
+	<record>41</record>
+	<record>49</record>
+	<record>31</record>
+	</data>
+	electropop
+	<data>
+	<record>10</record>
+	<record>25</record>
+	</data>
+	<record>20</record>
+	</data>
+<index>
+pop house
+reggaeton
+</index>
+<index>
+panamanian pop
+</index>
+	latin
+	<data>
+	<record>24</record>
+	<record>47</record>
+	<record>30</record>
+	<record>17</record>
+	<record>29</record>
+	</data>
+	panamanian pop
+	<data>
+	<record>37</record>
+	<record>14</record>
+	</data>
+	<record>8</record>
+	<record>4</record>
+	<record>50</record>
+	<record>6</record>
+	<record>38</record>
+	<record>44</record>
+	<record>13</record>
+	</data>
+<index>
+r&b en espanol
+</index>
+	pop house
+	<data>
+	<record>21</record>
+	</data>
+	r&b en espanol
+	<data>
+	<record>45</record>
+	</data>
+<index>
+reggaeton flow
+</index>
+	reggaeton
+	<data>
+	<record>11</record>
+	<record>33</record>
+	</data>
+	reggaeton flow
+	<data>
+	<record>2</record>
+	<record>23</record>
+	</data>
+	<record>7</record>
+	</data>

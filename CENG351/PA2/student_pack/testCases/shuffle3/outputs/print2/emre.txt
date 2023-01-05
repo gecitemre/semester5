@@ -1,0 +1,137 @@
+<index>
+dfw rap
+pop
+</index>
+<index>
+brostep
+country rap
+</index>
+<index>
+australian pop
+boy band
+</index>
+	atl hip hop
+	<data>
+	<record>34</record>
+	</data>
+	australian pop
+	<data>
+	<record>27</record>
+	</data>
+	<record>36</record>
+	</data>
+	boy band
+	<data>
+	<record>39</record>
+	</data>
+<index>
+canadian hip hop
+</index>
+	brostep
+	<data>
+	<record>48</record>
+	<record>46</record>
+	</data>
+	canadian hip hop
+	<data>
+	<record>19</record>
+	<record>28</record>
+	<record>15</record>
+	</data>
+	<record>1</record>
+	<record>26</record>
+	</data>
+<index>
+dance pop
+</index>
+	country rap
+	<data>
+	<record>9</record>
+	<record>22</record>
+	</data>
+	dance pop
+	<data>
+	<record>12</record>
+	<record>40</record>
+	<record>42</record>
+	<record>43</record>
+	<record>32</record>
+	<record>35</record>
+	<record>16</record>
+	<record>3</record>
+	</data>
+<index>
+escape room
+</index>
+<index>
+electropop
+</index>
+	dfw rap
+	<data>
+	<record>5</record>
+	<record>18</record>
+	</data>
+	<record>41</record>
+	<record>31</record>
+	<record>49</record>
+	</data>
+	electropop
+	<data>
+	<record>10</record>
+	<record>25</record>
+	</data>
+<index>
+panamanian pop
+</index>
+	escape room
+	<data>
+	<record>20</record>
+	</data>
+	<record>29</record>
+	<record>47</record>
+	<record>24</record>
+	<record>17</record>
+	<record>30</record>
+	</data>
+	panamanian pop
+	<data>
+	<record>14</record>
+	<record>37</record>
+	</data>
+<index>
+reggaeton
+</index>
+<index>
+pop house
+</index>
+	pop
+	<data>
+	<record>8</record>
+	<record>50</record>
+	<record>6</record>
+	<record>38</record>
+	<record>13</record>
+	<record>44</record>
+	<record>4</record>
+	</data>
+	pop house
+	<data>
+	<record>21</record>
+	</data>
+	<record>45</record>
+	</data>
+<index>
+reggaeton flow
+</index>
+	reggaeton
+	<data>
+	<record>11</record>
+	<record>33</record>
+	</data>
+	reggaeton flow
+	<data>
+	<record>2</record>
+	<record>23</record>
+	</data>
+	<record>7</record>
+	</data>

@@ -153,7 +153,7 @@ public class PlaylistNodePrimaryIndex extends PlaylistNode {
 	}
 
 	private void indent(int level) {
-		for (int i = 0; i < level; i++) {
+		for (int i = 1; i < level; i++) {
 			System.out.print("\t");
 		}
 	}

@@ -1,0 +1,128 @@
+<index>
+latin
+</index>
+<index>
+brostep
+dance pop
+</index>
+<index>
+australian pop
+big room
+</index>
+	atl hip hop
+	<data>
+	<record>34</record>
+	</data>
+	australian pop
+	<data>
+	<record>27</record>
+	</data>
+	big room
+	<data>
+	<record>36</record>
+	</data>
+	<record>39</record>
+	</data>
+<index>
+canadian hip hop
+canadian pop
+</index>
+	brostep
+	<data>
+	<record>48</record>
+	<record>46</record>
+	</data>
+	canadian hip hop
+	<data>
+	<record>19</record>
+	<record>28</record>
+	<record>15</record>
+	</data>
+	canadian pop
+	<data>
+	<record>1</record>
+	<record>26</record>
+	</data>
+	<record>9</record>
+	<record>22</record>
+	</data>
+<index>
+edm
+electropop
+</index>
+	dance pop
+	<data>
+	<record>40</record>
+	<record>43</record>
+	<record>32</record>
+	<record>3</record>
+	<record>16</record>
+	<record>42</record>
+	<record>12</record>
+	<record>35</record>
+	</data>
+	<record>18</record>
+	<record>5</record>
+	</data>
+	edm
+	<data>
+	<record>31</record>
+	<record>49</record>
+	<record>41</record>
+	</data>
+	electropop
+	<data>
+	<record>25</record>
+	<record>10</record>
+	</data>
+	<record>20</record>
+	</data>
+<index>
+pop house
+</index>
+<index>
+pop
+</index>
+	latin
+	<data>
+	<record>47</record>
+	<record>30</record>
+	<record>29</record>
+	<record>24</record>
+	<record>17</record>
+	</data>
+	<record>14</record>
+	<record>37</record>
+	</data>
+	pop
+	<data>
+	<record>6</record>
+	<record>44</record>
+	<record>8</record>
+	<record>4</record>
+	<record>50</record>
+	<record>13</record>
+	<record>38</record>
+	</data>
+<index>
+reggaeton
+reggaeton flow
+</index>
+	pop house
+	<data>
+	<record>21</record>
+	</data>
+	<record>45</record>
+	</data>
+	reggaeton
+	<data>
+	<record>33</record>
+	<record>11</record>
+	</data>
+	reggaeton flow
+	<data>
+	<record>23</record>
+	<record>2</record>
+	</data>
+	<record>7</record>
+	</data>
