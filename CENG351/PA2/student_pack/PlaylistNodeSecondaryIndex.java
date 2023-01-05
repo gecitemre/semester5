@@ -59,7 +59,11 @@ public class PlaylistNodeSecondaryIndex extends PlaylistNode {
 		}
 		int nodeIndex;
 		for (nodeIndex = 0; nodeIndex < genreCount(); nodeIndex++) {
-			if (song.genre().compareTo(genreAtIndex(nodeIndex)) <= 0) {
+			int compareResult = song.genre().compareTo(genreAtIndex(nodeIndex));
+			if (compareResult <= 0) {
+				if (compareResult == 0) {
+					nodeIndex++;
+				}
 				break;
 			}
 		}
@@ -84,8 +88,8 @@ public class PlaylistNodeSecondaryIndex extends PlaylistNode {
 				leaf.addSong(genreIndex, song);
 				if (leaf.genreCount() > 2 * order) {
 					PlaylistNodeSecondaryLeaf newLeaf = new PlaylistNodeSecondaryLeaf(this);
-					for (int i = order; i < leaf.genreCount(); i++) {
-						newLeaf.getSongBucket().add(0, leaf.songsAtIndex(i));
+					for (int i = 0; i <= order; i++) {
+						newLeaf.getSongBucket().add(i, leaf.songsAtIndex(i + order));
 					}
 					for (int i = 2 * order; i >= order; i--) {
 						leaf.getSongBucket().remove(i);
