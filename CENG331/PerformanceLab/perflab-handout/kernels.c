@@ -22,7 +22,9 @@ team_t team = {
 };
 
 /********************
- * CONVOLUTION KERNEL
+ * CONVOLUTION KERNELvoid register_conv_functions() {
+add_conv_function(&convolution, convolution_descr);
+}
  ********************/
 
 /***************************************************************
@@ -49,6 +51,74 @@ void naive_conv(int dim, pixel *src, pixel *ker, unsigned *dst)
                     dst[RIDX(i, j, dim)] += src[RIDX((i + k), (j + l), dim)].blue * ker[RIDX(k, l, 8)].blue;
                 }
         }
+}
+
+char optimized_conv_descr[] = "optimized_conv: Optimized implementation";
+void optimized_conv(int dim, pixel *src, pixel *ker, unsigned *dst)
+{
+    int i, j, k, l;
+    for (i = 0; i < dim - 7; i++)
+        for (j = 0; j < dim - 7; j++)
+            dst[RIDX(i, j, dim)] = 0;
+    // i, j is the kernel's top left corner
+    int i_dim = 0;
+    for (i = 0; i < dim - 7; i++) {
+        int k_dim = 0;
+        int ker_index_base = 0;
+        for (k = 0; k < 8; k++) {
+            int i_dim_j_dim_k_l = i_dim + k_dim;
+            for (j = 0; j < dim - 7; j++) {
+            int ker_index = ker_index_base;
+                int sum = dst[i_dim + j];
+                {
+                    sum += src[i_dim_j_dim_k_l].red * ker[ker_index].red;
+                    sum += src[i_dim_j_dim_k_l].green * ker[ker_index].green;
+                    sum += src[i_dim_j_dim_k_l].blue * ker[ker_index].blue;
+                    ker_index++;
+                    // loop unrolling
+                    sum += src[i_dim_j_dim_k_l + 1].red * ker[ker_index].red;
+                    sum += src[i_dim_j_dim_k_l + 1].green * ker[ker_index].green;
+                    sum += src[i_dim_j_dim_k_l + 1].blue * ker[ker_index].blue;
+                    ker_index++;
+
+                    sum += src[i_dim_j_dim_k_l + 2].red * ker[ker_index].red;
+                    sum += src[i_dim_j_dim_k_l + 2].green * ker[ker_index].green;
+                    sum += src[i_dim_j_dim_k_l + 2].blue * ker[ker_index].blue;
+                    ker_index++;
+
+                    sum += src[i_dim_j_dim_k_l + 3].red * ker[ker_index].red;
+                    sum += src[i_dim_j_dim_k_l + 3].green * ker[ker_index].green;
+                    sum += src[i_dim_j_dim_k_l + 3].blue * ker[ker_index].blue;
+                    ker_index++;
+
+                    sum += src[i_dim_j_dim_k_l + 4].red * ker[ker_index].red;
+                    sum += src[i_dim_j_dim_k_l + 4].green * ker[ker_index].green;
+                    sum += src[i_dim_j_dim_k_l + 4].blue * ker[ker_index].blue;
+                    ker_index++;
+
+                    sum += src[i_dim_j_dim_k_l + 5].red * ker[ker_index].red;
+                    sum += src[i_dim_j_dim_k_l + 5].green * ker[ker_index].green;
+                    sum += src[i_dim_j_dim_k_l + 5].blue * ker[ker_index].blue;
+                    ker_index++;
+
+                    sum += src[i_dim_j_dim_k_l + 6].red * ker[ker_index].red;
+                    sum += src[i_dim_j_dim_k_l + 6].green * ker[ker_index].green;
+                    sum += src[i_dim_j_dim_k_l + 6].blue * ker[ker_index].blue;
+                    ker_index++;
+
+                    sum += src[i_dim_j_dim_k_l + 7].red * ker[ker_index].red;
+                    sum += src[i_dim_j_dim_k_l + 7].green * ker[ker_index].green;
+                    sum += src[i_dim_j_dim_k_l + 7].blue * ker[ker_index].blue;
+                    ker_index++;
+                }
+                dst[i_dim + j] = sum;
+                i_dim_j_dim_k_l += 1;
+            }
+            k_dim += dim;
+            ker_index_base += 8;
+        }
+        i_dim += dim;
+    }
 }
 
 /*
@@ -144,6 +214,7 @@ void register_conv_functions()
 {
     add_conv_function(&naive_conv, naive_conv_descr);
     add_conv_function(&convolution, convolution_descr);
+    add_conv_function(&optimized_conv, optimized_conv_descr);
     /* ... Register additional test functions here */
 }
 
