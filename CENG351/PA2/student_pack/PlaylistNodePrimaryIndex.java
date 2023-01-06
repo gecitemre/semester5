@@ -148,7 +148,6 @@ public class PlaylistNodePrimaryIndex extends PlaylistNode {
 					}
 				}
 			default:
-				System.out.println("Could not find " + audioId);
 				return null;
 		}
 

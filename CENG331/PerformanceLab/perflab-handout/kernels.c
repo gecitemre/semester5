@@ -58,7 +58,28 @@ char convolution_descr[] = "Convolution: Current working version";
 void convolution(int dim, pixel *src, pixel *ker, unsigned *dst)
 {
 
-    naive_conv(dim,src,ker,dst);
+    int i,j,k,l;
+    
+    int i_dim = 0;
+    for(i = 0; i < dim-8+1; i++)
+    {
+        int i_dim_j = i_dim;
+        for(j = 0; j < dim-8+1; j++) {
+            int d = 0;
+            int s_base = i_dim_j, t = 0;
+            for(k = 0; k < 8; k++) {
+                int s = s_base;
+                for (l = 0; l < 8; l++) { // TODO: create 8 variables
+                    d += src[s].red * ker[t].red + src[s].green * ker[t].green + src[s].blue * ker[t].blue;
+                    s++;
+                    t++;
+                }
+                s_base += dim;
+            }
+            dst[i_dim_j] = d;
+            i_dim_j ++;
+        }
+    }
 
 }
 
