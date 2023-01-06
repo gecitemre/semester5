@@ -56,7 +56,7 @@ void naive_conv(int dim, pixel *src, pixel *ker, unsigned *dst)
 char optimized_conv_descr[] = "optimized_conv: Optimized implementation";
 void optimized_conv(int dim, pixel *src, pixel *ker, unsigned *dst)
 {
-    int i, j, k, l;
+    int i, j, k;
     for (i = 0; i < dim - 7; i++)
         for (j = 0; j < dim - 7; j++)
             dst[RIDX(i, j, dim)] = 0;
