@@ -69,7 +69,7 @@ void convolution(int dim, pixel *src, pixel *ker, unsigned *dst)
             int s_base = i_dim_j, t = 0;
             for(k = 0; k < 8; k++) {
                 int s = s_base;
-                for (l = 0; l < 8; l++) { // TODO: create 8 variables
+                for (l = 0; l < 8; l++) { // TODO: create 8 variables, loop unrolling
                     d += src[s].red * ker[t].red + src[s].green * ker[t].green + src[s].blue * ker[t].blue;
                     s++;
                     t++;
