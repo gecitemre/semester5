@@ -1,290 +1,330 @@
 <index>
-	<node>
+21
 </index>
+	<index>
+	5
+	9
+	13
+	17
+	</index>
+		<data>
+		<record>1|canadian pop|Señorita|Shawn Mendes</record>
+		</data>
 <index>
-	<node>
+21
 </index>
-	<data>
-	<record>1|canadian pop|Señorita|Shawn Mendes</record>
-	</data>
+	<index>
+	5
+	9
+	13
+	17
+	</index>
+		<data>
+		<record>11|reggaeton|Callaita|Bad Bunny</record>
+		</data>
 <index>
-	<node>
+21
 </index>
+	<index>
+	25
+	29
+	33
+	37
+	41
+	45
+	</index>
+		<data>
+		<record>21|pop house|Piece Of Your Heart|MEDUZA</record>
+		</data>
 <index>
-	<node>
-	<node>
-	<node>
+21
 </index>
-	<data>
-	<record>9|country rap|Old Town Road - Remix|Lil Nas X</record>
-	<record>10|electropop|bad guy|Billie Eilish</record>
-	<record>11|reggaeton|Callaita|Bad Bunny</record>
-	</data>
+	<index>
+	25
+	29
+	33
+	37
+	41
+	45
+	</index>
+		<data>
+		<record>31|edm|Takeaway|The Chainsmokers</record>
+		</data>
 <index>
-	<node>
+21
 </index>
+	<index>
+	25
+	29
+	33
+	37
+	41
+	45
+	</index>
+		<data>
+		<record>41|edm|Higher Love|Kygo</record>
+		</data>
 <index>
-	<node>
+21
 </index>
-	<data>
-	<record>21|pop house|Piece Of Your Heart|MEDUZA</record>
-	</data>
+	<index>
+	5
+	9
+	13
+	17
+	</index>
+		<data>
+		<record>1|canadian pop|Señorita|Shawn Mendes</record>
+		</data>
 <index>
-	<node>
+21
 </index>
+	<index>
+	5
+	9
+	13
+	17
+	</index>
+		<data>
+		<record>11|reggaeton|Callaita|Bad Bunny</record>
+		</data>
 <index>
-	<node>
-	<node>
-	<node>
+21
 </index>
-	<data>
-	<record>29|latin|Con Calma|Daddy Yankee</record>
-	<record>30|latin|QUE PRETENDES|J Balvin</record>
-	<record>31|edm|Takeaway|The Chainsmokers</record>
-	</data>
+	<index>
+	25
+	29
+	33
+	37
+	41
+	45
+	</index>
+		<data>
+		<record>21|pop house|Piece Of Your Heart|MEDUZA</record>
+		</data>
 <index>
-	<node>
+21
 </index>
+	<index>
+	25
+	29
+	33
+	37
+	41
+	45
+	</index>
+		<data>
+		<record>31|edm|Takeaway|The Chainsmokers</record>
+		</data>
 <index>
-	<node>
-	<node>
-	<node>
-	<node>
-	<node>
-	<node>
+21
 </index>
-	<data>
-	<record>41|edm|Higher Love|Kygo</record>
-	</data>
+	<index>
+	25
+	29
+	33
+	37
+	41
+	45
+	</index>
+		<data>
+		<record>41|edm|Higher Love|Kygo</record>
+		</data>
 <index>
-	<node>
+21
 </index>
+	<index>
+	5
+	9
+	13
+	17
+	</index>
+		<data>
+		<record>1|canadian pop|Señorita|Shawn Mendes</record>
+		</data>
 <index>
-	<node>
+21
 </index>
-	<data>
-	<record>1|canadian pop|Señorita|Shawn Mendes</record>
-	</data>
+	<index>
+	5
+	9
+	13
+	17
+	</index>
+		<data>
+		<record>11|reggaeton|Callaita|Bad Bunny</record>
+		</data>
 <index>
-	<node>
+21
 </index>
+	<index>
+	25
+	29
+	33
+	37
+	41
+	45
+	</index>
+		<data>
+		<record>21|pop house|Piece Of Your Heart|MEDUZA</record>
+		</data>
 <index>
-	<node>
-	<node>
-	<node>
+21
 </index>
-	<data>
-	<record>9|country rap|Old Town Road - Remix|Lil Nas X</record>
-	<record>10|electropop|bad guy|Billie Eilish</record>
-	<record>11|reggaeton|Callaita|Bad Bunny</record>
-	</data>
+	<index>
+	25
+	29
+	33
+	37
+	41
+	45
+	</index>
+		<data>
+		<record>31|edm|Takeaway|The Chainsmokers</record>
+		</data>
 <index>
-	<node>
+21
 </index>
+	<index>
+	25
+	29
+	33
+	37
+	41
+	45
+	</index>
+		<data>
+		<record>41|edm|Higher Love|Kygo</record>
+		</data>
 <index>
-	<node>
+21
 </index>
-	<data>
-	<record>21|pop house|Piece Of Your Heart|MEDUZA</record>
-	</data>
+	<index>
+	5
+	9
+	13
+	17
+	</index>
+		<data>
+		<record>1|canadian pop|Señorita|Shawn Mendes</record>
+		</data>
 <index>
-	<node>
+21
 </index>
+	<index>
+	5
+	9
+	13
+	17
+	</index>
+		<data>
+		<record>11|reggaeton|Callaita|Bad Bunny</record>
+		</data>
 <index>
-	<node>
-	<node>
-	<node>
+21
 </index>
-	<data>
-	<record>29|latin|Con Calma|Daddy Yankee</record>
-	<record>30|latin|QUE PRETENDES|J Balvin</record>
-	<record>31|edm|Takeaway|The Chainsmokers</record>
-	</data>
+	<index>
+	25
+	29
+	33
+	37
+	41
+	45
+	</index>
+		<data>
+		<record>21|pop house|Piece Of Your Heart|MEDUZA</record>
+		</data>
 <index>
-	<node>
+21
 </index>
+	<index>
+	25
+	29
+	33
+	37
+	41
+	45
+	</index>
+		<data>
+		<record>31|edm|Takeaway|The Chainsmokers</record>
+		</data>
 <index>
-	<node>
-	<node>
-	<node>
-	<node>
-	<node>
-	<node>
+21
 </index>
-	<data>
-	<record>41|edm|Higher Love|Kygo</record>
-	</data>
+	<index>
+	25
+	29
+	33
+	37
+	41
+	45
+	</index>
+		<data>
+		<record>41|edm|Higher Love|Kygo</record>
+		</data>
 <index>
-	<node>
+21
 </index>
+	<index>
+	5
+	9
+	13
+	17
+	</index>
+		<data>
+		<record>1|canadian pop|Señorita|Shawn Mendes</record>
+		</data>
 <index>
-	<node>
+21
 </index>
-	<data>
-	<record>1|canadian pop|Señorita|Shawn Mendes</record>
-	</data>
+	<index>
+	5
+	9
+	13
+	17
+	</index>
+		<data>
+		<record>11|reggaeton|Callaita|Bad Bunny</record>
+		</data>
 <index>
-	<node>
+21
 </index>
+	<index>
+	25
+	29
+	33
+	37
+	41
+	45
+	</index>
+		<data>
+		<record>21|pop house|Piece Of Your Heart|MEDUZA</record>
+		</data>
 <index>
-	<node>
-	<node>
-	<node>
+21
 </index>
-	<data>
-	<record>9|country rap|Old Town Road - Remix|Lil Nas X</record>
-	<record>10|electropop|bad guy|Billie Eilish</record>
-	<record>11|reggaeton|Callaita|Bad Bunny</record>
-	</data>
+	<index>
+	25
+	29
+	33
+	37
+	41
+	45
+	</index>
+		<data>
+		<record>31|edm|Takeaway|The Chainsmokers</record>
+		</data>
 <index>
-	<node>
+21
 </index>
-<index>
-	<node>
-</index>
-	<data>
-	<record>21|pop house|Piece Of Your Heart|MEDUZA</record>
-	</data>
-<index>
-	<node>
-</index>
-<index>
-	<node>
-	<node>
-	<node>
-</index>
-	<data>
-	<record>29|latin|Con Calma|Daddy Yankee</record>
-	<record>30|latin|QUE PRETENDES|J Balvin</record>
-	<record>31|edm|Takeaway|The Chainsmokers</record>
-	</data>
-<index>
-	<node>
-</index>
-<index>
-	<node>
-	<node>
-	<node>
-	<node>
-	<node>
-	<node>
-</index>
-	<data>
-	<record>41|edm|Higher Love|Kygo</record>
-	</data>
-<index>
-	<node>
-</index>
-<index>
-	<node>
-</index>
-	<data>
-	<record>1|canadian pop|Señorita|Shawn Mendes</record>
-	</data>
-<index>
-	<node>
-</index>
-<index>
-	<node>
-	<node>
-	<node>
-</index>
-	<data>
-	<record>9|country rap|Old Town Road - Remix|Lil Nas X</record>
-	<record>10|electropop|bad guy|Billie Eilish</record>
-	<record>11|reggaeton|Callaita|Bad Bunny</record>
-	</data>
-<index>
-	<node>
-</index>
-<index>
-	<node>
-</index>
-	<data>
-	<record>21|pop house|Piece Of Your Heart|MEDUZA</record>
-	</data>
-<index>
-	<node>
-</index>
-<index>
-	<node>
-	<node>
-	<node>
-</index>
-	<data>
-	<record>29|latin|Con Calma|Daddy Yankee</record>
-	<record>30|latin|QUE PRETENDES|J Balvin</record>
-	<record>31|edm|Takeaway|The Chainsmokers</record>
-	</data>
-<index>
-	<node>
-</index>
-<index>
-	<node>
-	<node>
-	<node>
-	<node>
-	<node>
-	<node>
-</index>
-	<data>
-	<record>41|edm|Higher Love|Kygo</record>
-	</data>
-<index>
-	<node>
-</index>
-<index>
-	<node>
-</index>
-	<data>
-	<record>1|canadian pop|Señorita|Shawn Mendes</record>
-	</data>
-<index>
-	<node>
-</index>
-<index>
-	<node>
-	<node>
-	<node>
-</index>
-	<data>
-	<record>9|country rap|Old Town Road - Remix|Lil Nas X</record>
-	<record>10|electropop|bad guy|Billie Eilish</record>
-	<record>11|reggaeton|Callaita|Bad Bunny</record>
-	</data>
-<index>
-	<node>
-</index>
-<index>
-	<node>
-</index>
-	<data>
-	<record>21|pop house|Piece Of Your Heart|MEDUZA</record>
-	</data>
-<index>
-	<node>
-</index>
-<index>
-	<node>
-	<node>
-	<node>
-</index>
-	<data>
-	<record>29|latin|Con Calma|Daddy Yankee</record>
-	<record>30|latin|QUE PRETENDES|J Balvin</record>
-	<record>31|edm|Takeaway|The Chainsmokers</record>
-	</data>
-<index>
-	<node>
-</index>
-<index>
-	<node>
-	<node>
-	<node>
-	<node>
-	<node>
-	<node>
-</index>
-	<data>
-	<record>41|edm|Higher Love|Kygo</record>
-	</data>
+	<index>
+	25
+	29
+	33
+	37
+	41
+	45
+	</index>
+		<data>
+		<record>41|edm|Higher Love|Kygo</record>
+		</data>

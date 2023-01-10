@@ -1,345 +1,380 @@
 <index>
-	<node>
-</index>
-<index>
-	<node>
-</index>
-<index>
-	<node>
-</index>
-	<data>
-	<record>1|canadian pop|Señorita|Shawn Mendes</record>
-	</data>
-<index>
-	<node>
-</index>
-<index>
-	<node>
-	<node>
-</index>
-<index>
-	<node>
-	<node>
-</index>
-	<data>
-	<record>11|reggaeton|Callaita|Bad Bunny</record>
-	</data>
-<index>
-	<node>
-</index>
-<index>
-	<node>
-</index>
-<index>
-	<node>
-	<node>
-</index>
-	<data>
-	<record>21|pop house|Piece Of Your Heart|MEDUZA</record>
-	</data>
-<index>
-	<node>
-</index>
-<index>
-	<node>
-	<node>
-	<node>
-</index>
-<index>
-	<node>
-</index>
-	<data>
-	<record>31|edm|Takeaway|The Chainsmokers</record>
-	</data>
-<index>
-	<node>
-</index>
-<index>
-	<node>
-	<node>
-	<node>
-	<node>
-</index>
-<index>
-	<node>
-	<node>
-</index>
-	<data>
-	<record>41|edm|Higher Love|Kygo</record>
-	</data>
-<index>
-	<node>
-</index>
-<index>
-	<node>
-</index>
-<index>
-	<node>
-</index>
-	<data>
-	<record>1|canadian pop|Señorita|Shawn Mendes</record>
-	</data>
-<index>
-	<node>
-</index>
-<index>
-	<node>
-	<node>
-</index>
-<index>
-	<node>
-	<node>
-</index>
-	<data>
-	<record>11|reggaeton|Callaita|Bad Bunny</record>
-	</data>
-<index>
-	<node>
-</index>
-<index>
-	<node>
-</index>
-<index>
-	<node>
-	<node>
-</index>
-	<data>
-	<record>21|pop house|Piece Of Your Heart|MEDUZA</record>
-	</data>
-<index>
-	<node>
-</index>
-<index>
-	<node>
-	<node>
-	<node>
-</index>
-<index>
-	<node>
-</index>
-	<data>
-	<record>31|edm|Takeaway|The Chainsmokers</record>
-	</data>
-<index>
-	<node>
-</index>
-<index>
-	<node>
-	<node>
-	<node>
-	<node>
-</index>
-<index>
-	<node>
-	<node>
-</index>
-	<data>
-	<record>41|edm|Higher Love|Kygo</record>
-	</data>
-<index>
-	<node>
-</index>
-<index>
-	<node>
-</index>
-<index>
-	<node>
-</index>
-	<data>
-	<record>1|canadian pop|Señorita|Shawn Mendes</record>
-	</data>
-<index>
-	<node>
-</index>
-<index>
-	<node>
-	<node>
-</index>
-<index>
-	<node>
-	<node>
-</index>
-	<data>
-	<record>11|reggaeton|Callaita|Bad Bunny</record>
-	</data>
-<index>
-	<node>
-</index>
-<index>
-	<node>
-</index>
-<index>
-	<node>
-	<node>
-</index>
-	<data>
-	<record>21|pop house|Piece Of Your Heart|MEDUZA</record>
-	</data>
-<index>
-	<node>
-</index>
-<index>
-	<node>
-	<node>
-	<node>
-</index>
-<index>
-	<node>
-</index>
-	<data>
-	<record>31|edm|Takeaway|The Chainsmokers</record>
-	</data>
-<index>
-	<node>
-</index>
-<index>
-	<node>
-	<node>
-	<node>
-	<node>
-</index>
-<index>
-	<node>
-	<node>
-</index>
-	<data>
-	<record>41|edm|Higher Love|Kygo</record>
-	</data>
-<index>
-	<node>
-</index>
-<index>
-	<node>
-</index>
-<index>
-	<node>
-</index>
-	<data>
-	<record>1|canadian pop|Señorita|Shawn Mendes</record>
-	</data>
-<index>
-	<node>
-</index>
-<index>
-	<node>
-	<node>
-</index>
-<index>
-	<node>
-	<node>
-</index>
-	<data>
-	<record>11|reggaeton|Callaita|Bad Bunny</record>
-	</data>
-<index>
-	<node>
-</index>
-<index>
-	<node>
-</index>
-<index>
-	<node>
-	<node>
-</index>
-	<data>
-	<record>21|pop house|Piece Of Your Heart|MEDUZA</record>
-	</data>
-<index>
-	<node>
-</index>
-<index>
-	<node>
-	<node>
-	<node>
-</index>
-<index>
-	<node>
-</index>
-	<data>
-	<record>31|edm|Takeaway|The Chainsmokers</record>
-	</data>
-<index>
-	<node>
-</index>
-<index>
-	<node>
-	<node>
-	<node>
-	<node>
-</index>
-<index>
-	<node>
-	<node>
-</index>
-	<data>
-	<record>41|edm|Higher Love|Kygo</record>
-	</data>
-<index>
-	<node>
-</index>
-<index>
-	<node>
-</index>
-<index>
-	<node>
-</index>
-	<data>
-	<record>1|canadian pop|Señorita|Shawn Mendes</record>
-	</data>
-<index>
-	<node>
-</index>
-<index>
-	<node>
-	<node>
-</index>
-<index>
-	<node>
-	<node>
-</index>
-	<data>
-	<record>11|reggaeton|Callaita|Bad Bunny</record>
-	</data>
-<index>
-	<node>
-</index>
-<index>
-	<node>
-</index>
-<index>
-	<node>
-	<node>
-</index>
-	<data>
-	<record>21|pop house|Piece Of Your Heart|MEDUZA</record>
-	</data>
-<index>
-	<node>
-</index>
-<index>
-	<node>
-	<node>
-	<node>
-</index>
-<index>
-	<node>
-</index>
-	<data>
-	<record>31|edm|Takeaway|The Chainsmokers</record>
-	</data>
-<index>
-	<node>
-</index>
-<index>
-	<node>
-	<node>
-	<node>
-	<node>
-</index>
-<index>
-	<node>
-	<node>
-</index>
-	<data>
-	<record>41|edm|Higher Love|Kygo</record>
-	</data>
+19
+</index>
+	<index>
+	7
+	13
+	</index>
+		<index>
+		3
+		5
+		</index>
+			<data>
+			<record>1|canadian pop|Señorita|Shawn Mendes</record>
+			</data>
+<index>
+19
+</index>
+	<index>
+	7
+	13
+	</index>
+		<index>
+		9
+		11
+		</index>
+			<data>
+			<record>11|reggaeton|Callaita|Bad Bunny</record>
+			</data>
+<index>
+19
+</index>
+	<index>
+	25
+	31
+	37
+	43
+	</index>
+		<index>
+		21
+		23
+		</index>
+			<data>
+			<record>21|pop house|Piece Of Your Heart|MEDUZA</record>
+			</data>
+<index>
+19
+</index>
+	<index>
+	25
+	31
+	37
+	43
+	</index>
+		<index>
+		33
+		35
+		</index>
+			<data>
+			<record>31|edm|Takeaway|The Chainsmokers</record>
+			</data>
+<index>
+19
+</index>
+	<index>
+	25
+	31
+	37
+	43
+	</index>
+		<index>
+		39
+		41
+		</index>
+			<data>
+			<record>41|edm|Higher Love|Kygo</record>
+			</data>
+<index>
+19
+</index>
+	<index>
+	7
+	13
+	</index>
+		<index>
+		3
+		5
+		</index>
+			<data>
+			<record>1|canadian pop|Señorita|Shawn Mendes</record>
+			</data>
+<index>
+19
+</index>
+	<index>
+	7
+	13
+	</index>
+		<index>
+		9
+		11
+		</index>
+			<data>
+			<record>11|reggaeton|Callaita|Bad Bunny</record>
+			</data>
+<index>
+19
+</index>
+	<index>
+	25
+	31
+	37
+	43
+	</index>
+		<index>
+		21
+		23
+		</index>
+			<data>
+			<record>21|pop house|Piece Of Your Heart|MEDUZA</record>
+			</data>
+<index>
+19
+</index>
+	<index>
+	25
+	31
+	37
+	43
+	</index>
+		<index>
+		33
+		35
+		</index>
+			<data>
+			<record>31|edm|Takeaway|The Chainsmokers</record>
+			</data>
+<index>
+19
+</index>
+	<index>
+	25
+	31
+	37
+	43
+	</index>
+		<index>
+		39
+		41
+		</index>
+			<data>
+			<record>41|edm|Higher Love|Kygo</record>
+			</data>
+<index>
+19
+</index>
+	<index>
+	7
+	13
+	</index>
+		<index>
+		3
+		5
+		</index>
+			<data>
+			<record>1|canadian pop|Señorita|Shawn Mendes</record>
+			</data>
+<index>
+19
+</index>
+	<index>
+	7
+	13
+	</index>
+		<index>
+		9
+		11
+		</index>
+			<data>
+			<record>11|reggaeton|Callaita|Bad Bunny</record>
+			</data>
+<index>
+19
+</index>
+	<index>
+	25
+	31
+	37
+	43
+	</index>
+		<index>
+		21
+		23
+		</index>
+			<data>
+			<record>21|pop house|Piece Of Your Heart|MEDUZA</record>
+			</data>
+<index>
+19
+</index>
+	<index>
+	25
+	31
+	37
+	43
+	</index>
+		<index>
+		33
+		35
+		</index>
+			<data>
+			<record>31|edm|Takeaway|The Chainsmokers</record>
+			</data>
+<index>
+19
+</index>
+	<index>
+	25
+	31
+	37
+	43
+	</index>
+		<index>
+		39
+		41
+		</index>
+			<data>
+			<record>41|edm|Higher Love|Kygo</record>
+			</data>
+<index>
+19
+</index>
+	<index>
+	7
+	13
+	</index>
+		<index>
+		3
+		5
+		</index>
+			<data>
+			<record>1|canadian pop|Señorita|Shawn Mendes</record>
+			</data>
+<index>
+19
+</index>
+	<index>
+	7
+	13
+	</index>
+		<index>
+		9
+		11
+		</index>
+			<data>
+			<record>11|reggaeton|Callaita|Bad Bunny</record>
+			</data>
+<index>
+19
+</index>
+	<index>
+	25
+	31
+	37
+	43
+	</index>
+		<index>
+		21
+		23
+		</index>
+			<data>
+			<record>21|pop house|Piece Of Your Heart|MEDUZA</record>
+			</data>
+<index>
+19
+</index>
+	<index>
+	25
+	31
+	37
+	43
+	</index>
+		<index>
+		33
+		35
+		</index>
+			<data>
+			<record>31|edm|Takeaway|The Chainsmokers</record>
+			</data>
+<index>
+19
+</index>
+	<index>
+	25
+	31
+	37
+	43
+	</index>
+		<index>
+		39
+		41
+		</index>
+			<data>
+			<record>41|edm|Higher Love|Kygo</record>
+			</data>
+<index>
+19
+</index>
+	<index>
+	7
+	13
+	</index>
+		<index>
+		3
+		5
+		</index>
+			<data>
+			<record>1|canadian pop|Señorita|Shawn Mendes</record>
+			</data>
+<index>
+19
+</index>
+	<index>
+	7
+	13
+	</index>
+		<index>
+		9
+		11
+		</index>
+			<data>
+			<record>11|reggaeton|Callaita|Bad Bunny</record>
+			</data>
+<index>
+19
+</index>
+	<index>
+	25
+	31
+	37
+	43
+	</index>
+		<index>
+		21
+		23
+		</index>
+			<data>
+			<record>21|pop house|Piece Of Your Heart|MEDUZA</record>
+			</data>
+<index>
+19
+</index>
+	<index>
+	25
+	31
+	37
+	43
+	</index>
+		<index>
+		33
+		35
+		</index>
+			<data>
+			<record>31|edm|Takeaway|The Chainsmokers</record>
+			</data>
+<index>
+19
+</index>
+	<index>
+	25
+	31
+	37
+	43
+	</index>
+		<index>
+		39
+		41
+		</index>
+			<data>
+			<record>41|edm|Higher Love|Kygo</record>
+			</data>

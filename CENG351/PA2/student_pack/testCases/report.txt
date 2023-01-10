@@ -1,4 +1,48 @@
 shuffle 0 print1:
-512
+0
 shuffle 0 print2:
-512
+0
+shuffle 0 search:
+0
+shuffle 0 print1:
+0
+shuffle 0 print2:
+0
+shuffle 0 search:
+0
+shuffle 0 print1:
+0
+shuffle 0 print2:
+0
+shuffle 0 search:
+0
+shuffle 0 print1:
+0
+shuffle 0 print2:
+0
+shuffle 0 search:
+0
+shuffle 1 print1:
+0
+shuffle 1 print2:
+0
+shuffle 1 search:
+0
+shuffle 1 print1:
+0
+shuffle 1 print2:
+0
+shuffle 1 search:
+0
+shuffle 1 print1:
+0
+shuffle 1 print2:
+0
+shuffle 1 search:
+0
+shuffle 1 print1:
+0
+shuffle 1 print2:
+0
+shuffle 1 search:
+0
