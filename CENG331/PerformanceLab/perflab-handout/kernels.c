@@ -17,7 +17,7 @@ team_t team = {
     "e2448702",       /* Second student ID */
     "Arda Numanoğlu", /* Second student name */
 
-    "e31",             /* Third student ID */
+    "e2448918",        /* Third student ID */
     "Taner Sarp Tonay" /* Third student Name */
 };
 
@@ -53,153 +53,372 @@ void naive_conv(int dim, pixel *src, pixel *ker, unsigned *dst)
         }
 }
 
-char optimized_conv_descr[] = "optimized_conv: Optimized implementation";
-void optimized_conv(int dim, pixel *src, pixel *ker, unsigned *dst)
-{
-    int i, j, k;
-    for (i = 0; i < dim - 7; i++)
-        for (j = 0; j < dim - 7; j++)
-            dst[RIDX(i, j, dim)] = 0;
-    // i, j is the kernel's top left corner
-    int i_dim = 0;
-    for (i = 0; i < dim - 7; i++) {
-        int k_dim = 0;
-        int ker_index_base = 0;
-        for (k = 0; k < 8; k++) {
-            int i_dim_j_dim_k_l = i_dim + k_dim;
-            for (j = 0; j < dim - 7; j++) {
-            int ker_index = ker_index_base;
-                int sum = dst[i_dim + j];
-                {
-                    sum += src[i_dim_j_dim_k_l].red * ker[ker_index].red;
-                    sum += src[i_dim_j_dim_k_l].green * ker[ker_index].green;
-                    sum += src[i_dim_j_dim_k_l].blue * ker[ker_index].blue;
-                    ker_index++;
-                    // loop unrolling
-                    sum += src[i_dim_j_dim_k_l + 1].red * ker[ker_index].red;
-                    sum += src[i_dim_j_dim_k_l + 1].green * ker[ker_index].green;
-                    sum += src[i_dim_j_dim_k_l + 1].blue * ker[ker_index].blue;
-                    ker_index++;
-
-                    sum += src[i_dim_j_dim_k_l + 2].red * ker[ker_index].red;
-                    sum += src[i_dim_j_dim_k_l + 2].green * ker[ker_index].green;
-                    sum += src[i_dim_j_dim_k_l + 2].blue * ker[ker_index].blue;
-                    ker_index++;
-
-                    sum += src[i_dim_j_dim_k_l + 3].red * ker[ker_index].red;
-                    sum += src[i_dim_j_dim_k_l + 3].green * ker[ker_index].green;
-                    sum += src[i_dim_j_dim_k_l + 3].blue * ker[ker_index].blue;
-                    ker_index++;
-
-                    sum += src[i_dim_j_dim_k_l + 4].red * ker[ker_index].red;
-                    sum += src[i_dim_j_dim_k_l + 4].green * ker[ker_index].green;
-                    sum += src[i_dim_j_dim_k_l + 4].blue * ker[ker_index].blue;
-                    ker_index++;
-
-                    sum += src[i_dim_j_dim_k_l + 5].red * ker[ker_index].red;
-                    sum += src[i_dim_j_dim_k_l + 5].green * ker[ker_index].green;
-                    sum += src[i_dim_j_dim_k_l + 5].blue * ker[ker_index].blue;
-                    ker_index++;
-
-                    sum += src[i_dim_j_dim_k_l + 6].red * ker[ker_index].red;
-                    sum += src[i_dim_j_dim_k_l + 6].green * ker[ker_index].green;
-                    sum += src[i_dim_j_dim_k_l + 6].blue * ker[ker_index].blue;
-                    ker_index++;
-
-                    sum += src[i_dim_j_dim_k_l + 7].red * ker[ker_index].red;
-                    sum += src[i_dim_j_dim_k_l + 7].green * ker[ker_index].green;
-                    sum += src[i_dim_j_dim_k_l + 7].blue * ker[ker_index].blue;
-                    ker_index++;
-                }
-                dst[i_dim + j] = sum;
-                i_dim_j_dim_k_l += 1;
-            }
-            k_dim += dim;
-            ker_index_base += 8;
-        }
-        i_dim += dim;
-    }
-}
-
-/*
- * convolution - Your current working version of convolution
- * IMPORTANT: This is the version you will be graded on
- */
 char convolution_descr[] = "Convolution: Current working version";
 void convolution(int dim, pixel *src, pixel *ker, unsigned *dst)
 {
-    int i, j, k, l, i_dim = 0;
-    for (i = 0; i < dim - 8 + 1; i++)
+    int i = dim - 7, j, src_subtract = 7 * dim + 6;
+    while (i--)
     {
-        for (j = 0; j < dim - 8 + 1; j++)
+        j = dim - 7;
+        while(j--)
         {
             int sum = 0;
-            int ker_index = 0;
-            int ik_dim_j = i_dim + j;
-            for (k = 0; k < 8; k++)
-            {
-                // loop unrolling
-                sum += src[ik_dim_j].red * ker[ker_index].red;
-                sum += src[ik_dim_j].green * ker[ker_index].green;
-                sum += src[ik_dim_j].blue * ker[ker_index].blue;
-                ker_index++;
-                sum += src[ik_dim_j + 1].red * ker[ker_index].red;
-                sum += src[ik_dim_j + 1].green * ker[ker_index].green;
-                sum += src[ik_dim_j + 1].blue * ker[ker_index].blue;
-                ker_index++;
-                sum += src[ik_dim_j + 2].red * ker[ker_index].red;
-                sum += src[ik_dim_j + 2].green * ker[ker_index].green;
-                sum += src[ik_dim_j + 2].blue * ker[ker_index].blue;
-                ker_index++;
-                sum += src[ik_dim_j + 3].red * ker[ker_index].red;
-                sum += src[ik_dim_j + 3].green * ker[ker_index].green;
-                sum += src[ik_dim_j + 3].blue * ker[ker_index].blue;
-                ker_index++;
-                sum += src[ik_dim_j + 4].red * ker[ker_index].red;
-                sum += src[ik_dim_j + 4].green * ker[ker_index].green;
-                sum += src[ik_dim_j + 4].blue * ker[ker_index].blue;
-                ker_index++;
-                sum += src[ik_dim_j + 5].red * ker[ker_index].red;
-                sum += src[ik_dim_j + 5].green * ker[ker_index].green;
-                sum += src[ik_dim_j + 5].blue * ker[ker_index].blue;
-                ker_index++;
-                sum += src[ik_dim_j + 6].red * ker[ker_index].red;
-                sum += src[ik_dim_j + 6].green * ker[ker_index].green;
-                sum += src[ik_dim_j + 6].blue * ker[ker_index].blue;
-                ker_index++;
-                sum += src[ik_dim_j + 7].red * ker[ker_index].red;
-                sum += src[ik_dim_j + 7].green * ker[ker_index].green;
-                sum += src[ik_dim_j + 7].blue * ker[ker_index].blue;
-                ker_index++;
+            // int ik_dim_j = i_dim + j;
 
-                ik_dim_j += dim;
-            }
-            dst[i_dim + j] = sum;
+            // loop unrolling
+            sum += src->red * ker->red;
+            sum += src->green * ker->green;
+            sum += src->blue * ker->blue;
+            ker++;
+            src++;
+            sum += src->red * ker->red;
+            sum += src->green * ker->green;
+            sum += src->blue * ker->blue;
+            ker++;
+            src++;
+            sum += src->red * ker->red;
+            sum += src->green * ker->green;
+            sum += src->blue * ker->blue;
+            ker++;
+            src++;
+            sum += src->red * ker->red;
+            sum += src->green * ker->green;
+            sum += src->blue * ker->blue;
+            ker++;
+            src++;
+            sum += src->red * ker->red;
+            sum += src->green * ker->green;
+            sum += src->blue * ker->blue;
+            ker++;
+            src++;
+            sum += src->red * ker->red;
+            sum += src->green * ker->green;
+            sum += src->blue * ker->blue;
+            ker++;
+            src++;
+            sum += src->red * ker->red;
+            sum += src->green * ker->green;
+            sum += src->blue * ker->blue;
+            ker++;
+            src++;
+            sum += src->red * ker->red;
+            sum += src->green * ker->green;
+            sum += src->blue * ker->blue;
+            ker++;
+            src += dim - 7;
+
+            // ik_dim_j += dim;
+
+            // loop unrolling
+            sum += src->red * ker->red;
+            sum += src->green * ker->green;
+            sum += src->blue * ker->blue;
+            ker++;
+            src++;
+            sum += src->red * ker->red;
+            sum += src->green * ker->green;
+            sum += src->blue * ker->blue;
+            ker++;
+            src++;
+            sum += src->red * ker->red;
+            sum += src->green * ker->green;
+            sum += src->blue * ker->blue;
+            ker++;
+            src++;
+            sum += src->red * ker->red;
+            sum += src->green * ker->green;
+            sum += src->blue * ker->blue;
+            ker++;
+            src++;
+            sum += src->red * ker->red;
+            sum += src->green * ker->green;
+            sum += src->blue * ker->blue;
+            ker++;
+            src++;
+            sum += src->red * ker->red;
+            sum += src->green * ker->green;
+            sum += src->blue * ker->blue;
+            ker++;
+            src++;
+            sum += src->red * ker->red;
+            sum += src->green * ker->green;
+            sum += src->blue * ker->blue;
+            ker++;
+            src++;
+            sum += src->red * ker->red;
+            sum += src->green * ker->green;
+            sum += src->blue * ker->blue;
+            ker++;
+            src += dim - 7;
+
+            // ik_dim_j += dim;
+
+            // loop unrolling
+            sum += src->red * ker->red;
+            sum += src->green * ker->green;
+            sum += src->blue * ker->blue;
+            ker++;
+            src++;
+            sum += src->red * ker->red;
+            sum += src->green * ker->green;
+            sum += src->blue * ker->blue;
+            ker++;
+            src++;
+            sum += src->red * ker->red;
+            sum += src->green * ker->green;
+            sum += src->blue * ker->blue;
+            ker++;
+            src++;
+            sum += src->red * ker->red;
+            sum += src->green * ker->green;
+            sum += src->blue * ker->blue;
+            ker++;
+            src++;
+            sum += src->red * ker->red;
+            sum += src->green * ker->green;
+            sum += src->blue * ker->blue;
+            ker++;
+            src++;
+            sum += src->red * ker->red;
+            sum += src->green * ker->green;
+            sum += src->blue * ker->blue;
+            ker++;
+            src++;
+            sum += src->red * ker->red;
+            sum += src->green * ker->green;
+            sum += src->blue * ker->blue;
+            ker++;
+            src++;
+            sum += src->red * ker->red;
+            sum += src->green * ker->green;
+            sum += src->blue * ker->blue;
+            ker++;
+            src += dim - 7;
+
+            // ik_dim_j += dim;
+
+            // loop unrolling
+            sum += src->red * ker->red;
+            sum += src->green * ker->green;
+            sum += src->blue * ker->blue;
+            ker++;
+            src++;
+            sum += src->red * ker->red;
+            sum += src->green * ker->green;
+            sum += src->blue * ker->blue;
+            ker++;
+            src++;
+            sum += src->red * ker->red;
+            sum += src->green * ker->green;
+            sum += src->blue * ker->blue;
+            ker++;
+            src++;
+            sum += src->red * ker->red;
+            sum += src->green * ker->green;
+            sum += src->blue * ker->blue;
+            ker++;
+            src++;
+            sum += src->red * ker->red;
+            sum += src->green * ker->green;
+            sum += src->blue * ker->blue;
+            ker++;
+            src++;
+            sum += src->red * ker->red;
+            sum += src->green * ker->green;
+            sum += src->blue * ker->blue;
+            ker++;
+            src++;
+            sum += src->red * ker->red;
+            sum += src->green * ker->green;
+            sum += src->blue * ker->blue;
+            ker++;
+            src++;
+            sum += src->red * ker->red;
+            sum += src->green * ker->green;
+            sum += src->blue * ker->blue;
+            ker++;
+            src += dim - 7;
+
+            // ik_dim_j += dim;
+
+            // loop unrolling
+            sum += src->red * ker->red;
+            sum += src->green * ker->green;
+            sum += src->blue * ker->blue;
+            ker++;
+            src++;
+            sum += src->red * ker->red;
+            sum += src->green * ker->green;
+            sum += src->blue * ker->blue;
+            ker++;
+            src++;
+            sum += src->red * ker->red;
+            sum += src->green * ker->green;
+            sum += src->blue * ker->blue;
+            ker++;
+            src++;
+            sum += src->red * ker->red;
+            sum += src->green * ker->green;
+            sum += src->blue * ker->blue;
+            ker++;
+            src++;
+            sum += src->red * ker->red;
+            sum += src->green * ker->green;
+            sum += src->blue * ker->blue;
+            ker++;
+            src++;
+            sum += src->red * ker->red;
+            sum += src->green * ker->green;
+            sum += src->blue * ker->blue;
+            ker++;
+            src++;
+            sum += src->red * ker->red;
+            sum += src->green * ker->green;
+            sum += src->blue * ker->blue;
+            ker++;
+            src++;
+            sum += src->red * ker->red;
+            sum += src->green * ker->green;
+            sum += src->blue * ker->blue;
+            ker++;
+            src += dim - 7;
+
+            // ik_dim_j += dim;
+
+            // loop unrolling
+            sum += src->red * ker->red;
+            sum += src->green * ker->green;
+            sum += src->blue * ker->blue;
+            ker++;
+            src++;
+            sum += src->red * ker->red;
+            sum += src->green * ker->green;
+            sum += src->blue * ker->blue;
+            ker++;
+            src++;
+            sum += src->red * ker->red;
+            sum += src->green * ker->green;
+            sum += src->blue * ker->blue;
+            ker++;
+            src++;
+            sum += src->red * ker->red;
+            sum += src->green * ker->green;
+            sum += src->blue * ker->blue;
+            ker++;
+            src++;
+            sum += src->red * ker->red;
+            sum += src->green * ker->green;
+            sum += src->blue * ker->blue;
+            ker++;
+            src++;
+            sum += src->red * ker->red;
+            sum += src->green * ker->green;
+            sum += src->blue * ker->blue;
+            ker++;
+            src++;
+            sum += src->red * ker->red;
+            sum += src->green * ker->green;
+            sum += src->blue * ker->blue;
+            ker++;
+            src++;
+            sum += src->red * ker->red;
+            sum += src->green * ker->green;
+            sum += src->blue * ker->blue;
+            ker++;
+            src += dim - 7;
+
+            // ik_dim_j += dim;
+
+            // loop unrolling
+            sum += src->red * ker->red;
+            sum += src->green * ker->green;
+            sum += src->blue * ker->blue;
+            ker++;
+            src++;
+            sum += src->red * ker->red;
+            sum += src->green * ker->green;
+            sum += src->blue * ker->blue;
+            ker++;
+            src++;
+            sum += src->red * ker->red;
+            sum += src->green * ker->green;
+            sum += src->blue * ker->blue;
+            ker++;
+            src++;
+            sum += src->red * ker->red;
+            sum += src->green * ker->green;
+            sum += src->blue * ker->blue;
+            ker++;
+            src++;
+            sum += src->red * ker->red;
+            sum += src->green * ker->green;
+            sum += src->blue * ker->blue;
+            ker++;
+            src++;
+            sum += src->red * ker->red;
+            sum += src->green * ker->green;
+            sum += src->blue * ker->blue;
+            ker++;
+            src++;
+            sum += src->red * ker->red;
+            sum += src->green * ker->green;
+            sum += src->blue * ker->blue;
+            ker++;
+            src++;
+            sum += src->red * ker->red;
+            sum += src->green * ker->green;
+            sum += src->blue * ker->blue;
+            ker++;
+            src += dim - 7;
+
+            // ik_dim_j += dim;
+
+            // loop unrolling
+            sum += src->red * ker->red;
+            sum += src->green * ker->green;
+            sum += src->blue * ker->blue;
+            ker++;
+            src++;
+            sum += src->red * ker->red;
+            sum += src->green * ker->green;
+            sum += src->blue * ker->blue;
+            ker++;
+            src++;
+            sum += src->red * ker->red;
+            sum += src->green * ker->green;
+            sum += src->blue * ker->blue;
+            ker++;
+            src++;
+            sum += src->red * ker->red;
+            sum += src->green * ker->green;
+            sum += src->blue * ker->blue;
+            ker++;
+            src++;
+            sum += src->red * ker->red;
+            sum += src->green * ker->green;
+            sum += src->blue * ker->blue;
+            ker++;
+            src++;
+            sum += src->red * ker->red;
+            sum += src->green * ker->green;
+            sum += src->blue * ker->blue;
+            ker++;
+            src++;
+            sum += src->red * ker->red;
+            sum += src->green * ker->green;
+            sum += src->blue * ker->blue;
+            ker++;
+            src++;
+            sum += src->red * ker->red;
+            sum += src->green * ker->green;
+            sum += src->blue * ker->blue;
+            src -= src_subtract;
+            ker -= 63;
+            *(dst++) = sum;
         }
-        i_dim += dim;
+        dst += 7;
+        src += 7;
     }
-    // int i,j,k,l;
-
-    // int i_dim = 0;
-    // for(i = 0; i < dim-8+1; i++)
-    // {
-    //     int i_dim_j = i_dim;
-    //     for(j = 0; j < dim-8+1; j++) {
-    //         int d = 0;
-    //         int s_base = i_dim_j, t = 0;
-    //         for(k = 0; k < 8; k++) {
-    //             int s = s_base;
-    //             for (l = 0; l < 8; l++) { // TODO: create 8 variables, loop unrolling
-    //                 d += src[s].red * ker[t].red + src[s].green * ker[t].green + src[s].blue * ker[t].blue;
-    //                 s++;
-    //                 t++;
-    //             }
-    //             s_base += dim;
-    //         }
-    //         dst[i_dim_j] = d;
-    //         i_dim_j ++;
-    //     }
-    // }
 }
 
 /*********************************************************************
@@ -214,7 +433,7 @@ void register_conv_functions()
 {
     add_conv_function(&naive_conv, naive_conv_descr);
     add_conv_function(&convolution, convolution_descr);
-    add_conv_function(&optimized_conv, optimized_conv_descr);
+
     /* ... Register additional test functions here */
 }
 
@@ -262,8 +481,21 @@ void naive_average_pooling(int dim, pixel *src, pixel *dst)
 char average_pooling_descr[] = "Average Pooling: Current working version";
 void average_pooling(int dim, pixel *src, pixel *dst)
 {
-
-    naive_average_pooling(dim, src, dst);
+    int i, j, red, green, blue, dimension = dim >> 1, index_temp = 0, x = 0;
+    ;
+    for (i = 0; i < dimension; i++)
+    {
+        for (j = 0; j < dimension; j++)
+        {
+            red = (src[x].red + src[x + 1].red + src[x + dim].red + src[x + 1 + dim].red) >> 2;
+            green = (src[x].green + src[x + 1].green + src[x + dim].green + src[x + 1 + dim].green) >> 2;
+            blue = (src[x].blue + src[x + 1].blue + src[x + dim].blue + src[x + 1 + dim].blue) >> 2;
+            dst[index_temp + j] = (pixel){red, green, blue};
+            x += 2;
+        }
+        x += dim;
+        index_temp += dimension;
+    }
 }
 
 /******************************************************************************
