@@ -155,9 +155,8 @@ public class PlaylistTree {
 				return primaryRootAsInternal.searchSong(audioId, 0);
 			case Leaf:
 				PlaylistNodePrimaryLeaf primaryRootAsLeaf = (PlaylistNodePrimaryLeaf) primaryRoot;
-				System.out.println("<data>");
-				int i;
-				for (i = 0; i < primaryRootAsLeaf.songCount(); i++) {
+				for (int i = 0; i < primaryRootAsLeaf.songCount(); i++) {
+					System.out.println("<data>");
 					System.out.println("<record>" + primaryRootAsLeaf.songAtIndex(i).fullName() + "</record>");
 					if (primaryRootAsLeaf.audioIdAtIndex(i) == audioId) {
 						System.out.println("</data>");

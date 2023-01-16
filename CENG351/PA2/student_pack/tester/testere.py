@@ -2,7 +2,7 @@
 
 import os
 
-output_file_name = input("Enter output file name: ").removesuffix(".txt")
+output_file_name = input("Enter output file name: ")
 report = open("./testCases/report.txt", "w", encoding="utf-8")
 os.system("rm *.class")
 os.system("javac CengPlaylist.java")

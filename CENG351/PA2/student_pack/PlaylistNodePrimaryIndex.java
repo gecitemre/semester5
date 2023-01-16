@@ -136,10 +136,10 @@ public class PlaylistNodePrimaryIndex extends PlaylistNode {
 				return ((PlaylistNodePrimaryIndex) node).searchSong(audioId, level + 1);
 			case Leaf:
 				PlaylistNodePrimaryLeaf leaf = (PlaylistNodePrimaryLeaf) node;
-				indent(level + 1);
-				System.out.println("<data>");
 				for (int i = 0; i < leaf.songCount(); i++) {
 					if (leaf.audioIdAtIndex(i) == audioId) {
+						indent(level + 1);
+						System.out.println("<data>");
 						indent(level + 1);
 						System.out.println("<record>"+leaf.songAtIndex(i).fullName()+"</record>");
 						indent(level + 1);
@@ -148,6 +148,7 @@ public class PlaylistNodePrimaryIndex extends PlaylistNode {
 					}
 				}
 			default:
+				System.out.println("Could not find " + audioId);
 				return null;
 		}
 

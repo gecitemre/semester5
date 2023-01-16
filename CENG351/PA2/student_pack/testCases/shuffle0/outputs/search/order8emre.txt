@@ -1,259 +1,249 @@
 <index>
-	<node>
+9
+17
+25
+33
+41
 </index>
 	<data>
 	<record>1|canadian pop|Señorita|Shawn Mendes</record>
 	</data>
 <index>
-	<node>
-	<node>
+9
+17
+25
+33
+41
 </index>
 	<data>
-	<record>9|country rap|Old Town Road - Remix|Lil Nas X</record>
-	<record>10|electropop|bad guy|Billie Eilish</record>
 	<record>11|reggaeton|Callaita|Bad Bunny</record>
 	</data>
 <index>
-	<node>
-	<node>
-	<node>
+9
+17
+25
+33
+41
 </index>
 	<data>
-	<record>17|latin|LA CANCIÓN|J Balvin</record>
-	<record>18|dfw rap|Sunflower - Spider-Man: Into the Spider-Verse|Post Malone</record>
-	<record>19|canadian hip hop|Lalala|Y2K</record>
-	<record>20|escape room|Truth Hurts|Lizzo</record>
 	<record>21|pop house|Piece Of Your Heart|MEDUZA</record>
 	</data>
 <index>
-	<node>
-	<node>
-	<node>
-	<node>
+9
+17
+25
+33
+41
 </index>
 	<data>
-	<record>25|electropop|bad guy (with Justin Bieber)|Billie Eilish</record>
-	<record>26|canadian pop|If I Can't Have You|Shawn Mendes</record>
-	<record>27|australian pop|Dance Monkey|Tones and I</record>
-	<record>28|canadian hip hop|It's You|Ali Gatie</record>
-	<record>29|latin|Con Calma|Daddy Yankee</record>
-	<record>30|latin|QUE PRETENDES|J Balvin</record>
 	<record>31|edm|Takeaway|The Chainsmokers</record>
 	</data>
 <index>
-	<node>
-	<node>
-	<node>
-	<node>
-	<node>
+9
+17
+25
+33
+41
 </index>
 	<data>
 	<record>41|edm|Higher Love|Kygo</record>
 	</data>
 <index>
-	<node>
+9
+17
+25
+33
+41
 </index>
 	<data>
 	<record>1|canadian pop|Señorita|Shawn Mendes</record>
 	</data>
 <index>
-	<node>
-	<node>
+9
+17
+25
+33
+41
 </index>
 	<data>
-	<record>9|country rap|Old Town Road - Remix|Lil Nas X</record>
-	<record>10|electropop|bad guy|Billie Eilish</record>
 	<record>11|reggaeton|Callaita|Bad Bunny</record>
 	</data>
 <index>
-	<node>
-	<node>
-	<node>
+9
+17
+25
+33
+41
 </index>
 	<data>
-	<record>17|latin|LA CANCIÓN|J Balvin</record>
-	<record>18|dfw rap|Sunflower - Spider-Man: Into the Spider-Verse|Post Malone</record>
-	<record>19|canadian hip hop|Lalala|Y2K</record>
-	<record>20|escape room|Truth Hurts|Lizzo</record>
 	<record>21|pop house|Piece Of Your Heart|MEDUZA</record>
 	</data>
 <index>
-	<node>
-	<node>
-	<node>
-	<node>
+9
+17
+25
+33
+41
 </index>
 	<data>
-	<record>25|electropop|bad guy (with Justin Bieber)|Billie Eilish</record>
-	<record>26|canadian pop|If I Can't Have You|Shawn Mendes</record>
-	<record>27|australian pop|Dance Monkey|Tones and I</record>
-	<record>28|canadian hip hop|It's You|Ali Gatie</record>
-	<record>29|latin|Con Calma|Daddy Yankee</record>
-	<record>30|latin|QUE PRETENDES|J Balvin</record>
 	<record>31|edm|Takeaway|The Chainsmokers</record>
 	</data>
 <index>
-	<node>
-	<node>
-	<node>
-	<node>
-	<node>
+9
+17
+25
+33
+41
 </index>
 	<data>
 	<record>41|edm|Higher Love|Kygo</record>
 	</data>
 <index>
-	<node>
+9
+17
+25
+33
+41
 </index>
 	<data>
 	<record>1|canadian pop|Señorita|Shawn Mendes</record>
 	</data>
 <index>
-	<node>
-	<node>
+9
+17
+25
+33
+41
 </index>
 	<data>
-	<record>9|country rap|Old Town Road - Remix|Lil Nas X</record>
-	<record>10|electropop|bad guy|Billie Eilish</record>
 	<record>11|reggaeton|Callaita|Bad Bunny</record>
 	</data>
 <index>
-	<node>
-	<node>
-	<node>
+9
+17
+25
+33
+41
 </index>
 	<data>
-	<record>17|latin|LA CANCIÓN|J Balvin</record>
-	<record>18|dfw rap|Sunflower - Spider-Man: Into the Spider-Verse|Post Malone</record>
-	<record>19|canadian hip hop|Lalala|Y2K</record>
-	<record>20|escape room|Truth Hurts|Lizzo</record>
 	<record>21|pop house|Piece Of Your Heart|MEDUZA</record>
 	</data>
 <index>
-	<node>
-	<node>
-	<node>
-	<node>
+9
+17
+25
+33
+41
 </index>
 	<data>
-	<record>25|electropop|bad guy (with Justin Bieber)|Billie Eilish</record>
-	<record>26|canadian pop|If I Can't Have You|Shawn Mendes</record>
-	<record>27|australian pop|Dance Monkey|Tones and I</record>
-	<record>28|canadian hip hop|It's You|Ali Gatie</record>
-	<record>29|latin|Con Calma|Daddy Yankee</record>
-	<record>30|latin|QUE PRETENDES|J Balvin</record>
 	<record>31|edm|Takeaway|The Chainsmokers</record>
 	</data>
 <index>
-	<node>
-	<node>
-	<node>
-	<node>
-	<node>
+9
+17
+25
+33
+41
 </index>
 	<data>
 	<record>41|edm|Higher Love|Kygo</record>
 	</data>
 <index>
-	<node>
+9
+17
+25
+33
+41
 </index>
 	<data>
 	<record>1|canadian pop|Señorita|Shawn Mendes</record>
 	</data>
 <index>
-	<node>
-	<node>
+9
+17
+25
+33
+41
 </index>
 	<data>
-	<record>9|country rap|Old Town Road - Remix|Lil Nas X</record>
-	<record>10|electropop|bad guy|Billie Eilish</record>
 	<record>11|reggaeton|Callaita|Bad Bunny</record>
 	</data>
 <index>
-	<node>
-	<node>
-	<node>
+9
+17
+25
+33
+41
 </index>
 	<data>
-	<record>17|latin|LA CANCIÓN|J Balvin</record>
-	<record>18|dfw rap|Sunflower - Spider-Man: Into the Spider-Verse|Post Malone</record>
-	<record>19|canadian hip hop|Lalala|Y2K</record>
-	<record>20|escape room|Truth Hurts|Lizzo</record>
 	<record>21|pop house|Piece Of Your Heart|MEDUZA</record>
 	</data>
 <index>
-	<node>
-	<node>
-	<node>
-	<node>
+9
+17
+25
+33
+41
 </index>
 	<data>
-	<record>25|electropop|bad guy (with Justin Bieber)|Billie Eilish</record>
-	<record>26|canadian pop|If I Can't Have You|Shawn Mendes</record>
-	<record>27|australian pop|Dance Monkey|Tones and I</record>
-	<record>28|canadian hip hop|It's You|Ali Gatie</record>
-	<record>29|latin|Con Calma|Daddy Yankee</record>
-	<record>30|latin|QUE PRETENDES|J Balvin</record>
 	<record>31|edm|Takeaway|The Chainsmokers</record>
 	</data>
 <index>
-	<node>
-	<node>
-	<node>
-	<node>
-	<node>
+9
+17
+25
+33
+41
 </index>
 	<data>
 	<record>41|edm|Higher Love|Kygo</record>
 	</data>
 <index>
-	<node>
+9
+17
+25
+33
+41
 </index>
 	<data>
 	<record>1|canadian pop|Señorita|Shawn Mendes</record>
 	</data>
 <index>
-	<node>
-	<node>
+9
+17
+25
+33
+41
 </index>
 	<data>
-	<record>9|country rap|Old Town Road - Remix|Lil Nas X</record>
-	<record>10|electropop|bad guy|Billie Eilish</record>
 	<record>11|reggaeton|Callaita|Bad Bunny</record>
 	</data>
 <index>
-	<node>
-	<node>
-	<node>
+9
+17
+25
+33
+41
 </index>
 	<data>
-	<record>17|latin|LA CANCIÓN|J Balvin</record>
-	<record>18|dfw rap|Sunflower - Spider-Man: Into the Spider-Verse|Post Malone</record>
-	<record>19|canadian hip hop|Lalala|Y2K</record>
-	<record>20|escape room|Truth Hurts|Lizzo</record>
 	<record>21|pop house|Piece Of Your Heart|MEDUZA</record>
 	</data>
 <index>
-	<node>
-	<node>
-	<node>
-	<node>
+9
+17
+25
+33
+41
 </index>
 	<data>
-	<record>25|electropop|bad guy (with Justin Bieber)|Billie Eilish</record>
-	<record>26|canadian pop|If I Can't Have You|Shawn Mendes</record>
-	<record>27|australian pop|Dance Monkey|Tones and I</record>
-	<record>28|canadian hip hop|It's You|Ali Gatie</record>
-	<record>29|latin|Con Calma|Daddy Yankee</record>
-	<record>30|latin|QUE PRETENDES|J Balvin</record>
 	<record>31|edm|Takeaway|The Chainsmokers</record>
 	</data>
 <index>
-	<node>
-	<node>
-	<node>
-	<node>
-	<node>
+9
+17
+25
+33
+41
 </index>
 	<data>
 	<record>41|edm|Higher Love|Kygo</record>
